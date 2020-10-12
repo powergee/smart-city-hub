@@ -1,0 +1,72 @@
+@import "../shared/shared.scss";
+
+$header-small-font: 15px;
+$header-back-color: #404A5D;
+$header-button-color: #322CA0;
+$header-button-text: #B3C6DF;
+$header-button-hover: #463FCA;
+$header-button-padding: 8px 16px;
+
+$menu-logo-maxwidth: 200px;
+
+.navbar-root {
+    width: 100%;
+    display: block;
+
+    .header-background {
+        background-color: $header-back-color;
+
+        .header {
+            max-width: $page-width;
+            margin: 0 auto 0 auto;
+            display: flex;
+
+            .header-left {
+                margin-right: auto;
+            }
+
+            .header-right {
+                margin-left: auto;
+            }
+
+            .header-button-container {
+                display: block;
+
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    background-color: $header-button-color;
+
+                    li a {
+                        display: block;
+                        color: $header-button-text;
+                        text-align: center;
+                        text-decoration: none;
+                        padding: $header-button-padding;
+                    }
+
+                    li a:hover:not(.active) {
+                        background-color: $header-button-hover;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-background {
+        border-bottom: 1px solid #D1D1D1;
+
+        .menu {
+            max-width: $page-width;
+            margin: 0 auto 0 auto;
+            display: flex;
+
+            img {
+                margin: 20px 0 20px 0;
+                max-width: $menu-logo-maxwidth;
+            }
+        }
+    }
+}

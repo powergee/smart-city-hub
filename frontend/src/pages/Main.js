@@ -1,10 +1,10 @@
 import React from 'react'
-import { Header } from '../components'
+import { NavigationBar } from '../components'
 
 export default function Main() {
     return (
         <div>
-            <Header></Header>
+            <NavigationBar></NavigationBar>
         </div>
     )
 }
