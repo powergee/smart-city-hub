@@ -7,7 +7,11 @@ $header-button-text: #B3C6DF;
 $header-button-hover: #463FCA;
 $header-button-padding: 8px 16px;
 
-$menu-logo-maxwidth: 200px;
+$menu-logo-maxwidth: 400px;
+$menu-primary-text: 20px;
+$menu-primary-padding: 0 10px 0 10px;
+$menu-primary-color: black;
+$menu-primary-hover: #1D4D8B;
 
 .navbar-root {
     width: 100%;
@@ -38,6 +42,10 @@ $menu-logo-maxwidth: 200px;
                     padding: 0;
                     overflow: hidden;
                     background-color: $header-button-color;
+                    
+                    li {
+                        display: inline-block;
+                    }
 
                     li a {
                         display: block;
@@ -62,10 +70,54 @@ $menu-logo-maxwidth: 200px;
             max-width: $page-width;
             margin: 0 auto 0 auto;
             display: flex;
+            align-items: center;
 
-            img {
-                margin: 20px 0 20px 0;
-                max-width: $menu-logo-maxwidth;
+            a {
+                margin: 10px auto 10px 10px;
+                img {
+                    max-width: $menu-logo-maxwidth;
+                }
+            }
+
+            .menu-primary {
+                display: block;
+
+                ul {
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    display: block;
+                    
+                    li {
+                        display: inline-block;
+                        padding: $menu-primary-padding;
+                    }
+
+                    li a {
+                        display: block;
+                        color: $menu-primary-color;
+                        text-align: center;
+                        text-decoration: none;
+                        font-size: $menu-primary-text;
+                    }
+
+                    li a:hover:not(.active) {
+                        color: $menu-primary-hover;
+                    }
+
+                    // .menu-dropdown {
+                    //     display: none;
+                    //     position: absolute;
+                    //     background-color: #f9f9f9;
+                    //     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    //     z-index: 1;
+                    // }
+                }
+
+                // :hover:not(.active) .menu-dropdown {
+                //     display: block;
+                // }
             }
         }
     }
