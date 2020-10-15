@@ -1,0 +1,17 @@
+$slide-height: 500px;
+$slide-text-size: 50px;
+
+.each-slide > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    height: $slide-height;
+
+    & > span {
+        font-size: $slide-text-size;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+    }
+}
