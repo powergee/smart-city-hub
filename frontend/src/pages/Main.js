@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavigationBar } from '../components'
+import { NavigationBar, NoticeBoard, LinkBoard } from '../components'
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import slide1 from "../images/slide-sample-1.png";
@@ -24,7 +24,12 @@ export default function Main() {
                 </div>
             </Slide>
 
-            
+            <div className="board-background">
+                <div className="board-container">
+                    <NoticeBoard></NoticeBoard>
+                    <LinkBoard></LinkBoard>
+                </div>
+            </div>
         </div>
     )
 }
