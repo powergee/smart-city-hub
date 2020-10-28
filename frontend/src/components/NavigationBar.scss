@@ -16,109 +16,109 @@ $menu-primary-hover: #1D4D8B;
 .navbar-root {
     width: 100%;
     display: block;
+}
 
-    .header-background {
-        background-color: $header-back-color;
+.header-background {
+    background-color: $header-back-color;
+}
 
-        .header {
-            max-width: $page-width;
-            margin: 0 auto 0 auto;
-            display: flex;
+.header {
+    max-width: $page-width;
+    margin: 0 auto 0 auto;
+    display: flex;
+}
 
-            .header-left {
-                margin-right: auto;
-            }
+.header-left {
+    margin-right: auto;
+}
 
-            .header-right {
-                margin-left: auto;
-            }
+.header-right {
+    margin-left: auto;
+}
 
-            .header-button-container {
-                display: block;
+.header-button-container {
+    display: block;
 
-                ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    background-color: $header-button-color;
-                    
-                    li {
-                        display: inline-block;
-                    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: $header-button-color;
+        
+        li {
+            display: inline-block;
+        }
 
-                    li a {
-                        display: block;
-                        color: $header-button-text;
-                        text-align: center;
-                        text-decoration: none;
-                        padding: $header-button-padding;
-                    }
+        li a {
+            display: block;
+            color: $header-button-text;
+            text-align: center;
+            text-decoration: none;
+            padding: $header-button-padding;
+        }
 
-                    li a:hover:not(.active) {
-                        background-color: $header-button-hover;
-                    }
-                }
-            }
+        li a:hover:not(.active) {
+            background-color: $header-button-hover;
+        }
+    }
+}
+
+.menu-background {
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.menu {
+    max-width: $page-width;
+    margin: 0 auto 0 auto;
+    display: flex;
+    align-items: center;
+
+    a {
+        margin: 10px auto 10px 10px;
+        img {
+            max-width: $menu-logo-maxwidth;
+        }
+    }
+}
+
+.menu-primary {
+    display: block;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: block;
+        
+        li {
+            display: inline-block;
+            padding: $menu-primary-padding;
+        }
+
+        li a {
+            display: block;
+            color: $menu-primary-color;
+            text-align: center;
+            text-decoration: none;
+            font-size: $menu-primary-text;
+        }
+
+        li a:hover:not(.active) {
+            color: $menu-primary-hover;
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
         }
     }
 
-    .menu-background {
-        border-bottom: 1px solid #D1D1D1;
-
-        .menu {
-            max-width: $page-width;
-            margin: 0 auto 0 auto;
-            display: flex;
-            align-items: center;
-
-            a {
-                margin: 10px auto 10px 10px;
-                img {
-                    max-width: $menu-logo-maxwidth;
-                }
-            }
-
-            .menu-primary {
-                display: block;
-
-                ul {
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    display: block;
-                    
-                    li {
-                        display: inline-block;
-                        padding: $menu-primary-padding;
-                    }
-
-                    li a {
-                        display: block;
-                        color: $menu-primary-color;
-                        text-align: center;
-                        text-decoration: none;
-                        font-size: $menu-primary-text;
-                    }
-
-                    li a:hover:not(.active) {
-                        color: $menu-primary-hover;
-                    }
-
-                    // .menu-dropdown {
-                    //     display: none;
-                    //     position: absolute;
-                    //     background-color: #f9f9f9;
-                    //     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                    //     z-index: 1;
-                    // }
-                }
-
-                // :hover:not(.active) .menu-dropdown {
-                //     display: block;
-                // }
-            }
-        }
+    :hover:not(.active) .menu-dropdown {
+        display: block;
     }
 }

@@ -23,15 +23,15 @@ $slide-text-size: 50px;
     background-color: #edeef3;
     display: flex;
     justify-content: center;
+}
 
-    .board-container {
-        display: flex;
-        max-width: $page-width;
-        width: 100%;
-        
-        & > * {
-            width: 50%;
-            margin: 18px 10px 18px 10px;
-        }
+.board-container {
+    display: flex;
+    max-width: $page-width;
+    width: 100%;
+    
+    & > * {
+        width: 50%;
+        margin: 18px 10px 18px 10px;
     }
 }
