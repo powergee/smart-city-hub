@@ -3,6 +3,11 @@
 $slide-height: 500px;
 $slide-text-size: 50px;
 
+.slide-container {
+    min-width: $page-width;
+    width: 100%;
+}
+
 .each-slide > div {
     display: flex;
     align-items: center;
@@ -19,6 +24,7 @@ $slide-text-size: 50px;
 }
 
 .board-background {
+    min-width: $page-width;
     width: 100%;
     background-color: #edeef3;
     display: flex;
@@ -27,8 +33,7 @@ $slide-text-size: 50px;
 
 .board-container {
     display: flex;
-    max-width: $page-width;
-    width: 100%;
+    width: $page-width;
     
     & > * {
         width: 50%;

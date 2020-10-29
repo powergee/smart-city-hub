@@ -3,6 +3,7 @@ import './NavigationBar.scss'
 import logo from "../images/hub-logo.png";
 
 export default function NavigationBar() {
+    const uosURL = "https://www.uos.ac.kr/";
     const dummyLink = "javascript:void(0);";
 
     return (
@@ -11,7 +12,7 @@ export default function NavigationBar() {
                 <div className="header">
                     <div className="header-left header-button-container">
                         <ul>
-                            <li><a href={dummyLink}>서울시립대학교</a></li>
+                            <li><a href={uosURL}>서울시립대학교</a></li>
                         </ul>
                     </div>
 
@@ -34,9 +35,34 @@ export default function NavigationBar() {
                             <li><a href={dummyLink}>학술행사</a></li>
                             <li><a href={dummyLink}>커뮤니티</a></li>
 
-                            {/* <div className="menu-dropdown">
-                                <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
-                            </div> */}
+                            <div class="menu-dropdown">
+                                <ul>
+                                    <li>
+                                        <a href={dummyLink}>Item 1-1</a>
+                                        <a href={dummyLink}>Item 1-2</a>
+                                        <a href={dummyLink}>Item 1-3</a>
+                                        <a href={dummyLink}>Item 1-4</a>
+                                    </li>
+                                    <li>
+                                        <a href={dummyLink}>Item 2-1</a>
+                                        <a href={dummyLink}>Item 2-2</a>
+                                        <a href={dummyLink}>Item 2-3</a>
+                                        <a href={dummyLink}>Item 2-4</a>
+                                    </li>
+                                    <li>
+                                        <a href={dummyLink}>Item 3-1</a>
+                                        <a href={dummyLink}>Item 3-2</a>
+                                        <a href={dummyLink}>Item 3-3</a>
+                                        <a href={dummyLink}>Item 3-4</a>
+                                    </li>
+                                    <li>
+                                        <a href={dummyLink}>Item 4-1</a>
+                                        <a href={dummyLink}>Item 4-2</a>
+                                        <a href={dummyLink}>Item 4-3</a>
+                                        <a href={dummyLink}>Item 4-4</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </ul>
                     </div>
                 </div>
