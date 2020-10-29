@@ -23,6 +23,36 @@ $slide-text-size: 50px;
     }
 }
 
+.comment-background {
+    min-width: $page-width;
+    width: 100%;
+    background-color: #3c4658;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 30px 0;
+}
+
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    width: $page-width;
+    
+    h2 {
+        font-weight: 500;
+        font-size: 30px;
+        color: white;
+        border-bottom: 1px solid whitesmoke;
+    }
+
+    p {
+        font-weight: 50;
+        font-size: 15px;
+        color: whitesmoke;
+    }
+}
+
 .board-background {
     min-width: $page-width;
     width: 100%;

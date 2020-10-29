@@ -22,6 +22,13 @@ export default function Home() {
                 </div>
             </Slide>
 
+            <div className="comment-background">
+                <div className="comment-container">
+                    <h2>도시과학연구원 스마트도시수출 거점HUB</h2>
+                    <p>각 국가의 스마트도시 기술을 한 눈에 볼 수 있습니다!</p>
+                </div>
+            </div>
+
             <div className="board-background">
                 <div className="board-container">
                     <NoticeBoard></NoticeBoard>
