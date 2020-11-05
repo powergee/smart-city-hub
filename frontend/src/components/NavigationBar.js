@@ -30,36 +30,43 @@ export default function NavigationBar() {
 
                     <div className="menu-primary">
                         <ul>
-                            <li><a href={dummyLink}>연구소소개</a></li>
-                            <li><a href={dummyLink}>주요사업</a></li>
-                            <li><a href={dummyLink}>학술행사</a></li>
-                            <li><a href={dummyLink}>커뮤니티</a></li>
+                            <li><a className="menu-small" href={dummyLink}>연구소소개</a></li>
+                            <li><a className="menu-small" href={dummyLink}>주요사업</a></li>
+                            <li><a className="menu-small" href={dummyLink}>학술행사</a></li>
+                            <li><a className="menu-small" href={dummyLink}>커뮤니티</a></li>
+                            <li><a className="menu-large" href={dummyLink}>스마트도시수출 거점HUB</a></li>
 
                             <div class="menu-dropdown">
                                 <ul>
-                                    <li>
+                                    <li className="menu-small">
                                         <a href={dummyLink}>Item 1-1</a>
                                         <a href={dummyLink}>Item 1-2</a>
                                         <a href={dummyLink}>Item 1-3</a>
                                         <a href={dummyLink}>Item 1-4</a>
                                     </li>
-                                    <li>
+                                    <li className="menu-small">
                                         <a href={dummyLink}>Item 2-1</a>
                                         <a href={dummyLink}>Item 2-2</a>
                                         <a href={dummyLink}>Item 2-3</a>
                                         <a href={dummyLink}>Item 2-4</a>
                                     </li>
-                                    <li>
+                                    <li className="menu-small">
                                         <a href={dummyLink}>Item 3-1</a>
                                         <a href={dummyLink}>Item 3-2</a>
                                         <a href={dummyLink}>Item 3-3</a>
                                         <a href={dummyLink}>Item 3-4</a>
                                     </li>
-                                    <li>
+                                    <li className="menu-small">
                                         <a href={dummyLink}>Item 4-1</a>
                                         <a href={dummyLink}>Item 4-2</a>
                                         <a href={dummyLink}>Item 4-3</a>
                                         <a href={dummyLink}>Item 4-4</a>
+                                    </li>
+                                    <li className="menu-large">
+                                        <a href={dummyLink}>Item 5-1</a>
+                                        <a href={dummyLink}>Item 5-2</a>
+                                        <a href={dummyLink}>Item 5-3</a>
+                                        <a href={dummyLink}>Item 5-4</a>
                                     </li>
                                 </ul>
                             </div>

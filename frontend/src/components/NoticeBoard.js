@@ -8,7 +8,7 @@ export default function NoticeBoard() {
                 <ul>
                     <li className="category-enabled">공지사항</li>
                     <li className="category-disabled">학술행사</li>
-                    <li className="category-disabled">언론속연구소</li>
+                    <li className="category-disabled">스마트뉴스</li>
                 </ul>
             </div>
             <div className="board-contents">
