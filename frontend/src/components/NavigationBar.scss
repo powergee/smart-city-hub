@@ -17,6 +17,11 @@ $menu-secondary-text: 15px;
 $menu-secondary-color: #242424;
 $menu-secondary-border: #d9d8d5;
 
+a:hover:not(.active) {
+    color: $menu-primary-hover;
+    cursor: pointer;
+}
+
 .navbar-root {
     min-width: $page-width;
     width: 100%;

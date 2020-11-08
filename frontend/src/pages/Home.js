@@ -24,8 +24,8 @@ export default function Home() {
 
             <div className="comment-background">
                 <div className="comment-container">
-                    <h2>국제도시 및 인프라연구 센터</h2>
-                    <p>각 국가의 스마트도시 기술을 한 눈에 볼 수 있습니다!</p>
+                    <h2>국제도시 및 인프라 연구센터</h2>
+                    <p>서울시립대학교의 국제도시 및 인프라 연구센터에 오신 것을 환영합니다!</p>
                 </div>
             </div>
 

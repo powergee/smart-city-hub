@@ -1,10 +1,18 @@
 import React from 'react'
 import './NavigationBar.scss'
 import logo from "../images/hub-logo.png";
+import { useHistory } from "react-router-dom";
 
 export default function NavigationBar() {
     const uosURL = "https://www.uos.ac.kr/";
     const dummyLink = "javascript:void(0);";
+    const history = useHistory();
+
+    function getLinkHandler(url) {
+        return () => {
+            history.push(url);
+        }
+    }
 
     return (
         <div className="navbar-root">
@@ -26,15 +34,15 @@ export default function NavigationBar() {
 
             <div className="menu-background">
                 <div className="menu">
-                    <a href={dummyLink}><img src={logo}></img></a>
+                    <a onClick={getLinkHandler("/")}><img src={logo}></img></a>
 
                     <div className="menu-primary">
                         <ul>
-                            <li><a className="menu-small" href={dummyLink}>연구소소개</a></li>
-                            <li><a className="menu-small" href={dummyLink}>주요사업</a></li>
-                            <li><a className="menu-small" href={dummyLink}>학술행사</a></li>
-                            <li><a className="menu-small" href={dummyLink}>커뮤니티</a></li>
-                            <li><a className="menu-large" href={dummyLink}>스마트도시수출 거점HUB</a></li>
+                            <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>연구소소개</a></li>
+                            <li><a className="menu-small" onClick={getLinkHandler("/projects")}>주요사업</a></li>
+                            <li><a className="menu-small" onClick={getLinkHandler("/events")}>학술행사</a></li>
+                            <li><a className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
+                            <li><a className="menu-large" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
                             <div class="menu-dropdown">
                                 <ul>
