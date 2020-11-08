@@ -1,0 +1,13 @@
+@import "../shared/shared.scss";
+
+.content-background {
+    min-width: $page-width;
+    width: 100%;
+    display: block;
+}
+
+.content-root {
+    width: $page-width;
+    margin: 0 auto 0 auto;
+    display: flex;
+}
