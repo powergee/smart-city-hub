@@ -5,6 +5,7 @@ import RemarkMathPlugin from 'remark-math';
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import emoji from 'emoji-dictionary';
+import "./MarkdownViewer.scss"
 
 const MarkdownViewer = props => {
     const newProps = {
