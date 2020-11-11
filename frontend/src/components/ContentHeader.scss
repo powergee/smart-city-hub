@@ -1,0 +1,57 @@
+@import "../shared/shared.scss";
+
+$primary-color: #404A5D;
+$link-color: #404A5D;
+$link-hover: #6a7da0;
+
+.header-root {
+    width: 100%;
+}
+
+.header-primary {
+    h1 {
+        margin-left: 10px;
+        margin-bottom: 5px;
+        color: $primary-color;
+    }
+}
+
+.header-secondary {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $primary-color;
+
+    & > h3 {
+        margin-left: 10px;
+        margin-right: auto;
+        margin-top: 0;
+        margin-bottom: 5px;
+        color: $primary-color;
+    }
+
+    & > div {
+        margin-right: 10px;
+        display: flex;
+        flex-direction: row;
+
+        a {
+            background-color: transparent;
+        }
+
+        a:link a:visited {
+            color: $link-color;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: $link-hover;
+            text-decoration: underline;
+        }
+
+        & > caption {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+}
