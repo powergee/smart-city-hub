@@ -24,6 +24,7 @@ export default function Introduction() {
     return (
         <ContentContainer>
             <Route exact path="/introduction" component={Greeting}></Route>
+            <Route exact path="/introduction/greeting" component={Greeting}></Route>
         </ContentContainer>
     )
 }

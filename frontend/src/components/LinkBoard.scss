@@ -23,13 +23,25 @@
 .board-cell {
     display: table-cell;
     vertical-align: middle;
+    padding: 5px;
 
-    & > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-items: center;
+    h4 {
+        margin: 10px;
     }
+
+    // & > div {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     justify-items: center;
+    // }
+}
+
+.board-button {
+    width: 100%;
+    height: 100%;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 .board-icon {
