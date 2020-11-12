@@ -1,16 +1,17 @@
 @import "../shared/shared.scss";
 
-$header-color: #67748d;
+// $header-color: #67748d;
 $category-padding: 0 20px 0 0;
-$category-enabled: #ffffff;
-$category-disabled: #B3C6DF;
+// $category-enabled: #ffffff;
+// $category-disabled: #B3C6DF;
 $category-font: 18px;
-$border-radius: 3px;
+// $border-radius: 3px;
+$boundary-color: #404A5D;
 
 .board-header {
     display: block;
-    background-color: $header-color;
-    border-radius: $border-radius $border-radius 0 0;
+    // background-color: $header-color;
+    // border-radius: $border-radius $border-radius 0 0;
 
     ul {
         list-style-type: none;
@@ -27,27 +28,23 @@ $border-radius: 3px;
     }
 }
 
-.category-enabled {
-    color: $category-enabled;
-}
-
-.category-disabled {
-    color: $category-disabled;
-}
-
 .board-contents {
-    background-color: white;
-    border: 1px solid $header-color;
-    border-radius: 0 0 $border-radius $border-radius;
-    padding: 10px;
+    // background-color: white;
+    // border: 1px solid $header-color;
+    // border-radius: 0 0 $border-radius $border-radius;
 
-    ul > li {
-        padding: 7px 0px 7px 0;
-        margin-right: 20px;
-        border-bottom: 1px dashed;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+    ul {
+        padding-inline-start: 20px;
+
+        & > li {
+            padding: 7px 0px 7px 0;
+            margin-right: 20px;
+            border-bottom: 1px dashed $boundary-color;
+            color: $boundary-color;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 
     ul > li:last-child {

@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./NoticeBoard.scss"
+import { Paper, Button } from '@material-ui/core'
 
 export default function NoticeBoard() {
+    const NOTICE = 0, EVENT = 1, NEWS = 2;
+    const [selected, setSelected] = useState(0);
+
+    const getButtonHandler = (num) => () => {
+        setSelected(num);
+    }
+
     return (
-        <div>
+        <Paper>
             <div className="board-header">
-                <ul>
-                    <li className="category-enabled">공지사항</li>
-                    <li className="category-disabled">학술행사</li>
-                    <li className="category-disabled">스마트뉴스</li>
-                </ul>
+                <Button onClick={getButtonHandler(NOTICE)} color={(selected === NOTICE ? "primary" : "default")} size="large">공지사항</Button>
+                <Button onClick={getButtonHandler(EVENT)} color={(selected === EVENT ? "primary" : "default")} size="large">학술행사</Button>
+                <Button onClick={getButtonHandler(NEWS)} color={(selected === NEWS ? "primary" : "default")} size="large">스마트뉴스</Button>
             </div>
             <div className="board-contents">
                 <ul>
@@ -20,6 +26,6 @@ export default function NoticeBoard() {
                     <li>도시인문학연구소 인문사회연구소지원사업 연구보조원 모집 공고</li>
                 </ul>
             </div>
-        </div>
+        </Paper>
     )
 }
