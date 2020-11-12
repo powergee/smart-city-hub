@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom';
 import { NavigationBar } from '../components'
-import { Home, Introduction, Projects, Events, Community, Hub } from '.'
+import { Home, Introduction, Events, Community, Hub } from '.'
 
 export default function Main() {
     return (
@@ -9,7 +9,6 @@ export default function Main() {
             <NavigationBar></NavigationBar>
             <Route exact path="/" component={Home}></Route>
             <Route path="/introduction" component={Introduction}></Route>
-            <Route path="/projects" component={Projects}></Route>
             <Route path="/events" component={Events}></Route>
             <Route path="/community" component={Community}></Route>
             <Route path="/hub" component={Hub}></Route>
