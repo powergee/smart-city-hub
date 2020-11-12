@@ -39,7 +39,6 @@ export default function NavigationBar() {
                     <div className="menu-primary">
                         <ul>
                             <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>연구소소개</a></li>
-                            <li><a className="menu-small" onClick={getLinkHandler("/projects")}>주요사업</a></li>
                             <li><a className="menu-small" onClick={getLinkHandler("/events")}>학술행사</a></li>
                             <li><a className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a className="menu-large" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
@@ -47,16 +46,9 @@ export default function NavigationBar() {
                             <div class="menu-dropdown">
                                 <ul>
                                     <li className="menu-small">
-                                        <a href={dummyLink}>Item 1-1</a>
-                                        <a href={dummyLink}>Item 1-2</a>
-                                        <a href={dummyLink}>Item 1-3</a>
-                                        <a href={dummyLink}>Item 1-4</a>
-                                    </li>
-                                    <li className="menu-small">
-                                        <a href={dummyLink}>Item 2-1</a>
-                                        <a href={dummyLink}>Item 2-2</a>
-                                        <a href={dummyLink}>Item 2-3</a>
-                                        <a href={dummyLink}>Item 2-4</a>
+                                        <a onClick={getLinkHandler("/introduction/greeting")}>인사말</a>
+                                        <a onClick={getLinkHandler("/introduction/professors")}>교수진 소개</a>
+                                        <a onClick={getLinkHandler("/introduction/projects")}>주요 사업</a>
                                     </li>
                                     <li className="menu-small">
                                         <a href={dummyLink}>Item 3-1</a>
@@ -71,10 +63,7 @@ export default function NavigationBar() {
                                         <a href={dummyLink}>Item 4-4</a>
                                     </li>
                                     <li className="menu-large">
-                                        <a href={dummyLink}>Item 5-1</a>
-                                        <a href={dummyLink}>Item 5-2</a>
-                                        <a href={dummyLink}>Item 5-3</a>
-                                        <a href={dummyLink}>Item 5-4</a>
+                                        <a href={dummyLink}>거점HUB로 이동하기</a>
                                     </li>
                                 </ul>
                             </div>

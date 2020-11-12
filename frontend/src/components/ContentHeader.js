@@ -26,6 +26,8 @@ export default function ContentHeader(props) {
                     <a onClick={getLinkHandler(props.secondary.link)}>{props.secondary.title}</a>
                 </div>
             </div>
+
+            {props.children}
         </div>
     )
 }
