@@ -49,6 +49,7 @@ export default function NavigationBar() {
                                         <a onClick={getLinkHandler("/introduction/greeting")}>인사말</a>
                                         <a onClick={getLinkHandler("/introduction/professors")}>교수진 소개</a>
                                         <a onClick={getLinkHandler("/introduction/projects")}>주요 사업</a>
+                                        <a onClick={getLinkHandler("/introduction/contact")}>연락처</a>
                                     </li>
                                     <li className="menu-small">
                                         <a href={dummyLink}>Item 3-1</a>
