@@ -25,3 +25,26 @@ $main-color: rgb(12, 0, 78);
         font-size: 120%;
     }
 }
+
+.researchers-paper {
+    margin-top: 30px;
+}
+
+.researchers-grid {
+    & > img {
+        width: 300px;
+        max-width: 300px;
+        height: auto;
+        margin-right: 20px;
+    }
+
+    h2 {
+        margin-top: 10px;
+        margin-bottom: 8px;
+    }
+}
+
+.projects-subtitle {
+    border-left: 3px solid $main-color;
+    padding-left: 10px;
+}
