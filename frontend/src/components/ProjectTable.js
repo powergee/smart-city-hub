@@ -58,7 +58,7 @@ export default function ProjectTable(props) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(100);
     const [orderBy, setOrderBy] = React.useState('no');
-    const [order, setOrder] = React.useState("des");
+    const [order, setOrder] = React.useState("asc");
     const rows = props.rows;
 
     const headCells = [
