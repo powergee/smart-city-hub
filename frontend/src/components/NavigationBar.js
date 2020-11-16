@@ -38,7 +38,7 @@ export default function NavigationBar() {
 
                     <div className="menu-primary">
                         <ul>
-                            <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>연구소소개</a></li>
+                            <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
                             <li><a className="menu-small" onClick={getLinkHandler("/events")}>학술행사</a></li>
                             <li><a className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a className="menu-large" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>

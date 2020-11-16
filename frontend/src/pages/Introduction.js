@@ -14,7 +14,7 @@ import resYCH from "../images/res-YCH.jpg";
 
 function Greeting() {
     const primary = {
-        title: "연구실소개",
+        title: "센터소개",
         link: "/introduction"
     };
 
@@ -36,7 +36,7 @@ function Greeting() {
     return (
         <ContentHeader primary={primary} secondary={secondary}>
             <div className="introduction-contents">
-                <h3>글로벌인프라연구실은 4차 산업혁명시대에 도시, 교통, 환경, 재난 등 사람을 위한 연구를 추진하고 있습니다.</h3>
+                <h3>국제도시 및 인프라 연구센터는 4차 산업혁명시대에 도시, 교통, 환경, 재난 등 사람을 위한 연구를 추진하고 있습니다.</h3>
 
                 {
                     jobs.map((j) => (
@@ -55,7 +55,7 @@ function Greeting() {
 // TODO: Researchers로 바꿀 것.
 function Researchers() {
     const primary = {
-        title: "연구실소개",
+        title: "센터소개",
         link: "/introduction"
     };
 
@@ -220,7 +220,7 @@ function Researchers() {
 
 function Projects() {
     const primary = {
-        title: "연구실소개",
+        title: "센터소개",
         link: "/introduction"
     };
 
@@ -398,7 +398,7 @@ function Projects() {
 
 function Contact() {
     const primary = {
-        title: "연구실소개",
+        title: "센터소개",
         link: "/introduction"
     };
 
