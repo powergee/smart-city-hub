@@ -9,7 +9,7 @@ export default function Main() {
             <NavigationBar></NavigationBar>
             <Route exact path="/" component={Home}></Route>
             <Route path="/introduction" component={Introduction}></Route>
-            <Route path="/events" component={Projects}></Route>
+            <Route path="/projects" component={Projects}></Route>
             <Route path="/community" component={Community}></Route>
             <Route path="/hub" component={Hub}></Route>
             {/* 여기에 푸터를 만들 예정 */}

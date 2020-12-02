@@ -39,7 +39,7 @@ export default function NavigationBar() {
                     <div className="menu-primary">
                         <ul>
                             <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
-                            <li><a className="menu-small" onClick={getLinkHandler("/projects")}>주요사업</a></li>
+                            <li><a className="menu-large" onClick={getLinkHandler("/projects")}>주요사업</a></li>
                             <li><a className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a className="menu-large" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
@@ -50,11 +50,11 @@ export default function NavigationBar() {
                                         <a onClick={getLinkHandler("/introduction/researchers")}>연구진 소개</a>
                                         <a onClick={getLinkHandler("/introduction/contact")}>연락처</a>
                                     </li>
-                                    <li className="menu-small">
-                                        <a href={dummyLink}>Item 3-1</a>
-                                        <a href={dummyLink}>Item 3-2</a>
-                                        <a href={dummyLink}>Item 3-3</a>
-                                        <a href={dummyLink}>Item 3-4</a>
+                                    <li className="menu-large">
+                                        <a onClick={getLinkHandler("/projects/summary")}>총괄 사업</a>
+                                        <a onClick={getLinkHandler("/projects/withhs")}>인문사회연구소 지원 사업</a>
+                                        <a onClick={getLinkHandler("/projects/smtdstpre")}>스마트 재난안전 관련 사업</a>
+                                        <a onClick={getLinkHandler("/projects/etc")}>기타 사업</a>
                                     </li>
                                     <li className="menu-small">
                                         <a href={dummyLink}>Item 4-1</a>
