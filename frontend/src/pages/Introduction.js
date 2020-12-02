@@ -2,8 +2,8 @@ import { Paper, Grid } from '@material-ui/core';
 import React from 'react'
 import { Route } from 'react-router-dom';
 import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable } from "../components"
-import jobs from "../resources/introduction/Jobs.json";
-import getResearchers from "../resources/introduction/Details";
+import jobs from "../shared/Jobs.json";
+import getResearchers from "../shared/Researchers.js";
 import "./Introduction.scss"
 
 function Greeting() {

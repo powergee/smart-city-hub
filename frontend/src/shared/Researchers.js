@@ -1,10 +1,10 @@
-import resJYJ from "../../images/res-JYJ.jpg";
-import resJYS from "../../images/res-JYS.jpg";
-import resKDI from "../../images/res-KDI.jpg";
-import resKDW from "../../images/res-KDW.jpg";
-import resKJY from "../../images/res-KJY.jpg";
-import resPSC from "../../images/res-PSC.jpg";
-import resYCH from "../../images/res-YCH.jpg";
+import resJYJ from "../images/res-JYJ.jpg";
+import resJYS from "../images/res-JYS.jpg";
+import resKDI from "../images/res-KDI.jpg";
+import resKDW from "../images/res-KDW.jpg";
+import resKJY from "../images/res-KJY.jpg";
+import resPSC from "../images/res-PSC.jpg";
+import resYCH from "../images/res-YCH.jpg";
 
 export default function getResearchers() {
     return [
