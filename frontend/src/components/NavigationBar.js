@@ -39,7 +39,7 @@ export default function NavigationBar() {
                     <div className="menu-primary">
                         <ul>
                             <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
-                            <li><a className="menu-small" onClick={getLinkHandler("/events")}>학술행사</a></li>
+                            <li><a className="menu-small" onClick={getLinkHandler("/projects")}>주요사업</a></li>
                             <li><a className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a className="menu-large" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
@@ -48,7 +48,6 @@ export default function NavigationBar() {
                                     <li className="menu-small">
                                         <a onClick={getLinkHandler("/introduction/greeting")}>인사말</a>
                                         <a onClick={getLinkHandler("/introduction/researchers")}>연구진 소개</a>
-                                        <a onClick={getLinkHandler("/introduction/projects")}>주요 사업</a>
                                         <a onClick={getLinkHandler("/introduction/contact")}>연락처</a>
                                     </li>
                                     <li className="menu-small">
