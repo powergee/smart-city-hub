@@ -97,7 +97,7 @@ a:hover:not(.active) {
 }
 
 .menu-large {
-    width: 200px;
+    width: 150px;
 }
 
 .menu-dropdown {
@@ -128,6 +128,10 @@ a:hover:not(.active) {
                 font-size: $menu-secondary-text;
                 margin: 15px 0 15px 0;
             }
+
+            & > .font-small {
+                font-size: 13px;
+            }
         }
 
         & > li:last-child {
@@ -154,6 +158,7 @@ a:hover:not(.active) {
         & > li {
             display: inline-block;
             padding: $menu-primary-padding;
+            vertical-align: middle;
 
             & > a {
                 display: block;
@@ -162,12 +167,12 @@ a:hover:not(.active) {
                 text-decoration: none;
             }
 
-            & > .menu-small {
+            & > a {
                 font-size: 20px;
             }
 
-            & > .menu-large {
-                font-size: 18px
+            & .font-small {
+                font-size: 16px;
             }
         }
 
