@@ -1,8 +1,8 @@
-import { Paper, Grid } from '@material-ui/core';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route } from 'react-router-dom';
 import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable } from "../components"
 import projList from "../shared/ProjectList.json"
+import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
 
 // 총괄 사업
 function Summary() {
@@ -31,6 +31,8 @@ function Summary() {
 
 // 인문사회연구소 지원 사업
 function WithHumanism() {
+    const [source, setSource] = useState("");
+
     const primary = {
         title: "주요 사업",
         link: "/projects"
@@ -41,8 +43,15 @@ function WithHumanism() {
         link: "/projects/withhs"
     };
 
+    useEffect(() => {
+        fetch(humanDoc)
+            .then(res => res.text())
+            .then(text => setSource(text));
+    }, []);
+
     return (
         <ContentHeader primary={primary} secondary={secondary}>
+            <MarkdownViewer source={source}></MarkdownViewer>
         </ContentHeader>
     )
 }
