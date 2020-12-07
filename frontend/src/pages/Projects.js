@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable } from "../components"
 import projList from "../shared/ProjectList.json"
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
+import smartDoc from "../docs/스마트재난안전관련사업 개요.md"
 
 // 총괄 사업
 function Summary() {
@@ -58,6 +59,8 @@ function WithHumanism() {
 
 // 스마트 재난안전 관련 사업
 function SmartDisasterPrep() {
+    const [source, setSource] = useState("");
+
     const primary = {
         title: "주요 사업",
         link: "/projects"
@@ -68,8 +71,15 @@ function SmartDisasterPrep() {
         link: "/projects/smtdstpre"
     };
 
+    useEffect(() => {
+        fetch(smartDoc)
+            .then(res => res.text())
+            .then(text => setSource(text));
+    }, []);
+
     return (
         <ContentHeader primary={primary} secondary={secondary}>
+            <MarkdownViewer source={source}></MarkdownViewer>
         </ContentHeader>
     )
 }
