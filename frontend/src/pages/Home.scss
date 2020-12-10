@@ -72,3 +72,21 @@ $slide-text-size: 50px;
         margin: 18px 10px 18px 10px;
     }
 }
+
+.modal {
+    overflow-y: auto;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.modal-content:focus {
+    outline:none;
+}
