@@ -43,7 +43,7 @@ function Researchers() {
     };
 
     const secondary = {
-        title: "연구진 소개",
+        title: "연구진",
         link: "/introduction/researchers"
     };
 

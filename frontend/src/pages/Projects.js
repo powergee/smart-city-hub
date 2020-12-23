@@ -6,15 +6,15 @@ import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
 import smartDoc from "../docs/스마트재난안전관련사업 개요.md"
 import etcDoc from "../docs/기타사업 개요.md"
 
-// 총괄 사업
+// 총괄 연구 & 사업
 function Summary() {
     const primary = {
-        title: "주요 사업",
+        title: "연구 & 사업",
         link: "/projects"
     };
 
     const secondary = {
-        title: "총괄 사업",
+        title: "총괄 연구 & 사업",
         link: "/projects/summary"
     };
 
@@ -25,23 +25,23 @@ function Summary() {
 
     return (
         <ContentHeader primary={primary} secondary={secondary}>
-            <h2 className="projects-subtitle">총괄 사업</h2>
+            <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
             <ProjectTable rows={rows}></ProjectTable>
         </ContentHeader>
     )
 }
 
-// 인문사회연구소 지원 사업
+// 인문사회연구소
 function WithHumanism() {
     const [source, setSource] = useState("");
 
     const primary = {
-        title: "주요 사업",
+        title: "연구 & 사업",
         link: "/projects"
     };
 
     const secondary = {
-        title: "인문사회연구소 지원 사업",
+        title: "인문사회연구소",
         link: "/projects/withhs"
     };
 
@@ -58,17 +58,17 @@ function WithHumanism() {
     )
 }
 
-// 스마트 재난안전 관련 사업
+// 스마트재난안전
 function SmartDisasterPrep() {
     const [source, setSource] = useState("");
 
     const primary = {
-        title: "주요 사업",
+        title: "연구 & 사업",
         link: "/projects"
     };
 
     const secondary = {
-        title: "스마트 재난안전 관련 사업",
+        title: "스마트재난안전",
         link: "/projects/smtdstpre"
     };
 
@@ -89,12 +89,12 @@ function EtcProjects() {
     const [source, setSource] = useState("");
 
     const primary = {
-        title: "주요 사업",
+        title: "연구 & 사업",
         link: "/projects"
     };
 
     const secondary = {
-        title: "기타 사업",
+        title: "기타",
         link: "/projects/etc"
     };
 
