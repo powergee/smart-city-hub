@@ -4,7 +4,7 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography }
 import { useHistory } from "react-router-dom";
 
 export default function CardBoard(props) {
-    const { menuList } = props;
+    const { variant, menuList } = props;
     const history = useHistory();
 
     function getLinkHandler(url) {
@@ -19,25 +19,47 @@ export default function CardBoard(props) {
     return (
         <div className="card-layout">
             {
-                menuList.map(menu => (
-                    <Card className="card-root">
-                        <CardActionArea onClick={getLinkHandler(menu.link)}>
-                            <CardMedia
-                                image={menu.image}
-                                title={menu.title}
-                                className="card-media"
-                            />
-                            <CardContent>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    {menu.title}
-                                </Typography>
+                variant === "small" ? 
+                (
+                    menuList.map(menu => (
+                        <Card className="card-small-root">
+                            <CardActionArea onClick={getLinkHandler(menu.link)}>
+                                <CardMedia
+                                    image={menu.image}
+                                    title={menu.title}
+                                    className="card-small-media"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="subtitle1">
+                                        {menu.title}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>)
+                        )
+                )
+                :
+                (
+                    menuList.map(menu => (
+                        <Card className="card-root">
+                            <CardActionArea onClick={getLinkHandler(menu.link)}>
+                                <CardMedia
+                                    image={menu.image}
+                                    title={menu.title}
+                                    className="card-media"
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5">
+                                        {menu.title}
+                                    </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
                                         {menu.description}
-                                </Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                ))
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>)
+                        )
+                )
             }
         </div>
     )

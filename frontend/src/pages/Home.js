@@ -13,14 +13,14 @@ import slide1 from "../images/slide-sample-1.png";
 import slide2 from "../images/slide-sample-2.png";
 import './Home.scss'
 
-import econLogo from "../images/econ-logo.png";
-import innogovLogo from "../images/innogov-logo.png";
-import kirdLogo from "../images/kird-logo.png";
-import nspLogo from "../images/nsp-logo.png";
-import saftyMapLogo from "../images/saftymap-logo.jpeg";
-import scassoLogo from "../images/scasso-logo.jpg";
-import sckoreaLogo from "../images/sckorea-logo.png";
-import scwikiLogo from "../images/scwiki-logo.png";
+import econLogo from "../images/archive-pics/econ-logo.png";
+import innogovLogo from "../images/archive-pics/innogov-logo.png";
+import kirdLogo from "../images/archive-pics/kird-logo.png";
+import nspLogo from "../images/archive-pics/nsp-logo.png";
+import saftyMapLogo from "../images/archive-pics/saftymap-logo.jpeg";
+import scassoLogo from "../images/archive-pics/scasso-logo.jpg";
+import sckoreaLogo from "../images/archive-pics/sckorea-logo.png";
+import scwikiLogo from "../images/archive-pics/scwiki-logo.png";
 
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
@@ -185,7 +185,7 @@ export default function Home() {
 
             <Modal open={archOpen} className="modal" onClose={() => setArchOpen(false)}>
                 <div className="modal-content">
-                    <CardBoard menuList={archMenu}></CardBoard>
+                    <CardBoard variant="small" menuList={archMenu}></CardBoard>
                 </div>
             </Modal>
         </React.Fragment>
