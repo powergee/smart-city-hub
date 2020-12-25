@@ -1,11 +1,12 @@
 @import "../shared/shared.scss";
 
 $header-small-font: 15px;
-$header-back-color: #404A5D;
+$header-back-color: #ffffff;
 $header-button-color: #322CA0;
-$header-button-text: #B3C6DF;
+$header-button-text: #ffffff;
+$header-button-text-hover: #ffffff;
 $header-button-hover: #463FCA;
-$header-button-padding: 8px 16px;
+$header-button-padding: 4px 16px;
 
 $menu-logo-maxwidth: 400px;
 $menu-primary-padding: 10px;
@@ -18,7 +19,7 @@ $menu-secondary-color: #242424;
 $menu-secondary-border: #d9d8d5;
 
 a:hover:not(.active) {
-    color: $menu-primary-hover;
+    color: $header-button-text-hover;
     cursor: pointer;
 }
 
@@ -30,6 +31,7 @@ a:hover:not(.active) {
 
 .header-background {
     background-color: $header-back-color;
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 }
 
 .header {
@@ -58,6 +60,7 @@ a:hover:not(.active) {
         
         li {
             display: inline-block;
+            font-size: 14px;
         }
 
         li a {
