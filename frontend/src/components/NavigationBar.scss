@@ -16,17 +16,20 @@ $menu-primary-hover: #1D4D8B;
 $menu-secondary-count: 4;
 $menu-secondary-text: 15px;
 $menu-secondary-color: #242424;
+$menu-secondary-hover: #1D4D8B;
 $menu-secondary-border: #d9d8d5;
 
 a:hover:not(.active) {
-    color: $header-button-text-hover;
     cursor: pointer;
 }
 
 .navbar-root {
     min-width: $page-width;
     width: 100%;
-    display: block;
+    height: $header-height;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .header-background {
@@ -38,6 +41,11 @@ a:hover:not(.active) {
     width: $page-width;
     margin: 0 auto 0 auto;
     display: flex;
+
+    a:hover:not(.active) {
+        color: $header-button-text-hover;
+        cursor: pointer;
+    }
 }
 
 .header-left {
@@ -79,6 +87,7 @@ a:hover:not(.active) {
 
 .menu-background {
     border-bottom: 1px solid #D1D1D1;
+    height: 100%;
 }
 
 .menu {
@@ -130,6 +139,10 @@ a:hover:not(.active) {
                 text-align: center;
                 font-size: $menu-secondary-text;
                 margin: 15px 0 15px 0;
+            }
+
+            & > a:hover:not(.active) {
+                color: $menu-secondary-hover;
             }
 
             & > .font-small {

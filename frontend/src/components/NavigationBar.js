@@ -15,7 +15,7 @@ export default function NavigationBar() {
     }
 
     return (
-        <div className="navbar-root">
+        <header className="navbar-root">
             <div className="header-background">
                 <div className="header">
                     <div className="header-left header-button-container">
@@ -73,6 +73,6 @@ export default function NavigationBar() {
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
