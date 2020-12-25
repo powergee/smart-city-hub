@@ -73,6 +73,11 @@ $slide-text-size: 50px;
     }
 }
 
+.notice-root {
+    height: 310px;
+    padding: 5px;
+}
+
 .menu-root {
     display: flex;
     flex-flow: column;
@@ -107,11 +112,20 @@ $slide-text-size: 50px;
     // }
 }
 
+.menu-paper {
+    height: 150px;
+}
+
 .menu-button {
     width: 100%;
     height: 100%;
     padding-top: 5px !important;
     padding-bottom: 5px !important;
+}
+
+.menu-pic {
+    height: 66px !important;
+    margin: 7px -100px 7px -100px;
 }
 
 .menu-icon {

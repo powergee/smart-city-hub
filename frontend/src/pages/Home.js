@@ -7,21 +7,13 @@ import BusinessIcon from '@material-ui/icons/Business';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import BookIcon from '@material-ui/icons/Book';
-import { Paper, ButtonBase, Grid, Modal } from '@material-ui/core'
+import { Paper, ButtonBase, Grid, Modal, Typography } from '@material-ui/core'
 import 'react-slideshow-image/dist/styles.css'
 import slide1 from "../images/slide-sample-1.png";
 import slide2 from "../images/slide-sample-2.png";
+import hubPic from "../images/hub-pic.png";
 import getArchives from "../shared/Archives.js";
 import './Home.scss'
-
-import econLogo from "../images/archive-pics/econ-logo.png";
-import innogovLogo from "../images/archive-pics/innogov-logo.png";
-import kirdLogo from "../images/archive-pics/kird-logo.png";
-import nspLogo from "../images/archive-pics/nsp-logo.png";
-import saftyMapLogo from "../images/archive-pics/saftymap-logo.jpeg";
-import scassoLogo from "../images/archive-pics/scasso-logo.jpg";
-import sckoreaLogo from "../images/archive-pics/sckorea-logo.png";
-import scwikiLogo from "../images/archive-pics/scwiki-logo.png";
 
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
@@ -56,37 +48,40 @@ export default function Home() {
 
             <div className="board-background">
                 <div className="board-container">
-                    <NoticeBoard></NoticeBoard>
+                    <div className="notice-root">
+                        <NoticeBoard></NoticeBoard>
+                    </div>
 
                     <div className="menu-root">
                         <div className="menu-table">
                             <div className="menu-row">
                                 <div className="menu-cell">
-                                    <Paper>
+                                    <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
-                                                <AccountBalanceIcon className="menu-icon" color="primary"></AccountBalanceIcon>
-                                                <h4>메뉴 1</h4>
+                                                <img className="menu-pic" src={hubPic}></img>
+                                                <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>
+                                                <Typography gutterBottom variant="subtitle2">거점HUB</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper>
+                                    <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <BusinessIcon className="menu-icon" color="primary"></BusinessIcon>
-                                                <h4>메뉴 2</h4>
+                                                <Typography gutterBottom variant="subtitle2">메뉴 2</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper>
+                                    <Paper className="menu-paper">
                                         <ButtonBase className="menu-button" onClick={viewArchive}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <ArchiveIcon className="menu-icon" color="primary"></ArchiveIcon>
-                                                <h4>아카이브</h4>
+                                                <Typography gutterBottom variant="subtitle2">아카이브</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
@@ -94,31 +89,31 @@ export default function Home() {
                             </div>
                             <div className="menu-row">
                                 <div className="menu-cell">
-                                    <Paper>
+                                    <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <ImportContactsIcon className="menu-icon" color="primary"></ImportContactsIcon>
-                                                <h4>메뉴 4</h4>
+                                                <Typography gutterBottom variant="subtitle2">메뉴 4</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper>
+                                    <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <LocationCityIcon className="menu-icon" color="primary"></LocationCityIcon>
-                                                <h4>메뉴 5</h4>
+                                                <Typography gutterBottom variant="subtitle2">메뉴 5</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper>
+                                    <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <BookIcon className="menu-icon" color="primary"></BookIcon>
-                                                <h4>메뉴 6</h4>
+                                                <Typography gutterBottom variant="subtitle2">메뉴 6</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
@@ -131,7 +126,7 @@ export default function Home() {
 
             <Modal open={archOpen} className="modal" onClose={() => setArchOpen(false)}>
                 <div className="modal-content">
-                    <h2>나가려면 화면의 바깥쪽을 클릭하세요.</h2>
+                    <h2>나가려면 화면의 좌우 바깥쪽을 클릭하세요.</h2>
 
                     <div className="modal-section">
                         <div className="modal-title">

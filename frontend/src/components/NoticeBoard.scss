@@ -6,7 +6,11 @@ $category-padding: 0 20px 0 0;
 // $category-disabled: #B3C6DF;
 $category-font: 18px;
 // $border-radius: 3px;
-$boundary-color: #404A5D;
+$boundary-color: #696f7c;
+
+.board-paper {
+    height: 100%;
+}
 
 .board-header {
     display: block;
@@ -39,8 +43,8 @@ $boundary-color: #404A5D;
         & > li {
             padding: 7px 0px 7px 0;
             margin-right: 20px;
-            border-bottom: 1px dashed $boundary-color;
-            color: $boundary-color;
+            border-bottom: 1px solid $boundary-color;
+            color: black;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
