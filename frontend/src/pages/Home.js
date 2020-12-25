@@ -11,6 +11,7 @@ import { Paper, ButtonBase, Grid, Modal } from '@material-ui/core'
 import 'react-slideshow-image/dist/styles.css'
 import slide1 from "../images/slide-sample-1.png";
 import slide2 from "../images/slide-sample-2.png";
+import getArchives from "../shared/Archives.js";
 import './Home.scss'
 
 import econLogo from "../images/archive-pics/econ-logo.png";
@@ -25,62 +26,7 @@ import scwikiLogo from "../images/archive-pics/scwiki-logo.png";
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
 
-    const archMenu = [
-        {
-            link: "http://www.nsp.go.kr/",
-            image: nspLogo,
-            title: "신남방정책특별위원회",
-            description: "신남방정책특별위원회의 홈페이지입니다."
-        },
-        {
-            link: "https://shinnambang-economy.co.kr/",
-            image: econLogo,
-            title: "신남방 경제 연구회",
-            description: "신남방 경제 연구회의 홈페이지입니다."
-        },
-        {
-            link: "https://smartcity.go.kr/",
-            image: sckoreaLogo,
-            title: "스마트시티 종합포털",
-            description: "스마트시티 종합포털의 홈페이지입니다."
-        },
-        {
-            link: "https://www.smartcity.or.kr/",
-            image: scassoLogo,
-            title: "스마트도시협회",
-            description: "스마트도시협회의 홈페이지입니다."
-        },
-        {
-            link: "https://www.safemap.go.kr/",
-            image: saftyMapLogo,
-            title: "생활안전지도",
-            description: "생활안전지도의 홈페이지입니다."
-        },
-        {
-            link: "http://www.nsp.go.kr/news/news_list.do?board_id=2",
-            image: nspLogo,
-            title: "신남방정책특별위원회 보도자료",
-            description: "신남방정책특별위원회의 보도자료를 확인하실 수 있습니다."
-        },
-        {
-            link: "https://www.innogov.go.kr/ucms/digital/task/taskList.do?pageIndex=1&menuNo=300145",
-            image: innogovLogo,
-            title: "디지털정부혁신자료실",
-            description: "디지털정부혁신자료실의 콘텐츠를 조회하실 수 있습니다."
-        },
-        {
-            link: "https://www.kird.re.kr/",
-            image: kirdLogo,
-            title: "국가과학기술인력개발원",
-            description: "국가과학기술인력개발원의 홈페이지입니다."
-        },
-        {
-            link: "https://www.korea.kr/special/policyCurationView.do?newsId=148863564",
-            image: scwikiLogo,
-            title: "스마트시티 정책 위키",
-            description: "정책 위키의 스마트시티 항목을 확인합니다."
-        },
-    ];
+    const archMenu = getArchives();
 
     function viewArchive() {
         setArchOpen(true);
@@ -185,7 +131,34 @@ export default function Home() {
 
             <Modal open={archOpen} className="modal" onClose={() => setArchOpen(false)}>
                 <div className="modal-content">
-                    <CardBoard variant="small" menuList={archMenu}></CardBoard>
+                    <h2>나가려면 화면의 바깥쪽을 클릭하세요.</h2>
+
+                    <div className="modal-section">
+                        <div className="modal-title">
+                            <h1>정부</h1>
+                        </div>
+                        <div className="modal-menu">
+                            <CardBoard variant="small" menuList={archMenu.goverment}></CardBoard>
+                        </div>
+                    </div>
+
+                    <div className="modal-section">
+                        <div className="modal-title">
+                            <h1>신남방</h1>
+                        </div>
+                        <div className="modal-menu">
+                            <CardBoard variant="small" menuList={archMenu.newSouthern}></CardBoard>
+                        </div>
+                    </div>
+
+                    <div className="modal-section">
+                        <div className="modal-title">
+                            <h1>스마트도시</h1>
+                        </div>
+                        <div className="modal-menu">
+                            <CardBoard variant="small" menuList={archMenu.smartCity}></CardBoard>
+                        </div>
+                    </div>
                 </div>
             </Modal>
         </React.Fragment>

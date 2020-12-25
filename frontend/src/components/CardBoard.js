@@ -30,7 +30,7 @@ export default function CardBoard(props) {
                                     className="card-small-media"
                                 />
                                 <CardContent>
-                                    <Typography gutterBottom variant="subtitle1">
+                                    <Typography gutterBottom variant="caption">
                                         {menu.title}
                                     </Typography>
                                 </CardContent>
