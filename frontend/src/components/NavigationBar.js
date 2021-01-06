@@ -34,28 +34,28 @@ export default function NavigationBar() {
 
             <div className="menu-background">
                 <div className="menu">
-                    <a onClick={getLinkHandler("/")}><img src={logo}></img></a>
+                    <a href={dummyLink} onClick={getLinkHandler("/")}><img src={logo}></img></a>
 
                     <div className="menu-primary">
                         <ul>
-                            <li><a className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
-                            <li><a className="menu-large" onClick={getLinkHandler("/projects")}>연구{" & "}사업</a></li>
-                            <li><a className="menu-large" onClick={getLinkHandler("/publish")}>Issue Paper</a></li>
-                            <li><a className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
-                            <li><a className="menu-large font-small" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
+                            <li><a href={dummyLink} className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
+                            <li><a href={dummyLink} className="menu-large" onClick={getLinkHandler("/projects")}>연구{" & "}사업</a></li>
+                            <li><a href={dummyLink} className="menu-large" onClick={getLinkHandler("/publish")}>Issue Paper</a></li>
+                            <li><a href={dummyLink} className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
+                            <li><a href={dummyLink} className="menu-large font-small" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
                             <div class="menu-dropdown">
                                 <ul>
                                     <li className="menu-small">
-                                        <a onClick={getLinkHandler("/introduction/greeting")}>인사말</a>
-                                        <a onClick={getLinkHandler("/introduction/researchers")}>연구진</a>
-                                        <a onClick={getLinkHandler("/introduction/contact")}>연락처</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/introduction/greeting")}>인사말</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/introduction/researchers")}>연구진</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/introduction/contact")}>연락처</a>
                                     </li>
                                     <li className="menu-large">
-                                        <a onClick={getLinkHandler("/projects/summary")}>총괄 연구 {" & "} 사업</a>
-                                        <a onClick={getLinkHandler("/projects/withhs")}>인문사회연구소</a>
-                                        <a onClick={getLinkHandler("/projects/smtdstpre")}>스마트재난안전</a>
-                                        <a onClick={getLinkHandler("/projects/etc")}>기타</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/projects/summary")}>총괄 연구 {" & "} 사업</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/projects/withhs")}>인문사회연구소</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/projects/smtdstpre")}>스마트재난안전</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/projects/etc")}>기타</a>
                                     </li>
                                     <li className="menu-large">
                                         <a href={dummyLink}>Issue Paper</a>
@@ -63,6 +63,7 @@ export default function NavigationBar() {
                                     <li className="menu-small">
                                         <a href={dummyLink}>세미나</a>
                                         <a href={dummyLink}>워크숍</a>
+                                        <a href={dummyLink}>추천 도서</a>
                                     </li>
                                     <li className="menu-large">
                                         <a class="font-small" href={dummyLink}>거점HUB로 이동하기</a>
