@@ -59,6 +59,38 @@ export default function Home() {
                                     <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
+                                                <ImportContactsIcon className="menu-icon" color="primary"></ImportContactsIcon>
+                                                <Typography gutterBottom variant="subtitle2">공지사항</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button">
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <BusinessIcon className="menu-icon" color="primary"></BusinessIcon>
+                                                <Typography gutterBottom variant="subtitle2">학술행사</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button">
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <LocationCityIcon className="menu-icon" color="primary"></LocationCityIcon>
+                                                <Typography gutterBottom variant="subtitle2">스마트뉴스</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                            </div>
+                            <div className="menu-row">
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button">
+                                            <Grid container direction="column" justify="center" alignItems="center">
                                                 <img className="menu-pic" src={hubPic}></img>
                                                 <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>
                                                 <Typography gutterBottom variant="subtitle2">거점HUB</Typography>
@@ -70,8 +102,8 @@ export default function Home() {
                                     <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
-                                                <BusinessIcon className="menu-icon" color="primary"></BusinessIcon>
-                                                <Typography gutterBottom variant="subtitle2">메뉴 2</Typography>
+                                                <ArchiveIcon className="menu-icon" color="primary"></ArchiveIcon>
+                                                <Typography gutterBottom variant="subtitle2">아카이브</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
@@ -80,40 +112,8 @@ export default function Home() {
                                     <Paper className="menu-paper">
                                         <ButtonBase className="menu-button" onClick={viewArchive}>
                                             <Grid container direction="column" justify="center" alignItems="center">
-                                                <ArchiveIcon className="menu-icon" color="primary"></ArchiveIcon>
-                                                <Typography gutterBottom variant="subtitle2">아카이브</Typography>
-                                            </Grid>
-                                        </ButtonBase>
-                                    </Paper>
-                                </div>
-                            </div>
-                            <div className="menu-row">
-                                <div className="menu-cell">
-                                    <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
-                                            <Grid container direction="column" justify="center" alignItems="center">
-                                                <ImportContactsIcon className="menu-icon" color="primary"></ImportContactsIcon>
-                                                <Typography gutterBottom variant="subtitle2">메뉴 4</Typography>
-                                            </Grid>
-                                        </ButtonBase>
-                                    </Paper>
-                                </div>
-                                <div className="menu-cell">
-                                    <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
-                                            <Grid container direction="column" justify="center" alignItems="center">
-                                                <LocationCityIcon className="menu-icon" color="primary"></LocationCityIcon>
-                                                <Typography gutterBottom variant="subtitle2">메뉴 5</Typography>
-                                            </Grid>
-                                        </ButtonBase>
-                                    </Paper>
-                                </div>
-                                <div className="menu-cell">
-                                    <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
-                                            <Grid container direction="column" justify="center" alignItems="center">
                                                 <BookIcon className="menu-icon" color="primary"></BookIcon>
-                                                <Typography gutterBottom variant="subtitle2">메뉴 6</Typography>
+                                                <Typography gutterBottom variant="subtitle2">관련 사이트</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>
