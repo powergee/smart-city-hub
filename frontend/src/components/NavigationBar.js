@@ -48,8 +48,8 @@ export default function NavigationBar() {
                                 <ul>
                                     <li className="menu-small">
                                         <a href={dummyLink} onClick={getLinkHandler("/introduction/greeting")}>인사말</a>
+                                        <a href={dummyLink} onClick={getLinkHandler("/introduction/goal")}>설립배경 및 목적</a>
                                         <a href={dummyLink} onClick={getLinkHandler("/introduction/researchers")}>연구진</a>
-                                        <a href={dummyLink} onClick={getLinkHandler("/introduction/contact")}>연락처</a>
                                     </li>
                                     <li className="menu-large">
                                         <a href={dummyLink} onClick={getLinkHandler("/projects/summary")}>총괄 연구 {" & "} 사업</a>

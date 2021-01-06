@@ -105,11 +105,11 @@ a:hover:not(.active) {
 }
 
 .menu-small {
-    width: 100px;
+    width: 110px;
 }
 
 .menu-large {
-    width: 150px;
+    width: 130px;
 }
 
 .menu-dropdown {
@@ -181,6 +181,7 @@ a:hover:not(.active) {
                 color: $menu-primary-color;
                 text-align: center;
                 text-decoration: none;
+                word-break: keep-all;
             }
 
             & > a {

@@ -15,6 +15,21 @@ const MarkdownViewer = props => {
         ],
 
         renderers: {
+            heading: (props) => {
+                if (props.level === 1) {
+                    return <h1 className="markdown_heading">{props.children}</h1>
+                } else if (props.level === 2) {
+                    return <h2 className="markdown_heading">{props.children}</h2>
+                } else if (props.level === 3) {
+                    return <h3 className="markdown_heading">{props.children}</h3>
+                } else if (props.level === 4) {
+                    return <h4 className="markdown_heading">{props.children}</h4>
+                } else if (props.level === 5) {
+                    return <h5 className="markdown_heading">{props.children}</h5>
+                } else if (props.level === 6) {
+                    return <h6 className="markdown_heading">{props.children}</h6>
+                }
+            },
             text: (props) => props.value.replace(/:[^:\s]*(?:::[^:\s]*)*:/gi, name => emoji.getUnicode(name)),
             break: (props) => <br></br>,
             paragraph: (props) => <p className="markdown_paragraph">{props.children}</p>,

@@ -1,9 +1,10 @@
 import { Paper, Grid } from '@material-ui/core';
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom';
 import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable } from "../components"
 import jobs from "../shared/Jobs.json";
 import getResearchers from "../shared/Researchers.js";
+import goalDoc from "../docs/설립 배경 및 목적.md"
 import "./Introduction.scss"
 
 function Greeting() {
@@ -32,6 +33,32 @@ function Greeting() {
 
                 
             </div>
+        </ContentHeader>
+    )
+}
+
+function Goal() {
+    const [source, setSource] = useState("");
+
+    const primary = {
+        title: "센터소개",
+        link: "/introduction"
+    };
+
+    const secondary = {
+        title: "설립배경 및 목적",
+        link: "/introduction/goal"
+    };
+
+    useEffect(() => {
+        fetch(goalDoc)
+            .then(res => res.text())
+            .then(text => setSource(text));
+    }, []);
+
+    return (
+        <ContentHeader primary={primary} secondary={secondary}>
+            <MarkdownViewer source={source}></MarkdownViewer>
         </ContentHeader>
     )
 }
@@ -74,31 +101,13 @@ function Researchers() {
     )
 }
 
-function Contact() {
-    const primary = {
-        title: "센터소개",
-        link: "/introduction"
-    };
-
-    const secondary = {
-        title: "연락처",
-        link: "/introduction/contact"
-    };
-
-    return (
-        <React.Fragment>
-            <ContentHeader primary={primary} secondary={secondary}></ContentHeader>
-        </React.Fragment>
-    )
-}
-
 export default function Introduction() {
     return (
         <ContentContainer>
             <Route exact path="/introduction" component={Greeting}></Route>
             <Route exact path="/introduction/greeting" component={Greeting}></Route>
+            <Route exact path="/introduction/goal" component={Goal}></Route>
             <Route exact path="/introduction/researchers" component={Researchers}></Route>
-            <Route exact path="/introduction/contact" component={Contact}></Route>
         </ContentContainer>
     )
 }

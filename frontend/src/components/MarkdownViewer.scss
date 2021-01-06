@@ -1,5 +1,12 @@
+$main-color: rgb(12, 0, 78);
+
 .markdown_viewer {
     line-height: 1.5;
+}
+
+.markdown_heading {
+    border-left: 3px solid $main-color;
+    padding-left: 10px;
 }
 
 .markdown_ol {
