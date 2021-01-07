@@ -33,6 +33,7 @@
   },
   "browserslist": {
     "production": [
+      "ie 11",
       ">0.2%",
       "not dead",
       "not op_mini all"
@@ -41,8 +42,7 @@
       "ie 11",
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version",
-      "not dead"
+      "last 1 safari version"
     ]
   }
 }
