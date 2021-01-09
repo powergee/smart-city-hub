@@ -1,21 +1,53 @@
-import Koa = require("koa");
-import mongoose = require("mongoose");
-import env = require("dotenv");
+import Koa from "koa";
+import mongoose from "mongoose";
+import env from "dotenv";
+import { CollectionInfo } from "./types"
 
-env.config();
-const { MONGO_URI } = process.env;
+async function connectDB() {
+    env.config();
 
-const connectDB = async ():Promise<void> => {
-    mongoose.connect(MONGO_URI, 
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true,
+    let mongoURI = "";
+    if (process.env.MONGO_URI != undefined)
+        mongoURI = process.env.MONGO_URI;
+
+    mongoose.connect(mongoURI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+        useCreateIndex: true,
+    }).then(async () => {
+        const collections = await mongoose.connection.db.listCollections().toArray();
+        
+        let exist = collections.findIndex((coll: CollectionInfo) => coll.name === "GeneralPosts");
+        if (exist === -1) {
+            await mongoose.connection.db.createCollection("GeneralPosts");
         }
-    ).then(() => {
-        console.log('Database is online.');
-    });
-};
 
-export default { connectDB }
+        exist = collections.findIndex((coll: CollectionInfo) => coll.name === "Files");
+        if (exist === -1) {
+            await mongoose.connection.db.createCollection("Files");
+        }
+        
+        exist = collections.findIndex((coll: CollectionInfo) => coll.name === "Users");
+        if (exist === -1) {
+            await mongoose.connection.db.createCollection("Users");
+        }
+
+        console.log('Database is online.');
+    }).catch((e: Error) => {
+        throw e;
+    });
+}
+
+async function prepareDB(): Promise<void> {
+    await connectDB();
+}
+
+async function prepareDBMiddleware(ctx: Koa.Context, next: Koa.Next): Promise<any> {
+    if (mongoose.connection.readyState == 0) {
+        await connectDB();
+    }
+    return next();
+}
+
+export default { prepareDB, prepareDBMiddleware }

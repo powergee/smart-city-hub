@@ -1,16 +1,9 @@
-import Koa = require("koa");
-import Router = require("koa-router");
-import env = require("dotenv");
-import db from "./utils/database"
+import db from "./utils/database";
+import env from "dotenv";
+import app from "./utils/app";
 
-db.connectDB();
+db.prepareDB();
 env.config();
-
-const app = new Koa();
-const router = new Router();
-
-app.use(router.routes());
-app.use(router.allowedMethods());
 
 const port = process.env.PORT || 4000;
 
