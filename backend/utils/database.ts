@@ -1,14 +1,10 @@
 import Koa from "koa";
 import mongoose from "mongoose";
-import env from "dotenv";
-import { CollectionInfo } from "./types"
+import { ICollectionInfo } from "./types";
+import env from "../env";
 
 async function connectDB() {
-    env.config();
-
-    let mongoURI = "";
-    if (process.env.MONGO_URI != undefined)
-        mongoURI = process.env.MONGO_URI;
+    const mongoURI = env.mongoURI;
 
     mongoose.connect(mongoURI, {
         useNewUrlParser: true,
@@ -18,17 +14,17 @@ async function connectDB() {
     }).then(async () => {
         const collections = await mongoose.connection.db.listCollections().toArray();
         
-        let exist = collections.findIndex((coll: CollectionInfo) => coll.name === "GeneralPosts");
+        let exist = collections.findIndex((coll: ICollectionInfo) => coll.name === "GeneralArticles");
         if (exist === -1) {
-            await mongoose.connection.db.createCollection("GeneralPosts");
+            await mongoose.connection.db.createCollection("GeneralArticles");
         }
 
-        exist = collections.findIndex((coll: CollectionInfo) => coll.name === "Files");
+        exist = collections.findIndex((coll: ICollectionInfo) => coll.name === "Files");
         if (exist === -1) {
             await mongoose.connection.db.createCollection("Files");
         }
         
-        exist = collections.findIndex((coll: CollectionInfo) => coll.name === "Users");
+        exist = collections.findIndex((coll: ICollectionInfo) => coll.name === "Users");
         if (exist === -1) {
             await mongoose.connection.db.createCollection("Users");
         }

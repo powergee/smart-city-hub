@@ -18,8 +18,9 @@
     userId: string,
     userName: string,
     userPwHash: string,
-    isAllowed: boolean,
+    userPwSalt: string,
     isManager: boolean,
+    isAllowed: boolean,
     meta: {
         createAt: Date,
         modifiedAt: Date
@@ -47,14 +48,194 @@
 
 ```json
 {
-    postId: number,
+    articleId: number,
     contents: string,
     images: [number],
     files: [number],
-    additionalFields: {
-        key: [string],
-        value: [string]
+    kind: string,
+    views: number,
+    meta: {
+        createAt: Date,
+        modifiedAt: Date
+    }
+}
+```
+
+# REST API
+
+## POST /v1/login
+
+로그인을 수행한다.
+
+### Request Body
+
+2021년 1월 11일 기준, 연구실 서버에서 HTTPS를 사용할 수 없으므로, 패스워드 평문을 보내는 것이 아니라, 해쉬값을 보내야 한다.
+
+```json
+{
+    userId: "id",
+    userPwHash: "pw"
+}
+```
+
+### Response
+
+```json
+{
+    userId: "id",
+    userName: "name"
+}
+```
+
+## POST /v1/logout
+
+로그아웃을 수행한다. 내부적으로 accessToken을 null로 설정한다.
+
+## GET /v1/salt
+
+ID에 해당하는 Salt를 가져온다.
+
+### Request Body
+
+```json
+{
+    userId: "id"
+}
+```
+
+### Response
+
+```json
+{
+    userPwSalt: "salt"
+}
+```
+
+## GET /v1/articles
+
+주어진 조건에 따라 게시글을 쿼리한다.
+
+### Request Body
+
+아래 조건에 맞게 쿼리 조건을 지정할 수 있다.
+
+1. page: 목록을 가져올 페이지 번호 (1부터 시작)
+2. perPage: 한 페이지 당 표시할 글의 개수 (1 이상이여야 함)
+3. kind: 글의 종류
+
+```json
+{
+    page: pageNumber,
+    perPage: countOfElementsInOnePage,
+    kind: "Kind of Articles"
+}
+```
+
+### Response
+
+```json
+[
+    {
+        articleId: number,
+        contents: string,
+        images: [number],
+        files: [number],
+        kind: string,
+        views: number,
+        meta: {
+            createAt: Date,
+            modifiedAt: Date
+        }
     },
+    ...
+]
+```
+
+## GET /v1/articles/count
+
+주어진 kind에 해당하는 글이 몇 개인지 반환한다.
+
+### Request Body
+
+```json
+{
+    kind: "Kind of Articles"
+}
+```
+
+### Response
+
+```json
+{
+    articleCount: countOfArticles
+}
+```
+
+## POST /v1/articles
+
+새로운 글을 추가하거나 수정한다.
+
+### Request Body
+
+articleId가 undefined라면 새로운 글을 추가하고, 그렇지 않다면 기존의 글을 수정한다.
+
+```json
+{
+    articleId: number | undefined,
+    contents: string,
+    images: [number],
+    files: [number],
+    kind: string
+}
+```
+
+### Response
+
+기존의 일반 게시물의 인터페이스(IGeneralArticle)과 같다.
+
+```json
+{
+    articleId: number,
+    contents: string,
+    images: [number],
+    files: [number],
+    kind: string,
+    views: number,
+    meta: {
+        createAt: Date,
+        modifiedAt: Date
+    }
+}
+```
+
+## DELETE
+
+## POST /v1/register
+
+주어진 정보를 바탕으로 회원가입을 신청한다.
+DB에 회원 정보가 추가되지만, isAllowed가 false인 상태로 추가되며 /v1/login에서 로그인 시도를 할 때 isAllowed가 true인지 확인하게 된다.
+
+### Request Body
+
+```json
+{
+    userId: string,
+    userName: string,
+    userPwHash: string,
+    userPwSalt: string,
+}
+```
+
+### Response
+
+```json
+{
+    userId: string,
+    userName: string,
+    userPwHash: string,
+    userPwSalt: string,
+    isManager: boolean,
+    isAllowed: boolean,
     meta: {
         createAt: Date,
         modifiedAt: Date
