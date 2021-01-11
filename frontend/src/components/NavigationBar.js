@@ -39,8 +39,8 @@ export default function NavigationBar() {
                         <ul>
                             <li><a href className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
                             <li><a href className="menu-large" onClick={getLinkHandler("/projects")}>연구{" & "}사업</a></li>
-                            <li><a href className="menu-large" onClick={getLinkHandler("/publish")}>Issue Paper</a></li>
-                            <li><a href className="menu-small" onClick={getLinkHandler("/community")}>소식</a></li>
+                            <li><a href className="menu-large" onClick={getLinkHandler("/issue-papers")}>Issue Paper</a></li>
+                            <li><a href className="menu-small" onClick={getLinkHandler("/news")}>소식</a></li>
                             <li><a href className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a href className="menu-large font-small" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
@@ -58,20 +58,20 @@ export default function NavigationBar() {
                                         <a href onClick={getLinkHandler("/projects/etc")}>기타</a>
                                     </li>
                                     <li className="menu-large">
-                                        <a href>Issue Paper</a>
+                                        <a href onClick={getLinkHandler("/issue-papers")}>Issue Paper</a>
                                     </li>
                                     <li className="menu-small">
-                                        <a href>공지사항</a>
-                                        <a href>학술행사</a>
-                                        <a href>스마트뉴스</a>
+                                        <a href onClick={getLinkHandler("/news/notices")}>공지사항</a>
+                                        <a href onClick={getLinkHandler("/news/events")}>학술행사</a>
+                                        <a href onClick={getLinkHandler("/news/smart-news")}>스마트뉴스</a>
                                     </li>
                                     <li className="menu-small">
-                                        <a href>세미나</a>
-                                        <a href>워크숍</a>
-                                        <a href>추천 도서</a>
+                                        <a href onClick={getLinkHandler("/community/seminar")}>세미나</a>
+                                        <a href onClick={getLinkHandler("/community/workshop")}>워크숍</a>
+                                        <a href onClick={getLinkHandler("/community/readings")}>추천 도서</a>
                                     </li>
                                     <li className="menu-large">
-                                        <a class="font-small" href>거점HUB로 이동하기</a>
+                                        <a class="font-small" href onClick={getLinkHandler("/hub")}>거점HUB로 이동하기</a>
                                     </li>
                                 </ul>
                             </div>

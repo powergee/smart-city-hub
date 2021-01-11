@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Route } from 'react-router-dom';
-import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable } from "../components"
+import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable, PreparingContents } from "../components"
 import projList from "../shared/ProjectList.json"
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
 import smartDoc from "../docs/스마트재난안전관련사업 개요.md"
-import etcDoc from "../docs/기타사업 개요.md"
 
 // 총괄 연구 & 사업
 function Summary() {
@@ -86,8 +85,6 @@ function SmartDisasterPrep() {
 }
 
 function EtcProjects() {
-    const [source, setSource] = useState("");
-
     const primary = {
         title: "연구 & 사업",
         link: "/projects"
@@ -98,15 +95,9 @@ function EtcProjects() {
         link: "/projects/etc"
     };
 
-    useEffect(() => {
-        fetch(etcDoc)
-            .then(res => res.text())
-            .then(text => setSource(text));
-    }, []);
-
     return (
         <ContentHeader primary={primary} secondary={secondary}>
-            <MarkdownViewer source={source}></MarkdownViewer>
+            <PreparingContents></PreparingContents>
         </ContentHeader>
     )
 }
