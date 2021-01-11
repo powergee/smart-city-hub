@@ -4,7 +4,7 @@
 
 모든 스키마는 아래 데이터를 meta로 포함한다. (아래에 있는 Date는 모두 UTC 시간이다.)
 
-```json
+```js
 {
     createAt: Date,
     modifiedAt: Date
@@ -13,7 +13,7 @@
 
 ## 유저 정보
 
-```json
+```js
 {
     userId: string,
     userName: string,
@@ -32,7 +32,7 @@
 
 실제 파일 데이터는 로컬 파일로 저장되고, 그에 대한 메타 데이터는 아래와 같이 저장.
 
-```json
+```js
 {
     fileId: number,
     originalName: string,
@@ -46,7 +46,7 @@
 
 ## 일반 게시글
 
-```json
+```js
 {
     articleId: number,
     contents: string,
@@ -71,7 +71,7 @@
 
 2021년 1월 11일 기준, 연구실 서버에서 HTTPS를 사용할 수 없으므로, 패스워드 평문을 보내는 것이 아니라, 해쉬값을 보내야 한다.
 
-```json
+```js
 {
     userId: "id",
     userPwHash: "pw"
@@ -80,7 +80,7 @@
 
 ### Response
 
-```json
+```js
 {
     userId: "id",
     userName: "name"
@@ -97,7 +97,7 @@ ID에 해당하는 Salt를 가져온다.
 
 ### Request Body
 
-```json
+```js
 {
     userId: "id"
 }
@@ -105,7 +105,7 @@ ID에 해당하는 Salt를 가져온다.
 
 ### Response
 
-```json
+```js
 {
     userPwSalt: "salt"
 }
@@ -123,7 +123,7 @@ ID에 해당하는 Salt를 가져온다.
 2. perPage: 한 페이지 당 표시할 글의 개수 (1 이상이여야 함)
 3. kind: 글의 종류
 
-```json
+```js
 {
     page: pageNumber,
     perPage: countOfElementsInOnePage,
@@ -133,7 +133,7 @@ ID에 해당하는 Salt를 가져온다.
 
 ### Response
 
-```json
+```js
 [
     {
         articleId: number,
@@ -157,7 +157,7 @@ ID에 해당하는 Salt를 가져온다.
 
 ### Request Body
 
-```json
+```js
 {
     kind: "Kind of Articles"
 }
@@ -165,7 +165,7 @@ ID에 해당하는 Salt를 가져온다.
 
 ### Response
 
-```json
+```js
 {
     articleCount: countOfArticles
 }
@@ -179,7 +179,7 @@ ID에 해당하는 Salt를 가져온다.
 
 articleId가 undefined라면 새로운 글을 추가하고, 그렇지 않다면 기존의 글을 수정한다.
 
-```json
+```js
 {
     articleId: number | undefined,
     contents: string,
@@ -193,7 +193,7 @@ articleId가 undefined라면 새로운 글을 추가하고, 그렇지 않다면 
 
 기존의 일반 게시물의 인터페이스(IGeneralArticle)과 같다.
 
-```json
+```js
 {
     articleId: number,
     contents: string,
@@ -217,7 +217,7 @@ DB에 회원 정보가 추가되지만, isAllowed가 false인 상태로 추가�
 
 ### Request Body
 
-```json
+```js
 {
     userId: string,
     userName: string,
@@ -228,7 +228,7 @@ DB에 회원 정보가 추가되지만, isAllowed가 false인 상태로 추가�
 
 ### Response
 
-```json
+```js
 {
     userId: string,
     userName: string,
