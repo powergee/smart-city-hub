@@ -1,12 +1,20 @@
 import Mongoose from "mongoose"
-import metaType from "./meta"
+import { IMeta, MetaSchemaDefinition } from "./meta"
+
+export interface IFile extends Mongoose.Document {
+    fileId: number,
+    originalName: string,
+    localPath: string,
+    kind: string,
+    meta: IMeta
+}
 
 const fileSchema = new Mongoose.Schema({
     fileId: Number,
     originalName: String,
     localPath: String,
-    meta: metaType
+    kind: String,
+    meta: MetaSchemaDefinition
 });
 
-const FileModel = Mongoose.model("File", fileSchema);
-export default FileModel
+export const FileModel:Mongoose.Model<IFile> = Mongoose.model("File", fileSchema);

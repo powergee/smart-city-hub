@@ -1,11 +1,15 @@
 import Mongoose from "mongoose"
-import metaType from "./meta"
+import { IMeta, MetaSchemaDefinition } from "./meta"
 import AutoIncrement from 'mongoose-sequence';
 
-const additionalFieldsSchema = new Mongoose.Schema({
-    key: [String],
-    value: [String]
-});
+export interface IGeneralPost extends Mongoose.Document {
+    postId: number,
+    contents: string,
+    images: number[],
+    files: number[],
+    kind: string,
+    meta: IMeta
+}
 
 const generalPostSchema = new Mongoose.Schema({
     postId: {
@@ -15,10 +19,9 @@ const generalPostSchema = new Mongoose.Schema({
     contents: String,
     images: [Number],
     files: [Number],
-    additionalFields: [additionalFieldsSchema],
-    meta: metaType
+    kind: String,
+    meta: MetaSchemaDefinition
 });
 
 generalPostSchema.plugin(AutoIncrement, {inc_field: 'postId'});
-const GeneralPostModel = Mongoose.model("GeneralPost", generalPostSchema);
-export default GeneralPostModel
+export const GeneralPostModel:Mongoose.Model<IGeneralPost> = Mongoose.model("GeneralPost", generalPostSchema);

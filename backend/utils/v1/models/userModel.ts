@@ -1,5 +1,14 @@
 import Mongoose from "mongoose"
-import metaType from "./meta"
+import { IMeta, MetaSchemaDefinition } from "./meta"
+
+export interface IUser extends Mongoose.Document {
+    userId: string,
+    userName: string,
+    userPwHash: string,
+    userPwSalt: string,
+    isManager: boolean,
+    meta: IMeta
+}
 
 const userSchema = new Mongoose.Schema({
     userId: {
@@ -8,10 +17,9 @@ const userSchema = new Mongoose.Schema({
     },
     userName: String,
     userPwHash: String,
-    isAllowed: Boolean,
+    userPwSalt: String,
     isManager: Boolean,
-    meta: metaType
+    meta: MetaSchemaDefinition
 });
 
-const UserModel = Mongoose.model("User", userSchema);
-export default UserModel
+export const UserModel:Mongoose.Model<IUser> = Mongoose.model("User", userSchema);
