@@ -1,6 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import "./CardBoard.scss"
-import { Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core'
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
 export default function CardBoard(props) {

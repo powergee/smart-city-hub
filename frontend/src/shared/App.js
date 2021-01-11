@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { Main } from '../pages';
 
 function App() {

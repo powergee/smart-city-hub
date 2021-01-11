@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { NoticeBoard, CardBoard } from '../components'
 import { Slide } from 'react-slideshow-image';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import BusinessIcon from '@material-ui/icons/Business';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
@@ -91,7 +90,7 @@ export default function Home() {
                                     <Paper className="menu-paper">
                                         <ButtonBase className="menu-button">
                                             <Grid container direction="column" justify="center" alignItems="center">
-                                                <img className="menu-pic" src={hubPic}></img>
+                                                <img alt="Logo of Hub" className="menu-pic" src={hubPic}></img>
                                                 <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>
                                                 <Typography gutterBottom variant="subtitle2">거점HUB</Typography>
                                             </Grid>

@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import RemarkMathPlugin from 'remark-math';
 import { BlockMath, InlineMath } from 'react-katex';

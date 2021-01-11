@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Paper, TableContainer, Table, TableBody, TablePagination, TableHead, TableCell, TableSortLabel, TableRow } from '@material-ui/core'
 
 const compareElements = (a, b, orderBy) => {

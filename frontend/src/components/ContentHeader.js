@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./ContentHeader.scss";
 import { useHistory } from "react-router-dom";
 
 export default function ContentHeader(props) {
-    const dummyLink = "javascript:void(0);";
     const history = useHistory();
 
     function getLinkHandler(url) {
@@ -20,11 +19,11 @@ export default function ContentHeader(props) {
             <div className="header-secondary">
                 <h3>{props.secondary.title}</h3>
                 <div>
-                    <a href={dummyLink} onClick={getLinkHandler("/")}>홈</a>
+                    <a href onClick={getLinkHandler("/")}>홈</a>
                     <caption>{" > "}</caption>
-                    <a href={dummyLink} onClick={getLinkHandler(props.primary.link)}>{props.primary.title}</a>
+                    <a href onClick={getLinkHandler(props.primary.link)}>{props.primary.title}</a>
                     <caption>{" > "}</caption>
-                    <a href={dummyLink} onClick={getLinkHandler(props.secondary.link)}>{props.secondary.title}</a>
+                    <a href onClick={getLinkHandler(props.secondary.link)}>{props.secondary.title}</a>
                 </div>
             </div>
 

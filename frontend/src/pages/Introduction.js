@@ -1,7 +1,7 @@
 import { Paper, Grid } from '@material-ui/core';
 import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom';
-import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable } from "../components"
+import { ContentContainer, ContentHeader, MarkdownViewer } from "../components"
 import jobs from "../shared/Jobs.json";
 import getResearchers from "../shared/Researchers.js";
 import goalDoc from "../docs/설립 배경 및 목적.md"
@@ -82,7 +82,7 @@ function Researchers() {
                 resInfo.map((res) => (
                     <Paper elevation={3} className="researchers-paper">
                         <Grid className="researchers-grid" container direction="row">
-                            <img src={res.image}></img>
+                            <img alt="" src={res.image}></img>
                             <Grid item>
                                 <h2>{res.name}</h2>
                                 <ul>
