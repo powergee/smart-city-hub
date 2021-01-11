@@ -40,6 +40,7 @@ export default function NavigationBar() {
                             <li><a href className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
                             <li><a href className="menu-large" onClick={getLinkHandler("/projects")}>연구{" & "}사업</a></li>
                             <li><a href className="menu-large" onClick={getLinkHandler("/publish")}>Issue Paper</a></li>
+                            <li><a href className="menu-small" onClick={getLinkHandler("/community")}>소식</a></li>
                             <li><a href className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a href className="menu-large font-small" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
@@ -63,6 +64,8 @@ export default function NavigationBar() {
                                         <a href>공지사항</a>
                                         <a href>학술행사</a>
                                         <a href>스마트뉴스</a>
+                                    </li>
+                                    <li className="menu-small">
                                         <a href>세미나</a>
                                         <a href>워크숍</a>
                                         <a href>추천 도서</a>
