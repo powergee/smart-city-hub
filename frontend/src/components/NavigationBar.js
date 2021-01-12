@@ -39,7 +39,7 @@ export default function NavigationBar() {
                         <ul>
                             <li><a href className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
                             <li><a href className="menu-large" onClick={getLinkHandler("/projects")}>연구{" & "}사업</a></li>
-                            <li><a href className="menu-large" onClick={getLinkHandler("/issue-papers")}>Issue Paper</a></li>
+                            <li><a href className="menu-large" onClick={getLinkHandler("/issue-paper")}>Issue Paper</a></li>
                             <li><a href className="menu-small" onClick={getLinkHandler("/news")}>소식</a></li>
                             <li><a href className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
                             <li><a href className="menu-large font-small" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
@@ -58,7 +58,7 @@ export default function NavigationBar() {
                                         <a href onClick={getLinkHandler("/projects/etc")}>기타</a>
                                     </li>
                                     <li className="menu-large">
-                                        <a href onClick={getLinkHandler("/issue-papers")}>Issue Paper</a>
+                                        <a href onClick={getLinkHandler("/issue-paper")}>Issue Paper</a>
                                     </li>
                                     <li className="menu-small">
                                         <a href onClick={getLinkHandler("/news/notices")}>공지사항</a>

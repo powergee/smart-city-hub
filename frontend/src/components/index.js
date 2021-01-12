@@ -7,3 +7,4 @@ export { default as ProjectTable } from './ProjectTable';
 export { default as CardBoard } from './CardBoard';
 export { default as PreparingContents } from './PreparingContents';
 export { default as NotFound } from './NotFound';
+export { default as ArticlePreview } from './ArticlePreview';

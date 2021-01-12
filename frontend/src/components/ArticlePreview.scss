@@ -1,0 +1,29 @@
+.article-prev-root {
+    display: flex;
+    flex-direction: row;
+}
+
+.article-prev-left {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        margin: 10px;
+        font-weight: 400;
+    }
+}
+
+.article-prev-info {
+    display: flex;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        margin: 5px 10px 5px 10px;
+
+        h5 {
+            font-weight: 100;
+            margin: 0;
+        }
+    }
+}

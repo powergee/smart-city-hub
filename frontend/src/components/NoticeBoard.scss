@@ -37,21 +37,21 @@ $boundary-color: #696f7c;
     // border: 1px solid $header-color;
     // border-radius: 0 0 $border-radius $border-radius;
 
-    ul {
-        padding-inline-start: 20px;
+    // ul {
+    //     padding-inline-start: 20px;
 
-        & > li {
-            padding: 7px 0px 7px 0;
-            margin-right: 20px;
-            border-bottom: 1px solid $boundary-color;
-            color: black;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-    }
+    //     & > li {
+    //         padding: 7px 0px 7px 0;
+    //         margin-right: 20px;
+    //         border-bottom: 1px solid $boundary-color;
+    //         color: black;
+    //         overflow: hidden;
+    //         text-overflow: ellipsis;
+    //         white-space: nowrap;
+    //     }
+    // }
 
-    ul > li:last-child {
-        border-bottom: none;
-    }
+    // ul > li:last-child {
+    //     border-bottom: none;
+    // }
 }
