@@ -5,7 +5,7 @@ import Cookie from "koa-cookie";
 import { IArticlesGetRequest, IArticlesGetResponse } from "../types";
 import { IArticlesCountGetRequest, IArticlesCountGetResponse } from "../types";
 import { IArticlesPostRequest } from "../types";
-import { GeneralArticleModel } from "./models/generalArticleModel";
+import { GeneralArticleModel, IGeneralArticle } from "./models/generalArticleModel";
 import validateToken from "./validateAuth";
 
 const router = new Router();
@@ -21,6 +21,7 @@ router.get("/", async (ctx: Koa.Context) => {
     };
 
     if (body.page === undefined || body.perPage === undefined || body.kind === undefined ||
+        isNaN(body.page) || isNaN(body.perPage) ||
         body.page < 1 || body.perPage < 1) {
         ctx.throw(400, "At least one parameter is not valid. The query was: " + JSON.stringify(ctx.query));
     }
@@ -64,6 +65,29 @@ router.get("/count", async (ctx: Koa.Context) => {
     };
 
     ctx.response.body = res;
+});
+
+router.get("/:articleId", async (ctx: Koa.Context) => {
+    const articleId = Number(ctx.query.articleId);
+
+    if (articleId === undefined || isNaN(articleId)) {
+        ctx.throw(400, "articleId is not valid. The query was " + JSON.stringify(ctx.query));
+    }
+
+    const res:IGeneralArticle = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
+
+    if (res === null) {
+        ctx.throw(404, "There's no article with articleId = " + ctx.params.articleId);
+    }
+
+    const token = validateToken(ctx);
+    if ((token === undefined || token.isManager) && !res.isPublic) {
+        // 글이 비공개 상태인데 manager 권한이 없다면 글을 확인할 수 없다.
+        ctx.throw(401, "It is unauthorized.");
+    } else {
+        // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 확인할 수 있다.
+        ctx.response.body = res;
+    }
 });
 
 router.post("/", async (ctx: Koa.Context) => {

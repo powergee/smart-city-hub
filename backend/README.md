@@ -151,6 +151,27 @@ ID에 해당하는 Salt를 가져온다.
 ]
 ```
 
+## GET /v1/articles/:articleId
+
+주어진 articleId에 해당하는 글의 정보를 가져온다.
+
+### Response
+
+```js
+ {
+     articleId: number,
+     contents: string,
+     images: [number],
+     files: [number],
+     kind: string,
+     views: number,
+     meta: {
+         createAt: Date,
+         modifiedAt: Date
+     }
+ }
+```
+
 ## GET /v1/articles/count
 
 주어진 kind에 해당하는 글이 몇 개인지 반환한다.
@@ -208,7 +229,9 @@ articleId가 undefined라면 새로운 글을 추가하고, 그렇지 않다면 
 }
 ```
 
-## DELETE
+## DELETE /v1/articles/:articleId
+
+주어진 articleId에 해당하는 글을 삭제한다.
 
 ## POST /v1/register
 
