@@ -81,7 +81,7 @@ router.get("/:articleId", async (ctx: Koa.Context) => {
     }
 
     const token = validateToken(ctx);
-    if ((token === undefined || token.isManager) && !res.isPublic) {
+    if ((token === undefined || !token.isManager) && !res.isPublic) {
         // 글이 비공개 상태인데 manager 권한이 없다면 글을 확인할 수 없다.
         ctx.throw(401, "It is unauthorized.");
     } else {
