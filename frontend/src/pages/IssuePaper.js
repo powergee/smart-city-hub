@@ -8,9 +8,9 @@ export default function IssuePaper() {
     return (
         <ContentContainer>
             <Route exact path="/issue-paper"
-                render={() => <GeneralArticleList title="Issue Paper" link="/issue-paper" kind="issue-paper"></GeneralArticleList>}></Route>
+                render={() => <GeneralArticleList superTitle="Issue Paper" title="Issue Paper" link="/issue-paper" kind="issue-paper"></GeneralArticleList>}></Route>
             <Route exact path="/issue-paper/:articleId"
-                render={(props) => <GeneralArticleView {...props} title="Issue Paper" listLink="/issue-paper" kind="issue-paper"></GeneralArticleView>}></Route>
+                render={(props) => <GeneralArticleView {...props} superTitle="Issue Paper" title="Issue Paper" listLink="/issue-paper" kind="issue-paper"></GeneralArticleView>}></Route>
         </ContentContainer>
     )
 }

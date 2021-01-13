@@ -7,6 +7,7 @@ $category-padding: 0 20px 0 0;
 $category-font: 18px;
 // $border-radius: 3px;
 $boundary-color: #696f7c;
+$more-hover: #463FCA;
 
 .board-paper {
     height: 100%;
@@ -32,26 +33,15 @@ $boundary-color: #696f7c;
     }
 }
 
-.board-contents {
-    // background-color: white;
-    // border: 1px solid $header-color;
-    // border-radius: 0 0 $border-radius $border-radius;
-
-    // ul {
-    //     padding-inline-start: 20px;
-
-    //     & > li {
-    //         padding: 7px 0px 7px 0;
-    //         margin-right: 20px;
-    //         border-bottom: 1px solid $boundary-color;
-    //         color: black;
-    //         overflow: hidden;
-    //         text-overflow: ellipsis;
-    //         white-space: nowrap;
-    //     }
-    // }
-
-    // ul > li:last-child {
-    //     border-bottom: none;
-    // }
+.board-footer {
+    display: flex;
+    flex-direction: row;
+    
+    a {
+        font-weight: 100;
+        font-size: 14px;
+        margin-left: auto;
+        padding: 5px;
+        color: $more-hover;
+    }
 }

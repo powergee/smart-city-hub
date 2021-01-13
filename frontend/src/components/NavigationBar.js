@@ -53,8 +53,8 @@ function NavigationBar(props) {
                             <li><a href className="menu-small" onClick={getLinkHandler("/introduction")}>센터소개</a></li>
                             <li><a href className="menu-large" onClick={getLinkHandler("/projects")}>연구{" & "}사업</a></li>
                             <li><a href className="menu-large" onClick={getLinkHandler("/issue-paper")}>Issue Paper</a></li>
-                            <li><a href className="menu-small" onClick={getLinkHandler("/news")}>소식</a></li>
-                            <li><a href className="menu-small" onClick={getLinkHandler("/community")}>커뮤니티</a></li>
+                            <li><a href className="menu-small" onClick={getLinkHandler("/news/notices")}>소식</a></li>
+                            <li><a href className="menu-small" onClick={getLinkHandler("/community/seminar")}>커뮤니티</a></li>
                             <li><a href className="menu-large font-small" onClick={getLinkHandler("/hub")}>스마트도시수출 거점HUB</a></li>
 
                             <div class="menu-dropdown">

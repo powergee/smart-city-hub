@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import "./GeneralArticleList.scss"
 
 export default function GeneralArticleList(props) {
-    const { title, link, kind } = props;
+    const { superTitle, title, link, kind } = props;
 
     const [page, setPage] = useState(undefined);
     const [total, setTotal] = useState(undefined);
@@ -15,12 +15,12 @@ export default function GeneralArticleList(props) {
     const history = useHistory();
 
     const primary = {
-        title: title,
+        title: superTitle,
         link: link
     };
 
     const secondary = {
-        title: "목록",
+        title: title,
         link: link
     };
 

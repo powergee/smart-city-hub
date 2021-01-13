@@ -12,14 +12,20 @@ import slide1 from "../images/slide-sample-1.png";
 import hubPic from "../images/hub-pic.png";
 import getArchives from "../shared/Archives.js";
 import './Home.scss'
+import { useHistory } from 'react-router-dom';
 
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
+    const history = useHistory();
 
     const archMenu = getArchives();
 
     function viewArchive() {
         setArchOpen(true);
+    }
+
+    const getRedirector = (path) => () => {
+        history.push(path);
     }
 
     return (
@@ -55,7 +61,7 @@ export default function Home() {
                             <div className="menu-row">
                                 <div className="menu-cell">
                                     <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/news/notices")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <ImportContactsIcon className="menu-icon" color="primary"></ImportContactsIcon>
                                                 <Typography gutterBottom variant="subtitle2">공지사항</Typography>
@@ -65,7 +71,7 @@ export default function Home() {
                                 </div>
                                 <div className="menu-cell">
                                     <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/news/events")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <BusinessIcon className="menu-icon" color="primary"></BusinessIcon>
                                                 <Typography gutterBottom variant="subtitle2">학술행사</Typography>
@@ -75,7 +81,7 @@ export default function Home() {
                                 </div>
                                 <div className="menu-cell">
                                     <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/news/smart-news")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <LocationCityIcon className="menu-icon" color="primary"></LocationCityIcon>
                                                 <Typography gutterBottom variant="subtitle2">스마트뉴스</Typography>
@@ -87,7 +93,7 @@ export default function Home() {
                             <div className="menu-row">
                                 <div className="menu-cell">
                                     <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/hub")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="Logo of Hub" className="menu-pic" src={hubPic}></img>
                                                 <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>

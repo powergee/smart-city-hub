@@ -1,35 +1,72 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./NoticeBoard.scss"
 import { Paper, Button } from '@material-ui/core'
+import { getArticles, countArticles } from "../shared/BackendRequests"
 import ArticlePreview from './ArticlePreview';
+import { useHistory } from 'react-router-dom';
 
 export default function NoticeBoard() {
-    const NOTICE = 0, EVENT = 1, NEWS = 2;
-    const [selected, setSelected] = useState(0);
+    const [selected, setSelected] = useState("notices");
+    const [articles, setArticles] = useState({
+        "notices": [],
+        "events": [],
+        "smart-news": []
+    });
+    const [counts, setCounts] = useState({
+        "notices": 0,
+        "events": 0,
+        "smart-news": 0
+    });
+    const history = useHistory();
 
-    const getButtonHandler = (num) => () => {
-        setSelected(num);
+    useEffect(() => {
+        let promises = [];
+        promises.push(getArticles("notices", 1, 3));
+        promises.push(getArticles("events", 1, 3));
+        promises.push(getArticles("smart-news", 1, 3));
+        promises.push(countArticles("notices"));
+        promises.push(countArticles("events"));
+        promises.push(countArticles("smart-news"));
+
+        Promise.all(promises).then((results) => {
+            setArticles({
+                "notices": results[0],
+                "events": results[1],
+                "smart-news": results[2]
+            })
+
+            setCounts({
+                "notices": results[3],
+                "events": results[4],
+                "smart-news": results[5]
+            })
+        });
+    }, [])
+
+    function handleArticleClick(article) {
+        history.push("/news/" + article.kind + "/" + article.articleId);
     }
 
-    const ex1 = {
-        title: "디자인 테스트를 위한 글 제목입니다.",
-        views: 12,
-        meta: {
-            createdAt: new Date()
-        }
+    function moveToList() {
+        history.push("/news/" + selected);
+    }
+
+    const getButtonHandler = (kind) => () => {
+        setSelected(kind);
     }
 
     return (
         <Paper className="board-paper">
             <div className="board-header">
-                <Button onClick={getButtonHandler(NOTICE)} color={(selected === NOTICE ? "primary" : "default")} size="large">공지사항</Button>
-                <Button onClick={getButtonHandler(EVENT)} color={(selected === EVENT ? "primary" : "default")} size="large">학술행사</Button>
-                <Button onClick={getButtonHandler(NEWS)} color={(selected === NEWS ? "primary" : "default")} size="large">스마트뉴스</Button>
+                <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
+                <Button onClick={getButtonHandler("events")} color={(selected === "events" ? "primary" : "default")} size="large">학술행사</Button>
+                <Button onClick={getButtonHandler("smart-news")} color={(selected === "smart-news" ? "primary" : "default")} size="large">스마트 뉴스</Button>
             </div>
             <div className="board-contents">
-                <ArticlePreview article={ex1}></ArticlePreview>
-                <ArticlePreview article={ex1}></ArticlePreview>
-                <ArticlePreview article={ex1}></ArticlePreview>
+                {articles[selected].map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
+            </div>
+            <div className="board-footer">
+                <a href onClick={moveToList}>{counts[selected] + "개의 게시물이 있습니다."}</a>
             </div>
         </Paper>
     )

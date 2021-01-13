@@ -7,19 +7,19 @@ import "./GeneralArticleView.scss"
 import { dateToString } from '../shared/DateToString';
 
 export default function GeneralArticleView(props) {
-    const { title, listLink, kind } = props;
+    const { superTitle, title, listLink } = props;
     const articleId = props.match.params.articleId;
     
     const [article, setArticle] = useState(undefined);
     const history = useHistory();
 
     const primary = {
-        title: title,
+        title: superTitle,
         link: listLink
     };
 
     const secondary = {
-        title: "글 보기",
+        title: title,
         link: listLink + "/" + articleId
     };
 
