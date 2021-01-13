@@ -22,7 +22,7 @@ router.get("/", async (ctx: Koa.Context) => {
 
     if (body.page === undefined || body.perPage === undefined || body.kind === undefined ||
         body.page < 1 || body.perPage < 1) {
-        ctx.throw(400, "At least one parameter is not valid. The body was: " + JSON.stringify(ctx.request.body));
+        ctx.throw(400, "At least one parameter is not valid. The query was: " + JSON.stringify(ctx.query));
     }
     
     // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 반환해야 한다.
@@ -49,7 +49,7 @@ router.get("/count", async (ctx: Koa.Context) => {
     const body:IArticlesCountGetRequest = ctx.query;
     
     if (body.kind === undefined) {
-        ctx.throw(400, "kind is not valid. The body was: " + JSON.stringify(ctx.request.body));
+        ctx.throw(400, "kind is not valid. The body was: " + JSON.stringify(ctx.query));
     }
 
     // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 세야 한다.
