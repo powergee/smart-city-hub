@@ -95,7 +95,7 @@
 
 ID에 해당하는 Salt를 가져온다.
 
-### Request Body
+### Query Parameter
 
 ```js
 {
@@ -115,7 +115,7 @@ ID에 해당하는 Salt를 가져온다.
 
 주어진 조건에 따라 게시글을 쿼리한다.
 
-### Request Body
+### Query Parameter
 
 아래 조건에 맞게 쿼리 조건을 지정할 수 있다.
 
@@ -155,7 +155,7 @@ ID에 해당하는 Salt를 가져온다.
 
 주어진 kind에 해당하는 글이 몇 개인지 반환한다.
 
-### Request Body
+### Query Parameter
 
 ```js
 {

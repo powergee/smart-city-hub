@@ -14,7 +14,11 @@ router.use(BodyParser());
 router.use(Cookie());
 
 router.get("/", async (ctx: Koa.Context) => {
-    const body:IArticlesGetRequest = ctx.request.body;
+    const body:IArticlesGetRequest = {
+        kind: ctx.query.kind,
+        page: Number(ctx.query.page),
+        perPage: Number(ctx.query.perPage)
+    };
 
     if (body.page === undefined || body.perPage === undefined || body.kind === undefined ||
         body.page < 1 || body.perPage < 1) {
@@ -42,7 +46,7 @@ router.get("/", async (ctx: Koa.Context) => {
 });
 
 router.get("/count", async (ctx: Koa.Context) => {
-    const body:IArticlesCountGetRequest = ctx.request.body;
+    const body:IArticlesCountGetRequest = ctx.query;
     
     if (body.kind === undefined) {
         ctx.throw(400, "kind is not valid. The body was: " + JSON.stringify(ctx.request.body));

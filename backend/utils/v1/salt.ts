@@ -9,7 +9,7 @@ const router = new Router();
 router.use(BodyParser());
 
 router.get("/", async (ctx: Koa.Context) => {
-    const body:ISaltRequest = ctx.request.body;
+    const body:ISaltRequest = ctx.query;
 
     if (body.userId === undefined) {
         ctx.throw(400, "userId is undefined.");
