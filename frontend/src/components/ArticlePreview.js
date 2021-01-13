@@ -5,8 +5,12 @@ import { dateToString } from "../shared/DateToString"
 export default function ArticlePreview(props) {
     const { article, onClick } = props
 
+    function handleRootClick() {
+        onClick(article);
+    }
+
     return (
-        <div className="article-prev-root" onClick={onClick}>
+        <div className="article-prev-root" onClick={handleRootClick}>
             <div className="article-prev-left">
                 <h3>{article.title}</h3>
                 <div className="article-prev-info">

@@ -99,3 +99,13 @@ export async function tryLogout() {
         throw err?.response?.status;
     }
 }
+
+export async function getArticle(articleId) {
+    try {
+        let res = await axios.get("/v1/articles/" + articleId, { withCredentials: true });
+        return res.data;
+    } catch (err) {
+        console.error("In getArticle: " + err.response.data);
+        throw err?.response?.status;
+    }
+}

@@ -68,10 +68,10 @@ router.get("/count", async (ctx: Koa.Context) => {
 });
 
 router.get("/:articleId", async (ctx: Koa.Context) => {
-    const articleId = Number(ctx.query.articleId);
+    const articleId = Number(ctx.params.articleId);
 
     if (articleId === undefined || isNaN(articleId)) {
-        ctx.throw(400, "articleId is not valid. The query was " + JSON.stringify(ctx.query));
+        ctx.throw(400, "articleId is not valid. The parameter was " + JSON.stringify(ctx.params));
     }
 
     const res:IGeneralArticle = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
@@ -86,6 +86,9 @@ router.get("/:articleId", async (ctx: Koa.Context) => {
         ctx.throw(401, "It is unauthorized.");
     } else {
         // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 확인할 수 있다.
+        // 조회수를 1 증가시킨다.
+        res.views += 1;
+        res.save();
         ctx.response.body = res;
     }
 });

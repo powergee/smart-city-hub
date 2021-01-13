@@ -3,6 +3,7 @@ $separator-color: #a7abcc;
 .list-container {
     display: flex;
     flex-direction: column;
+    border-top: 1px solid rgb(214, 214, 214);
 
     & > div {
         border-bottom: 1px solid $separator-color;
@@ -18,4 +19,10 @@ $separator-color: #a7abcc;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.list-total-info {
+    padding-bottom: 5px;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom';
 import { NavigationBar, NotFound } from '../components'
-import { Home, Login, Register, Introduction, Projects, IssuePaper, Hub } from '.'
+import { Home, Login, Register, Introduction, Projects, IssuePaper, Hub, News } from '.'
 import './Main.scss'
 
 export default function Main() {
@@ -17,6 +17,7 @@ export default function Main() {
                     <Route exact path="/register" component={Register}></Route>
                     <Route path="/introduction" component={Introduction}></Route>
                     <Route path="/issue-paper" component={IssuePaper}></Route>
+                    <Route path="/news" component={News}></Route>
                     <Route path="/projects" component={Projects}></Route>
                     <Route path="/hub" component={Hub}></Route>
                     <Route path="*" component={NotFound}></Route>

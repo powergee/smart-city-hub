@@ -1,0 +1,35 @@
+.article-fetching {
+    width: 100%;
+    text-align: center;
+}
+
+.article-title {
+    border-bottom: 1px solid rgb(214, 214, 214);
+    padding-bottom: 5px;
+}
+
+.article-props {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+    & > div:last-child {
+        border-right: none;
+    }
+}
+
+.article-prop-pair {
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgb(214, 214, 214);
+
+    strong {
+        margin-right: 10px;
+    }
+
+    p {
+        margin: 0;
+    }
+}
