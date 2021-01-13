@@ -5,14 +5,18 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.21.1",
     "core-js": "^3.8.2",
     "emoji-dictionary": "^1.0.11",
+    "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^2.0.0",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-katex": "^2.0.2",
     "react-markdown": "^5.0.2",
@@ -44,5 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000"
 }

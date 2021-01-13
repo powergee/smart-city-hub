@@ -9,7 +9,6 @@ import BookIcon from '@material-ui/icons/Book';
 import { Paper, ButtonBase, Grid, Modal, Typography } from '@material-ui/core'
 import 'react-slideshow-image/dist/styles.css'
 import slide1 from "../images/slide-sample-1.png";
-import slide2 from "../images/slide-sample-2.png";
 import hubPic from "../images/hub-pic.png";
 import getArchives from "../shared/Archives.js";
 import './Home.scss'
@@ -28,12 +27,12 @@ export default function Home() {
             <Slide easing="ease" className="slide-container">
                 <div className="each-slide">
                     <div style={{ 'backgroundImage': `url(${slide1})` }}>
-                        <span>예시 슬라이드 1</span>
+                        <span>Global Urban &#38; Infrastructure Research Center</span>
                     </div>
                 </div>
                 <div className="each-slide">
-                    <div style={{ 'backgroundImage': `url(${slide2})` }}>
-                        <span>예시 슬라이드 2</span>
+                    <div style={{ 'backgroundImage': `url(${slide1})` }}>
+                        <span>Global Urban &#38; Infrastructure Research Center</span>
                     </div>
                 </div>
             </Slide>

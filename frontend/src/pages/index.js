@@ -5,3 +5,5 @@ export { default as Projects } from './Projects';
 export { default as Community } from './Community';
 export { default as Hub } from './Hub';
 export { default as IssuePaper } from './IssuePaper';
+export { default as Login } from './Login';
+export { default as Register } from './Register';

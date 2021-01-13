@@ -2,8 +2,11 @@ import React from 'react'
 import './NavigationBar.scss'
 import logo from "../images/hub-logo.png";
 import { useHistory } from "react-router-dom";
+import getToken from "../shared/GetToken";
+import { withCookies } from 'react-cookie';
+import { tryLogout } from '../shared/BackendRequests';
 
-export default function NavigationBar() {
+function NavigationBar(props) {
     const uosURL = "https://www.uos.ac.kr/";
     const history = useHistory();
 
@@ -11,6 +14,12 @@ export default function NavigationBar() {
         return () => {
             history.push(url);
         }
+    }
+
+    async function logout() {
+        await tryLogout();
+        alert("로그아웃되었습니다.");
+        window.location.reload();
     }
 
     return (
@@ -25,7 +34,11 @@ export default function NavigationBar() {
 
                     <div className="header-right header-button-container">
                         <ul>
-                            <li><a href>로그인</a></li>
+                            {getToken(props.cookies) ? (
+                                <li><a href onClick={logout}>로그아웃</a></li>
+                            ) : (
+                                <li><a href onClick={getLinkHandler("/login")}>로그인</a></li>
+                            )}
                         </ul>
                     </div>
                 </div>
@@ -82,3 +95,5 @@ export default function NavigationBar() {
         </header>
     )
 }
+
+export default withCookies(NavigationBar);

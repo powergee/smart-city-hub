@@ -12,7 +12,7 @@ export default function NoticeBoard() {
     }
 
     const ex1 = {
-        title: "title 1",
+        title: "디자인 테스트를 위한 글 제목입니다.",
         views: 12,
         meta: {
             createdAt: new Date()

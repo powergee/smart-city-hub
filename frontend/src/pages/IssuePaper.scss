@@ -1,0 +1,21 @@
+$separator-color: #a7abcc;
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+        border-bottom: 1px solid $separator-color;
+    }
+}
+
+.list-fetching {
+    width: 100%;
+    text-align: center;
+}
+
+.list-pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

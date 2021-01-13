@@ -1,0 +1,56 @@
+$background-color: #f2f6ff;
+
+.register-root {
+    overflow: auto;
+    width:100%;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background-color;
+}
+
+.register-paper {
+    width: 700px;
+}
+
+.register-subtitle {
+    padding: 0 0 2.5rem 0;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    padding: 30px 20px 30px 20px;
+}
+
+.register-sign {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+
+.register-sign>a {
+    color: #ff844e;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.register-divider {
+    width: 80%;
+    padding-bottom: 1rem;
+}
+
+.register-container>div{
+    margin: 10px;
+}
+
+.register-button {
+    width: 60%;
+    margin: 0 0 1rem 0 !important;
+}

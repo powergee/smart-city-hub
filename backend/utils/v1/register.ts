@@ -18,6 +18,12 @@ router.post("/", async (ctx: Koa.Context) => {
         ctx.throw(400, "At least one parameter is not valid. The body was: " + JSON.stringify(ctx.request.body));
     }
 
+    if (body.userId.length === 0) {
+        ctx.throw(400, "userId is empty.");
+    } else if (body.userName.length === 0) {
+        ctx.throw(400, "userName is empty.");
+    }
+
     const existingUser = await UserModel.findOne({ userId: body.userId }).exec();
     if (existingUser !== null) {
         ctx.throw(409, "userId is already in use.")
