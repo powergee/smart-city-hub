@@ -1,5 +1,6 @@
 import { Binary } from 'mongodb';
 import { IGeneralArticle } from './v1/models/generalArticleModel';
+import { IMeta } from "./v1/models/meta";
 
 export interface ICollectionInfo {
     name: string,
@@ -106,4 +107,13 @@ export interface IRegisterPostResponse {
     userId: string,
     userName: string,
     isAllowed: boolean
+}
+
+/* GET /v1/files/info/:fileId */
+// Response
+export interface IFilesInfoGetResponse {
+    fileId: number,
+    originalName: string,
+    parentArticleId: number,
+    meta: IMeta
 }

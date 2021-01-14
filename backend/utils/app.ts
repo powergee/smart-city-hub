@@ -9,6 +9,7 @@ import login from "./v1/login";
 import logout from "./v1/logout";
 import register from "./v1/register";
 import salt from "./v1/salt";
+import files from "./v1/files";
 
 const app = new Koa();
 
@@ -27,6 +28,7 @@ router.use("/v1/login", login.routes());
 router.use("/v1/logout", logout.routes());
 router.use("/v1/register", register.routes());
 router.use("/v1/salt", salt.routes());
+router.use("/v1/files", files.routes());
 
 app.use(router.routes());
 

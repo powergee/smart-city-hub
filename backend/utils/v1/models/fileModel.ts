@@ -7,7 +7,7 @@ export interface IFile extends Document {
     fileId: number,
     originalName: string,
     localPath: string,
-    kind: string,
+    parentArticleId: number,
     meta: IMeta
 }
 
@@ -18,9 +18,9 @@ const fileSchema = new Schema({
     },
     originalName: String,
     localPath: String,
-    kind: String,
+    parentArticleId: Number,
     meta: MetaSchemaDefinition
 });
 
-fileSchema.plugin(AutoIncrement, {inc_field: 'articleId'});
+fileSchema.plugin(AutoIncrement, {inc_field: 'fileId'});
 export const FileModel:Model<IFile> = model("File", fileSchema);

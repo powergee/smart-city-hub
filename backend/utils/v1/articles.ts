@@ -6,6 +6,7 @@ import { IArticlesGetRequest, IArticlesGetResponse } from "../types";
 import { IArticlesCountGetRequest, IArticlesCountGetResponse } from "../types";
 import { IArticlesPostRequest } from "../types";
 import { GeneralArticleModel, IGeneralArticle } from "./models/generalArticleModel";
+import { FileModel, IFile } from "./models/fileModel"
 import validateToken from "./validateAuth";
 
 const router = new Router();
@@ -141,8 +142,17 @@ router.post("/", async (ctx: Koa.Context) => {
         newArticle.createdBy = token.userName
         newArticle.lastModifiedBy = "";
 
-        newArticle.save();
-        ctx.response.body = newArticle;
+        const saved = await newArticle.save();
+
+        saved.files.forEach((element: number) => {
+            FileModel.findOneAndUpdate({ fileId: element }, { parentArticleId: saved.articleId });
+        });
+
+        saved.images.forEach((element: number) => {
+            FileModel.findOneAndUpdate({ fileId: element }, { parentArticleId: saved.articleId });
+        });
+
+        ctx.response.body = saved;
     } else {
         const prevArticle = await GeneralArticleModel.findOne({ articleId: body.articleId }).exec();
         if (prevArticle === null) {
@@ -159,8 +169,17 @@ router.post("/", async (ctx: Koa.Context) => {
         prevArticle.lastModifiedBy = token.userName;
         prevArticle.meta.modifiedAt = new Date();
 
-        prevArticle.save();
-        ctx.response.body = prevArticle;
+        const saved = await prevArticle.save();
+
+        saved.files.forEach((element: number) => {
+            FileModel.findOneAndUpdate({ fileId: element }, { parentArticleId: saved.articleId });
+        });
+
+        saved.images.forEach((element: number) => {
+            FileModel.findOneAndUpdate({ fileId: element }, { parentArticleId: saved.articleId });
+        });
+
+        ctx.response.body = saved;
     }
 });
 
