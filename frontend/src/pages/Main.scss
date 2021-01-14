@@ -11,3 +11,21 @@
 .main-body {
     padding-top: $header-height;
 }
+
+.main-footer {
+    min-height: 150px;
+    background-color: rgb(219, 219, 219);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: rgb(87, 87, 87);
+        margin: 0;
+    }
+
+    strong {
+        color: rgb(87, 87, 87);
+    }
+}
