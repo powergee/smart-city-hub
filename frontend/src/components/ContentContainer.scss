@@ -10,4 +10,60 @@
     width: $page-width;
     margin: 0 auto 0 auto;
     display: flex;
+    flex-direction: row;
+
+    .content-left {
+        min-height: 1000px;
+        width: 18%;
+        margin-left: 1%;
+        margin-right: 1%;
+
+        .content-navi {
+            margin-top: 100px;
+            width: 100%;
+
+            & > button {
+                border-top: 1px solid rgb(219, 219, 219);
+            }
+
+            & > button:first-child {
+                border: none
+            }
+        }
+    }
+
+    .content-right {
+        height: 100%;
+        width: 78%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+}
+
+.nav-row-root-button {
+    width: 100%;
+    justify-content: start !important;
+}
+
+.nav-row-root-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-row-sub-button {
+    padding-left: 20px !important;
+    width: 100%;
+    justify-content: start !important;
+
+    h4 {
+        margin: 10px 0 10px 0;
+    }
+}
+
+.nav-row-sub-list {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(241, 241, 241);
+    width: 100%;
 }

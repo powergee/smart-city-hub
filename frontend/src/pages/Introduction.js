@@ -1,6 +1,6 @@
 import { Paper, Grid } from '@material-ui/core';
 import React, { useState, useEffect } from 'react'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ContentContainer, ContentHeader, MarkdownViewer } from "../components"
 import jobs from "../shared/Jobs.json";
 import getResearchers from "../shared/Researchers.js";
@@ -19,21 +19,23 @@ function Greeting() {
     };
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            <div className="introduction-contents">
-                <h3>국제도시 및 인프라 연구센터는 4차 산업혁명시대에 도시, 교통, 환경, 재난 등 사람을 위한 연구를 추진하고 있습니다.</h3>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                <div className="introduction-contents">
+                    <h3>국제도시 및 인프라 연구센터는 4차 산업혁명시대에 도시, 교통, 환경, 재난 등 사람을 위한 연구를 추진하고 있습니다.</h3>
 
-                {
-                    jobs.map((j) => (
-                        <Paper elevation={3} className="introduction-paper">
-                            <p>{j}</p>
-                        </Paper>
-                    ))
-                }
+                    {
+                        jobs.map((j) => (
+                            <Paper elevation={3} className="introduction-paper">
+                                <p>{j}</p>
+                            </Paper>
+                        ))
+                    }
 
-                
-            </div>
-        </ContentHeader>
+                    
+                </div>
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
@@ -57,9 +59,11 @@ function Goal() {
     }, []);
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            <MarkdownViewer source={source}></MarkdownViewer>
-        </ContentHeader>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                <MarkdownViewer source={source}></MarkdownViewer>
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
@@ -77,37 +81,39 @@ function Researchers() {
     const resInfo = getResearchers();
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            {
-                resInfo.map((res) => (
-                    <Paper elevation={3} className="researchers-paper">
-                        <Grid className="researchers-grid" container direction="row">
-                            <img alt="" src={res.image}></img>
-                            <Grid item>
-                                <h2>{res.name}</h2>
-                                <ul>
-                                    {
-                                        res.details.map((d) => (
-                                            <li>{d}</li>
-                                        ))
-                                    }
-                                </ul>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                {
+                    resInfo.map((res) => (
+                        <Paper elevation={3} className="researchers-paper">
+                            <Grid className="researchers-grid" container direction="row">
+                                <img alt="" src={res.image}></img>
+                                <Grid item>
+                                    <h2>{res.name}</h2>
+                                    <ul>
+                                        {
+                                            res.details.map((d) => (
+                                                <li>{d}</li>
+                                            ))
+                                        }
+                                    </ul>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Paper>
-                ))
-            }
-        </ContentHeader>
+                        </Paper>
+                    ))
+                }
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
 export default function Introduction() {
     return (
-        <ContentContainer>
+        <Switch>
             <Route exact path="/introduction" component={Greeting}></Route>
             <Route exact path="/introduction/greeting" component={Greeting}></Route>
             <Route exact path="/introduction/goal" component={Goal}></Route>
             <Route exact path="/introduction/researchers" component={Researchers}></Route>
-        </ContentContainer>
+        </Switch>
     )
 }

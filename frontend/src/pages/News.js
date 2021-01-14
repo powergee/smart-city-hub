@@ -1,12 +1,12 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ContentContainer } from "../components"
 import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
 
 function Notices() {
     return (
-        <ContentContainer>
+        <ContentContainer currentPath={"/news/notices"}>
             <Route exact path="/news/notices"
                 render={() => <GeneralArticleList superTitle="소식" title="공지사항" link="/news/notices" kind="notices"></GeneralArticleList>}></Route>
             <Route exact path="/news/notices/:articleId"
@@ -17,7 +17,7 @@ function Notices() {
 
 function Events() {
     return (
-        <ContentContainer>
+        <ContentContainer currentPath={"/news/events"}>
             <Route exact path="/news/events"
                 render={() => <GeneralArticleList superTitle="소식" title="학술행사" link="/news/events" kind="events"></GeneralArticleList>}></Route>
             <Route exact path="/news/events/:articleId"
@@ -28,7 +28,7 @@ function Events() {
 
 function SmartNews() {
     return (
-        <ContentContainer>
+        <ContentContainer currentPath={"/news/smart-news"}>
             <Route exact path="/news/smart-news"
                 render={() => <GeneralArticleList superTitle="소식" title="스마트 뉴스" link="/news/smart-news" kind="smart-news"></GeneralArticleList>}></Route>
             <Route exact path="/news/smart-news/:articleId"
@@ -39,10 +39,10 @@ function SmartNews() {
 
 export default function News() {
     return (
-        <ContentContainer>
+        <Switch>
             <Route path="/news/notices" component={Notices}></Route>
             <Route path="/news/events" component={Events}></Route>
             <Route path="/news/smart-news" component={SmartNews}></Route>
-        </ContentContainer>
+        </Switch>
     )
 }

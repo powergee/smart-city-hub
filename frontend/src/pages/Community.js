@@ -1,12 +1,12 @@
 import React from 'react'
-import { Redirect, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ContentContainer } from "../components"
 import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
 
 function Seminar() {
     return (
-        <ContentContainer>
+        <ContentContainer currentPath={"/community/seminar"}>
             <Route exact path="/community/seminar"
                 render={() => <GeneralArticleList superTitle="커뮤니티" title="세미나" link="/community/seminar" kind="seminar"></GeneralArticleList>}></Route>
             <Route exact path="/community/seminar/:articleId"
@@ -17,7 +17,7 @@ function Seminar() {
 
 function Workshop() {
     return (
-        <ContentContainer>
+        <ContentContainer currentPath={"/community/workshop"}>
             <Route exact path="/community/workshop"
                 render={() => <GeneralArticleList superTitle="커뮤니티" title="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleList>}></Route>
             <Route exact path="/community/workshop/:articleId"
@@ -28,7 +28,7 @@ function Workshop() {
 
 function Readings() {
     return (
-        <ContentContainer>
+        <ContentContainer currentPath={"/community/readings"}>
             <Route exact path="/community/readings"
                 render={() => <GeneralArticleList superTitle="커뮤니티" title="추천 도서" link="/community/readings" kind="readings"></GeneralArticleList>}></Route>
             <Route exact path="/community/readings/:articleId"
@@ -39,10 +39,10 @@ function Readings() {
 
 export default function Community() {
     return (
-        <ContentContainer>
+        <Switch>
             <Route path="/community/seminar" component={Seminar}></Route>
             <Route path="/community/workshop" component={Workshop}></Route>
             <Route path="/community/readings" component={Readings}></Route>
-        </ContentContainer>
+        </Switch>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable, PreparingContents } from "../components"
 import projList from "../shared/ProjectList.json"
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
@@ -23,10 +23,12 @@ function Summary() {
         rows[i].no = rows.length - i;
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
-            <ProjectTable rows={rows}></ProjectTable>
-        </ContentHeader>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
+                <ProjectTable rows={rows}></ProjectTable>
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
@@ -51,9 +53,11 @@ function WithHumanism() {
     }, []);
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            <MarkdownViewer source={source}></MarkdownViewer>
-        </ContentHeader>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                <MarkdownViewer source={source}></MarkdownViewer>
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
@@ -78,9 +82,11 @@ function SmartDisasterPrep() {
     }, []);
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            <MarkdownViewer source={source}></MarkdownViewer>
-        </ContentHeader>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                <MarkdownViewer source={source}></MarkdownViewer>
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
@@ -96,20 +102,22 @@ function EtcProjects() {
     };
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
-            <PreparingContents></PreparingContents>
-        </ContentHeader>
+        <ContentContainer currentPath={secondary.link}>
+            <ContentHeader primary={primary} secondary={secondary}>
+                <PreparingContents></PreparingContents>
+            </ContentHeader>
+        </ContentContainer>
     )
 }
 
 export default function Projects() {
     return (
-        <ContentContainer>
+        <Switch>
             <Route exact path="/projects" component={Summary}></Route>
             <Route exact path="/projects/summary" component={Summary}></Route>
             <Route exact path="/projects/withhs" component={WithHumanism}></Route>
             <Route exact path="/projects/smtdstpre" component={SmartDisasterPrep}></Route>
             <Route exact path="/projects/etc" component={EtcProjects}></Route>
-        </ContentContainer>
+        </Switch>
     )
 }
