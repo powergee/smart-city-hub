@@ -12,7 +12,7 @@ export default function IssuePaper() {
                 <Route exact path="/issue-paper"
                     render={() => <GeneralArticleList superTitle="Issue Paper" title="Issue Paper" link="/issue-paper" kind="issue-paper"></GeneralArticleList>}></Route>
                 <Route exact path="/issue-paper/writer"
-                    render={() => <GeneralArticleWriter superTitle="Issue Paper" title="Issue Paper" link="/issue-paper" kind="issue-paper"></GeneralArticleWriter>}></Route>
+                    render={() => <GeneralArticleWriter superTitle="Issue Paper" pageTitle="Issue Paper" link="/issue-paper" kind="issue-paper"></GeneralArticleWriter>}></Route>
                 <Route exact path="/issue-paper/:articleId"
                     render={(props) => <GeneralArticleView {...props} superTitle="Issue Paper" title="Issue Paper" listLink="/issue-paper" kind="issue-paper"></GeneralArticleView>}></Route>
             </Switch>

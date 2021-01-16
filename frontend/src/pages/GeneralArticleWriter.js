@@ -12,7 +12,7 @@ import path from "path";
 import { withCookies } from "react-cookie";
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./GeneralArticleWriter.scss";
-import { useHistory } from 'react-router-dom';
+import { Prompt, useHistory } from 'react-router-dom';
 import { uploadFile, postArticle } from "../shared/BackendRequests";
 
 // Editor에서 이미지를 첨부한 뒤 한국어를 입력하면 "Unknown DraftEntity key: null." 에러가 발생하는 버그 존재.
@@ -79,6 +79,7 @@ function GeneralArticleWriter(props) {
     const [isPublic, setIsPublic] = useState(true);
     const [saveButtonText, setSaveButtonText] = useState("저장하기");
     const [saveButtonColor, setSaveButtonColor] = useState("primary");
+    const [routeToMove, setRouteToMove] = useState(undefined);
 
     const primary = {
         title: superTitle,
@@ -97,6 +98,13 @@ function GeneralArticleWriter(props) {
             history.push(link);
         }
     }, []);
+
+    useEffect(() => {
+        if (routeToMove === undefined) {
+            return;
+        }
+        history.push(routeToMove);
+    }, [routeToMove]);
 
     function onEditorStateChange(editorState) {
         setEditorState(editorState);
@@ -163,7 +171,7 @@ function GeneralArticleWriter(props) {
             };
 
             const uploaded = await postArticle(article);
-            history.push(link + "/" + uploaded.articleId);
+            setRouteToMove(link + "/" + uploaded.articleId);
         } catch {
             alert("파일 또는 게시글을 업로드하는데 실패하였습니다. 다시 시도해주세요.");
             setSaveButtonText("저장하기");
@@ -173,6 +181,7 @@ function GeneralArticleWriter(props) {
 
     return (
         <ContentHeader primary={primary} secondary={secondary}>
+            <Prompt when={routeToMove === undefined} message="아직 작성중인 게시글을 저장하지 않았습니다. 정말 나가시겠습니까?"></Prompt>
             <Editor
                 wrapperClassName="writer-wrapper"
                 editorClassName="writer-editor"

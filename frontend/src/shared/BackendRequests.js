@@ -148,8 +148,25 @@ export async function getFileInfo(fileId) {
 
 export async function downloadFile(fileId) {
     try {
-        let res = await axios.get("/v1/files/download/" + fileId, { withCredentials: true });
-        return res.data;
+        let res = await axios.get("/v1/files/download/" + fileId, { 
+            withCredentials: true,
+            responseType: "blob"
+        });
+
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement("a");
+        link.href = url;
+
+        const cd = res.headers["content-disposition"];
+        const fnIdx = cd.indexOf("filename");
+        const left = cd.indexOf("\"", fnIdx)
+        const right = cd.indexOf("\"", left+1)
+        const filename = cd.substring(left+1, right)
+
+        link.setAttribute("download", filename);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     } catch (err) {
         console.error("In downloadFile: " + err.response.data);
         throw err?.response?.status;
