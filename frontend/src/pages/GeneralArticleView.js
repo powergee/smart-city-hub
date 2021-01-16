@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { ContentHeader } from "../components"
-import { getArticle } from "../shared/BackendRequests";
+import { getArticle, getFileInfo, downloadFile } from "../shared/BackendRequests";
 import { useHistory } from "react-router-dom";
 import LockIcon from '@material-ui/icons/Lock';
+import { IconButton } from '@material-ui/core';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import "./GeneralArticleView.scss"
 import { dateToString } from '../shared/DateToString';
 
@@ -11,6 +13,7 @@ export default function GeneralArticleView(props) {
     const articleId = props.match.params.articleId;
     
     const [article, setArticle] = useState(undefined);
+    const [files, setFiles] = useState([]);
     const history = useHistory();
 
     const primary = {
@@ -39,6 +42,29 @@ export default function GeneralArticleView(props) {
                 history.push(listLink);
             });
     }, [articleId])
+
+    useEffect(() => {
+        if (article === undefined) {
+            return;
+        }
+
+        let promises = [];
+        article.files.forEach(element => {
+            promises.push(getFileInfo(element));
+        });
+
+        Promise.all(promises)
+            .then(res => {
+                setFiles(res);
+            })
+            .catch(() => {
+                alert("파일 정보를 얻는데 실패하였습니다.");
+            })
+    }, [article]);
+
+    const getFileDownloader = (fileId) => () => {
+        downloadFile(fileId);
+    }
 
     return (
         <ContentHeader primary={primary} secondary={secondary}>
@@ -79,7 +105,20 @@ export default function GeneralArticleView(props) {
                             </div>
                         </div>
 
-                        <div dangerouslySetInnerHTML={{__html: article.contents}}></div>
+                        <div dangerouslySetInnerHTML={{ __html: article.contents }}></div>
+
+                        <div className="article-files">
+                            {
+                                files.map(element => (
+                                    <div>
+                                        <strong>{element.originalName}</strong>
+                                        <IconButton size="small" onClick={getFileDownloader(element.fileId)}>
+                                            <SaveAltIcon fontSize="inherit"></SaveAltIcon>
+                                        </IconButton>
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </React.Fragment>
                 )}
         </ContentHeader>

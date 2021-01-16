@@ -109,3 +109,49 @@ export async function getArticle(articleId) {
         throw err?.response?.status;
     }
 }
+
+export async function postArticle(article) {
+    try {
+        let res = await axios.post("/v1/articles/", article, { withCredentials: true });
+        return res.data;
+    } catch (err) {
+        console.error("In postArticle: " + err.response.data);
+        throw err?.response?.status;
+    }
+}
+
+export async function uploadFile(file) {
+    try {
+        let form = new FormData();
+        form.append("file", file);
+        let res = await axios.post("/v1/files/upload", form, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        return res.data;
+    } catch (err) {
+        console.error("In uploadFile: " + err.response.data);
+        throw err?.response?.status;
+    }
+}
+
+export async function getFileInfo(fileId) {
+    try {
+        let res = await axios.get("/v1/files/info/" + fileId, { withCredentials: true });
+        return res.data;
+    } catch (err) {
+        console.error("In getFileInfo: " + err.response.data);
+        throw err?.response?.status;
+    }
+}
+
+export async function downloadFile(fileId) {
+    try {
+        let res = await axios.get("/v1/files/download/" + fileId, { withCredentials: true });
+        return res.data;
+    } catch (err) {
+        console.error("In downloadFile: " + err.response.data);
+        throw err?.response?.status;
+    }
+}

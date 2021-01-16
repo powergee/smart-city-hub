@@ -10,3 +10,4 @@ export { default as Login } from './Login';
 export { default as Register } from './Register';
 export { default as GeneralArticleList } from './GeneralArticleList';
 export { default as GeneralArticleView } from './GeneralArticleView';
+export { default as GeneralArticleWriter } from './GeneralArticleWriter';

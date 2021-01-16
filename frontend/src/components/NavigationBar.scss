@@ -57,7 +57,17 @@ a:hover:not(.active) {
 }
 
 .header-button-container {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    
+    strong {
+        margin: 0 5px 0 0;
+        color: gray;
+    }
+
+    p {
+        margin: 0 5px 0 0;
+    }
 
     ul {
         list-style-type: none;

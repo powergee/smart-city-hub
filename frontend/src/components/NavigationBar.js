@@ -9,6 +9,7 @@ import { tryLogout } from '../shared/BackendRequests';
 function NavigationBar(props) {
     const uosURL = "https://www.uos.ac.kr/";
     const history = useHistory();
+    const token = getToken(props.cookies);
 
     function getLinkHandler(url) {
         return () => {
@@ -33,13 +34,19 @@ function NavigationBar(props) {
                     </div>
 
                     <div className="header-right header-button-container">
-                        <ul>
-                            {getToken(props.cookies) ? (
-                                <li><a href onClick={logout}>로그아웃</a></li>
-                            ) : (
+                        {token ? (
+                            <React.Fragment>
+                                <strong>{token.userName}</strong>
+                                <p>님, 환영합니다!</p>
+                                <ul>
+                                    <li><a href onClick={logout}>로그아웃</a></li>
+                                </ul>
+                            </React.Fragment>
+                        ) : (
+                            <ul>
                                 <li><a href onClick={getLinkHandler("/login")}>로그인</a></li>
+                            </ul>
                             )}
-                        </ul>
                     </div>
                 </div>
             </div>

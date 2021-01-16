@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { ContentHeader, ArticlePreview } from "../components"
 import { getArticles, countArticles } from "../shared/BackendRequests";
 import Pagination from '@material-ui/lab/Pagination';
+import CreateIcon from '@material-ui/icons/Create';
+import Button from '@material-ui/core/Button';
+import getToken from "../shared/GetToken";
+import { withCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
 import "./GeneralArticleList.scss"
 
-export default function GeneralArticleList(props) {
+function GeneralArticleList(props) {
     const { superTitle, title, link, kind } = props;
 
     const [page, setPage] = useState(undefined);
@@ -62,12 +66,26 @@ export default function GeneralArticleList(props) {
         history.push(link + "/" + article.articleId);
     }
 
+    function handleArticleCreate() {
+        history.push(link + "/writer");
+    }
+
     return (
         <ContentHeader primary={primary} secondary={secondary}>
             {articles === undefined ? (
                 <h2 className="list-fetching">게시글을 가져오는 중입니다..!</h2>
             ) : (
                     <React.Fragment>
+                        {
+                            getToken(props.cookies) &&
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                className="list-create"
+                                startIcon={<CreateIcon />}
+                                onClick={handleArticleCreate}
+                            >새 게시글 만들기</Button>
+                        }
                         <p className="list-total-info">{total} 건의 게시물이 검색되었습니다.</p>
                         <div className="list-container">
                             {articles.map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
@@ -80,3 +98,5 @@ export default function GeneralArticleList(props) {
         </ContentHeader>
     )
 }
+
+export default withCookies(GeneralArticleList)
