@@ -14,6 +14,7 @@ import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./GeneralArticleWriter.scss";
 import { Prompt, useHistory } from 'react-router-dom';
 import { uploadFile, postArticle } from "../shared/BackendRequests";
+import packageJson from "../../package.json";
 
 // Editor에서 이미지를 첨부한 뒤 한국어를 입력하면 "Unknown DraftEntity key: null." 에러가 발생하는 버그 존재.
 // 아래에 있는 커스텀 렌더러(BlockRenderer)를 사용하여 해결.
@@ -47,6 +48,7 @@ class MediaComponent extends React.Component {
                 <img
                     src={data.src}
                     alt={data.alt || 'image'}
+                    style={{"max-width": "100%"}}
                 />
             </div>
         );
@@ -62,7 +64,7 @@ function ImgEntityTransform(entity) {
             align-items: center;
             justify-content: center;
         ">
-            <img src="${entity.data.src}" />
+            <img src="${entity.data.src}" style="max-width: 100%"}}/>
         </div>`
     }
 
@@ -80,6 +82,7 @@ function GeneralArticleWriter(props) {
     const [saveButtonText, setSaveButtonText] = useState("저장하기");
     const [saveButtonColor, setSaveButtonColor] = useState("primary");
     const [routeToMove, setRouteToMove] = useState(undefined);
+    const [uploadImages, setUploadImages] = useState([]);
 
     const primary = {
         title: superTitle,
@@ -113,7 +116,6 @@ function GeneralArticleWriter(props) {
     function onFileInputChange(e) {
         let oldFiles = [...selectedFiles];
         e.target.files.forEach(element => {
-            console.log(element);
             oldFiles.push(element);
         });
 
@@ -179,6 +181,26 @@ function GeneralArticleWriter(props) {
         }
     }
 
+    async function imageUploadCallback(file) {
+        try {
+            const fileId = await uploadFile(file);
+
+            let newImages = [...uploadedImages];
+
+            const imageObject = {
+                file: file,
+                localSrc: URL.createObjectURL(file),
+            };
+
+            newImages.push(imageObject);
+            setUploadImages(newImages);
+
+            return { data: { link: packageJson.proxy + "/v1/files/media/" + fileId } };
+        } catch {
+            alert("이미지를 업로드하는데 실패하였습니다. 다시 시도해주세요.");
+        }
+    }
+
     return (
         <ContentHeader primary={primary} secondary={secondary}>
             <Prompt when={routeToMove === undefined} message="아직 작성중인 게시글을 저장하지 않았습니다. 정말 나가시겠습니까?"></Prompt>
@@ -192,6 +214,15 @@ function GeneralArticleWriter(props) {
                 editorState={editorState}
                 onEditorStateChange={onEditorStateChange}
                 blockRendererFn={BlockRenderer}
+                toolbar={{
+                    image: {
+                        uploadCallback: imageUploadCallback,
+                        previewImage: true,
+                        alt: { present: true, mandatory: false },
+                        inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
+
+                    }
+                }}
             >
             </Editor>
 

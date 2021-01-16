@@ -5,6 +5,7 @@ import Cookie from "koa-cookie";
 import fs from "fs";
 import path from "path";
 import env from "../../env"
+import mime from "mime-types"
 import { FileModel, IFile } from "./models/fileModel";
 import { IFilesInfoGetResponse } from "../types"
 import validateToken from "./validateAuth";
@@ -63,6 +64,27 @@ router.get("/download/:fileId", async (ctx: Koa.Context) => {
 
     const src = fs.createReadStream(res.localPath);
     ctx.attachment(res.originalName);
+    ctx.body = src;
+});
+
+router.get("/media/:fileId", async (ctx: Koa.Context) => {
+    const fileId = Number(ctx.params.fileId);
+
+    if (fileId === undefined || isNaN(fileId)) {
+        ctx.throw(400, "fileId is not valid. The parameter was " + JSON.stringify(ctx.params));
+    }
+
+    const res:IFile = await FileModel.findOne({ fileId: fileId }).exec();
+
+    if (res === null) {
+        ctx.throw(404, "There's no file with fileId = " + ctx.params.fileId);
+    }
+
+    const mimeType = mime.lookup(res.originalName);
+    const src = fs.createReadStream(res.localPath);
+    if (mimeType) {
+        ctx.set("Content-type", mimeType);
+    }
     ctx.body = src;
 });
 
