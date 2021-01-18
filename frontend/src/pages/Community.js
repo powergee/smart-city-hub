@@ -3,14 +3,19 @@ import { Route, Switch } from 'react-router-dom';
 import { ContentContainer } from "../components"
 import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
+import GeneralArticleWriter from './GeneralArticleWriter';
 
 function Seminar() {
     return (
         <ContentContainer currentPath={"/community/seminar"}>
-            <Route exact path="/community/seminar"
-                render={() => <GeneralArticleList superTitle="커뮤니티" title="세미나" link="/community/seminar" kind="seminar"></GeneralArticleList>}></Route>
-            <Route exact path="/community/seminar/:articleId"
-                render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="세미나" listLink="/community/seminar" kind="seminar"></GeneralArticleView>}></Route>
+            <Switch>
+                <Route exact path="/community/seminar"
+                    render={() => <GeneralArticleList superTitle="커뮤니티" title="세미나" link="/community/seminar" kind="seminar"></GeneralArticleList>}></Route>
+                <Route exact path="/community/seminar/writer"
+                    render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="세미나" link="/community/seminar" kind="seminar"></GeneralArticleWriter>}></Route>
+                <Route exact path="/community/seminar/:articleId"
+                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="세미나" listLink="/community/seminar" kind="seminar"></GeneralArticleView>}></Route>
+            </Switch>
         </ContentContainer>
     )
 }
@@ -18,10 +23,14 @@ function Seminar() {
 function Workshop() {
     return (
         <ContentContainer currentPath={"/community/workshop"}>
-            <Route exact path="/community/workshop"
-                render={() => <GeneralArticleList superTitle="커뮤니티" title="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleList>}></Route>
-            <Route exact path="/community/workshop/:articleId"
-                render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="워크숍" listLink="/community/workshop" kind="workshop"></GeneralArticleView>}></Route>
+            <Switch>
+                <Route exact path="/community/workshop"
+                    render={() => <GeneralArticleList superTitle="커뮤니티" title="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleList>}></Route>
+                <Route exact path="/community/workshop/writer"
+                        render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleWriter>}></Route>
+                <Route exact path="/community/workshop/:articleId"
+                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="워크숍" listLink="/community/workshop" kind="workshop"></GeneralArticleView>}></Route>
+            </Switch>
         </ContentContainer>
     )
 }
@@ -29,10 +38,14 @@ function Workshop() {
 function Readings() {
     return (
         <ContentContainer currentPath={"/community/readings"}>
-            <Route exact path="/community/readings"
-                render={() => <GeneralArticleList superTitle="커뮤니티" title="추천 도서" link="/community/readings" kind="readings"></GeneralArticleList>}></Route>
-            <Route exact path="/community/readings/:articleId"
-                render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="추천 도서" listLink="/community/readings" kind="readings"></GeneralArticleView>}></Route>
+            <Switch>
+                <Route exact path="/community/readings"
+                    render={() => <GeneralArticleList superTitle="커뮤니티" title="추천 도서" link="/community/readings" kind="readings"></GeneralArticleList>}></Route>
+                <Route exact path="/community/readings/writer"
+                        render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="추천 도서" link="/community/readings" kind="readings"></GeneralArticleWriter>}></Route>
+                <Route exact path="/community/readings/:articleId"
+                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="추천 도서" listLink="/community/readings" kind="readings"></GeneralArticleView>}></Route>
+            </Switch>
         </ContentContainer>
     )
 }
