@@ -81,11 +81,15 @@ export default function ContentContainer(props) {
         },
         {
             defaultOpen: false,
-            title: "Issue Paper",
+            title: "발간물",
             subPath: [
                 {
                     title: "Issue Paper",
-                    link: "/issue-paper"
+                    link: "/publish/issue-paper"
+                },
+                {
+                    title: "아카이브",
+                    link: "/publish/archive"
                 }
             ]
         },
