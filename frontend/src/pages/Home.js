@@ -104,7 +104,7 @@ export default function Home() {
                                 </div>
                                 <div className="menu-cell">
                                     <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/publish/archive")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <ArchiveIcon className="menu-icon" color="primary"></ArchiveIcon>
                                                 <Typography gutterBottom variant="subtitle2">아카이브</Typography>

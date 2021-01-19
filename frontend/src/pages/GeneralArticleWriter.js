@@ -204,6 +204,18 @@ function GeneralArticleWriter(props) {
     return (
         <ContentHeader primary={primary} secondary={secondary}>
             <Prompt when={routeToMove === undefined} message="아직 작성중인 게시글을 저장하지 않았습니다. 정말 나가시겠습니까?"></Prompt>
+
+            <div className="writer-props">
+                <TextField className="writer-title" id="title" label="게시글 제목" required rows={1} rowsMax={10} onChange={onTitleChange} value={title}></TextField>
+
+                <FormControlLabel
+                    value="start"
+                    control={<Switch color="primary" checked={isPublic} onChange={onPublicChange} />}
+                    label="공개로 설정"
+                    labelPlacement="start"
+                />
+            </div>
+
             <Editor
                 wrapperClassName="writer-wrapper"
                 editorClassName="writer-editor"
@@ -225,17 +237,6 @@ function GeneralArticleWriter(props) {
                 }}
             >
             </Editor>
-
-            <div className="writer-props">
-                <TextField className="writer-title" id="title" label="게시글 제목" required rows={1} rowsMax={10} onChange={onTitleChange} value={title}></TextField>
-
-                <FormControlLabel
-                    value="start"
-                    control={<Switch color="primary" checked={isPublic} onChange={onPublicChange} />}
-                    label="공개로 설정"
-                    labelPlacement="start"
-                />
-            </div>
 
             <div className="writer-uploading">
                 {
