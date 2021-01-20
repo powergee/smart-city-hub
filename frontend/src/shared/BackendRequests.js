@@ -1,5 +1,4 @@
 import axios from "axios"
-import fileSave from "file-saver"
 import * as crypto from 'crypto';
 
 export async function getSalt(id) {
@@ -160,7 +159,7 @@ export async function downloadFile(fileId) {
         const right = cd.indexOf("\"", left+1);
         const filename = cd.substring(left+1, right);
 
-        fileSave(new Blob([res.data]), filename);
+        alert("업데이트 작업이 진행중입니다...")
     } catch (err) {
         console.error("In downloadFile: " + err.response.data);
         throw err?.response?.status;
