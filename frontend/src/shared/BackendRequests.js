@@ -159,7 +159,19 @@ export async function downloadFile(fileId) {
         const right = cd.indexOf("\"", left+1);
         const filename = cd.substring(left+1, right);
 
-        alert("업데이트 작업이 진행중입니다...")
+        let blob = new Blob([res.data]);
+
+        if (window.navigator.msSaveBlob) {
+            window.navigator.msSaveBlob(blob, filename);
+        } else {
+            const url = window.URL.createObjectURL(new Blob([res.data]));
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute("download", filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
     } catch (err) {
         console.error("In downloadFile: " + err.response.data);
         throw err?.response?.status;
