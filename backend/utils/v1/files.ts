@@ -13,7 +13,9 @@ import validateToken from "./validateAuth";
 const router = new Router();
 
 const koaBodyConfig = {
-    formLimit: '1mb',
+    formLimit: "10mb",
+    jsonLimit: "10mb",
+    textLimit: "10mb",
     multipart: true,
     formidable: {
         maxFileSize: 200 * 1024 * 1024, // 최대 200MB 까지 허용
