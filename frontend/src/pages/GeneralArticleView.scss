@@ -11,11 +11,18 @@
 .article-props {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 
     & > div:last-child {
         border-right: none;
     }
+}
+
+.article-edit {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
 }
 
 .article-prop-pair {

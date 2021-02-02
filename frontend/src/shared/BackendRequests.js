@@ -10,7 +10,7 @@ export async function getSalt(id) {
         let res = await axios.get("/v1/salt", { params: query, withCredentials: true });
         return res.data.userPwSalt;
     } catch (err) {
-        console.error("In getSalt: " + err.response.data);
+        console.error("In getSalt: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -26,7 +26,7 @@ export async function getArticles(kind, page, perPage) {
         let res = await axios.get("/v1/articles", { params: query, withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In getArticles: " + err.response.data);
+        console.error("In getArticles: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -40,7 +40,7 @@ export async function countArticles(kind) {
         let res = await axios.get("/v1/articles/count", { params: query, withCredentials: true });
         return res.data.articleCount;
     } catch (err) {
-        console.error("In countArticles: " + err.response.data);
+        console.error("In countArticles: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -64,7 +64,7 @@ export async function tryLogin(id, pw) {
         let res = await axios.post("/v1/login", reqBody, { withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In tryLogin: " + err.response.data);
+        console.error("In tryLogin: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -85,7 +85,7 @@ export async function tryRegister(id, pw, name) {
         let res = await axios.post("/v1/register", reqBody, { withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In tryRegister: " + err.response.data);
+        console.error("In tryRegister: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -95,7 +95,7 @@ export async function tryLogout() {
         let res = await axios.post("/v1/logout", {}, { withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In tryLogin: " + err.response.data);
+        console.error("In tryLogin: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -105,7 +105,7 @@ export async function getArticle(articleId) {
         let res = await axios.get("/v1/articles/" + articleId, { withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In getArticle: " + err.response.data);
+        console.error("In getArticle: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -115,7 +115,16 @@ export async function postArticle(article) {
         let res = await axios.post("/v1/articles/", article, { withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In postArticle: " + err.response.data);
+        console.error("In postArticle: " + err?.response?.data);
+        throw err?.response?.status;
+    }
+}
+
+export async function deleteArticle(articleId) {
+    try {
+        let res = await axios.delete("/v1/articles/" + articleId, { withCredentials: true });
+    } catch (err) {
+        console.error("In postArticle: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -131,7 +140,7 @@ export async function uploadFile(file) {
         });
         return res.data;
     } catch (err) {
-        console.error("In uploadFile: " + err.response.data);
+        console.error("In uploadFile: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -141,7 +150,7 @@ export async function getFileInfo(fileId) {
         let res = await axios.get("/v1/files/info/" + fileId, { withCredentials: true });
         return res.data;
     } catch (err) {
-        console.error("In getFileInfo: " + err.response.data);
+        console.error("In getFileInfo: " + err?.response?.data);
         throw err?.response?.status;
     }
 }
@@ -173,7 +182,7 @@ export async function downloadFile(fileId) {
             document.body.removeChild(link);
         }
     } catch (err) {
-        console.error("In downloadFile: " + err.response.data);
+        console.error("In downloadFile: " + err?.response?.data);
         throw err?.response?.status;
     }
 }

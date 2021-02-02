@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { ContentHeader } from "../components"
-import { getArticle, getFileInfo, downloadFile } from "../shared/BackendRequests";
+import { getArticle, getFileInfo, downloadFile, deleteArticle as deleteArticleFromBack } from "../shared/BackendRequests";
 import { useHistory } from "react-router-dom";
+import { withCookies } from "react-cookie";
 import LockIcon from '@material-ui/icons/Lock';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Button } from '@material-ui/core';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import "./GeneralArticleView.scss"
 import { dateToString } from '../shared/DateToString';
+import getToken from "../shared/GetToken";
 
-export default function GeneralArticleView(props) {
+function GeneralArticleView(props) {
     const { superTitle, title, listLink } = props;
     const articleId = props.match.params.articleId;
     
@@ -66,6 +70,17 @@ export default function GeneralArticleView(props) {
         downloadFile(fileId);
     }
 
+    function editArticle() {
+        history.push(listLink + "/writer/" + article.articleId);
+    }
+
+    function deleteArticle() {
+        if (window.confirm("이 게시글을 정말 삭제하시겠습니까? (제목: " + article.title + ")")) {
+            deleteArticleFromBack(articleId)
+            history.push(listLink)
+        }
+    }
+
     return (
         <ContentHeader primary={primary} secondary={secondary}>
             {article === undefined ? (
@@ -119,8 +134,30 @@ export default function GeneralArticleView(props) {
                                 ))
                             }
                         </div>
+
+                        {
+                            getToken(props.cookies) &&
+                            <div className="article-edit">
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    className="list-create"
+                                    startIcon={<CreateIcon />}
+                                    onClick={editArticle}
+                                >이 게시글 수정하기</Button>
+                                <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    className="list-create"
+                                    startIcon={<DeleteIcon />}
+                                    onClick={deleteArticle}
+                                >이 게시글 삭제하기</Button>
+                            </div>
+                        }
                     </React.Fragment>
                 )}
         </ContentHeader>
     )
 }
+
+export default withCookies(GeneralArticleView)

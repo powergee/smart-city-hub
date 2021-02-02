@@ -15,6 +15,8 @@ function IssuePaper() {
                     render={() => <GeneralArticleList superTitle="발간물" title="Issue Paper" link="/publish/issue-paper" kind="issue-paper"></GeneralArticleList>}></Route>
                 <Route exact path="/publish/issue-paper/writer"
                     render={() => <GeneralArticleWriter superTitle="발간물" pageTitle="Issue Paper" link="/publish/issue-paper" kind="issue-paper"></GeneralArticleWriter>}></Route>
+                <Route path="/publish/issue-paper/writer/:articleId"
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="발간물" pageTitle="Issue Paper" link="/publish/issue-paper" kind="issue-paper"></GeneralArticleWriter>}></Route>
                 <Route exact path="/publish/issue-paper/:articleId"
                     render={(props) => <GeneralArticleView {...props} superTitle="발간물" title="Issue Paper" listLink="/publish/issue-paper" kind="issue-paper"></GeneralArticleView>}></Route>
             </Switch>
@@ -30,6 +32,8 @@ function ArchSouthern() {
                     render={() => <GeneralArticleList superTitle="발간물" title="신남방 보고서" link="/publish/archive/southern" kind="archive-southern"></GeneralArticleList>}></Route>
                 <Route exact path="/publish/archive/southern/writer"
                     render={() => <GeneralArticleWriter superTitle="발간물" pageTitle="신남방 보고서" link="/publish/archive/southern" kind="archive-southern"></GeneralArticleWriter>}></Route>
+                <Route path="/publish/archive/southern/writer/:articleId"
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="발간물" pageTitle="신남방 보고서" link="/publish/archive/southern" kind="archive-southern"></GeneralArticleWriter>}></Route>
                 <Route exact path="/publish/archive/southern/:articleId"
                     render={(props) => <GeneralArticleView {...props} superTitle="발간물" title="신남방 보고서" listLink="/publish/archive/southern" kind="archive-southern"></GeneralArticleView>}></Route>
             </Switch>
@@ -45,6 +49,8 @@ function ArchSmartCity() {
                     render={() => <GeneralArticleList superTitle="발간물" title="스마트 시티 보고서" link="/publish/archive/smart" kind="archive-smart"></GeneralArticleList>}></Route>
                 <Route exact path="/publish/archive/smart/writer"
                     render={() => <GeneralArticleWriter superTitle="발간물" pageTitle="스마트 시티 보고서" link="/publish/archive/smart" kind="archive-smart"></GeneralArticleWriter>}></Route>
+                <Route path="/publish/archive/smart/writer/:articleId"
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="발간물" pageTitle="스마트 시티 보고서" link="/publish/archive/smart" kind="archive-smart"></GeneralArticleWriter>}></Route>
                 <Route exact path="/publish/archive/smart/:articleId"
                     render={(props) => <GeneralArticleView {...props} superTitle="발간물" title="스마트 시티 보고서" listLink="/publish/archive/smart" kind="archive-smart"></GeneralArticleView>}></Route>
             </Switch>
@@ -60,6 +66,8 @@ function ArchEtc() {
                     render={() => <GeneralArticleList superTitle="발간물" title="기타 보고서" link="/publish/archive/etc" kind="archive-etc"></GeneralArticleList>}></Route>
                 <Route exact path="/publish/archive/etc/writer"
                     render={() => <GeneralArticleWriter superTitle="발간물" pageTitle="기타 보고서" link="/publish/archive/etc" kind="archive-etc"></GeneralArticleWriter>}></Route>
+                <Route path="/publish/archive/etc/writer/:articleId"
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="발간물" pageTitle="기타 보고서" link="/publish/archive/etc" kind="archive-etc"></GeneralArticleWriter>}></Route>
                 <Route exact path="/publish/archive/etc/:articleId"
                     render={(props) => <GeneralArticleView {...props} superTitle="발간물" title="기타 보고서" listLink="/publish/archive/etc" kind="archive-etc"></GeneralArticleView>}></Route>
             </Switch>

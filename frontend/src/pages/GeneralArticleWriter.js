@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, ContentState } from 'draft-js';
 import draftToHtml from "draftjs-to-html"
+import htmlToDraft from "html-to-draftjs"
 import { ContentHeader } from '../components';
 import getToken from "../shared/GetToken";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -13,7 +14,7 @@ import { withCookies } from "react-cookie";
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./GeneralArticleWriter.scss";
 import { Prompt, useHistory } from 'react-router-dom';
-import { uploadFile, postArticle } from "../shared/BackendRequests";
+import { uploadFile, postArticle, getArticle } from "../shared/BackendRequests";
 import packageJson from "../../package.json";
 
 // Editor에서 이미지를 첨부한 뒤 한국어를 입력하면 "Unknown DraftEntity key: null." 에러가 발생하는 버그 존재.
@@ -73,16 +74,18 @@ function ImgEntityTransform(entity) {
 
 function GeneralArticleWriter(props) {
     const { superTitle, pageTitle, link, kind } = props;
+    const articleId = props?.match?.params?.articleId;
+
     const history = useHistory();
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [selectedFiles, setSelectedFiles] = useState([]);
+    const [uploadedFiles, setUploadedFiles] = useState([]);
     const [uploadedImages, setUploadedImages] = useState([]);
     const [title, setTitle] = useState("");
     const [isPublic, setIsPublic] = useState(true);
     const [saveButtonText, setSaveButtonText] = useState("저장하기");
     const [saveButtonColor, setSaveButtonColor] = useState("primary");
     const [routeToMove, setRouteToMove] = useState(undefined);
-    const [uploadImages, setUploadImages] = useState([]);
 
     const primary = {
         title: superTitle,
@@ -97,8 +100,28 @@ function GeneralArticleWriter(props) {
     useEffect(() => {
         const token = getToken(props.cookies);
         if (!token || !token.isManager) {
-            alert("새 글을 작성할 권한이 없습니다. 관리자 계정으로 로그인해주세요.");
+            alert("글을 작성할 권한이 없습니다. 관리자 계정으로 로그인해주세요.");
             history.push(link);
+        }
+
+        if (articleId) {
+            getArticle(articleId)
+                .then((article) => {
+                    // 게시글 내용 설정
+                    let contentBlock = htmlToDraft(article.contents)
+                    let contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
+                    let editorState = EditorState.createWithContent(contentState)
+                    setEditorState(editorState)
+
+                    setUploadedFiles(article.files)
+                    setUploadedImages(article.images)
+                    setTitle(article.title)
+                    setIsPublic(article.isPublic)
+                })
+                .catch(() => {
+                    alert("글을 가져올 수 없었습니다. 정상적인 경로로 접근했는지 확인해주세요.");
+                    history.push(link);
+                })
         }
     }, []);
 
@@ -163,14 +186,21 @@ function GeneralArticleWriter(props) {
 
             const htmlSrc = draftToHtml(convertToRaw(editorState.getCurrentContent()), null, null, ImgEntityTransform);
 
-            const article = {
+            console.log(uploadedFiles.concat(fileIds.map(element => Number(element))))
+            console.log(uploadedImages)
+            let article = {
                 title: title,
                 contents: htmlSrc,
                 images: uploadedImages,
-                files: fileIds.map(element => Number(element)),
+                files: uploadedFiles.concat(fileIds.map(element => Number(element))),
                 kind: kind,
                 isPublic: isPublic
             };
+
+            // 이미 생성된 글을 수정하는 것이라면,
+            if (articleId) {
+                article.articleId = articleId;
+            }
 
             const uploaded = await postArticle(article);
             setRouteToMove(link + "/" + uploaded.articleId);
@@ -187,13 +217,8 @@ function GeneralArticleWriter(props) {
 
             let newImages = [...uploadedImages];
 
-            const imageObject = {
-                file: file,
-                localSrc: URL.createObjectURL(file),
-            };
-
-            newImages.push(imageObject);
-            setUploadImages(newImages);
+            newImages.push(fileId);
+            setUploadedImages(newImages);
 
             return { data: { link: packageJson.proxy + "/v1/files/media/" + fileId } };
         } catch {
