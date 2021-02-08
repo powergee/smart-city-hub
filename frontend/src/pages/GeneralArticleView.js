@@ -126,7 +126,7 @@ function GeneralArticleView(props) {
                             {
                                 files.map(element => (
                                     <div>
-                                        <strong>{element.originalName}</strong>
+                                        <strong>첨부파일: {element.originalName}</strong>
                                         <IconButton size="small" onClick={getFileDownloader(element.fileId)}>
                                             <SaveAltIcon fontSize="inherit"></SaveAltIcon>
                                         </IconButton>
