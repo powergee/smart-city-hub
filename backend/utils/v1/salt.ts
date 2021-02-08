@@ -24,7 +24,6 @@ router.get("/", async (ctx: Koa.Context) => {
         userPwSalt: user.userPwSalt
     };
 
-    console.log(res);
     ctx.response.body = res;
 });
 

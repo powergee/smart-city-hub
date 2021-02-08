@@ -20,8 +20,6 @@ router.post("/", async (ctx: Koa.Context) => {
     }
 
     const user = await UserModel.findOne({ userId: body.userId }).exec();
-    console.log(user.userPwHash)
-    console.log(body.userPwHash)
     if (user === null || user.userPwHash !== body.userPwHash) {
         ctx.throw(401, "userId or userPwHash is incorrect.");
     }
