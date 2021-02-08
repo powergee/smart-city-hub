@@ -37,7 +37,7 @@ router.post("/", async (ctx: Koa.Context) => {
         isManager: user.isManager
     }
 
-    const accessToken = jwt.sign(res, env.accessTokenKey, { expiresIn: '1h' });
+    const accessToken = jwt.sign(res, env.accessTokenKey, { expiresIn: '3h' });
     ctx.cookies.set("access_token", accessToken, { httpOnly: false });
 
     ctx.response.body = res;
