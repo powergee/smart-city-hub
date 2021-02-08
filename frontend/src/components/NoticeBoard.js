@@ -59,7 +59,6 @@ export default function NoticeBoard() {
         <Paper className="board-paper">
             <div className="board-header">
                 <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
-                <Button onClick={getButtonHandler("events")} color={(selected === "events" ? "primary" : "default")} size="large">학술행사</Button>
                 <Button onClick={getButtonHandler("smart-news")} color={(selected === "smart-news" ? "primary" : "default")} size="large">스마트 뉴스</Button>
             </div>
             <div className="board-contents">

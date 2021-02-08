@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NoticeBoard, CardBoard } from '../components'
 import { Slide } from 'react-slideshow-image';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
-import BusinessIcon from '@material-ui/icons/Business';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import BookIcon from '@material-ui/icons/Book';
@@ -71,10 +71,10 @@ export default function Home() {
                                 </div>
                                 <div className="menu-cell">
                                     <Paper className="menu-paper">
-                                        <ButtonBase className="menu-button" onClick={getRedirector("/news/events")}>
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/publish/issue-paper")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
-                                                <BusinessIcon className="menu-icon" color="primary"></BusinessIcon>
-                                                <Typography gutterBottom variant="subtitle2">학술행사</Typography>
+                                                <AssessmentIcon className="menu-icon" color="primary"></AssessmentIcon>
+                                                <Typography gutterBottom variant="subtitle2">Issue Paper</Typography>
                                             </Grid>
                                         </ButtonBase>
                                     </Paper>

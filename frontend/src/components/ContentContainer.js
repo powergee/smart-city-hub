@@ -102,10 +102,6 @@ export default function ContentContainer(props) {
                     link: "/news/notices"
                 },
                 {
-                    title: "학술행사",
-                    link: "/news/events"
-                },
-                {
                     title: "스마트뉴스",
                     link: "/news/smart-news"
                 }

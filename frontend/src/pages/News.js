@@ -22,23 +22,6 @@ function Notices() {
     )
 }
 
-function Events() {
-    return (
-        <ContentContainer currentPath={"/news/events"}>
-            <Switch>
-                <Route exact path="/news/events"
-                    render={() => <GeneralArticleList superTitle="소식" title="학술행사" link="/news/events" kind="events"></GeneralArticleList>}></Route>
-                <Route exact path="/news/events/writer"
-                    render={() => <GeneralArticleWriter superTitle="소식" pageTitle="학술행사" link="/news/events" kind="events"></GeneralArticleWriter>}></Route>
-                <Route path="/news/events/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="소식" pageTitle="학술행사" link="/news/events" kind="events"></GeneralArticleWriter>}></Route>
-                <Route exact path="/news/events/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="소식" title="학술행사" listLink="/news/events" kind="events"></GeneralArticleView>}></Route>
-            </Switch>
-        </ContentContainer>
-    )
-}
-
 function SmartNews() {
     return (
         <ContentContainer currentPath={"/news/smart-news"}>
@@ -60,7 +43,6 @@ export default function News() {
     return (
         <Switch>
             <Route path="/news/notices" component={Notices}></Route>
-            <Route path="/news/events" component={Events}></Route>
             <Route path="/news/smart-news" component={SmartNews}></Route>
         </Switch>
     )
