@@ -31,14 +31,22 @@ export default function Home() {
     return (
         <React.Fragment>
             <Slide easing="ease" className="slide-container">
-                <div className="each-slide">
+                <div className="campus-slide">
                     <div style={{ 'backgroundImage': `url(${slide1})` }}>
-                        <span>Global Urban &#38; Infrastructure Research Center</span>
+                        <div className="white-filter">
+                            <span style={{ 'color': `#282e39` }}>
+                                Global Urban &#38; Infrastructure Research Center
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div className="each-slide">
+                <div className="campus-slide">
                     <div style={{ 'backgroundImage': `url(${slide1})` }}>
-                        <span>Global Urban &#38; Infrastructure Research Center</span>
+                        <div className="white-filter">
+                            <span style={{ 'color': `#282e39` }}>
+                                Global Urban &#38; Infrastructure Research Center
+                            </span>
+                        </div>
                     </div>
                 </div>
             </Slide>
