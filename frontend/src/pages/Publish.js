@@ -1,6 +1,6 @@
 import { ButtonBase, Paper } from '@material-ui/core';
 import React from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { ContentContainer, ContentHeader } from "../components"
 import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
@@ -75,56 +75,12 @@ function ArchEtc() {
     )
 }
 
-function ArchiveMenu() {
-    const history = useHistory();
-    
-    const primary = {
-        title: "발간물",
-        link: "/publish"
-    };
-
-    const secondary = {
-        title: "아카이브",
-        link: "/publish/archive"
-    };
-
-    function getLinkHandler(url) {
-        return () => {
-            history.push(url);
-        }
-    }
-
-    return (
-        <ContentContainer currentPath={"/publish/archive"}>
-            <ContentHeader primary={primary} secondary={secondary}>
-                <ButtonBase className="arch-menu" onClick={getLinkHandler("/publish/archive/southern")}>
-                    <Paper className="arch-menu-paper">
-                        <h2>신남방 보고서</h2>
-                    </Paper>
-                </ButtonBase>
-
-                <ButtonBase className="arch-menu" onClick={getLinkHandler("/publish/archive/smart")}>
-                    <Paper className="arch-menu-paper">
-                        <h2>스마트 시티 보고서</h2>
-                    </Paper>
-                </ButtonBase>
-
-                <ButtonBase className="arch-menu" onClick={getLinkHandler("/publish/archive/etc")}>
-                    <Paper className="arch-menu-paper">
-                        <h2>기타 보고서</h2>
-                    </Paper>
-                </ButtonBase>
-            </ContentHeader>
-        </ContentContainer>
-    )
-}
-
 export default function Publish() {
     return (
         <Switch>
             <Route path="/publish/issue-paper" component={IssuePaper}></Route>
 
-            <Route exact path="/publish/archive" component={ArchiveMenu}></Route>
+            <Route exact path="/publish/archive" render={() => <Redirect to="/publish/archive/southern"/>}></Route>
             <Route path="/publish/archive/southern" component={ArchSouthern}></Route>
             <Route path="/publish/archive/smart" component={ArchSmartCity}></Route>
             <Route path="/publish/archive/etc" component={ArchEtc}></Route>
