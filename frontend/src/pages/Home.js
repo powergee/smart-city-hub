@@ -34,7 +34,7 @@ export default function Home() {
                 <div className="campus-slide">
                     <div style={{ 'backgroundImage': `url(${slide1})` }}>
                         <div className="white-filter">
-                            <span style={{ 'color': `#282e39` }}>
+                            <span style={{ 'color': `#ffffff` }}>
                                 Global Urban &#38; Infrastructure Research Center
                             </span>
                         </div>
@@ -43,7 +43,7 @@ export default function Home() {
                 <div className="campus-slide">
                     <div style={{ 'backgroundImage': `url(${slide1})` }}>
                         <div className="white-filter">
-                            <span style={{ 'color': `#282e39` }}>
+                            <span style={{ 'color': `#ffffff` }}>
                                 Global Urban &#38; Infrastructure Research Center
                             </span>
                         </div>
