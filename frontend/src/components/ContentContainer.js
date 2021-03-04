@@ -6,7 +6,7 @@ import "./ContentContainer.scss";
 import { useHistory } from 'react-router-dom';
 
 function NavigatorRow(props) {
-    const { defaultOpen, title, subPath } = props;
+    const { defaultOpen, title, subPath, link, depth } = props;
     const [open, setOpen] = useState(defaultOpen);
     const history = useHistory();
 
@@ -15,54 +15,35 @@ function NavigatorRow(props) {
     }
 
     return (
-        <React.Fragment>
-            <ButtonBase className="nav-row-root-button" onClick={() => setOpen(!open)}>
-                <div className="nav-row-root-box">
-                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                    <h3>{title}</h3>
-                </div>
+        subPath ? (
+            <React.Fragment>
+                <ButtonBase className="nav-row-root-button" onClick={() => setOpen(!open)}>
+                    <div className="nav-row-root-box">
+                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                        <h3>{title}</h3>
+                    </div>
+                </ButtonBase>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <div className="nav-row-sub-list">
+                        {subPath.map(element => (
+                            <NavigatorRow {...element} depth={depth+1}></NavigatorRow>
+                        ))}
+                    </div>
+                </Collapse>
+            </React.Fragment>
+        ) : (
+            <ButtonBase className="nav-row-sub-button" onClick={getRedirector(link)}>
+                <h4>{title}</h4>
             </ButtonBase>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-                <div className="nav-row-sub-list">
-                    {subPath.map(element => (
-                        <ButtonBase className="nav-row-sub-button" onClick={getRedirector(element.link)}>
-                            <h4>{element.title}</h4>
-                        </ButtonBase>
-                    ))}
-                </div>
-            </Collapse>
-        </React.Fragment>
+        )
     )
 }
 
 export default function ContentContainer(props) {
     const { children, currentPath } = props;
-    const [inArchive, setInArchive] = useState(false);
-    const [archivePaths, setArchivePaths] = useState([]);
     const [paths, setPaths] = useState([]);
 
     useEffect(() => {
-        let defaultArchPaths = [
-            {
-                defaultOpen: false,
-                title: "아카이브",
-                subPath: [
-                    {
-                        title: "신남방 보고서",
-                        link: "/publish/archive/southern"
-                    },
-                    {
-                        title: "스마트 시티 보고서",
-                        link: "/publish/archive/smart"
-                    },
-                    {
-                        title: "기타 보고서",
-                        link: "/publish/archive/etc"
-                    }
-                ]
-            }
-        ]
-    
         let defaultPaths = [
             {
                 defaultOpen: false,
@@ -114,7 +95,13 @@ export default function ContentContainer(props) {
                     },
                     {
                         title: "아카이브",
-                        link: "/publish/archive"
+                        defaultOpen: false,
+                        subPath: [
+                            {
+                                title: "신남방 보고서",
+                                link: "/publish/archive/southern"
+                            }
+                        ]
                     }
                 ]
             },
@@ -151,54 +138,44 @@ export default function ContentContainer(props) {
                 ]
             }
         ];
-    
-        if (currentPath) {
-            for (let i = 0; i < defaultPaths.length; ++i) {
-                let found = false;
-                defaultPaths[i].subPath.forEach(sp => {
-                    let shortLength = Math.min(sp.link.length, currentPath.length)
-                    if (sp.link.substring(0, shortLength) === currentPath.substring(0, shortLength)) {
-                        found = true;
-                    }
-                });
-                if (found) {
-                    defaultPaths[i].defaultOpen = true;
-                }
-            }
-        }
-    
-        if (currentPath) {
-            for (let i = 0; i < defaultArchPaths.length; ++i) {
-                let found = false;
-                defaultArchPaths[i].subPath.forEach(sp => {
-                    let shortLength = Math.min(sp.link.length, currentPath.length)
-                    if (sp.link.substring(0, shortLength) === currentPath.substring(0, shortLength)) {
-                        found = true;
-                    }
-                });
-                if (found) {
-                    defaultArchPaths[i].defaultOpen = true;
-                    setInArchive(true);
-                }
-            }
-        }
 
+        // DFS에 기초함
+        function openPaths(paths) {
+            let foundOne = false;
+
+            for (let i = 0; i < paths.length; ++i) {
+                let found = false;
+                if (paths[i].hasOwnProperty("link")) {
+                    console.log(paths[i].link)
+                    let shortLength = Math.min(paths[i].link.length, currentPath.length)
+                    if (paths[i].link.substring(0, shortLength) === currentPath.substring(0, shortLength)) {
+                        found = true;
+                    }
+                }
+                if (paths[i].hasOwnProperty("subPath")) {
+                    found = found || openPaths(paths[i].subPath);
+                }
+                if (paths[i].hasOwnProperty("defaultOpen")) {
+                    paths[i].defaultOpen = found;
+                }
+
+                foundOne = foundOne || found;
+            }
+
+            return foundOne;
+        }
+    
+        openPaths(defaultPaths);
+        console.log(defaultPaths);
         setPaths(defaultPaths);
-        setArchivePaths(defaultArchPaths);
     }, []);
 
     return (
         <div className="content-background">
             <div className="content-root">
                 <div className="content-left">
-                    {inArchive ? (
-                        <Paper className="content-navi">
-                            {archivePaths.map(element => <NavigatorRow {...element}></NavigatorRow>)}
-                        </Paper>
-                    ) : (undefined)}
-
                     <Paper className="content-navi">
-                        {paths.map(element => <NavigatorRow {...element}></NavigatorRow>)}
+                        {paths.map(element => <NavigatorRow {...element} depth={0}></NavigatorRow>)}
                     </Paper>
                 </div>
                 <div className="content-right">
