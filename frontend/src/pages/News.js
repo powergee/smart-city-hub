@@ -10,13 +10,29 @@ function Notices() {
         <ContentContainer currentPath={"/news/notices"}>
             <Switch>
                 <Route exact path="/news/notices"
-                    render={() => <GeneralArticleList superTitle="소식" title="공지사항" link="/news/notices" kind="notices"></GeneralArticleList>}></Route>
+                    render={() => 
+                        <GeneralArticleList
+                            superTitle="소식"
+                            superCaption="지역연구 관련 정보제공"
+                            title="공지사항"
+                            link="/news/notices"
+                            kind="notices"
+                        />}>
+                </Route>
                 <Route exact path="/news/notices/writer"
-                    render={() => <GeneralArticleWriter superTitle="소식" pageTitle="공지사항" link="/news/notices" kind="notices"></GeneralArticleWriter>}></Route>
+                    render={() => 
+                        <GeneralArticleWriter
+                            superTitle="소식"
+                            superCaption="지역연구 관련 정보제공"
+                            pageTitle="공지사항"
+                            link="/news/notices"
+                            kind="notices"
+                        />}>
+                </Route>
                 <Route path="/news/notices/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="소식" pageTitle="공지사항" link="/news/notices" kind="notices"></GeneralArticleWriter>}></Route>
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="소식" superCaption="지역연구 관련 정보제공" pageTitle="공지사항" link="/news/notices" kind="notices"></GeneralArticleWriter>}></Route>
                 <Route exact path="/news/notices/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="소식" title="공지사항" listLink="/news/notices" kind="notices"></GeneralArticleView>}></Route>
+                    render={(props) => <GeneralArticleView {...props} superTitle="소식" superCaption="지역연구 관련 정보제공" title="공지사항" listLink="/news/notices" kind="notices"></GeneralArticleView>}></Route>
             </Switch>
         </ContentContainer>
     )

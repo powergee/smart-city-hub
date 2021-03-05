@@ -8,19 +8,20 @@ import goalDoc from "../docs/설립 배경 및 목적.md"
 import "./Introduction.scss"
 
 function Greeting() {
-    const primary = {
-        title: "센터소개",
-        link: "/introduction"
-    };
-
-    const secondary = {
-        title: "인사말",
-        link: "/introduction/greeting"
-    };
+    const sections = [
+        {
+            title: "센터소개",
+            link: "/introduction"
+        },
+        {
+            title: "인사말",
+            link: "/introduction/greeting"
+        }
+    ];
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 <div className="introduction-contents">
                     <h3>국제도시 및 인프라 연구센터는 4차 산업혁명시대에 도시, 교통, 환경, 재난 등 사람을 위한 연구를 추진하고 있습니다.</h3>
 
@@ -42,15 +43,16 @@ function Greeting() {
 function Goal() {
     const [source, setSource] = useState("");
 
-    const primary = {
-        title: "센터소개",
-        link: "/introduction"
-    };
-
-    const secondary = {
-        title: "설립배경 및 목적",
-        link: "/introduction/goal"
-    };
+    const sections = [
+        {
+            title: "센터소개",
+            link: "/introduction"
+        },
+        {
+            title: "설립배경 및 목적",
+            link: "/introduction/goal"
+        }
+    ];
 
     useEffect(() => {
         fetch(goalDoc)
@@ -59,8 +61,8 @@ function Goal() {
     }, []);
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 <MarkdownViewer source={source}></MarkdownViewer>
             </ContentHeader>
         </ContentContainer>
@@ -68,21 +70,22 @@ function Goal() {
 }
 
 function Researchers() {
-    const primary = {
-        title: "센터소개",
-        link: "/introduction"
-    };
-
-    const secondary = {
-        title: "연구진",
-        link: "/introduction/researchers"
-    };
+    const sections = [
+        {
+            title: "센터소개",
+            link: "/introduction"
+        },
+        {
+            title: "연구진",
+            link: "/introduction/researchers"
+        }
+    ];
 
     const resInfo = getResearchers();
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 {
                     resInfo.map((res) => (
                         <Paper elevation={3} className="researchers-paper">

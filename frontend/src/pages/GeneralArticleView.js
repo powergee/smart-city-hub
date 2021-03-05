@@ -13,22 +13,25 @@ import { dateToString } from '../shared/DateToString';
 import getToken from "../shared/GetToken";
 
 function GeneralArticleView(props) {
-    const { superTitle, title, listLink } = props;
+    const { superTitle, title, superCaption, caption, listLink } = props;
     const articleId = props.match.params.articleId;
     
     const [article, setArticle] = useState(undefined);
     const [files, setFiles] = useState([]);
     const history = useHistory();
 
-    const primary = {
-        title: superTitle,
-        link: listLink
-    };
-
-    const secondary = {
-        title: title,
-        link: listLink + "/" + articleId
-    };
+    const sections = [
+        {
+            title: superTitle,
+            link: listLink,
+            caption: superCaption
+        },
+        {
+            title: title,
+            link: listLink + "/" + articleId,
+            caption: caption
+        }
+    ];
 
     useEffect(() => {
         getArticle(articleId)
@@ -82,7 +85,7 @@ function GeneralArticleView(props) {
     }
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
+        <ContentHeader sections={sections}>
             {article === undefined ? (
                 <h2 className="article-fetching">게시글을 가져오는 중입니다..!</h2>
             ) : (

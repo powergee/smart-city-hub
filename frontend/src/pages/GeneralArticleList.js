@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 import "./GeneralArticleList.scss"
 
 function GeneralArticleList(props) {
-    const { superTitle, title, link, kind } = props;
+    const { superTitle, title, superCaption, caption, link, kind } = props;
 
     const [page, setPage] = useState(undefined);
     const [total, setTotal] = useState(undefined);
@@ -18,15 +18,18 @@ function GeneralArticleList(props) {
     const [articles, setArticles] = useState(undefined);
     const history = useHistory();
 
-    const primary = {
-        title: superTitle,
-        link: link
-    };
-
-    const secondary = {
-        title: title,
-        link: link
-    };
+    const sections = [
+        {
+            title: superTitle,
+            link: link,
+            caption: superCaption
+        },
+        {
+            title: title,
+            link: link,
+            caption: caption
+        }
+    ];
 
     useEffect(() => {
         if (total !== undefined) {
@@ -71,7 +74,7 @@ function GeneralArticleList(props) {
     }
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
+        <ContentHeader sections={sections}>
             {articles === undefined ? (
                 <h2 className="list-fetching">게시글을 가져오는 중입니다..!</h2>
             ) : (

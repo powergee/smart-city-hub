@@ -3,6 +3,7 @@ import "./ContentHeader.scss";
 import { useHistory } from "react-router-dom";
 
 export default function ContentHeader(props) {
+    const { sections } = props;
     const history = useHistory();
 
     function getLinkHandler(url) {
@@ -14,16 +15,24 @@ export default function ContentHeader(props) {
     return (
         <div className="header-root">
             <div className="header-primary">
-                <h1>{props.primary.title}</h1>
+                <h1>{sections[0].title}</h1>
+                {sections[0].caption && (
+                    <h3>{" (" + sections[0].caption + ")"}</h3>
+                )}
             </div>
             <div className="header-secondary">
-                <h3>{props.secondary.title}</h3>
-                <div>
+                <div className="header-left">
+                    <h3>{sections[1].title}</h3>
+                    {sections[1].caption && (
+                        <h3 className="thin">{" (" + sections[1].caption + ")"}</h3>
+                    )}
+                </div>
+                <div className="header-right">
                     <a href onClick={getLinkHandler("/")}>홈</a>
                     <caption>{" > "}</caption>
-                    <a href onClick={getLinkHandler(props.primary.link)}>{props.primary.title}</a>
+                    <a href onClick={getLinkHandler(sections[0].link)}>{sections[0].title}</a>
                     <caption>{" > "}</caption>
-                    <a href onClick={getLinkHandler(props.secondary.link)}>{props.secondary.title}</a>
+                    <a href onClick={getLinkHandler(sections[1].link)}>{sections[1].title}</a>
                 </div>
             </div>
 

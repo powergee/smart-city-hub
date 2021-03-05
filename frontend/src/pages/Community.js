@@ -10,13 +10,13 @@ function Seminar() {
         <ContentContainer currentPath={"/community/seminar"}>
             <Switch>
                 <Route exact path="/community/seminar"
-                    render={() => <GeneralArticleList superTitle="커뮤니티" title="세미나" link="/community/seminar" kind="seminar"></GeneralArticleList>}></Route>
+                    render={() => <GeneralArticleList superTitle="커뮤니티" superCaption="정부·민간기업 등 대상 설명회" title="세미나" link="/community/seminar" kind="seminar"></GeneralArticleList>}></Route>
                 <Route exact path="/community/seminar/writer"
-                    render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="세미나" link="/community/seminar" kind="seminar"></GeneralArticleWriter>}></Route>
+                    render={() => <GeneralArticleWriter superTitle="커뮤니티" superCaption="정부·민간기업 등 대상 설명회" pageTitle="세미나" link="/community/seminar" kind="seminar"></GeneralArticleWriter>}></Route>
                 <Route path="/community/seminar/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="커뮤니티" pageTitle="세미나" link="/community/seminar" kind="seminar"></GeneralArticleWriter>}></Route>
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="커뮤니티" superCaption="정부·민간기업 등 대상 설명회" pageTitle="세미나" link="/community/seminar" kind="seminar"></GeneralArticleWriter>}></Route>
                 <Route exact path="/community/seminar/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="세미나" listLink="/community/seminar" kind="seminar"></GeneralArticleView>}></Route>
+                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" superCaption="정부·민간기업 등 대상 설명회" title="세미나" listLink="/community/seminar" kind="seminar"></GeneralArticleView>}></Route>
             </Switch>
         </ContentContainer>
     )

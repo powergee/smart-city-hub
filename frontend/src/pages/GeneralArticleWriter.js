@@ -73,7 +73,7 @@ function ImgEntityTransform(entity) {
 }
 
 function GeneralArticleWriter(props) {
-    const { superTitle, pageTitle, link, kind } = props;
+    const { superTitle, superCation, pageTitle, pageCaption, link, kind } = props;
     const articleId = props?.match?.params?.articleId;
 
     const history = useHistory();
@@ -87,15 +87,18 @@ function GeneralArticleWriter(props) {
     const [saveButtonColor, setSaveButtonColor] = useState("primary");
     const [routeToMove, setRouteToMove] = useState(undefined);
 
-    const primary = {
-        title: superTitle,
-        link: link
-    };
-
-    const secondary = {
-        title: pageTitle,
-        link: link
-    };
+    const sections = [
+        {
+            title: superTitle,
+            link: link,
+            caption: superCation
+        },
+        {
+            title: pageTitle,
+            link: link,
+            caption: pageCaption
+        }
+    ];
 
     useEffect(() => {
         const token = getToken(props.cookies);
@@ -227,7 +230,7 @@ function GeneralArticleWriter(props) {
     }
 
     return (
-        <ContentHeader primary={primary} secondary={secondary}>
+        <ContentHeader sections={sections}>
             <Prompt when={routeToMove === undefined} message="아직 작성중인 게시글을 저장하지 않았습니다. 정말 나가시겠습니까?"></Prompt>
 
             <div className="writer-props">

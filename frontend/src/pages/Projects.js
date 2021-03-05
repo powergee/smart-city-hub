@@ -7,15 +7,16 @@ import smartDoc from "../docs/스마트재난안전관련사업 개요.md"
 
 // 총괄 연구 & 사업
 function Summary() {
-    const primary = {
-        title: "연구 & 사업",
-        link: "/projects"
-    };
-
-    const secondary = {
-        title: "총괄 연구 & 사업",
-        link: "/projects/summary"
-    };
+    const sections = [
+        {
+            title: "연구 & 사업",
+            link: "/projects"
+        },
+        {
+            title: "총괄 연구 & 사업",
+            link: "/projects/summary"
+        },
+    ];
 
     let rows = projList;
 
@@ -23,8 +24,8 @@ function Summary() {
         rows[i].no = rows.length - i;
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
                 <ProjectTable rows={rows}></ProjectTable>
             </ContentHeader>
@@ -36,15 +37,16 @@ function Summary() {
 function WithHumanism() {
     const [source, setSource] = useState("");
 
-    const primary = {
-        title: "연구 & 사업",
-        link: "/projects"
-    };
-
-    const secondary = {
-        title: "인문사회연구소",
-        link: "/projects/withhs"
-    };
+    const sections = [
+        {
+            title: "연구 & 사업",
+            link: "/projects"
+        },
+        {
+            title: "인문사회연구소",
+            link: "/projects/withhs"
+        }
+    ];
 
     useEffect(() => {
         fetch(humanDoc)
@@ -53,8 +55,8 @@ function WithHumanism() {
     }, []);
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 <MarkdownViewer source={source}></MarkdownViewer>
             </ContentHeader>
         </ContentContainer>
@@ -65,15 +67,16 @@ function WithHumanism() {
 function SmartDisasterPrep() {
     const [source, setSource] = useState("");
 
-    const primary = {
-        title: "연구 & 사업",
-        link: "/projects"
-    };
-
-    const secondary = {
-        title: "스마트재난안전",
-        link: "/projects/smtdstpre"
-    };
+    const sections = [
+        {
+            title: "연구 & 사업",
+            link: "/projects"
+        },
+        {
+            title: "스마트재난안전",
+            link: "/projects/smtdstpre"
+        }
+    ];
 
     useEffect(() => {
         fetch(smartDoc)
@@ -82,8 +85,8 @@ function SmartDisasterPrep() {
     }, []);
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 <MarkdownViewer source={source}></MarkdownViewer>
             </ContentHeader>
         </ContentContainer>
@@ -91,19 +94,20 @@ function SmartDisasterPrep() {
 }
 
 function EtcProjects() {
-    const primary = {
-        title: "연구 & 사업",
-        link: "/projects"
-    };
-
-    const secondary = {
-        title: "기타",
-        link: "/projects/etc"
-    };
+    const sections = [
+        {
+            title: "연구 & 사업",
+            link: "/projects"
+        },
+        {
+            title: "기타",
+            link: "/projects/etc"
+        }
+    ];
 
     return (
-        <ContentContainer currentPath={secondary.link}>
-            <ContentHeader primary={primary} secondary={secondary}>
+        <ContentContainer currentPath={sections[1].link}>
+            <ContentHeader sections={sections}>
                 <PreparingContents></PreparingContents>
             </ContentHeader>
         </ContentContainer>

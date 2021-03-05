@@ -9,10 +9,22 @@ $link-hover: #6a7da0;
 }
 
 .header-primary {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+
     h1 {
         margin-left: 10px;
         margin-bottom: 5px;
         color: $primary-color;
+    }
+
+    h3 {
+        margin-left: 10px;
+        margin-bottom: 9px;
+        color: $primary-color;
+        font-weight: 400;
+        align-self: flex-end;
     }
 }
 
@@ -22,15 +34,25 @@ $link-hover: #6a7da0;
     flex-direction: row;
     border-bottom: 1px solid $primary-color;
 
-    & > h3 {
-        margin-left: 10px;
-        margin-right: auto;
-        margin-top: 0;
-        margin-bottom: 5px;
+    & > .header-left {
+        display: flex;
+        flex-direction: row;
+
+        h3 {
+            margin-left: 10px;
+            margin-right: auto;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .thin {
+            font-weight: 300;
+        }
+
         color: $primary-color;
     }
 
-    & > div {
+    & > .header-right {
         margin-right: 10px;
         display: flex;
         flex-direction: row;
