@@ -13,10 +13,15 @@ $root-hover: #f1f1ff;
 .article-prev-left {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     h3 {
         margin: 10px;
         font-weight: 400;
+        width: 95%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
