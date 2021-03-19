@@ -1,0 +1,26 @@
+$sep-color: #404a5d41;
+$caption-color: rgba(0, 0, 0, 0.575);
+
+.hub-instruction {
+    display: flex;
+    flex-direction: row;
+
+    * {
+        flex-grow: 1;
+        flex-basis: 0;
+        text-align: center;
+        margin-top: 10px;
+        color: $caption-color;
+    }
+}
+
+.hub-cate-container {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid $sep-color;
+
+    button {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+}

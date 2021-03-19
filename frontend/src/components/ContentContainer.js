@@ -144,6 +144,10 @@ export default function ContentContainer(props) {
                         link: "/community/readings"
                     }
                 ]
+            },
+            {
+                title: "스마트도시수출 거점HUB",
+                link: "/hub"
             }
         ];
 
