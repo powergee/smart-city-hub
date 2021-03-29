@@ -92,9 +92,11 @@ function FirstCategoryViewer(props) {
 function SecondCategoryViewer(props) {
     const leftDefaultStyle = {
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
+        justifyContent: "center",
+        flexWrap: "wrap",
         alignItems: "center",
-        width: "75%",
+        width: "100%",
         marginRight: "5px",
         transition: ".25s all"
     };
@@ -129,6 +131,7 @@ function SecondCategoryViewer(props) {
     function getLeftStyle() {
         let style = Object.assign({}, leftDefaultStyle);
         if (thirdNode) {
+            style["flexDirection"] = "column";
             style["width"] = "25%";
         }
         return style;
@@ -161,7 +164,7 @@ function SecondCategoryViewer(props) {
                         <div ref={leftDiv} style={getLeftStyle()}> {
                             Object.keys(secondNode.next).map((value) => {
                                 return (
-                                    <Paper elevation={2} className="hub-sv-2nd-paper">
+                                    <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-first">
                                         <ButtonBase className="hub-sv-2nd-button" onClick={() => selectSecond(value)}>
                                             <Typography align="center" variant="h5">{value}</Typography>
                                         </ButtonBase>
@@ -174,9 +177,9 @@ function SecondCategoryViewer(props) {
                             thirdNode ? (
                                 Object.keys(thirdNode.next).map((value) => {
                                     return (
-                                        <Paper elevation={2} className="hub-sv-2nd-paper">
+                                        <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-second">
                                             <ButtonBase className="hub-sv-2nd-button" onClick={() => moveToList(value)}>
-                                                <Typography align="center" variant="h6">{value}</Typography>
+                                                <Typography noWrap={true} align="center" variant="h6">{value}</Typography>
                                             </ButtonBase>
                                         </Paper>
                                     )
