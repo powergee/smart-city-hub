@@ -30,10 +30,16 @@ function ContentHeader({ sections, showSecondary = true, children }) {
                         </div>
                         <div className="header-right">
                             <a href onClick={getLinkHandler("/")}>홈</a>
-                            <caption>{" > "}</caption>
-                            <a href onClick={getLinkHandler(sections[0].link)}>{sections[0].title}</a>
-                            <caption>{" > "}</caption>
-                            <a href onClick={getLinkHandler(sections[1].link)}>{sections[1].title}</a>
+                            {
+                                sections.map((s) => {
+                                    return (
+                                        <React.Fragment>
+                                            <caption>{" > "}</caption>
+                                            <a href onClick={getLinkHandler(s.link)}>{s.title}</a>
+                                        </React.Fragment>
+                                    )
+                                })
+                            }
                         </div>
                     </div>
                 ) : undefined}
