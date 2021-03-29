@@ -5,7 +5,7 @@ const fileName = "./hub-data.xlsx";
 const workbook = xlsx.readFile(fileName);
 
 const domestic = xlsx.utils.sheet_to_json(workbook.Sheets["국내"]);
-fs.writeFileSync("./domestic-raw.json", JSON.stringify(domestic, null, 4));
+fs.writeFileSync("./generated/domestic-raw.json", JSON.stringify(domestic, null, 4));
 
 const parsed = {};
 const firstCate = new Set();
@@ -20,6 +20,10 @@ domestic.forEach((record) => {
 parsed["firstCate"] = Array.from(firstCate);
 parsed["secondCate"] = Array.from(secondCate);
 parsed["thirdCate"] = Array.from(thirdCate);
+
+parsed["firstCate"].sort();
+parsed["secondCate"].sort();
+parsed["thirdCate"].sort();
 
 function addUniqueElements(array, values) {
     values.forEach(v => {
@@ -54,4 +58,4 @@ domestic.forEach((record) => {
     addNode(parsed["tree"], [record["대분류"], record["중분류"], record["소분류(키워드)"]], record);
 });
 
-fs.writeFileSync("./domestic-parsed.json", JSON.stringify(parsed, null, 4));
+fs.writeFileSync("./generated/domestic-parsed.json", JSON.stringify(parsed, null, 4));
