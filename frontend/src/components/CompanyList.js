@@ -74,7 +74,7 @@ const CollapsibleRow = (props) => {
                 <TableCell>{row.second}</TableCell>
                 <TableCell>{row.third}</TableCell>
                 <TableCell>
-                    <ButtonBase>
+                    <ButtonBase onClick={() => window.location = row.site}>
                         <th className="comp-name">{row.name}</th>
                     </ButtonBase>
                 </TableCell>
@@ -140,7 +140,8 @@ export default function CompanyList(props) {
                 kind: value["회사구분"],
                 service: value["서비스유형"].join(', '),
                 product: value["제품형태(최종제품)"].join(', '),
-                tech: value["보유기술"]
+                tech: value["보유기술"],
+                site: value["홈페이지"]
             }));
         }
     }

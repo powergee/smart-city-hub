@@ -3,6 +3,12 @@ $root-hover: #f1f1ff;
 .article-prev-root {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
+    & > p {
+        width: 30px;
+        text-align: center;
+    }
 }
 
 .article-prev-root:hover {

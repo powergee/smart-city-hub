@@ -109,6 +109,7 @@ function SecondCategoryViewer(props) {
         width: "0%",
         visibility: "hidden",
         marginLeft: "5px",
+        paddingRight: "5px",
         overflow: "hidden",
         transition: ".25s all"
     };
@@ -172,7 +173,7 @@ function SecondCategoryViewer(props) {
                             {
                                 Object.keys(secondNode.next).map((value) => {
                                     return (
-                                        <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-first">
+                                        <Paper variant="outlined" className="hub-sv-2nd-paper hub-sv-first">
                                             <ButtonBase className="hub-sv-2nd-button" onClick={() => selectSecond(value)}>
                                                 <Typography align="center" variant="h5">{value}</Typography>
                                             </ButtonBase>
@@ -191,7 +192,7 @@ function SecondCategoryViewer(props) {
                                 {
                                     Object.keys(thirdNode.next).map((value) => {
                                         return (
-                                            <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-second">
+                                            <Paper variant="outlined" className="hub-sv-2nd-paper hub-sv-second">
                                                 <ButtonBase className="hub-sv-2nd-button" onClick={() => moveToList(value)}>
                                                     <Typography noWrap={true} align="center" variant="h6">{value}</Typography>
                                                 </ButtonBase>
@@ -229,7 +230,8 @@ function ListViewer(props) {
                 <ContentHeader sections={section}>
                     <ul>
                         <li>'{section[1].title}' - '{section[2].title}' - '{section[3].title}'에 대한 검색 결과입니다.</li>
-                        <li>각 행의 좌측 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
+                        <li>각 행의 좌측에 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
+                        <li>각 행의 우측에 기업명을 클릭하시면 그 기업의 홈페이지로 이동하실 수 있습니다.</li>
                     </ul>
 
                     <CompanyList firstIndex={first} secondIndex={second} thirdIndex={third}></CompanyList>

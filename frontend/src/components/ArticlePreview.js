@@ -3,7 +3,7 @@ import "./ArticlePreview.scss"
 import { dateToString } from "../shared/DateToString"
 
 export default function ArticlePreview(props) {
-    const { article, onClick } = props
+    const { article, onClick, number } = props
 
     function handleRootClick() {
         onClick(article);
@@ -11,6 +11,8 @@ export default function ArticlePreview(props) {
 
     return (
         <div className="article-prev-root" onClick={handleRootClick}>
+            {number ? <p>{number}</p> : undefined}
+            
             <div className="article-prev-left">
                 <h3>{article.title}</h3>
                 <div className="article-prev-info">

@@ -91,7 +91,7 @@ function GeneralArticleList(props) {
                         }
                         <p className="list-total-info">{total} 건의 게시물이 검색되었습니다.</p>
                         <div className="list-container">
-                            {articles.map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
+                            {articles.map((element, index) => <ArticlePreview number={total - (index + perPage*(page-1))} article={element} onClick={handleArticleClick}></ArticlePreview>)}
                         </div>
                         <div className="list-pagination">
                             <Pagination count={Math.floor(total / perPage) + (total % perPage > 0 ? 1 : 0)} page={page} onChange={handlePageChange}></Pagination>
