@@ -29,6 +29,8 @@ $caption-color: rgba(0, 0, 0, 0.575);
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: flex-start;
+    margin-top: 40px;
 
     .hub-sv-2nd-paper {
         width: 100%;
@@ -44,7 +46,21 @@ $caption-color: rgba(0, 0, 0, 0.575);
     }
 
     .hub-sv-first {
-        width: 240px;
         height: 100px;
+    }
+
+    .hub-subtitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+        & > h6 {
+            text-overflow: ellipsis;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.384);
+        }
+
+        & > * {
+            width: 100%;
+        }
     }
 }

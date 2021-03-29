@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Route, Switch } from 'react-router-dom';
-import { ContentContainer, ContentHeader, CardBoard, PreparingContents } from "../components"
+import { ContentContainer, ContentHeader, CardBoard, CompanyList } from "../components"
 import { Paper, ButtonBase, Typography } from '@material-ui/core'
 import HubJson from "../hub-data/generated/domestic-parsed.json"
 import { useHistory } from 'react-router-dom';
@@ -80,6 +80,9 @@ function FirstCategoryViewer(props) {
         section && categories ? ( 
             <ContentContainer currentPath={section[section.length - 1].link}>
                 <ContentHeader sections={section}>
+                    <ul>
+                        <li>아래 목록에서 원하시는 대분류를 선택해주세요.</li>
+                    </ul>
                     <CardBoard variant="large" menuList={categories}></CardBoard>
                 </ContentHeader>
             </ContentContainer>
@@ -92,11 +95,9 @@ function FirstCategoryViewer(props) {
 function SecondCategoryViewer(props) {
     const leftDefaultStyle = {
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        flexWrap: "wrap",
+        flexDirection: "column",
         alignItems: "center",
-        width: "100%",
+        width: "50%",
         marginRight: "5px",
         transition: ".25s all"
     };
@@ -106,6 +107,7 @@ function SecondCategoryViewer(props) {
         flexDirection: "column",
         alignItems: "center",
         width: "0%",
+        visibility: "hidden",
         marginLeft: "5px",
         overflow: "hidden",
         transition: ".25s all"
@@ -114,11 +116,8 @@ function SecondCategoryViewer(props) {
     const first = props?.match?.params?.first;
     const [section, setSection] = useState();
     const [secondNode, setSecondNode] = useState();
-    const [secondTitle, setSecondTitle] = useState();
+    const [secondTitle, setSecondTitle] = useState("");
     const [thirdNode, setThirdNode] = useState();
-
-    const leftDiv = useRef();
-    const rightDiv = useRef();
 
     const history = useHistory();
 
@@ -132,7 +131,7 @@ function SecondCategoryViewer(props) {
         let style = Object.assign({}, leftDefaultStyle);
         if (thirdNode) {
             style["flexDirection"] = "column";
-            style["width"] = "25%";
+            style["width"] = "30%";
         }
         return style;
     }
@@ -140,7 +139,8 @@ function SecondCategoryViewer(props) {
     function getRightStyle() {
         let style = Object.assign({}, rightDefaultStyle);
         if (thirdNode) {
-            style["width"] = "65%";
+            style["width"] = "60%";
+            style["visibility"] = "visible"
         }
         return style;
     }
@@ -160,32 +160,48 @@ function SecondCategoryViewer(props) {
         section ? ( 
             <ContentContainer currentPath={section[section.length - 1].link}>
                 <ContentHeader sections={section}>
-                    <div className="hub-sv-viewer">
-                        <div ref={leftDiv} style={getLeftStyle()}> {
-                            Object.keys(secondNode.next).map((value) => {
-                                return (
-                                    <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-first">
-                                        <ButtonBase className="hub-sv-2nd-button" onClick={() => selectSecond(value)}>
-                                            <Typography align="center" variant="h5">{value}</Typography>
-                                        </ButtonBase>
-                                    </Paper>
-                                )
-                            })
-                        }</div>
+                    <ul>
+                        <li>'{section[1].title}' 대분류에 대한 {Object.keys(secondNode.next).length} 가지 중분류가 있습니다.</li>
+                        <li>아래 목록에서 중분류를 선택해주시면 그에 따른 소분류가 나타납니다.</li>
+                    </ul>
 
-                        <div ref={rightDiv} style={getRightStyle()}>{
-                            thirdNode ? (
-                                Object.keys(thirdNode.next).map((value) => {
+                    <div className="hub-sv-viewer">
+                        <div className="hub-subtitle" style={getLeftStyle()}>
+                            <Typography variant="h6" align="center">'{section[1].title}'에 대한 중분류</Typography>
+                            <div className="hub-sv-left">
+                            {
+                                Object.keys(secondNode.next).map((value) => {
                                     return (
-                                        <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-second">
-                                            <ButtonBase className="hub-sv-2nd-button" onClick={() => moveToList(value)}>
-                                                <Typography noWrap={true} align="center" variant="h6">{value}</Typography>
+                                        <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-first">
+                                            <ButtonBase className="hub-sv-2nd-button" onClick={() => selectSecond(value)}>
+                                                <Typography align="center" variant="h5">{value}</Typography>
                                             </ButtonBase>
                                         </Paper>
                                     )
                                 })
-                            ) : undefined
-                        }</div>
+                            }
+                            </div>
+                        </div>
+                        
+                        
+                        {thirdNode ? (
+                            <div className="hub-subtitle" style={getRightStyle()}>
+                                <Typography variant="h6" align="center">'{secondTitle}'에 대한 소분류</Typography>
+                                <div>
+                                {
+                                    Object.keys(thirdNode.next).map((value) => {
+                                        return (
+                                            <Paper elevation={2} className="hub-sv-2nd-paper hub-sv-second">
+                                                <ButtonBase className="hub-sv-2nd-button" onClick={() => moveToList(value)}>
+                                                    <Typography noWrap={true} align="center" variant="h6">{value}</Typography>
+                                                </ButtonBase>
+                                            </Paper>
+                                        )
+                                    })
+                                }
+                                </div>
+                            </div>
+                        ) : undefined}
                     </div>
                 </ContentHeader>
             </ContentContainer>
@@ -211,7 +227,12 @@ function ListViewer(props) {
         section ? (
             <ContentContainer currentPath={section[section.length - 1].link}>
                 <ContentHeader sections={section}>
-                    
+                    <ul>
+                        <li>'{section[1].title}' - '{section[2].title}' - '{section[3].title}'에 대한 검색 결과입니다.</li>
+                        <li>각 행의 좌측 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
+                    </ul>
+
+                    <CompanyList firstIndex={first} secondIndex={second} thirdIndex={third}></CompanyList>
                 </ContentHeader>
             </ContentContainer>
         ) : (
