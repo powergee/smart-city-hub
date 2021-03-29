@@ -34,7 +34,7 @@ function ContentHeader({ sections, showSecondary = true, children }) {
                                 sections.map((s) => {
                                     return (
                                         <React.Fragment>
-                                            <caption>{" > "}</caption>
+                                            <p>{" > "}</p>
                                             <a href onClick={getLinkHandler(s.link)}>{s.title}</a>
                                         </React.Fragment>
                                     )

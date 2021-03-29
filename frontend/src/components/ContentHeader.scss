@@ -76,9 +76,8 @@ $link-hover: #6a7da0;
             text-decoration: underline;
         }
 
-        & > caption {
-            margin-left: 5px;
-            margin-right: 5px;
+        & > p {
+            margin: 0 5px 0 5px;
         }
     }
 }
