@@ -239,6 +239,10 @@ export default function CompanyList(props) {
                 onChangeRowsPerPage={handleChangeRowsPerPage}
             />
         </Paper>
-        ) : <div></div>
+        ) : (
+            <div className="comp-loading">
+                <h2>데이터를 불러오는 중입니다!</h2>
+            </div>
+        )
     )
 }

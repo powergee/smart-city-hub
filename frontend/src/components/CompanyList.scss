@@ -1,3 +1,10 @@
 .comp-name {
     color: rgb(0, 0, 117);
 }
+
+.comp-loading {
+    & > * {
+        margin-top: 30px;
+        text-align: center;
+    }
+}
