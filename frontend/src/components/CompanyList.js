@@ -212,7 +212,7 @@ export default function CompanyList(props) {
 
     return (
         headCells ? (
-            <Paper elevation={3}>
+            <Paper variant="outlined">
             <TableContainer component={Paper}>
                 <Table size="small">
                     <SortableTableHead

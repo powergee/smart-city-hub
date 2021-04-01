@@ -27,7 +27,7 @@ function Greeting() {
 
                     {
                         jobs.map((j) => (
-                            <Paper elevation={3} className="introduction-paper">
+                            <Paper variant="outlined" className="introduction-paper">
                                 <p>{j}</p>
                             </Paper>
                         ))
@@ -88,7 +88,7 @@ function Researchers() {
             <ContentHeader sections={sections}>
                 {
                     resInfo.map((res) => (
-                        <Paper elevation={3} className="researchers-paper">
+                        <Paper variant="outlined" className="researchers-paper">
                             <Grid className="researchers-grid" container direction="row">
                                 <img alt="" src={res.image}></img>
                                 <Grid item>

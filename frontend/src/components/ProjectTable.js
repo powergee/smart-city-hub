@@ -100,7 +100,7 @@ export default function ProjectTable(props) {
     };
 
     return (
-        <Paper elevation={3}>
+        <Paper variant="outlined">
             <TableContainer component={Paper}>
                 <Table size="small">
                     <SortableTableHead

@@ -87,7 +87,7 @@ export default function Register() {
 
     return (
         <div className="register-root">
-            <Paper elevation={3} className="register-paper">
+            <Paper variant="outlined" className="register-paper">
                 <div className="register-container">
                     <div className="register-sign">
                         <h2>회원 가입</h2>

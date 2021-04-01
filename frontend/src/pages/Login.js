@@ -79,7 +79,7 @@ function Login(props) {
 
     return (
         <div className="login-root">
-            <Paper elevation={3} className="login-paper">
+            <Paper variant="outlined" className="login-paper">
                 <div className="login-container">
                     <div className="login-sign">
                         <h2>로그인</h2>

@@ -186,7 +186,7 @@ export default function ContentContainer(props) {
         <div className="content-background">
             <div className="content-root">
                 <div className="content-left">
-                    <Paper className="content-navi">
+                    <Paper variant="outlined" className="content-navi">
                         {paths.map(element => <NavigatorRow {...element} depth={0}></NavigatorRow>)}
                     </Paper>
                 </div>
