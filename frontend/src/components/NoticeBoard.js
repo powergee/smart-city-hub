@@ -11,52 +11,78 @@ export default function NoticeBoard() {
     const [articles, setArticles] = useState({
         "notices": [],
         "community": [],
-        "smart-news": []
+        "smart-news": [],
+        "archive": []
     });
     const [counts, setCounts] = useState({
         "notices": 0,
         "community": 0,
-        "smart-news": 0
+        "smart-news": 0,
+        "archive": 0
     });
     const history = useHistory();
 
+    const associatedKinds = {
+        "notices": ["notices"],
+        "community": ["seminar", "workshop", "readings"],
+        "smart-news": ["smart-news"],
+        "archive": ["archive-southern", "archive-smart", "archive-etc"],
+    }
+
     useEffect(() => {
-        let promises = [];
-        promises.push(getArticles("notices", 1, 3));
-        promises.push(getArticles("seminar", 1, 3));
-        promises.push(getArticles("workshop", 1, 3));
-        promises.push(getArticles("readings", 1, 3));
-        promises.push(getArticles("smart-news", 1, 3));
-        promises.push(countArticles("notices"));
-        promises.push(countArticles("seminar"));
-        promises.push(countArticles("workshop"));
-        promises.push(countArticles("readings"));
-        promises.push(countArticles("smart-news"));
+        const artProms = [];
+        const cntProms = [];
 
-        // 공지사항 탭: kind가 notices인 것들에서 최근 3개 글을 표시
-        // 스마트뉴스 탭: kind가 smart-news인 것들에서 최근 3개 글을 표시
-        // 커뮤니티 탭: 커뮤니티에 포함되는 소분류는 세미나, 워크숍, 추천 도서가 있으므로,
-        //      그것들 각각에서 3개를 가져온 뒤 시간순으로 정렬하여 상위 3개를 표시
-        Promise.all(promises).then((results) => {
-            setArticles({
-                "notices": results[0],
-                "community": results[1].concat(results[2], results[3]).sort((a, b) => {
-                    return b - a;
-                }).slice(0, 3),
-                "smart-news": results[4]
-            })
-
-            setCounts({
-                "notices": results[5],
-                "community": results[6] + results[7] + results[8],
-                "smart-news": results[9]
-            })
+        Object.entries(associatedKinds).forEach(([key, kinds]) => {
+            kinds.forEach((kind) => {
+                artProms.push(getArticles(kind, 1, 3));
+                cntProms.push(countArticles(kind));
+            });
         });
-    }, [])
+
+        Promise.all(artProms).then((res) => {
+            const newArticles = {};
+            let keyIndex = 0;
+
+            Object.entries(associatedKinds).forEach(([key, kinds]) => {
+                newArticles[key] = [];
+                let kindIndex = 0;
+
+                kinds.forEach(() => {
+                    newArticles[key].push(res[keyIndex][kindIndex++]);
+                });
+                ++keyIndex;
+            });
+
+            Object.keys(newArticles).forEach((key) => {
+                newArticles[key] = newArticles[key].sort((a, b) => {
+                    return b.meta.createdAt - a.meta.createdAt;
+                }).slice(0, 3);
+            });
+
+            setArticles(newArticles);
+        });
+
+        Promise.all(cntProms).then((res) => {
+            const newCounts = {};
+            let index = 0;
+
+            Object.entries(associatedKinds).forEach(([key, kinds]) => {
+                newCounts[key] = 0;
+                kinds.forEach(() => {
+                    newCounts[key] += res[index++];
+                });
+            });
+
+            setCounts(counts);
+        })
+    }, []);
 
     function handleArticleClick(article) {
         if (article.kind == "notices" || article.kind == "smart-news") {
             history.push("/news/" + article.kind + "/" + article.articleId);
+        } else if (article.kind == "archive-southern" || article.kind == "archive-smart" || article.kind == "archive-etc") {
+            history.push("/publish/archive/" + article.articleId);
         } else {
             history.push("/community/" + article.kind + "/" + article.articleId);
         }
@@ -65,6 +91,8 @@ export default function NoticeBoard() {
     function moveToList() {
         if (selected == "notices" || selected == "smart-news") {
             history.push("/news/" + selected);
+        } else if (selected == "archive-southern" || selected == "archive-smart" || selected == "archive-etc") {
+            history.push("/publish/archive");
         } else {
             history.push("/community");
         }
@@ -80,6 +108,7 @@ export default function NoticeBoard() {
                 <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
                 <Button onClick={getButtonHandler("smart-news")} color={(selected === "smart-news" ? "primary" : "default")} size="large">스마트 뉴스</Button>
                 <Button onClick={getButtonHandler("community")} color={(selected === "community" ? "primary" : "default")} size="large">커뮤니티</Button>
+                <Button onClick={getButtonHandler("archive")} color={(selected === "archive" ? "primary" : "default")} size="large">아카이브</Button>
             </div>
             <div className="board-contents">
                 {articles[selected].map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
