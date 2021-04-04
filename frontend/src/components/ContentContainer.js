@@ -138,10 +138,6 @@ export default function ContentContainer(props) {
                     {
                         title: "워크숍",
                         link: "/community/workshop"
-                    },
-                    {
-                        title: "추천 도서",
-                        link: "/community/readings"
                     }
                 ]
             },

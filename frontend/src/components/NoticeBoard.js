@@ -24,7 +24,7 @@ export default function NoticeBoard() {
 
     const associatedKinds = {
         "notices": ["notices"],
-        "community": ["seminar", "workshop", "readings"],
+        "community": ["seminar", "workshop"],
         "smart-news": ["smart-news"],
         "archive": ["archive-southern", "archive-smart", "archive-etc"],
     }

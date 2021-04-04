@@ -88,7 +88,6 @@ function NavigationBar(props) {
                                     <li className="menu-small">
                                         <a href onClick={getLinkHandler("/community/seminar")}>세미나</a>
                                         <a href onClick={getLinkHandler("/community/workshop")}>워크숍</a>
-                                        <a href onClick={getLinkHandler("/community/readings")}>추천 도서</a>
                                     </li>
                                     <li className="menu-large">
                                         <a class="font-small" href onClick={getLinkHandler("/hub")}>거점HUB로 이동하기</a>

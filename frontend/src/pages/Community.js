@@ -39,29 +39,11 @@ function Workshop() {
     )
 }
 
-function Readings() {
-    return (
-        <ContentContainer currentPath={"/community/readings"}>
-            <Switch>
-                <Route exact path="/community/readings"
-                    render={() => <GeneralArticleList superTitle="커뮤니티" title="추천 도서" link="/community/readings" kind="readings"></GeneralArticleList>}></Route>
-                <Route exact path="/community/readings/writer"
-                    render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="추천 도서" link="/community/readings" kind="readings"></GeneralArticleWriter>}></Route>
-                <Route path="/community/readings/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="커뮤니티" pageTitle="추천 도서" link="/community/readings" kind="readings"></GeneralArticleWriter>}></Route>
-                <Route exact path="/community/readings/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="추천 도서" listLink="/community/readings" kind="readings"></GeneralArticleView>}></Route>
-            </Switch>
-        </ContentContainer>
-    )
-}
-
 export default function Community() {
     return (
         <Switch>
             <Route path="/community/seminar" component={Seminar}></Route>
             <Route path="/community/workshop" component={Workshop}></Route>
-            <Route path="/community/readings" component={Readings}></Route>
         </Switch>
     )
 }
