@@ -26,7 +26,7 @@ export default function NoticeBoard() {
         "notices": ["notices"],
         "community": ["seminar", "workshop"],
         "smart-news": ["smart-news"],
-        "archive": ["archive-southern", "archive-smart", "archive-etc"],
+        "archive": ["archive-southern", "archive-smart", "archive-etc", "archive"],
     }
 
     useEffect(() => {
@@ -42,16 +42,14 @@ export default function NoticeBoard() {
 
         Promise.all(artProms).then((res) => {
             const newArticles = {};
-            let keyIndex = 0;
+            let respIndex = 0;
 
             Object.entries(associatedKinds).forEach(([key, kinds]) => {
                 newArticles[key] = [];
-                let kindIndex = 0;
 
                 kinds.forEach(() => {
-                    newArticles[key].push(res[keyIndex][kindIndex++]);
+                    newArticles[key] = newArticles[key].concat(res[respIndex++]);
                 });
-                ++keyIndex;
             });
 
             Object.keys(newArticles).forEach((key) => {
