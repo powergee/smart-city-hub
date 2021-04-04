@@ -19,6 +19,10 @@
     }
 }
 
+.article-contents {
+    margin-bottom: 50px;
+}
+
 .article-edit {
     display: flex;
     flex-direction: row;
@@ -42,6 +46,11 @@
 }
 
 .article-files {
-    margin-top: 10px;
+    padding-top: 30px;
     border-top: 1px solid gray;
+
+    & > div {
+        display: flex;
+        margin-left: 10px;
+    }
 }

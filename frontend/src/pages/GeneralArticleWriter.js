@@ -300,13 +300,13 @@ function GeneralArticleWriter(props) {
             >
             </Editor>
 
-           {selectedFiles.length > 0 ? (<p className="writer-caption">새로 업로드될 파일:</p>) : (undefined)}
+           {selectedFiles.length > 0 ? (<strong className="writer-caption">새로 업로드될 파일:</strong>) : (undefined)}
 
             <div className="writer-uploading">
                 {
                     selectedFiles.map(element => (
                         <div>
-                            <strong>{path.basename(element.name)}</strong>
+                            <span>{path.basename(element.name)}</span>
                             <IconButton size="small" onClick={getSelectedFileRemover(element)}>
                                 <BackspaceIcon fontSize="inherit"></BackspaceIcon>
                             </IconButton>
@@ -315,14 +315,14 @@ function GeneralArticleWriter(props) {
                 }
             </div>
 
-            {uploadedFiles.length > 0 ? (<p className="writer-caption">과거에 업로드한 파일:</p>): (undefined)}
+            {uploadedFiles.length > 0 ? (<strong className="writer-caption">과거에 업로드한 파일:</strong>): (undefined)}
 
             <div className="writer-uploading">
                 {
                     Object.keys(uploadedFilesInfo).length > 0 ? (
                         uploadedFiles.map(element => (
                             <div>
-                                <strong>{uploadedFilesInfo[element].originalName}</strong>
+                                <span>{uploadedFilesInfo[element].originalName}</span>
                                 <IconButton size="small" onClick={getUploadedFileRemover(element)}>
                                     <BackspaceIcon fontSize="inherit"></BackspaceIcon>
                                 </IconButton>

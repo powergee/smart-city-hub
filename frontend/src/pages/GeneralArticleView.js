@@ -8,6 +8,7 @@ import { IconButton, Button } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import "./GeneralArticleView.scss"
 import { dateToString } from '../shared/DateToString';
 import getToken from "../shared/GetToken";
@@ -123,13 +124,21 @@ function GeneralArticleView(props) {
                             </div>
                         </div>
 
-                        <div dangerouslySetInnerHTML={{ __html: article.contents }}></div>
+                        <div className="article-contents" dangerouslySetInnerHTML={{ __html: article.contents }}></div>
 
                         <div className="article-files">
                             {
+                                files.length > 0 ? (
+                                    <React.Fragment>
+                                        <strong>{files.length}</strong>
+                                        <strong>개의 첨부파일이 있습니다.</strong>
+                                    </React.Fragment>
+                                ) : (undefined)
+                            }
+                            {
                                 files.map(element => (
                                     <div>
-                                        <strong>첨부파일: {element.originalName}</strong>
+                                        <li>{element.originalName}</li>
                                         <IconButton size="small" onClick={getFileDownloader(element.fileId)}>
                                             <SaveAltIcon fontSize="inherit"></SaveAltIcon>
                                         </IconButton>

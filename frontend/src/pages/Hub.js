@@ -93,32 +93,9 @@ function FirstCategoryViewer(props) {
 }
 
 function SecondCategoryViewer(props) {
-    const leftDefaultStyle = {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "50%",
-        marginRight: "5px",
-        transition: ".25s all"
-    };
-
-    const rightDefaultStyle = {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "0%",
-        visibility: "hidden",
-        marginLeft: "5px",
-        paddingRight: "5px",
-        overflow: "hidden",
-        transition: ".25s all"
-    };
-
     const first = props?.match?.params?.first;
     const [section, setSection] = useState();
     const [secondNode, setSecondNode] = useState();
-    const [secondTitle, setSecondTitle] = useState("");
-    const [thirdNode, setThirdNode] = useState();
 
     const history = useHistory();
 
@@ -128,33 +105,38 @@ function SecondCategoryViewer(props) {
         setSection(section);
     }, [props]);
 
-    function getLeftStyle() {
-        let style = Object.assign({}, leftDefaultStyle);
-        if (thirdNode) {
-            style["flexDirection"] = "column";
-            style["width"] = "30%";
-        }
-        return style;
-    }
-
-    function getRightStyle() {
-        let style = Object.assign({}, rightDefaultStyle);
-        if (thirdNode) {
-            style["width"] = "60%";
-            style["visibility"] = "visible"
-        }
-        return style;
-    }
-
-    function selectSecond(selected) {
-        setSecondTitle(selected);
-        setThirdNode(secondNode.next[selected]);
-    }
-
-    function moveToList(thirdTitle) {
+    function moveToList(secondTitle, thirdTitle) {
         const secondIndex = HubJson["secondCate"].indexOf(secondTitle);
         const thirdIndex = HubJson["thirdCate"].indexOf(thirdTitle);
         history.push("/hub/" + first + "/" + secondIndex + "/" + thirdIndex);
+    }
+
+    function getThirdButtons(category, node) {
+        const nextCount = Object.keys(node.next).length;
+        const compCount =  Number(Math.ceil(nextCount / 3)) * 3;
+
+        const result = [];
+        Object.keys(node.next).forEach((title) => {
+            result.push((
+                <Paper className="hub-second-paper" variant="outlined">
+                    <ButtonBase onClick={() => moveToList(category, title)}>
+                        {title}
+                    </ButtonBase>
+                </Paper>
+            ))
+        });
+
+        for (let i = 0; i < compCount - nextCount; ++i) {
+            result.push((
+                <Paper className="hub-second-paper" variant="outlined"></Paper>
+            ))
+        }
+
+        return (
+            <div className="hub-wrap-layout">
+                {result}
+            </div>
+        )
     }
 
     return (
@@ -166,44 +148,25 @@ function SecondCategoryViewer(props) {
                         <li>아래 목록에서 중분류를 선택해주시면 그에 따른 소분류가 나타납니다.</li>
                     </ul>
 
-                    <div className="hub-sv-viewer">
-                        <div className="hub-subtitle" style={getLeftStyle()}>
-                            <Typography variant="h6" align="center">'{section[1].title}'에 대한 중분류</Typography>
-                            <div className="hub-sv-left">
-                            {
-                                Object.keys(secondNode.next).map((value) => {
-                                    return (
-                                        <Paper variant="outlined" className="hub-sv-2nd-paper hub-sv-first">
-                                            <ButtonBase className="hub-sv-2nd-button" onClick={() => selectSecond(value)}>
-                                                <Typography align="center" variant="h5">{value}</Typography>
-                                            </ButtonBase>
-                                        </Paper>
-                                    )
-                                })
-                            }
-                            </div>
+                    <div className="hub-header">
+                        <div className="hub-subtitle hub-first">
+                            <Typography variant="h6" align="center">중분류</Typography>
                         </div>
                         
-                        
-                        {thirdNode ? (
-                            <div className="hub-subtitle" style={getRightStyle()}>
-                                <Typography variant="h6" align="center">'{secondTitle}'에 대한 소분류</Typography>
-                                <div>
-                                {
-                                    Object.keys(thirdNode.next).map((value) => {
-                                        return (
-                                            <Paper variant="outlined" className="hub-sv-2nd-paper hub-sv-second">
-                                                <ButtonBase className="hub-sv-2nd-button" onClick={() => moveToList(value)}>
-                                                    <Typography noWrap={true} align="center" variant="h6">{value}</Typography>
-                                                </ButtonBase>
-                                            </Paper>
-                                        )
-                                    })
-                                }
-                                </div>
-                            </div>
-                        ) : undefined}
+                        <div className="hub-subtitle hub-second">
+                            <Typography variant="h6" align="center">소분류</Typography>
+                        </div>
                     </div>
+
+                    {Object.entries(secondNode.next).map(([category, node]) => (
+                        <div className="hub-row">
+                            <Paper className="hub-first hub-first-paper" variant="outlined">
+                                <strong>{category}</strong>
+                            </Paper>
+
+                            <div className="hub-second">{getThirdButtons(category, node)}</div>
+                        </div>
+                    ))}
                 </ContentHeader>
             </ContentContainer>
         ) : (
