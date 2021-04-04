@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { ContentHeader, ArticlePreview } from "../components"
-import { getArticles, countArticles } from "../shared/BackendRequests";
+import { getArticles, countArticles, getFileInfo, downloadFile } from "../shared/BackendRequests";
+import { dateToString } from '../shared/DateToString';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
 import Pagination from '@material-ui/lab/Pagination';
 import CreateIcon from '@material-ui/icons/Create';
-import Button from '@material-ui/core/Button';
+import { Button, IconButton, Tooltip } from '@material-ui/core';
 import getToken from "../shared/GetToken";
 import { withCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
@@ -16,6 +18,7 @@ function GeneralArticleList(props) {
     const [total, setTotal] = useState(undefined);
     const [perPage, setPerPage] = useState(undefined);
     const [articles, setArticles] = useState(undefined);
+    const [fileInfo, setFileInfo] = useState({});
     const history = useHistory();
 
     const sections = [
@@ -40,7 +43,7 @@ function GeneralArticleList(props) {
         countArticles(kind)
             .then((count) => {
                 setTotal(count);
-                setPerPage(10);
+                setPerPage(15);
                 setPage(1);
             });
     }, [total]);
@@ -53,6 +56,21 @@ function GeneralArticleList(props) {
         getArticles(kind, page, perPage)
             .then((res) => {
                 setArticles(res);
+
+                const promises = [];
+                res.forEach((article) => {
+                    article.files.forEach((fileId) => {
+                        promises.push(getFileInfo(fileId));
+                    });
+                });
+
+                Promise.all(promises).then((infoArr) => {
+                    const fetchedInfo = {};
+                    infoArr.forEach((info) => {
+                        fetchedInfo[info.fileId] = info;
+                    });
+                    setFileInfo(fetchedInfo);
+                })
             })
             .catch((err) => {
                 alert("게시글을 가져올 수 없습니다.. 잠시 뒤에 다시 시도하십시오: " + err);
@@ -91,7 +109,36 @@ function GeneralArticleList(props) {
                         }
                         <p className="list-total-info">{total} 건의 게시물이 검색되었습니다.</p>
                         <div className="list-container">
-                            {articles.map((element, index) => <ArticlePreview number={total - (index + perPage*(page-1))} article={element} onClick={handleArticleClick}></ArticlePreview>)}
+                            <table width="100%" border="0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">번호</th>
+                                        <th scope="col">제목</th>
+                                        <th scope="col">작성 날짜</th>
+                                        <th scope="col">조회수</th>
+                                        <th scope="col">첨부파일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {articles.map((element, index) => (
+                                        <tr className="list-row">
+                                            <td width="10%">{total - (index + perPage*(page-1))}</td>
+                                            <td className="list-title"><h3 onClick={() => handleArticleClick(element)}>{element.title}</h3></td>
+                                            <td width="15%">{dateToString(element.meta.createdAt)}</td>
+                                            <td width="5%">{element.views}</td>
+                                            <td width="10%">{
+                                                element.files.map((id) => (
+                                                    <Tooltip title={fileInfo[id]?.originalName}>
+                                                        <IconButton size="small" onClick={() => downloadFile(id)}>
+                                                            <AttachFileIcon fontSize="inherit"></AttachFileIcon>
+                                                        </IconButton>
+                                                    </Tooltip>
+                                                ))
+                                            }</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                         <div className="list-pagination">
                             <Pagination count={Math.floor(total / perPage) + (total % perPage > 0 ? 1 : 0)} page={page} onChange={handlePageChange}></Pagination>

@@ -8,7 +8,6 @@ import { IconButton, Button } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
 import "./GeneralArticleView.scss"
 import { dateToString } from '../shared/DateToString';
 import getToken from "../shared/GetToken";

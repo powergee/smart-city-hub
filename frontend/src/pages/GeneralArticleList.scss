@@ -1,12 +1,56 @@
 $separator-color: #a7abcc;
+$title-hover: #1D4D8B;
 
 .list-container {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid rgb(214, 214, 214);
 
     & > div {
         border-bottom: 1px solid $separator-color;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    td {
+        text-align: center;
+        border-bottom: 1px solid rgb(214, 214, 214);
+        padding: 0;
+    }
+    
+    th {
+        border-top: 1px solid rgb(214, 214, 214);
+        border-bottom: 1px solid rgb(214, 214, 214);
+        padding: 8px 0 8px 0;
+    }
+
+    tr {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    h3 {
+        font-weight: 400;
+        margin: 0.5rem 0 0.5rem 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    h3:hover {
+        cursor: pointer;
+    }
+
+    .list-title {
+        text-align: left;
+    }
+    
+    .list-row:hover {
+        h3 {
+            color: $title-hover;
+        }
     }
 }
 
