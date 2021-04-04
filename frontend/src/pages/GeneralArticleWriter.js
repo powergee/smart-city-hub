@@ -14,7 +14,7 @@ import { withCookies } from "react-cookie";
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./GeneralArticleWriter.scss";
 import { Prompt, useHistory } from 'react-router-dom';
-import { uploadFile, postArticle, getArticle } from "../shared/BackendRequests";
+import { uploadFile, postArticle, getArticle, getFileInfo } from "../shared/BackendRequests";
 import packageJson from "../../package.json";
 
 // Editor에서 이미지를 첨부한 뒤 한국어를 입력하면 "Unknown DraftEntity key: null." 에러가 발생하는 버그 존재.
@@ -80,6 +80,7 @@ function GeneralArticleWriter(props) {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [uploadedFiles, setUploadedFiles] = useState([]);
+    const [uploadedFilesInfo, setUploadedFilesInfo] = useState({});
     const [uploadedImages, setUploadedImages] = useState([]);
     const [title, setTitle] = useState("");
     const [isPublic, setIsPublic] = useState(true);
@@ -120,6 +121,18 @@ function GeneralArticleWriter(props) {
                     setUploadedImages(article.images)
                     setTitle(article.title)
                     setIsPublic(article.isPublic)
+
+                    const promises = [];
+                    article.files.forEach((fileId) => {
+                        promises.push(getFileInfo(fileId));
+                    });
+                    Promise.all(promises).then((res) => {
+                        const infoDict = {};
+                        res.forEach((info) => {
+                            infoDict[info.fileId] = info;
+                        });
+                        setUploadedFilesInfo(infoDict);
+                    })
                 })
                 .catch(() => {
                     alert("글을 가져올 수 없었습니다. 정상적인 경로로 접근했는지 확인해주세요.");
@@ -156,7 +169,7 @@ function GeneralArticleWriter(props) {
         setIsPublic(event.target.checked);
     }
 
-    const getFileRemoveHandler = (toRemove) => () => {
+    const getSelectedFileRemover = (toRemove) => () => {
         let newFiles = [];
         let removed = false;
         selectedFiles.forEach(element => {
@@ -168,6 +181,30 @@ function GeneralArticleWriter(props) {
         });
 
         setSelectedFiles(newFiles);
+    }
+
+    const getUploadedFileRemover = (toRemove) => () => {
+        const newFiles = [];
+        let removed = false;
+        uploadedFiles.forEach(element => {
+            if (!removed && element === toRemove) {
+                removed = true;
+            } else {
+                newFiles.push(element);
+            }
+        });
+        setUploadedFiles(newFiles);
+
+        const newInfo = {};
+        removed = false;
+        Object.keys(uploadedFilesInfo).forEach((key) => {
+            if (!removed && key === toRemove.fileId) {
+                removed = true;
+            } else {
+                newInfo[key] = uploadedFilesInfo[key];
+            }
+        });
+        setUploadedFilesInfo(newInfo);
     }
 
     async function saveArticle() {
@@ -186,11 +223,8 @@ function GeneralArticleWriter(props) {
 
         try {
             const fileIds = await Promise.all(promises);
-
             const htmlSrc = draftToHtml(convertToRaw(editorState.getCurrentContent()), null, null, ImgEntityTransform);
 
-            console.log(uploadedFiles.concat(fileIds.map(element => Number(element))))
-            console.log(uploadedImages)
             let article = {
                 title: title,
                 contents: htmlSrc,
@@ -266,16 +300,35 @@ function GeneralArticleWriter(props) {
             >
             </Editor>
 
+           {selectedFiles.length > 0 ? (<p className="writer-caption">새로 업로드될 파일:</p>) : (undefined)}
+
             <div className="writer-uploading">
                 {
                     selectedFiles.map(element => (
                         <div>
                             <strong>{path.basename(element.name)}</strong>
-                            <IconButton size="small" onClick={getFileRemoveHandler(element)}>
+                            <IconButton size="small" onClick={getSelectedFileRemover(element)}>
                                 <BackspaceIcon fontSize="inherit"></BackspaceIcon>
                             </IconButton>
                         </div>
                     ))
+                }
+            </div>
+
+            {uploadedFiles.length > 0 ? (<p className="writer-caption">과거에 업로드한 파일:</p>): (undefined)}
+
+            <div className="writer-uploading">
+                {
+                    Object.keys(uploadedFilesInfo).length > 0 ? (
+                        uploadedFiles.map(element => (
+                            <div>
+                                <strong>{uploadedFilesInfo[element].originalName}</strong>
+                                <IconButton size="small" onClick={getUploadedFileRemover(element)}>
+                                    <BackspaceIcon fontSize="inherit"></BackspaceIcon>
+                                </IconButton>
+                            </div>
+                        ))
+                    ) : (undefined)
                 }
             </div>
 
