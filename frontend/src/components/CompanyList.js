@@ -70,14 +70,14 @@ const CollapsibleRow = (props) => {
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                 </TableCell>
-                <TableCell>{row.first}</TableCell>
-                <TableCell>{row.second}</TableCell>
-                <TableCell>{row.third}</TableCell>
                 <TableCell>
                     <ButtonBase onClick={() => window.location = row.site}>
                         <th className="comp-name">{row.name}</th>
                     </ButtonBase>
                 </TableCell>
+                <TableCell><th>{row.kind}</th></TableCell>
+                <TableCell><th>{row.service}</th></TableCell>
+                <TableCell><th>{row.product}</th></TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -169,23 +169,23 @@ export default function CompanyList(props) {
                 allowSorting: false
             },
             {
-                id: "first",
-                label: "대분류",
-                allowSorting: true
-            },
-            {
-                id: "second",
-                label: "중분류",
-                allowSorting: true
-            },
-            {
-                id: "third",
-                label: "소분류",
-                allowSorting: true
-            },
-            {
                 id: "name",
                 label: "기업명",
+                allowSorting: true
+            },
+            {
+                id: "kind",
+                label: "회사구분",
+                allowSorting: true
+            },
+            {
+                id: "service",
+                label: "서비스유형",
+                allowSorting: true
+            },
+            {
+                id: "product",
+                label: "제품형태",
                 allowSorting: true
             }
         ]);
