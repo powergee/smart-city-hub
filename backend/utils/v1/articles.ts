@@ -26,19 +26,20 @@ router.get("/", async (ctx: Koa.Context) => {
         body.page < 1 || body.perPage < 1) {
         ctx.throw(400, "At least one parameter is not valid. The query was: " + JSON.stringify(ctx.query));
     }
-    
+
+    const kindRegex = new RegExp(body.kind);
     // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 반환해야 한다.
     const token = validateToken(ctx);
     if (token !== undefined && token.isManager) {
         const res:IArticlesGetResponse = await GeneralArticleModel.find()
-            .where("kind").equals(body.kind)
+            .where("kind").equals(kindRegex)
             .sort({ articleId: -1 })
             .skip((body.page-1)*body.perPage)
             .limit(body.perPage).exec();
         ctx.response.body = res;
     } else {
         const res:IArticlesGetResponse = await GeneralArticleModel.find()
-            .where("kind").equals(body.kind)
+            .where("kind").equals(kindRegex)
             .where("isPublic").equals(true)
             .sort({ articleId: -1 })
             .skip((body.page-1)*body.perPage)
@@ -54,11 +55,12 @@ router.get("/count", async (ctx: Koa.Context) => {
         ctx.throw(400, "kind is not valid. The body was: " + JSON.stringify(ctx.query));
     }
 
+    const kindRegex = new RegExp(body.kind);
     // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 세야 한다.
     const token = validateToken(ctx);
-    let count = await GeneralArticleModel.countDocuments({ kind: body.kind, isPublic: true }).exec();
+    let count = await GeneralArticleModel.countDocuments({ kind: kindRegex, isPublic: true }).exec();
     if (token !== undefined && token.isManager) {
-        count += await GeneralArticleModel.countDocuments({ kind: body.kind, isPublic: false }).exec();
+        count += await GeneralArticleModel.countDocuments({ kind: kindRegex, isPublic: false }).exec();
     }
 
     const res:IArticlesCountGetResponse = {

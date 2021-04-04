@@ -95,21 +95,7 @@ export default function ContentContainer(props) {
                     },
                     {
                         title: "아카이브",
-                        defaultOpen: false,
-                        subPath: [
-                            {
-                                title: "신남방 보고서",
-                                link: "/publish/archive/southern"
-                            },
-                            {
-                                title: "스마트 시티 보고서",
-                                link: "/publish/archive/smart"
-                            },
-                            {
-                                title: "기타 보고서",
-                                link: "/publish/archive/etc"
-                            }
-                        ]
+                        link: "/publish/archive"
                     }
                 ]
             },

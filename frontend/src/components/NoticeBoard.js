@@ -26,7 +26,11 @@ export default function NoticeBoard() {
         "notices": ["notices"],
         "community": ["seminar", "workshop"],
         "smart-news": ["smart-news"],
-        "archive": ["archive-southern", "archive-smart", "archive-etc", "archive"],
+        "archive": ["archive*"],
+        // 'archive'가 아니라 *archive**인 이유는
+        // 과거에는 archive가 세분화되어 있어
+        // archive-southern, archive-smart 등이 있었으나,
+        // 지금은 구분없이 archive로만 글을 작성하기 때문이다.
     }
 
     useEffect(() => {
@@ -78,7 +82,7 @@ export default function NoticeBoard() {
     function handleArticleClick(article) {
         if (article.kind == "notices" || article.kind == "smart-news") {
             history.push("/news/" + article.kind + "/" + article.articleId);
-        } else if (article.kind == "archive-southern" || article.kind == "archive-smart" || article.kind == "archive-etc") {
+        } else if (article.kind == "archive-southern" || article.kind == "archive-smart" || article.kind == "archive-etc" || article.kind == "archive") {
             history.push("/publish/archive/" + article.articleId);
         } else {
             history.push("/community/" + article.kind + "/" + article.articleId);
@@ -88,7 +92,7 @@ export default function NoticeBoard() {
     function moveToList() {
         if (selected == "notices" || selected == "smart-news") {
             history.push("/news/" + selected);
-        } else if (selected == "archive-southern" || selected == "archive-smart" || selected == "archive-etc") {
+        } else if (selected == "archive") {
             history.push("/publish/archive");
         } else {
             history.push("/community");
