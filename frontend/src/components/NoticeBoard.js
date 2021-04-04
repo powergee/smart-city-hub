@@ -46,7 +46,6 @@ export default function NoticeBoard() {
 
             Object.entries(associatedKinds).forEach(([key, kinds]) => {
                 newArticles[key] = [];
-
                 kinds.forEach(() => {
                     newArticles[key] = newArticles[key].concat(res[respIndex++]);
                 });
@@ -72,7 +71,7 @@ export default function NoticeBoard() {
                 });
             });
 
-            setCounts(counts);
+            setCounts(newCounts);
         })
     }, []);
 
