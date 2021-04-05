@@ -29,13 +29,13 @@ function ArchSouthern() {
         <ContentContainer currentPath={"/publish/archive/southern"}>
             <Switch>
                 <Route exact path="/publish/archive"
-                    render={() => <GeneralArticleList superTitle="발간물" title="아카이브" caption="지역협력/진출 관련 자료집" link="/publish/archive" kind="archive*"></GeneralArticleList>}></Route>
+                    render={() => <GeneralArticleList superTitle="발간물" title="아카이브" caption="신남방 & 스마트도시 기술 리포트" link="/publish/archive" kind="archive*"></GeneralArticleList>}></Route>
                 <Route exact path="/publish/archive/writer"
-                    render={() => <GeneralArticleWriter superTitle="발간물" pageTitle="아카이브" caption="지역협력/진출 관련 자료집" link="/publish/archive" kind="archive"></GeneralArticleWriter>}></Route>
+                    render={() => <GeneralArticleWriter superTitle="발간물" pageTitle="아카이브" caption="신남방 & 스마트도시 기술 리포트" link="/publish/archive" kind="archive"></GeneralArticleWriter>}></Route>
                 <Route path="/publish/archive/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="발간물" pageTitle="아카이브" caption="지역협력/진출 관련 자료집" link="/publish/archive" kind="archive"></GeneralArticleWriter>}></Route>
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="발간물" pageTitle="아카이브" caption="신남방 & 스마트도시 기술 리포트" link="/publish/archive" kind="archive"></GeneralArticleWriter>}></Route>
                 <Route exact path="/publish/archive/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="발간물" title="아카이브" caption="지역협력/진출 관련 자료집" listLink="/publish/archive"></GeneralArticleView>}></Route>
+                    render={(props) => <GeneralArticleView {...props} superTitle="발간물" title="아카이브" caption="신남방 & 스마트도시 기술 리포트" listLink="/publish/archive"></GeneralArticleView>}></Route>
             </Switch>
         </ContentContainer>
     )
