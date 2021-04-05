@@ -110,6 +110,13 @@ function GeneralArticleList(props) {
                         <p className="list-total-info">{total} 건의 게시물이 검색되었습니다.</p>
                         <div className="list-container">
                             <table width="100%" border="0">
+                                <colgroup>
+                                    <col width="10%"></col>
+                                    <col width="70%"></col>
+                                    <col width="15%"></col>
+                                    <col width="5%"></col>
+                                    <col width="10%"></col>
+                                </colgroup>
                                 <thead>
                                     <tr>
                                         <th scope="col">번호</th>
@@ -122,11 +129,15 @@ function GeneralArticleList(props) {
                                 <tbody>
                                     {articles.map((element, index) => (
                                         <tr className="list-row">
-                                            <td width="10%">{total - (index + perPage*(page-1))}</td>
-                                            <td className="list-title"><h3 onClick={() => handleArticleClick(element)}>{element.title}</h3></td>
-                                            <td width="15%">{dateToString(element.meta.createdAt)}</td>
-                                            <td width="5%">{element.views}</td>
-                                            <td width="10%">{
+                                            <td>{total - (index + perPage*(page-1))}</td>
+                                            <td className="list-title">
+                                                <Tooltip title={element.title}>
+                                                    <h3 onClick={() => handleArticleClick(element)}>{element.title}</h3>
+                                                </Tooltip>
+                                            </td>
+                                            <td>{dateToString(element.meta.createdAt)}</td>
+                                            <td>{element.views}</td>
+                                            <td>{
                                                 element.files.map((id) => (
                                                     <Tooltip title={fileInfo[id]?.originalName}>
                                                         <IconButton size="small" onClick={() => downloadFile(id)}>
