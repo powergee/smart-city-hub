@@ -84,6 +84,7 @@ function NavigationBar(props) {
                                     <li className="menu-small">
                                         <a href onClick={getLinkHandler("/news/notices")}>공지사항</a>
                                         <a href onClick={getLinkHandler("/news/smart-news")}>스마트뉴스</a>
+                                        <a href onClick={getLinkHandler("/news/research")}>연구실적</a>
                                     </li>
                                     <li className="menu-small">
                                         <a href onClick={getLinkHandler("/community/seminar")}>세미나</a>

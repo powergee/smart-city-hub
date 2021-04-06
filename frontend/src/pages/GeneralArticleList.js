@@ -112,9 +112,9 @@ function GeneralArticleList(props) {
                             <table width="100%" border="0">
                                 <colgroup>
                                     <col width="10%"></col>
-                                    <col width="70%"></col>
+                                    <col width="65%"></col>
                                     <col width="15%"></col>
-                                    <col width="5%"></col>
+                                    <col width="10%"></col>
                                     <col width="10%"></col>
                                 </colgroup>
                                 <thead>
