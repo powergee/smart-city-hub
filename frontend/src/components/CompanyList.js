@@ -5,6 +5,10 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import HubJson from "../hub-data/generated/domestic-parsed.json"
 import "./CompanyList.scss"
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const compareElements = (a, b, orderBy) => {
     if (a[orderBy] < b[orderBy])
         return -1;
@@ -70,6 +74,7 @@ const CollapsibleRow = (props) => {
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                 </TableCell>
+                <TableCell><th>{row.number}</th></TableCell>
                 <TableCell>
                     <ButtonBase onClick={() => window.location = row.site}>
                         <th className="comp-name">{row.name}</th>
@@ -91,19 +96,32 @@ const CollapsibleRow = (props) => {
                             <Table size="small" aria-label="추가 정보">
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell><th>회사구분</th></TableCell>
-                                        <TableCell><th>서비스유형</th></TableCell>
-                                        <TableCell><th>제품형태</th></TableCell>
                                         <TableCell><th>보유기술</th></TableCell>
+                                        <TableCell><th>전화번호</th></TableCell>
+                                        <TableCell colSpan="2"><th>주소</th></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     <TableRow>
-                                        <TableCell>{row.kind}</TableCell>
-                                        <TableCell>{row.service}</TableCell>
-                                        <TableCell>{row.product}</TableCell>
                                         <TableCell>{row.tech}</TableCell>
-                                        <TableCell></TableCell>
+                                        <TableCell>{row.call}</TableCell>
+                                        <TableCell colSpan="2">{row.address}</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell><th>설립연도</th></TableCell>
+                                        <TableCell><th>자본금(원)</th></TableCell>
+                                        <TableCell><th>회사 매출 규모(원)</th></TableCell>
+                                        <TableCell><th>종업원수</th></TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>{row.found}</TableCell>
+                                        <TableCell>{numberWithCommas(row.fund)}</TableCell>
+                                        <TableCell>{numberWithCommas(row.sales)}</TableCell>
+                                        <TableCell>{numberWithCommas(row.employees)}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>
@@ -141,7 +159,13 @@ export default function CompanyList(props) {
                 service: value["서비스유형"].join(', '),
                 product: value["제품형태(최종제품)"].join(', '),
                 tech: value["보유기술"],
-                site: value["홈페이지"]
+                call: value["전화번호"],
+                address: value["주소"],
+                site: value["홈페이지"],
+                found: value["설립연도"],
+                fund: value["자본금(원)"],
+                sales: value["회사 매출 규모(원)"],
+                employees: value["종업원수"]
             }));
         }
     }
@@ -169,6 +193,11 @@ export default function CompanyList(props) {
                 allowSorting: false
             },
             {
+                id: "number",
+                label: "번호",
+                allowSorting: true
+            },
+            {
                 id: "name",
                 label: "기업명",
                 allowSorting: true
@@ -191,6 +220,9 @@ export default function CompanyList(props) {
         ]);
 
         processAllLeafNodes(currentNode, newRows);
+        newRows.forEach((row, index) => {
+            row.number = newRows.length - index;
+        });
         setRows(newRows);
         setHeadCells(newHeadCells);
     }, [firstIndex, secondIndex, thirdIndex]);
