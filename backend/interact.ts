@@ -59,6 +59,11 @@ async function handleArticles(tokens: Array<string>) {
             } else {
                 article.meta.createdAt.setDate(new Date(year, month+1, 0).getDate());
             }
+
+            if (new Date().getTime() < article.meta.createdAt.getTime()) {
+                article.meta.createdAt = new Date()
+            }
+
             process.stdout.write(String(article.meta.createdAt) + "\n");
             article.markModified("meta");
             article.save();
