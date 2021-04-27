@@ -62,8 +62,8 @@ async function handleArticles(tokens: Array<string>) {
 
             let current = new Date();
             current.setDate(current.getDay()-1)
-            if (new Date().getTime() < article.meta.createdAt.getTime()) {
-                article.meta.createdAt = new Date()
+            if (current.getTime() < article.meta.createdAt.getTime()) {
+                article.meta.createdAt = current;
             }
 
             process.stdout.write(String(article.meta.createdAt) + "\n");
