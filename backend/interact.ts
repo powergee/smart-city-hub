@@ -49,6 +49,7 @@ async function handleArticles(tokens: Array<string>) {
         let half = true;
         let changed = 0;
         res.forEach(article => {
+            article.meta.createdAt.setHours(12);
             article.meta.createdAt.setDate(1);
             article.meta.createdAt.setFullYear(year);
             article.meta.createdAt.setMonth(month);
@@ -86,6 +87,7 @@ async function handleArticles(tokens: Array<string>) {
 
         const res:IGeneralArticle = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
 
+        res.meta.createdAt.setHours(12);
         res.meta.createdAt.setFullYear(year);
         res.meta.createdAt.setMonth(month);
         res.meta.createdAt.setDate(day);
