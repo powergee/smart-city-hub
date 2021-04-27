@@ -4,7 +4,8 @@
   "description": "The backend of smart-city-hub",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon --watch . ./index.ts"
+    "start": "nodemon --watch . ./index.ts",
+    "interact": "ts-node ./index.ts -i"
   },
   "repository": {
     "type": "git",
