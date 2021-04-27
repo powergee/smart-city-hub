@@ -60,6 +60,8 @@ async function handleArticles(tokens: Array<string>) {
                 article.meta.createdAt.setDate(new Date(year, month+1, 0).getDate());
             }
 
+            let current = new Date();
+            current.setDate(current.getDay()-1)
             if (new Date().getTime() < article.meta.createdAt.getTime()) {
                 article.meta.createdAt = new Date()
             }
