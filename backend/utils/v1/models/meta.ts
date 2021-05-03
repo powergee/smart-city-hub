@@ -6,6 +6,6 @@ export interface IMeta extends Mongoose.Document {
 }
 
 export const MetaSchemaDefinition = {
-    createdAt: { type: Date, default: new Date() },
-    modifiedAt: { type: Date, default: new Date() }
+    createdAt: { type: Date, default: Date.now },
+    modifiedAt: { type: Date, default: Date.now }
 };
