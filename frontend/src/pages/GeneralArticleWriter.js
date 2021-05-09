@@ -256,7 +256,7 @@ function GeneralArticleWriter(props) {
             newImages.push(fileId);
             setUploadedImages(newImages);
 
-            return { data: { link: process.env.EXTERNAL_BACKEND_URL + "/v1/files/media/" + fileId } };
+            return { data: { link: process.env.REACT_APP_BACKEND_URL + "/v1/files/media/" + fileId } };
         } catch {
             alert("이미지를 업로드하는데 실패하였습니다. 다시 시도해주세요.");
         }

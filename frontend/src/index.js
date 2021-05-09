@@ -10,7 +10,7 @@ import './index.css';
 import App from './shared/App';
 import * as serviceWorker from './serviceWorker';
 
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
 dotenv.config();
 
