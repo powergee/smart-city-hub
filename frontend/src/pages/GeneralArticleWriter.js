@@ -15,7 +15,6 @@ import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./GeneralArticleWriter.scss";
 import { Prompt, useHistory } from 'react-router-dom';
 import { uploadFile, postArticle, getArticle, getFileInfo } from "../shared/BackendRequests";
-import packageJson from "../../package.json";
 
 // Editor에서 이미지를 첨부한 뒤 한국어를 입력하면 "Unknown DraftEntity key: null." 에러가 발생하는 버그 존재.
 // 아래에 있는 커스텀 렌더러(BlockRenderer)를 사용하여 해결.
@@ -257,7 +256,7 @@ function GeneralArticleWriter(props) {
             newImages.push(fileId);
             setUploadedImages(newImages);
 
-            return { data: { link: packageJson.proxy + "/v1/files/media/" + fileId } };
+            return { data: { link: process.env.EXTERNAL_BACKEND_URL + "/v1/files/media/" + fileId } };
         } catch {
             alert("이미지를 업로드하는데 실패하였습니다. 다시 시도해주세요.");
         }

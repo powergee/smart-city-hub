@@ -10,6 +10,10 @@ import './index.css';
 import App from './shared/App';
 import * as serviceWorker from './serviceWorker';
 
+import dotenv from "dotenv"
+
+dotenv.config();
+
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>

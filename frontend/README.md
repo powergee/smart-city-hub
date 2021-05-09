@@ -1,3 +1,13 @@
+## dotenv
+
+이 코드는 프로젝트 루트에 `.env` 파일을 사용한다. 파일에는 EXTERNAL_BACKEND_URL에 대한 정의가 필요한데, 이는 외부에서 접속할 수 있는 백엔드의 주소를 의미한다.
+
+```
+EXTERNAL_BACKEND_URL=https://backend.url
+```
+
+## React.js 기본 README
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
