@@ -76,7 +76,7 @@ const CollapsibleRow = (props) => {
                 </TableCell>
                 <TableCell><th>{row.number}</th></TableCell>
                 <TableCell>
-                    <ButtonBase onClick={() => window.location = row.site}>
+                    <ButtonBase onClick={() => window.open(row.site)}>
                         <th className="comp-name">{row.name}</th>
                     </ButtonBase>
                 </TableCell>

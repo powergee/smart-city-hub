@@ -12,7 +12,7 @@ export default function CardBoard(props) {
             if (url[0] === '/')
                 history.push(url);
             else
-                window.location.href = url;
+                window.open(url);
         }
     }
 
