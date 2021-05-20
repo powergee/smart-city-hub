@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import draftToHtml from "draftjs-to-html"
-import htmlToDraft from "html-to-draftjs"
-import { ContentHeader } from '../components';
+import React, { useEffect, useState, useRef } from 'react';
+import { ContentHeader, ArticleEditor } from '../components';
 import getToken from "../shared/GetToken";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import SaveIcon from '@material-ui/icons/Save';
@@ -11,72 +7,18 @@ import BackspaceIcon from '@material-ui/icons/Backspace';
 import { Button, IconButton, TextField, FormControlLabel, Switch } from '@material-ui/core';
 import path from "path";
 import { withCookies } from "react-cookie";
-import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import "./GeneralArticleWriter.scss";
 import { Prompt, useHistory } from 'react-router-dom';
 import { uploadFile, postArticle, getArticle, getFileInfo } from "../shared/BackendRequests";
-
-// Editor에서 이미지를 첨부한 뒤 한국어를 입력하면 "Unknown DraftEntity key: null." 에러가 발생하는 버그 존재.
-// 아래에 있는 커스텀 렌더러(BlockRenderer)를 사용하여 해결.
-// https://github.com/jpuri/react-draft-wysiwyg/issues/979 를 참고하였음.
-function BlockRenderer(contentBlock) {
-    const type = contentBlock.getType();
-
-    // Convert image type to mediaComponent
-    if (type === 'atomic') {
-        return {
-            component: MediaComponent,
-            editable: false,
-        };
-    }
-}
-
-class MediaComponent extends React.Component {
-    render() {
-        const { block, contentState } = this.props;
-        const data = contentState.getEntity(block.getEntityAt(0)).getData();
-        const emptyHtml = ' ';
-
-        return (
-            <div style={{
-                "display": "flex",
-                "flex-direction": "row",
-                "align-items": "center",
-                "justify-content": "center"
-            }}>
-                {emptyHtml}
-                <img
-                    src={data.src}
-                    alt={data.alt || 'image'}
-                    style={{"max-width": "100%"}}
-                />
-            </div>
-        );
-    }
-}
-
-function ImgEntityTransform(entity) {
-    if (entity.type === "IMAGE") {
-        return `
-        <div style="
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        ">
-            <img src="${entity.data.src}" style="max-width: 100%"}}/>
-        </div>`
-    }
-
-    return ''
-}
 
 function GeneralArticleWriter(props) {
     const { superTitle, superCation, pageTitle, pageCaption, link, kind } = props;
     const articleId = props?.match?.params?.articleId;
 
     const history = useHistory();
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [editor, setEditor] = useState(null);
+    const [initContents, setInitContents] = useState("");
+    const [contents, setContents] = useState("");
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const [uploadedFilesInfo, setUploadedFilesInfo] = useState({});
@@ -111,10 +53,11 @@ function GeneralArticleWriter(props) {
             getArticle(articleId)
                 .then((article) => {
                     // 게시글 내용 설정
-                    let contentBlock = htmlToDraft(article.contents)
-                    let contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
-                    let editorState = EditorState.createWithContent(contentState)
-                    setEditorState(editorState)
+                    setContents(article.contents);
+                    setInitContents(article.contents);
+                    if (editor) {
+                        editor.setData(article.contents);
+                    }
 
                     setUploadedFiles(article.files)
                     setUploadedImages(article.images)
@@ -133,7 +76,8 @@ function GeneralArticleWriter(props) {
                         setUploadedFilesInfo(infoDict);
                     })
                 })
-                .catch(() => {
+                .catch((ex) => {
+                    console.log(ex);
                     alert("글을 가져올 수 없었습니다. 정상적인 경로로 접근했는지 확인해주세요.");
                     history.push(link);
                 })
@@ -147,8 +91,22 @@ function GeneralArticleWriter(props) {
         history.push(routeToMove);
     }, [routeToMove]);
 
-    function onEditorStateChange(editorState) {
-        setEditorState(editorState);
+    useEffect(() => {
+        if (editor && initContents) {
+            editor.setData(initContents);
+        }
+    }, [initContents, editor])
+
+    function onContentsChange(_, editor) {
+        const data = editor.getData();
+        setContents(data);
+    }
+
+    function onEditorReady(editor) {
+        setEditor(editor);
+        if (contents) {
+            editor.setData(contents);
+        }
     }
 
     function onFileInputChange(e) {
@@ -222,11 +180,10 @@ function GeneralArticleWriter(props) {
 
         try {
             const fileIds = await Promise.all(promises);
-            const htmlSrc = draftToHtml(convertToRaw(editorState.getCurrentContent()), null, null, ImgEntityTransform);
 
             let article = {
                 title: title,
-                contents: htmlSrc,
+                contents: contents,
                 images: uploadedImages,
                 files: uploadedFiles.concat(fileIds.map(element => Number(element))),
                 kind: kind,
@@ -247,21 +204,6 @@ function GeneralArticleWriter(props) {
         }
     }
 
-    async function imageUploadCallback(file) {
-        try {
-            const fileId = await uploadFile(file);
-
-            let newImages = [...uploadedImages];
-
-            newImages.push(fileId);
-            setUploadedImages(newImages);
-
-            return { data: { link: process.env.REACT_APP_BACKEND_URL + "/v1/files/media/" + fileId } };
-        } catch {
-            alert("이미지를 업로드하는데 실패하였습니다. 다시 시도해주세요.");
-        }
-    }
-
     return (
         <ContentHeader sections={sections}>
             <Prompt when={routeToMove === undefined} message="아직 작성중인 게시글을 저장하지 않았습니다. 정말 나가시겠습니까?"></Prompt>
@@ -277,27 +219,11 @@ function GeneralArticleWriter(props) {
                 />
             </div>
 
-            <Editor
-                wrapperClassName="writer-wrapper"
-                editorClassName="writer-editor"
-                localization={{
-                    locale: 'ko',
-                }}
-                placeholder="내용을 작성해주세요!"
-                editorState={editorState}
-                onEditorStateChange={onEditorStateChange}
-                blockRendererFn={BlockRenderer}
-                toolbar={{
-                    image: {
-                        uploadCallback: imageUploadCallback,
-                        previewImage: true,
-                        alt: { present: true, mandatory: false },
-                        inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
-
-                    }
-                }}
-            >
-            </Editor>
+            <ArticleEditor
+                onChange={onContentsChange}
+                onReady={onEditorReady}
+                ref={editor}
+            />
 
            {selectedFiles.length > 0 ? (<strong className="writer-caption">새로 업로드될 파일:</strong>) : (undefined)}
 

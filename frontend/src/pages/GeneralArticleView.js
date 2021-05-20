@@ -123,7 +123,7 @@ function GeneralArticleView(props) {
                             </div>
                         </div>
 
-                        <div className="article-contents" dangerouslySetInnerHTML={{ __html: article.contents }}></div>
+                        <div className="article-contents ck-content" dangerouslySetInnerHTML={{ __html: article.contents }}></div>
 
                         <div className="article-files">
                             {
