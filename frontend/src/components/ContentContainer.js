@@ -126,7 +126,7 @@ export default function ContentContainer(props) {
                         link: "/community/seminar"
                     },
                     {
-                        title: "워크숍",
+                        title: "기관 및 기업 소개",
                         link: "/community/workshop"
                     }
                 ]

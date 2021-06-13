@@ -27,13 +27,13 @@ function Workshop() {
         <ContentContainer currentPath={"/community/workshop"}>
             <Switch>
                 <Route exact path="/community/workshop"
-                    render={() => <GeneralArticleList superTitle="커뮤니티" title="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleList>}></Route>
+                    render={() => <GeneralArticleList superTitle="커뮤니티" title="기관 및 기업 소개" link="/community/workshop" kind="workshop"></GeneralArticleList>}></Route>
                 <Route exact path="/community/workshop/writer"
-                    render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleWriter>}></Route>
+                    render={() => <GeneralArticleWriter superTitle="커뮤니티" pageTitle="기관 및 기업 소개" link="/community/workshop" kind="workshop"></GeneralArticleWriter>}></Route>
                 <Route path="/community/workshop/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="커뮤니티" pageTitle="워크숍" link="/community/workshop" kind="workshop"></GeneralArticleWriter>}></Route>
+                    render={(props) => <GeneralArticleWriter {...props} superTitle="커뮤니티" pageTitle="기관 및 기업 소개" link="/community/workshop" kind="workshop"></GeneralArticleWriter>}></Route>
                 <Route exact path="/community/workshop/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="워크숍" listLink="/community/workshop" kind="workshop"></GeneralArticleView>}></Route>
+                    render={(props) => <GeneralArticleView {...props} superTitle="커뮤니티" title="기관 및 기업 소개" listLink="/community/workshop" kind="workshop"></GeneralArticleView>}></Route>
             </Switch>
         </ContentContainer>
     )
