@@ -6,7 +6,7 @@ import { IArticlesGetRequest, IArticlesGetResponse } from "../types";
 import { IArticlesCountGetRequest, IArticlesCountGetResponse } from "../types";
 import { IArticlesPostRequest } from "../types";
 import { GeneralArticleModel, IGeneralArticle } from "./models/generalArticleModel";
-import { FileModel, IFile } from "./models/fileModel"
+import { FileModel } from "./models/fileModel"
 import validateToken from "./validateAuth";
 
 const router = new Router();
@@ -16,36 +16,50 @@ router.use(Cookie());
 
 router.get("/", async (ctx: Koa.Context) => {
     const body:IArticlesGetRequest = {
-        kind: ctx.query.kind,
         page: Number(ctx.query.page),
-        perPage: Number(ctx.query.perPage)
+        perPage: Number(ctx.query.perPage),
+        kindRegex: ctx.query.kindRegex,
+        contentsRegex: ctx.query.contentsRegex,
+        titleRegex: ctx.query.titleRegex,
+        createdByRegex: ctx.query.createdByRegex
     };
 
-    if (body.page === undefined || body.perPage === undefined || body.kind === undefined ||
-        isNaN(body.page) || isNaN(body.perPage) ||
+    if (body.page === undefined || body.perPage === undefined || isNaN(body.page) || isNaN(body.perPage) ||
         body.page < 1 || body.perPage < 1) {
         ctx.throw(400, "At least one parameter is not valid. The query was: " + JSON.stringify(ctx.query));
     }
 
-    const kindRegex = new RegExp(body.kind);
-    // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 반환해야 한다.
-    const token = validateToken(ctx);
-    if (token !== undefined && token.isManager) {
-        const res:IArticlesGetResponse = await GeneralArticleModel.find()
-            .where("kind").equals(kindRegex)
-            .sort({ articleId: -1 })
-            .skip((body.page-1)*body.perPage)
-            .limit(body.perPage).exec();
-        ctx.response.body = res;
-    } else {
-        const res:IArticlesGetResponse = await GeneralArticleModel.find()
-            .where("kind").equals(kindRegex)
-            .where("isPublic").equals(true)
-            .sort({ articleId: -1 })
-            .skip((body.page-1)*body.perPage)
-            .limit(body.perPage).exec();
-        ctx.response.body = res;
+    let cursor = GeneralArticleModel.find();
+    
+    if (body.kindRegex) {
+        const kindRegex = new RegExp(body.kindRegex);
+        cursor = cursor.where("kind").equals(kindRegex);
     }
+    if (body.titleRegex) {
+        const titleRegex = new RegExp(body.titleRegex);
+        cursor = cursor.where("title").equals(titleRegex);
+    }
+    if (body.contentsRegex) {
+        const contentsRegex = new RegExp(body.contentsRegex);
+        cursor = cursor.where("contents").equals(contentsRegex);
+    }
+    if (body.createdByRegex) {
+        const createdByRegex = new RegExp(body.createdByRegex);
+        cursor = cursor.where("createdByRegex").equals(createdByRegex);
+    }
+
+    // 현재 manager 계정으로 로그인 되어 있다면 공개된 게시글은 물론 비공개된 게시글도 반환해야 한다.
+    // 하지만 그 외 모든 경우에는 공개된 게시글만 반환한다.
+    const token = validateToken(ctx);
+    if (token === undefined || !token.isManager) {
+        cursor = cursor.where("isPublic").equals(true);
+    }
+
+    const res:IArticlesGetResponse = await cursor
+        .sort({ articleId: -1 })
+        .skip((body.page-1)*body.perPage)
+        .limit(body.perPage).exec();
+    ctx.response.body = res;
 });
 
 router.get("/count", async (ctx: Koa.Context) => {

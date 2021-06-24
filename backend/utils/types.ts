@@ -50,7 +50,10 @@ export interface ITokenData {
 export interface IArticlesGetRequest {
     page: number,
     perPage: number,
-    kind: string
+    kindRegex: string,
+    contentsRegex: string,
+    titleRegex: string,
+    createdByRegex: string
 }
 
 // Response

@@ -38,7 +38,7 @@ export default function NoticeBoard() {
 
         Object.entries(associatedKinds).forEach(([, kinds]) => {
             kinds.forEach((kind) => {
-                artProms.push(getArticles(kind, 1, 3));
+                artProms.push(getArticles(1, 3, kind));
                 cntProms.push(countArticles(kind));
             });
         });

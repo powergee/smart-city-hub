@@ -53,7 +53,7 @@ function GeneralArticleList(props) {
             return;
         }
 
-        getArticles(kind, page, perPage)
+        getArticles(page, perPage, kind)
             .then((res) => {
                 setArticles(res);
 

@@ -15,11 +15,14 @@ export async function getSalt(id) {
     }
 }
 
-export async function getArticles(kind, page, perPage) {
+export async function getArticles(page, perPage, kindRegex, contentsRegex, titleRegex, createdByRegex) {
     const query = {
         page: page,
         perPage: perPage,
-        kind: kind
+        kindRegex: kindRegex,
+        contentsRegex: contentsRegex,
+        titleRegex: titleRegex,
+        createdByRegex: createdByRegex
     };
 
     try {

@@ -49,11 +49,15 @@
 ```js
 {
     articleId: number,
+    title: string,
     contents: string,
     images: [number],
     files: [number],
     kind: string,
     views: number,
+    isPublic: boolean,
+    createdBy: string,
+    lastModifiedBy: string,
     meta: {
         createAt: Date,
         modifiedAt: Date
@@ -121,13 +125,19 @@ ID에 해당하는 Salt를 가져온다.
 
 1. page: 목록을 가져올 페이지 번호 (1부터 시작)
 2. perPage: 한 페이지 당 표시할 글의 개수 (1 이상이여야 함)
-3. kind: 글의 종류
+3. kindRegex: kind column에 적용할 Regex
+4. contentsRegex: contents column에 적용할 Regex
+5. titleRegex: contents column에 적용할 Regex
+6. createdByRegex: createdBy column에 적용할 Regex
 
 ```js
 {
     page: pageNumber,
     perPage: countOfElementsInOnePage,
-    kind: "Kind of Articles"
+    kindRegex: "*",
+    contentsRegex: "*",
+    titleRegex: "*",
+    createdByRegex: "*"
 }
 ```
 
