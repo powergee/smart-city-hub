@@ -5,9 +5,7 @@ import { Paper, ButtonBase, Typography } from '@material-ui/core'
 import HubJson from "../hub-data/generated/domestic-parsed.json"
 import { useHistory } from 'react-router-dom';
 import CateToEng from "../hub-data/cateToEng.json"
-import Samp1 from "../hub-data/1.jpg"
-import Samp2 from "../hub-data/2.jpg"
-import Samp3 from "../hub-data/3.jpg"
+import CategoryImage from '../shared/CategoryImage';
 import "./Hub.scss"
 
 function parsePath(first, second, third) {
@@ -62,12 +60,12 @@ function FirstCategoryViewer(props) {
         let [section, , nextCate] = parsePath(undefined, undefined, undefined);
         let categories = [];
     
-        // 디자인 테스트를 위한 것이므로, 본격적으로 배포할 때는 수정해야 함.
         for (const next in nextCate) {
             categories.push({
                 link: section[section.length - 1].link + "/" + next,
                 title: nextCate[next],
-                image: Math.random() > 0.66 ? (Samp3) : (Math.random() > 0.5 ? (Samp2) : (Samp1)),
+                image: CategoryImage[nextCate[next]],
+                // image: Math.random() > 0.66 ? (Samp3) : (Math.random() > 0.5 ? (Samp2) : (Samp1)),
                 description: CateToEng[nextCate[next]]
             })
         }
