@@ -39,16 +39,17 @@ function GeneralArticleView(props) {
                 setArticle(res);
             })
             .catch((err) => {
-                if (err === 400 || err === 404) {
+                const status = err?.response?.status;
+                if (status === 400 || status === 404) {
                     alert("게시글 번호가 올바르지 않습니다. 다시 확인해주세요.");
-                } else if (err === 401) {
+                } else if (status === 401) {
                     alert("비공개 게시글입니다. 확인하려면 로그인해주세요.");
                 } else {
                     alert("알 수 없는 오류입니다. 잠시 뒤에 다시 시도하십시오: " + err);
                 }
                 history.push(listLink);
             });
-    }, [articleId])
+    }, [articleId, listLink, history])
 
     useEffect(() => {
         if (article === undefined) {

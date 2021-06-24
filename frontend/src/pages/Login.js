@@ -26,7 +26,7 @@ function Login(props) {
                 setChecked(true);
             }
         }
-    }, []);
+    }, [props.cookies, history]);
 
     function changeId(event){
         setId(event.target.value);
@@ -63,11 +63,12 @@ function Login(props) {
             await tryLogin(id, pw);
             redirectTo("/");
         } catch (err) {
-            if (err === 400) {
+            const status = err?.response?.status;
+            if (status === 400) {
                 alert("ID와 비밀번호를 모두 입력한 뒤 다시 시도해주세요.");
-            } else if (err === 401 || err === 404) {
+            } else if (status === 401 || status === 404) {
                 alert("ID와 비밀번호가 잘못되었습니다.");
-            } else if (err === 403) {
+            } else if (status === 403) {
                 alert("현재 이 계정은 등록된 이후 가입이 허용되지 않았습니다. 서버 관리자에게 문의하십시오.");
             } else {
                 alert("알 수 없는 오류입니다. 잠시 뒤에 다시 시도하십시오: " + err);

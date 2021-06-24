@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ContentHeader, ArticleEditor } from '../components';
 import getToken from "../shared/GetToken";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -82,14 +82,14 @@ function GeneralArticleWriter(props) {
                     history.push(link);
                 })
         }
-    }, []);
+    }, [articleId, editor, history, link, props.cookies]);
 
     useEffect(() => {
         if (routeToMove === undefined) {
             return;
         }
         history.push(routeToMove);
-    }, [routeToMove]);
+    }, [routeToMove, history]);
 
     useEffect(() => {
         if (editor && initContents) {

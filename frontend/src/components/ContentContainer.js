@@ -166,7 +166,7 @@ export default function ContentContainer(props) {
         openPaths(defaultPaths);
         console.log(defaultPaths);
         setPaths(defaultPaths);
-    }, []);
+    }, [currentPath]);
 
     return (
         <div className="content-background">

@@ -11,7 +11,7 @@ export async function getSalt(id) {
         return res.data.userPwSalt;
     } catch (err) {
         console.error("In getSalt: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -27,7 +27,7 @@ export async function getArticles(kind, page, perPage) {
         return res.data;
     } catch (err) {
         console.error("In getArticles: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -41,14 +41,14 @@ export async function countArticles(kind) {
         return res.data.articleCount;
     } catch (err) {
         console.error("In countArticles: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
 export async function tryLogin(id, pw) {
     const salt = await getSalt(id);
 
-    if (typeof salt === "number") {
+    if (typeof salt?.response?.status === "number") {
         throw salt;
     }
 
@@ -65,7 +65,7 @@ export async function tryLogin(id, pw) {
         return res.data;
     } catch (err) {
         console.error("In tryLogin: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -86,7 +86,7 @@ export async function tryRegister(id, pw, name) {
         return res.data;
     } catch (err) {
         console.error("In tryRegister: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -96,7 +96,7 @@ export async function tryLogout() {
         return res.data;
     } catch (err) {
         console.error("In tryLogin: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -106,7 +106,7 @@ export async function getArticle(articleId) {
         return res.data;
     } catch (err) {
         console.error("In getArticle: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -116,16 +116,16 @@ export async function postArticle(article) {
         return res.data;
     } catch (err) {
         console.error("In postArticle: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
 export async function deleteArticle(articleId) {
     try {
-        let res = await axios.delete("/v1/articles/" + articleId, { withCredentials: true });
+        await axios.delete("/v1/articles/" + articleId, { withCredentials: true });
     } catch (err) {
-        console.error("In postArticle: " + err?.response?.data);
-        throw err?.response?.status;
+        console.error("In deleteArticle: " + err?.response?.data);
+        throw err;
     }
 }
 
@@ -141,7 +141,7 @@ export async function uploadFile(file) {
         return res.data;
     } catch (err) {
         console.error("In uploadFile: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -151,7 +151,7 @@ export async function getFileInfo(fileId) {
         return res.data;
     } catch (err) {
         console.error("In getFileInfo: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }
 
@@ -183,6 +183,6 @@ export async function downloadFile(fileId) {
         }
     } catch (err) {
         console.error("In downloadFile: " + err?.response?.data);
-        throw err?.response?.status;
+        throw err;
     }
 }

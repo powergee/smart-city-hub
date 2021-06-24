@@ -1,7 +1,6 @@
-import { ButtonBase, Paper } from '@material-ui/core';
 import React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { ContentContainer, ContentHeader } from "../components"
+import { Route, Switch } from 'react-router-dom';
+import { ContentContainer } from "../components"
 import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
 import GeneralArticleWriter from './GeneralArticleWriter';

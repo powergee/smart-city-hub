@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import { ContentContainer, ContentHeader, CardBoard, CompanyList } from "../components"
 import { Paper, ButtonBase, Typography } from '@material-ui/core'
@@ -59,7 +59,7 @@ function FirstCategoryViewer(props) {
     const [categories, setCategories] = useState();
 
     useEffect(() => {
-        let [section, _, nextCate] = parsePath(undefined, undefined, undefined);
+        let [section, , nextCate] = parsePath(undefined, undefined, undefined);
         let categories = [];
     
         // 디자인 테스트를 위한 것이므로, 본격적으로 배포할 때는 수정해야 함.
@@ -100,10 +100,10 @@ function SecondCategoryViewer(props) {
     const history = useHistory();
 
     useEffect(() => {
-        let [section, currentNode, _] = parsePath(first, undefined, undefined);
+        let [section, currentNode,] = parsePath(first, undefined, undefined);
         setSecondNode(currentNode);
         setSection(section);
-    }, [props]);
+    }, [first]);
 
     function moveToList(secondTitle, thirdTitle) {
         const secondIndex = HubJson["secondCate"].indexOf(secondTitle);
@@ -183,9 +183,9 @@ function ListViewer(props) {
     const [section, setSection] = useState();
 
     useEffect(() => {
-        let [section, currentNode, nextCate] = parsePath(first, second, third);
+        let [section, ,] = parsePath(first, second, third);
         setSection(section);
-    }, [props]);
+    }, [first, second, third]);
 
     return (
         section ? (
@@ -210,14 +210,13 @@ function CompanyViewer(props) {
     const first = props?.match?.params?.first;
     const second = props?.match?.params?.second;
     const third = props?.match?.params?.third;
-    const comp = props?.match?.params?.comp;
 
     const [section, setSection] = useState();
 
     useEffect(() => {
-        let [section, currentNode, nextCate] = parsePath(first, second, third);
+        let [section, ,] = parsePath(first, second, third);
         setSection(section);
-    }, [props]);
+    }, [first, second, third]);
 
     return (
         section ? (
@@ -234,7 +233,7 @@ function CompanyViewer(props) {
     );
 }
 
-export default function Hub(props) {
+export default function Hub() {
     return (
         <Switch>
             <Route exact path="/hub" component={FirstCategoryViewer}></Route>

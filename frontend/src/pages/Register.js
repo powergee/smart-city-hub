@@ -72,9 +72,10 @@ export default function Register() {
                 alert("가입 신청이 완료되었습니다. 서버 관리자가 해당 계정을 활성화하면 그 때부터 로그인이 가능합니다.");
                 history.push("/");
             } catch (err) {
-                if (err === 400) {
+                const status = err?.response?.status;
+                if (status === 400) {
                     alert("ID, 비밀번호, 이름을 조건에 맞게 모두 입력한 뒤 다시 시도해주세요.");
-                } else if (err === 409) {
+                } else if (status === 409) {
                     alert("주어진 ID를 사용하는 계정이 이미 있습니다. 다른 ID를 선택해주세요.");
                 } else {
                     alert("알 수 없는 오류입니다. 잠시 뒤에 다시 시도하십시오: " + err);

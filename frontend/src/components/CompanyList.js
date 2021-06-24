@@ -143,34 +143,34 @@ export default function CompanyList(props) {
     const [rows, setRows] = useState([]);
     const [headCells, setHeadCells] = useState(undefined);
 
-    // DFS에 기반함.
-    function processAllLeafNodes(node, rows) {
-        if (node.next) {
-            Object.entries(node.next).forEach(([_, nextNode]) => processAllLeafNodes(nextNode, rows));
-        }
-
-        if (node.values) {
-            node.values.forEach((value) => rows.push({
-                first: value["대분류"],
-                second: value["중분류"],
-                third: value["소분류(키워드)"],
-                name: value["관련기업"],
-                kind: value["회사구분"],
-                service: value["서비스유형"].join(', '),
-                product: value["제품형태(최종제품)"].join(', '),
-                tech: value["보유기술"],
-                call: value["전화번호"],
-                address: value["주소"],
-                site: value["홈페이지"],
-                found: value["설립연도"],
-                fund: value["자본금(원)"],
-                sales: value["회사 매출 규모(원)"],
-                employees: value["종업원수"]
-            }));
-        }
-    }
-
     useEffect(() => {
+        // DFS에 기반함.
+        function processAllLeafNodes(node, rows) {
+            if (node.next) {
+                Object.entries(node.next).forEach(([_, nextNode]) => processAllLeafNodes(nextNode, rows));
+            }
+
+            if (node.values) {
+                node.values.forEach((value) => rows.push({
+                    first: value["대분류"],
+                    second: value["중분류"],
+                    third: value["소분류(키워드)"],
+                    name: value["관련기업"],
+                    kind: value["회사구분"],
+                    service: value["서비스유형"].join(', '),
+                    product: value["제품형태(최종제품)"].join(', '),
+                    tech: value["보유기술"],
+                    call: value["전화번호"],
+                    address: value["주소"],
+                    site: value["홈페이지"],
+                    found: value["설립연도"],
+                    fund: value["자본금(원)"],
+                    sales: value["회사 매출 규모(원)"],
+                    employees: value["종업원수"]
+                }));
+            }
+        }
+
         const newRows = [];
         const newHeadCells = [];
         let currentNode = HubJson.tree;

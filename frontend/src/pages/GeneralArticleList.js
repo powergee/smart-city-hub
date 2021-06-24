@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ContentHeader, ArticlePreview } from "../components"
+import { ContentHeader } from "../components"
 import { getArticles, countArticles, getFileInfo, downloadFile } from "../shared/BackendRequests";
 import { dateToString } from '../shared/DateToString';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
@@ -46,7 +46,7 @@ function GeneralArticleList(props) {
                 setPerPage(15);
                 setPage(1);
             });
-    }, [total]);
+    }, [total, kind]);
 
     useEffect(() => {
         if (page === undefined || perPage === undefined) {
@@ -73,10 +73,10 @@ function GeneralArticleList(props) {
                 })
             })
             .catch((err) => {
-                alert("게시글을 가져올 수 없습니다.. 잠시 뒤에 다시 시도하십시오: " + err);
+                alert("게시글을 가져올 수 없습니다.. 잠시 뒤에 다시 시도하십시오: " + err?.response?.status);
                 history.push("/");
             });
-    }, [page, perPage]);
+    }, [page, perPage, kind, history]);
 
     function handlePageChange(_, value) {
         setArticles(undefined);
