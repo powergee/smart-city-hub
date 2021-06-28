@@ -5,31 +5,68 @@ $slide-text-size: 50px;
 
 .slide-container {
     min-width: $page-width;
-    width: 100%;
-}
-
-.campus-slide > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    height: $slide-height;
-}
-
-.white-filter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
     height: $slide-height;
     width: 100%;
-    height: 100%;
+    position: relative;
+}
 
-    span {
-        font-size: $slide-text-size;
-        text-align: center;
-        color: white;
-        font-weight: bold;
+.campus-slide {
+    & > img {
+        z-index: 0;
+        position: absolute;
+        right: 0;
+        height: 100%;
+    }
+
+    .menu-root {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        height: $slide-height;
+        width: $page-width;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .menu-table {
+            display: table;
+            width: 100%;
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: auto;
+
+            .menu-row {
+                display: table-row;
+
+                .menu-cell {
+                    display: table-cell;
+                    vertical-align: middle;
+                    padding: 10px;
+                
+                    h4 {
+                        margin: 10px;
+                    }
+
+                    .menu-paper {
+                        height: 180px;
+                        width: 200px;
+                    }
+
+                    .menu-button {
+                        width: 100%;
+                        height: 100%;
+                        padding-top: 5px !important;
+                        padding-bottom: 5px !important;
+
+                        .menu-icon {
+                            width: 120px !important;
+                            height: 120px !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -86,61 +123,6 @@ $slide-text-size: 50px;
 .notice-root {
     height: 310px;
     padding: 5px;
-}
-
-.menu-root {
-    display: flex;
-    flex-flow: column;
-}
-
-.menu-table {
-    display: table;
-    width: 100%;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
-}
-
-.menu-row {
-    display: table-row;
-}
-
-.menu-cell {
-    display: table-cell;
-    vertical-align: middle;
-    padding: 5px;
-
-    h4 {
-        margin: 10px;
-    }
-
-    // & > div {
-    //     display: flex;
-    //     flex-direction: column;
-    //     align-items: center;
-    //     justify-items: center;
-    // }
-}
-
-.menu-paper {
-    height: 150px;
-}
-
-.menu-button {
-    width: 100%;
-    height: 100%;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-}
-
-.menu-pic {
-    height: 66px !important;
-    margin: 7px -100px 7px -100px;
-}
-
-.menu-icon {
-    width: 80px !important;
-    height: 80px !important;
 }
 
 .modal {
