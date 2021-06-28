@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NoticeBoard, CardBoard } from '../components'
-import { Slide } from 'react-slideshow-image';
 import LocationCityIcon from '@material-ui/icons/LocationCity';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import ArchiveIcon from '@material-ui/icons/Archive';
@@ -20,6 +19,34 @@ export default function Home() {
 
     const archMenu = getArchives();
 
+    // useEffect(() => {
+    //     function extractSrc(html) {
+    //         const tempElement = document.createElement("div");
+    //         tempElement.innerHTML = html;
+    //         return tempElement.querySelector("img").getAttribute("src");
+    //     }
+
+    //     getArticles(1, 6, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
+    //         .then((res) => {
+    //             const newSlides = [];
+    //             res.forEach(element => {
+    //                 const src = extractSrc(element.contents);
+    //                 newSlides.push((
+    //                     <div className="campus-slide">
+    //                         <div style={{ 'backgroundImage': `url(${src})` }}>
+    //                             <div className="white-filter">
+    //                                 <span style={{ 'color': `#ffffff` }}>
+    //                                     {element.title}
+    //                                 </span>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 ));
+    //             });
+    //             setSlides(newSlides);
+    //         })
+    // }, [])
+
     function viewArchive() {
         setArchOpen(true);
     }
@@ -30,26 +57,15 @@ export default function Home() {
 
     return (
         <React.Fragment>
-            <Slide easing="ease" className="slide-container">
-                <div className="campus-slide">
-                    <div style={{ 'backgroundImage': `url(${slide1})` }}>
-                        <div className="white-filter">
-                            <span style={{ 'color': `#ffffff` }}>
-                                Global Urban &#38; Infrastructure Research Center
-                            </span>
-                        </div>
+            <div className="campus-slide">
+                <div style={{ 'backgroundImage': `url(${slide1})` }}>
+                    <div className="white-filter">
+                        <span style={{ 'color': `#ffffff` }}>
+                            Global Urban &#38; Infrastructure Research Center
+                        </span>
                     </div>
                 </div>
-                <div className="campus-slide">
-                    <div style={{ 'backgroundImage': `url(${slide1})` }}>
-                        <div className="white-filter">
-                            <span style={{ 'color': `#ffffff` }}>
-                                Global Urban &#38; Infrastructure Research Center
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </Slide>
+            </div>
 
             <div className="comment-background">
                 <div className="comment-container">
@@ -135,6 +151,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            
 
             <Modal open={archOpen} className="modal" onClose={() => setArchOpen(false)}>
                 <div className="modal-content">
