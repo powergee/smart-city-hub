@@ -144,7 +144,6 @@ export default function ContentContainer(props) {
             for (let i = 0; i < paths.length; ++i) {
                 let found = false;
                 if (paths[i].hasOwnProperty("link")) {
-                    console.log(paths[i].link)
                     let shortLength = Math.min(paths[i].link.length, currentPath.length)
                     if (paths[i].link.substring(0, shortLength) === currentPath.substring(0, shortLength)) {
                         found = true;
@@ -164,7 +163,6 @@ export default function ContentContainer(props) {
         }
     
         openPaths(defaultPaths);
-        console.log(defaultPaths);
         setPaths(defaultPaths);
     }, [currentPath]);
 

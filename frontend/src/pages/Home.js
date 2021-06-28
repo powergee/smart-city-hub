@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { NoticeBoard, CardBoard } from '../components'
-import LocationCityIcon from '@material-ui/icons/LocationCity';
-import AssessmentIcon from '@material-ui/icons/Assessment';
-import ArchiveIcon from '@material-ui/icons/Archive';
-import ImportContactsIcon from '@material-ui/icons/ImportContacts';
-import BookIcon from '@material-ui/icons/Book';
 import { Paper, ButtonBase, Grid, Modal, Typography } from '@material-ui/core'
+import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
 import 'react-slideshow-image/dist/styles.css'
+import { getArticles } from '../shared/BackendRequests'
+import { dateToString } from '../shared/DateToString'
 import getArchives from "../shared/Archives.js";
 import './Home.scss'
 import { useHistory } from 'react-router-dom';
@@ -21,37 +19,45 @@ import sitesIcon from "../images/menu-icons/sites.svg";
 
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
+    const [imageCards, setImageCards] = useState([]);
     const history = useHistory();
-
     const archMenu = getArchives();
 
-    // useEffect(() => {
-    //     function extractSrc(html) {
-    //         const tempElement = document.createElement("div");
-    //         tempElement.innerHTML = html;
-    //         return tempElement.querySelector("img").getAttribute("src");
-    //     }
+    useEffect(() => {
+        function extractSrc(html) {
+            const tempElement = document.createElement("div");
+            tempElement.innerHTML = html;
+            return tempElement.querySelector("img").getAttribute("src");
+        }
 
-    //     getArticles(1, 6, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
-    //         .then((res) => {
-    //             const newSlides = [];
-    //             res.forEach(element => {
-    //                 const src = extractSrc(element.contents);
-    //                 newSlides.push((
-    //                     <div className="campus-slide">
-    //                         <div style={{ 'backgroundImage': `url(${src})` }}>
-    //                             <div className="white-filter">
-    //                                 <span style={{ 'color': `#ffffff` }}>
-    //                                     {element.title}
-    //                                 </span>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                 ));
-    //             });
-    //             setSlides(newSlides);
-    //         })
-    // }, [])
+        getArticles(1, 3, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
+            .then((res) => {
+                const imCards = [];
+                res.forEach(element => {
+                    const src = extractSrc(element.contents);
+                    imCards.push(
+                        <Card className="card-root">
+                            <CardActionArea>
+                                <CardMedia
+                                    image={src}
+                                    title={element.title}
+                                    className="card-media"
+                                />
+                                <CardContent>
+                                    <Typography className="card-title" gutterBottom variant="h6">
+                                        {element.title}
+                                    </Typography>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        {dateToString(element.meta.createdAt)}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
+                        </Card>
+                    );
+                });
+                setImageCards(imCards);
+            })
+    }, [])
 
     function viewArchive() {
         setArchOpen(true);
@@ -150,13 +156,20 @@ export default function Home() {
 
             <div className="board-background">
                 <div className="board-container">
+                    <h3>사진으로 보는 최근 소식</h3>
+                    <div className="card-layout">
+                        {imageCards}
+                    </div>
+                </div>
+            </div>
+
+            <div className="board-background">
+                <div className="board-container">
                     <div className="notice-root">
                         <NoticeBoard></NoticeBoard>
                     </div>
                 </div>
             </div>
-
-            
 
             <Modal open={archOpen} className="modal" onClose={() => setArchOpen(false)}>
                 <div className="modal-content">

@@ -10,4 +10,3 @@ export { default as NotFound } from './NotFound';
 export { default as ArticlePreview } from './ArticlePreview';
 export { default as CompanyList } from './CompanyList';
 export { default as ArticleEditor } from './ArticleEditor';
-export { default as ArticleCard } from './ArticleCard';

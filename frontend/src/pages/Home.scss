@@ -2,6 +2,7 @@
 
 $slide-height: 500px;
 $slide-text-size: 50px;
+$header-color: rgb(12, 0, 78);
 
 .slide-container {
     min-width: $page-width;
@@ -24,44 +25,47 @@ $slide-text-size: 50px;
         top: 50%;
         transform: translate(0, -50%);
         height: $slide-height;
-        width: $page-width;
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
 
-        .menu-table {
-            display: table;
-            width: 100%;
-            flex-grow: 1;
-            flex-shrink: 1;
-            flex-basis: auto;
+        .menu-board {
+            width: $page-width;
 
-            .menu-row {
-                display: table-row;
-
-                .menu-cell {
-                    display: table-cell;
-                    vertical-align: middle;
-                    padding: 10px;
-                
-                    h4 {
-                        margin: 10px;
-                    }
-
-                    .menu-paper {
-                        height: 180px;
-                        width: 200px;
-                    }
-
-                    .menu-button {
-                        width: 100%;
-                        height: 100%;
-                        padding-top: 5px !important;
-                        padding-bottom: 5px !important;
-
-                        .menu-icon {
-                            width: 120px !important;
-                            height: 120px !important;
+            .menu-table {
+                display: table;
+                flex-grow: 1;
+                flex-shrink: 1;
+                flex-basis: auto;
+    
+                .menu-row {
+                    display: table-row;
+    
+                    .menu-cell {
+                        display: table-cell;
+                        vertical-align: middle;
+                        padding: 10px;
+                    
+                        h4 {
+                            margin: 10px;
+                        }
+    
+                        .menu-paper {
+                            height: 180px;
+                            width: 200px;
+                        }
+    
+                        .menu-button {
+                            width: 100%;
+                            height: 100%;
+                            padding-top: 5px !important;
+                            padding-bottom: 5px !important;
+    
+                            .menu-icon {
+                                width: 120px !important;
+                                height: 120px !important;
+                            }
                         }
                     }
                 }
@@ -73,7 +77,7 @@ $slide-text-size: 50px;
 .comment-background {
     min-width: $page-width;
     width: 100%;
-    background-color: #3c4658;
+    background-color: #273447;
     display: flex;
     justify-content: center;
     padding: 30px 0 30px 0;
@@ -111,16 +115,43 @@ $slide-text-size: 50px;
 .board-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+    flex-direction: column;
     width: $page-width;
-    
-    & > * {
-        width: 50%;
-        margin: 18px 10px 18px 10px;
+    padding: 10px 0 10px 0;
+
+    & > h3 {
+        border-left: 3px solid $header-color;
+        padding-left: 10px;
+        margin-left: 10px;
     }
 }
 
+.card-layout {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-root {
+    max-width: 400px;
+    width: 100%;
+    margin: 15px;
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-media {
+    height: 220px;
+}
+
 .notice-root {
+    width: 100%;
     height: 310px;
     padding: 5px;
 }

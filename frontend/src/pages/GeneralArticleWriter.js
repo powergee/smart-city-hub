@@ -77,7 +77,6 @@ function GeneralArticleWriter(props) {
                     })
                 })
                 .catch((ex) => {
-                    console.log(ex);
                     alert("글을 가져올 수 없었습니다. 정상적인 경로로 접근했는지 확인해주세요.");
                     history.push(link);
                 })
