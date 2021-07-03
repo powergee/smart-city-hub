@@ -107,9 +107,17 @@ $header-color: rgb(12, 0, 78);
 .board-background {
     min-width: $page-width;
     width: 100%;
-    background-color: #edeef3;
     display: flex;
     justify-content: center;
+}
+
+.board-puple {
+    background-color: #edeef3;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #dedfe7;
 }
 
 .board-container {

@@ -5,6 +5,7 @@ import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
 import 'react-slideshow-image/dist/styles.css'
 import { getArticles } from '../shared/BackendRequests'
 import { dateToString } from '../shared/DateToString'
+import { getArticlePath } from '../shared/GetArticlePath'
 import getArchives from "../shared/Archives.js";
 import './Home.scss'
 import { useHistory } from 'react-router-dom';
@@ -30,14 +31,20 @@ export default function Home() {
             return tempElement.querySelector("img").getAttribute("src");
         }
 
+        function getLinkHandler(element) {
+            return () => {
+                history.push(getArticlePath(element.articleId, element.kind));
+            }
+        }
+
         getArticles(1, 3, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
             .then((res) => {
                 const imCards = [];
                 res.forEach(element => {
                     const src = extractSrc(element.contents);
                     imCards.push(
-                        <Card className="menu-card-root">
-                            <CardActionArea>
+                        <Card className="menu-card-root" variant="outlined">
+                            <CardActionArea onClick={getLinkHandler(element)}>
                                 <CardMedia
                                     image={src}
                                     title={element.title}
@@ -57,7 +64,7 @@ export default function Home() {
                 });
                 setImageCards(imCards);
             })
-    }, [])
+    }, [history])
 
     function viewArchive() {
         setArchOpen(true);
@@ -154,7 +161,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="board-background">
+            <div className="board-background board-puple">
                 <div className="board-container">
                     <h3>사진으로 보는 최근 소식</h3>
                     <div className="menu-card-layout">
@@ -165,6 +172,7 @@ export default function Home() {
 
             <div className="board-background">
                 <div className="board-container">
+                    <h3>최근에 게시된 글</h3>
                     <div className="notice-root">
                         <NoticeBoard></NoticeBoard>
                     </div>
