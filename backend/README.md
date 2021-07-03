@@ -1,3 +1,25 @@
+# MongoDB Server 설치
+
+백엔드가 실행되는 OS에 맞게 MongoDB Server를 설치해야 한다. Server가 설치되고 활성화되기만 한다면 나중에 backend를 최초 실행할 때 자동으로 smarthub 라는 이름의 DB를 생성하므로, 그 이후는 생각하지 않아도 된다.
+
+# 초기 설정 방법 (dotenv)
+
+이 코드는 `backend` 디렉토리의 `.env` 파일을 사용한다. 파일에는 아래 4가지 정보가 정의되어야 한다.
+
+1. `PORT`: Listen할 포트 번호
+2. `MONGO_URI`: MongoDB의 Database에 접근하기 위한 URI (ex. mongodb://localhost/smarthub)
+3. `ACCESS_SECRET_KEY`: 사전에 무작위로 생성한 Access Token
+4. `FILES_DIRECTORY`: 파일과 이미지를 저장하기 위한 디렉토리 경로
+
+아래는 `.env` 파일의 예시이다.
+
+```
+PORT=4000
+MONGO_URI=mongodb://localhost/smarthub
+ACCESS_SECRET_KEY=랜덤으로_사전에_생성한_문자열
+FILES_DIRECTORY=/home/user/smart-hub-files
+```
+
 # DB 스키마
 
 ## 공통 메타 데이터

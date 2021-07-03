@@ -1,6 +1,6 @@
-## dotenv
+## 초기 설정 방법 (dotenv)
 
-이 코드는 프로젝트 루트에 `.env` 파일을 사용한다. 파일에는 REACT_APP_BACKEND_URL에 대한 정의가 필요한데, 이는 외부에서 접속할 수 있는 백엔드의 주소를 의미한다.
+이 코드는 `frontend` 디렉토리의 `.env` 파일을 사용한다. 파일에는 REACT_APP_BACKEND_URL에 대한 정의가 필요한데, 이는 외부에서 접속할 수 있는 백엔드의 주소를 의미한다.
 
 ```
 REACT_APP_BACKEND_URL=https://backend.url
