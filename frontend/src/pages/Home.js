@@ -36,15 +36,15 @@ export default function Home() {
                 res.forEach(element => {
                     const src = extractSrc(element.contents);
                     imCards.push(
-                        <Card className="card-root">
+                        <Card className="menu-card-root">
                             <CardActionArea>
                                 <CardMedia
                                     image={src}
                                     title={element.title}
-                                    className="card-media"
+                                    className="menu-card-media"
                                 />
                                 <CardContent>
-                                    <Typography className="card-title" gutterBottom variant="h6">
+                                    <Typography className="menu-card-title" gutterBottom variant="h6">
                                         {element.title}
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
@@ -157,7 +157,7 @@ export default function Home() {
             <div className="board-background">
                 <div className="board-container">
                     <h3>사진으로 보는 최근 소식</h3>
-                    <div className="card-layout">
+                    <div className="menu-card-layout">
                         {imageCards}
                     </div>
                 </div>

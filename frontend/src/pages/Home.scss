@@ -127,26 +127,26 @@ $header-color: rgb(12, 0, 78);
     }
 }
 
-.card-layout {
+.menu-card-layout {
     width: 100%;
     padding: 5px;
     display: flex;
     flex-direction: row;
 }
 
-.card-root {
+.menu-card-root {
     max-width: 400px;
     width: 100%;
     margin: 15px;
 }
 
-.card-title {
+.menu-card-title {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.card-media {
+.menu-card-media {
     height: 220px;
 }
 
