@@ -165,11 +165,8 @@ export async function downloadFile(fileId) {
             responseType: "blob"
         });
 
-        const cd = res.headers["content-disposition"];
-        const fnIdx = cd.indexOf("filename");
-        const left = cd.indexOf("\"", fnIdx);
-        const right = cd.indexOf("\"", left+1);
-        const filename = cd.substring(left+1, right);
+        const info = await getFileInfo(fileId);
+        const filename = info.originalName;
 
         let blob = new Blob([res.data]);
 
