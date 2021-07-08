@@ -91,7 +91,7 @@ router.get("/:articleId", async (ctx: Koa.Context) => {
         ctx.throw(400, "articleId is not valid. The parameter was " + JSON.stringify(ctx.params));
     }
 
-    const res:IGeneralArticle = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
+    const res:IGeneralArticle|null = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
 
     if (res === null) {
         ctx.throw(404, "There's no article with articleId = " + ctx.params.articleId);

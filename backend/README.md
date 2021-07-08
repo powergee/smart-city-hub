@@ -1,3 +1,12 @@
+# Dependency
+
+`pdf2pic` 모듈을 사용하려면 아래와 같은 패키지가 필요하다.
+
+```
+sudo apt install ghostscript
+sudo apt install graphicsmagick
+```
+
 # MongoDB Server 설치
 
 백엔드가 실행되는 OS에 맞게 MongoDB Server를 설치해야 한다. Server가 설치되고 활성화되기만 한다면 나중에 backend를 최초 실행할 때 자동으로 smarthub 라는 이름의 DB를 생성하므로, 그 이후는 생각하지 않아도 된다.
