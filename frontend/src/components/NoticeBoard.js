@@ -5,6 +5,11 @@ import { getArticles, countArticles } from "../shared/BackendRequests"
 import ArticlePreview from './ArticlePreview';
 import { useHistory } from 'react-router-dom';
 
+import noticeIcon from "../images/menu-icons/notice.svg";
+import smartNewsIcon from "../images/menu-icons/smart-news.svg";
+import archiveIcon from "../images/menu-icons/archive.svg";
+import sitesIcon from "../images/menu-icons/sites.svg";
+
 export default function NoticeBoard() {
     // 현재 NoticeBoard 에서는 소식(news), 커뮤니티(community) 분야의 글을 다루고 있음.
     const [selected, setSelected] = useState("notices");
@@ -21,6 +26,13 @@ export default function NoticeBoard() {
         "archive": 0
     });
     const history = useHistory();
+
+    const kindImageDict = {
+        "notices": noticeIcon,
+        "smart-news": smartNewsIcon,
+        "archive": archiveIcon,
+        "community": sitesIcon
+    };
 
     useEffect(() => {
         const associatedKinds = {
@@ -104,18 +116,22 @@ export default function NoticeBoard() {
 
     return (
         <Paper variant="outlined" className="board-paper">
-            <div className="board-header">
-                <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
-                <Button onClick={getButtonHandler("smart-news")} color={(selected === "smart-news" ? "primary" : "default")} size="large">스마트 뉴스</Button>
-                <Button onClick={getButtonHandler("community")} color={(selected === "community" ? "primary" : "default")} size="large">커뮤니티</Button>
-                <Button onClick={getButtonHandler("archive")} color={(selected === "archive" ? "primary" : "default")} size="large">아카이브</Button>
+            <div className="board-table">
+                <div className="board-header">
+                    <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
+                    <Button onClick={getButtonHandler("smart-news")} color={(selected === "smart-news" ? "primary" : "default")} size="large">스마트 뉴스</Button>
+                    <Button onClick={getButtonHandler("community")} color={(selected === "community" ? "primary" : "default")} size="large">커뮤니티</Button>
+                    <Button onClick={getButtonHandler("archive")} color={(selected === "archive" ? "primary" : "default")} size="large">아카이브</Button>
+                </div>
+                <div className="board-contents">
+                    {articles[selected].map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
+                </div>
+                <div className="board-footer">
+                    <a href onClick={moveToList}>{counts[selected] + "개의 게시물이 있습니다."}</a>
+                </div>
             </div>
-            <div className="board-contents">
-                {articles[selected].map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
-            </div>
-            <div className="board-footer">
-                <a href onClick={moveToList}>{counts[selected] + "개의 게시물이 있습니다."}</a>
-            </div>
+
+            <img className="board-kind-image" alt="" src={kindImageDict[selected]}></img>
         </Paper>
     )
 }

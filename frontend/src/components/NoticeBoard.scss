@@ -11,6 +11,12 @@ $more-hover: #463FCA;
 
 .board-paper {
     height: 100%;
+    position: relative;
+}
+
+.board-table {
+    z-index: 1;
+    position: relative;
 }
 
 .board-header {
@@ -44,4 +50,14 @@ $more-hover: #463FCA;
         padding: 5px;
         color: $more-hover;
     }
+}
+
+.board-kind-image {
+    width: 200px;
+    height: 200px;
+    z-index: 0;
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    opacity: 0.5;
 }
