@@ -74,35 +74,35 @@ $header-color: rgb(12, 0, 78);
     }
 }
 
-// .comment-background {
-//     min-width: $page-width;
-//     width: 100%;
-//     background-color: #273447;
-//     display: flex;
-//     justify-content: center;
-//     padding: 30px 0 30px 0;
-// }
+.comment-background {
+    min-width: $page-width;
+    width: 100%;
+    background-color: #273447;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 30px 0;
+}
 
-// .comment-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-items: center;
-//     align-items: center;
-//     width: $page-width;
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    width: $page-width;
     
-//     h2 {
-//         font-weight: 500;
-//         font-size: 30px;
-//         color: white;
-//         border-bottom: 1px solid whitesmoke;
-//     }
+    h2 {
+        font-weight: 500;
+        font-size: 30px;
+        color: white;
+        border-bottom: 1px solid whitesmoke;
+    }
 
-//     p {
-//         font-weight: 50;
-//         font-size: 15px;
-//         color: whitesmoke;
-//     }
-// }
+    p {
+        font-weight: 50;
+        font-size: 15px;
+        color: whitesmoke;
+    }
+}
 
 .board-background {
     min-width: $page-width;
@@ -112,7 +112,7 @@ $header-color: rgb(12, 0, 78);
 }
 
 .board-puple {
-    background-color: #edeef3;
+    background-color: #f5f6fa;
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-top-style: solid;
@@ -126,7 +126,7 @@ $header-color: rgb(12, 0, 78);
     align-items: left;
     flex-direction: column;
     width: $page-width;
-    padding: 10px 0 10px 0;
+    padding: 20px 0 30px 0;
 }
 
 .board-row-container {
@@ -135,7 +135,7 @@ $header-color: rgb(12, 0, 78);
     align-items: left;
     flex-direction: row;
     width: $page-width;
-    padding: 10px 0 10px 0;
+    padding: 20px 0 30px 0;
 }
 
 .board-row-inner-sep {
@@ -156,6 +156,13 @@ $header-color: rgb(12, 0, 78);
 
 .board-half {
     width: 50%;
+}
+
+.preview-layout {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .menu-card-layout {

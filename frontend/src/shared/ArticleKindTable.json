@@ -1,0 +1,30 @@
+{
+    "seminar": {
+        "path": "/community/seminar",
+        "text": "세미나"
+    },
+    "workshop": {
+        "path": "/community/workshop",
+        "text": "기관 및 기업 소개"
+    },
+    "notices": {
+        "path": "/news/notices",
+        "text": "공지사항"
+    },
+    "smart-news": {
+        "path": "/news/smart-news",
+        "text": "스마트 뉴스"
+    },
+    "research": {
+        "path": "/news/research",
+        "text": "연구실적"
+    },
+    "issue-paper": {
+        "path": "/publish/issue-paper",
+        "text": "Issue Paper"
+    },
+    "archive": {
+        "path": "/publish/archive",
+        "text": "아카이브"
+    }
+}

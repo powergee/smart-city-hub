@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { NoticeBoard, CardBoard } from '../components'
+import { NoticeBoard, CardBoard, DocumentPreview } from '../components'
 import { Paper, ButtonBase, Grid, Modal, Typography } from '@material-ui/core'
 import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
 import 'react-slideshow-image/dist/styles.css'
-import { getArticles } from '../shared/BackendRequests'
+import { getArticles, getFileInfo } from '../shared/BackendRequests'
 import { dateToString } from '../shared/DateToString'
-import { getArticlePath } from '../shared/GetArticlePath'
+import kindTable from "../shared/ArticleKindTable.json";
 import getArchives from "../shared/Archives.js";
 import './Home.scss'
 import { useHistory } from 'react-router-dom';
@@ -21,6 +21,8 @@ import sitesIcon from "../images/menu-icons/sites.svg";
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
     const [imageCards, setImageCards] = useState([]);
+    const [issuePaperPreview, setIssuePaperPreview] = useState([]);
+    const [archivePreview, setArchivePreview] = useState([]);
     const history = useHistory();
     const archMenu = getArchives();
 
@@ -31,9 +33,40 @@ export default function Home() {
             return tempElement.querySelector("img").getAttribute("src");
         }
 
+        function getArticlePath(articleId, kind) {
+            return `${kindTable[kind].path}/${articleId}`;
+        }
+
         function getLinkHandler(element) {
             return () => {
                 history.push(getArticlePath(element.articleId, element.kind));
+            }
+        }
+
+        function checkExtension(fileName, ext) {
+            const target = "." + ext;
+            return fileName.substring(Math.max(0, fileName.length-target.length)) === target;
+        }
+
+        async function hasPDF(article) {
+            const promises = [];
+            article.files.forEach((fileId) => {
+                promises.push(getFileInfo(fileId));
+            });
+
+            try {
+                const infoArr = await Promise.all(promises);
+
+                let result = false;
+                infoArr.some((info) => {
+                    if (checkExtension(info.originalName, "pdf")) {
+                        result = true;
+                    }
+                    return result;
+                });
+                return result;
+            } catch (e) {
+                return false;
             }
         }
 
@@ -55,7 +88,7 @@ export default function Home() {
                                         {element.title}
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
-                                        {dateToString(element.meta.createdAt)}
+                                        {`${kindTable[element.kind].text} · ${dateToString(element.meta.createdAt)}`}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
@@ -63,7 +96,41 @@ export default function Home() {
                     );
                 });
                 setImageCards(imCards);
-            })
+            });
+
+        getArticles(1, 10, "issue-paper", undefined, undefined, undefined)
+            .then(async (res) => {
+                const ipPrev = [];
+                for (let i = 0; i < res.length; ++i) {
+                    const element = res[i];
+                    if (await hasPDF(element)) {
+                        ipPrev.push(
+                            <DocumentPreview article={element}></DocumentPreview>
+                        );
+                    }
+                    if (ipPrev.length === 2) {
+                        break;
+                    }
+                }
+                setIssuePaperPreview(ipPrev);
+            });
+
+        getArticles(1, 10, "archive", undefined, undefined, undefined)
+            .then(async (res) => {
+                const archPrev = [];
+                for (let i = 0; i < res.length; ++i) {
+                    const element = res[i];
+                    if (await hasPDF(element)) {
+                        archPrev.push(
+                            <DocumentPreview article={element}></DocumentPreview>
+                        );
+                    }
+                    if (archPrev.length === 2) {
+                        break;
+                    }
+                }
+                setArchivePreview(archPrev);
+            });
     }, [history])
 
     function viewArchive() {
@@ -86,7 +153,7 @@ export default function Home() {
                                         <Paper className="menu-paper">
                                             <ButtonBase className="menu-button" onClick={getRedirector("/news/notices")}>
                                                 <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img className="menu-icon" src={noticeIcon}></img>
+                                                    <img alt="noticeIcon" className="menu-icon" src={noticeIcon}></img>
                                                     <Typography gutterBottom variant="subtitle2">공지사항</Typography>
                                                 </Grid>
                                             </ButtonBase>
@@ -96,7 +163,7 @@ export default function Home() {
                                         <Paper className="menu-paper">
                                             <ButtonBase className="menu-button" onClick={getRedirector("/publish/issue-paper")}>
                                                 <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img className="menu-icon" src={issuePaperIcon}></img>
+                                                    <img alt="issuePaperIcon" className="menu-icon" src={issuePaperIcon}></img>
                                                     <Typography gutterBottom variant="subtitle2">Issue Paper</Typography>
                                                 </Grid>
                                             </ButtonBase>
@@ -106,7 +173,7 @@ export default function Home() {
                                         <Paper className="menu-paper">
                                             <ButtonBase className="menu-button" onClick={getRedirector("/news/smart-news")}>
                                                 <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img className="menu-icon" src={smartNews}></img>
+                                                    <img alt="smartNews" className="menu-icon" src={smartNews}></img>
                                                     <Typography gutterBottom variant="subtitle2">스마트뉴스</Typography>
                                                 </Grid>
                                             </ButtonBase>
@@ -118,7 +185,7 @@ export default function Home() {
                                         <Paper className="menu-paper">
                                             <ButtonBase className="menu-button" onClick={getRedirector("/hub")}>
                                                 <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img className="menu-icon" src={smartCityHub}></img>
+                                                    <img alt="smartCityHub" className="menu-icon" src={smartCityHub}></img>
                                                     <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>
                                                     <Typography gutterBottom variant="subtitle2">거점HUB</Typography>
                                                 </Grid>
@@ -129,7 +196,7 @@ export default function Home() {
                                         <Paper className="menu-paper">
                                             <ButtonBase className="menu-button" onClick={getRedirector("/publish/archive")}>
                                                 <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img className="menu-icon" src={archiveIcon}></img>
+                                                    <img alt="archiveIcon" className="menu-icon" src={archiveIcon}></img>
                                                     <Typography gutterBottom variant="subtitle2">아카이브</Typography>
                                                 </Grid>
                                             </ButtonBase>
@@ -139,7 +206,7 @@ export default function Home() {
                                         <Paper className="menu-paper">
                                             <ButtonBase className="menu-button" onClick={viewArchive}>
                                                 <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img className="menu-icon" src={sitesIcon}></img>
+                                                    <img alt="sitesIcon" className="menu-icon" src={sitesIcon}></img>
                                                     <Typography gutterBottom variant="subtitle2">관련 사이트</Typography>
                                                 </Grid>
                                             </ButtonBase>
@@ -150,16 +217,16 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <img src={bannerImage} />
+                    <img alt="bannerImage" src={bannerImage} />
                 </div>
             </div>
 
-            {/* <div className="comment-background">
+            <div className="comment-background">
                 <div className="comment-container">
                     <h2>국제도시 및 인프라 연구센터</h2>
                     <p>서울시립대학교 국제도시 및 인프라 연구센터에 오신 것을 환영합니다!</p>
                 </div>
-            </div> */}
+            </div>
 
             <div className="board-background board-puple">
                 <div className="board-column-container">
@@ -173,10 +240,16 @@ export default function Home() {
             <div className="board-background board-puple">
                 <div className="board-row-container board-row-inner-sep">
                     <div className="board-half">
-                        <h3 className="board-title">발간된 Issue Paper</h3>
+                        <h3 className="board-title">최신 Issue Paper</h3>
+                        <div className="preview-layout">
+                            {issuePaperPreview}
+                        </div>
                     </div>
                     <div className="board-half">
-                        <h3 className="board-title">발간된 신남방 &amp; 스마트도시 기술 리포트</h3>
+                        <h3 className="board-title">최신 신남방 &amp; 스마트도시 기술 리포트</h3>
+                        <div className="preview-layout">
+                            {archivePreview}
+                        </div>
                     </div>
                 </div>
             </div>

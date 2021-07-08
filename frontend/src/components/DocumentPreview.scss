@@ -1,0 +1,26 @@
+.preview-root {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .preview-card {
+        width: 70%;
+
+        .preview-image {
+            width: 100%;
+            cursor: pointer;
+        }
+    }
+
+    .preview-title {
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        margin: 10px 0 10px 0;
+        cursor: pointer;
+    }
+}

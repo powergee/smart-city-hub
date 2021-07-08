@@ -1,7 +1,9 @@
 import Mongoose from "mongoose";
 import { Model, Document, Schema, model } from "mongoose"
 import { IMeta, MetaSchemaDefinition } from "./meta"
+/*eslint-disable */
 const AutoIncrement = require("mongoose-sequence")(Mongoose);
+/*eslint-enable */
 
 export interface IFile extends Document {
     fileId: number,
