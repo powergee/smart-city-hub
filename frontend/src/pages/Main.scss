@@ -13,6 +13,7 @@
 }
 
 .main-footer {
+    min-width: $page-width;
     min-height: 150px;
     background-color: rgb(219, 219, 219);
     display: flex;

@@ -154,25 +154,36 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="comment-background">
+            {/* <div className="comment-background">
                 <div className="comment-container">
                     <h2>국제도시 및 인프라 연구센터</h2>
                     <p>서울시립대학교 국제도시 및 인프라 연구센터에 오신 것을 환영합니다!</p>
                 </div>
-            </div>
+            </div> */}
 
             <div className="board-background board-puple">
-                <div className="board-container">
-                    <h3>사진으로 보는 최근 소식</h3>
+                <div className="board-column-container">
+                    <h3 className="board-title">사진으로 보는 최근 소식</h3>
                     <div className="menu-card-layout">
                         {imageCards}
                     </div>
                 </div>
             </div>
 
+            <div className="board-background board-puple">
+                <div className="board-row-container board-row-inner-sep">
+                    <div className="board-half">
+                        <h3 className="board-title">발간된 Issue Paper</h3>
+                    </div>
+                    <div className="board-half">
+                        <h3 className="board-title">발간된 신남방 &amp; 스마트도시 기술 리포트</h3>
+                    </div>
+                </div>
+            </div>
+
             <div className="board-background">
-                <div className="board-container">
-                    <h3>최근에 게시된 글</h3>
+                <div className="board-column-container">
+                    <h3 className="board-title">최근에 게시된 글</h3>
                     <div className="notice-root">
                         <NoticeBoard></NoticeBoard>
                     </div>
