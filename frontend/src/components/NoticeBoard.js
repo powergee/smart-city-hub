@@ -10,7 +10,9 @@ import smartNewsIcon from "../images/menu-icons/smart-news.svg";
 import archiveIcon from "../images/menu-icons/archive.svg";
 import sitesIcon from "../images/menu-icons/sites.svg";
 
-export default function NoticeBoard() {
+export default function NoticeBoard(props) {
+    const { rowCount } = props;
+
     // 현재 NoticeBoard 에서는 소식(news), 커뮤니티(community) 분야의 글을 다루고 있음.
     const [selected, setSelected] = useState("notices");
     const [articles, setArticles] = useState({
@@ -50,7 +52,7 @@ export default function NoticeBoard() {
 
         Object.entries(associatedKinds).forEach(([, kinds]) => {
             kinds.forEach((kind) => {
-                artProms.push(getArticles(1, 3, kind));
+                artProms.push(getArticles(1, rowCount, kind));
                 cntProms.push(countArticles(kind));
             });
         });
@@ -69,7 +71,7 @@ export default function NoticeBoard() {
             Object.keys(newArticles).forEach((key) => {
                 newArticles[key] = newArticles[key].sort((a, b) => {
                     return b.meta.createdAt - a.meta.createdAt;
-                }).slice(0, 3);
+                }).slice(0, rowCount);
             });
 
             setArticles(newArticles);

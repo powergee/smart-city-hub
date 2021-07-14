@@ -145,75 +145,9 @@ export default function Home() {
         <React.Fragment>
             <div className="slide-container">
                 <div className="campus-slide">
-                    <div className="menu-root">
-                        <div className="menu-board">
-                            <div className="menu-table">
-                                <div className="menu-row">
-                                    <div className="menu-cell">
-                                        <Paper className="menu-paper">
-                                            <ButtonBase className="menu-button" onClick={getRedirector("/news/notices")}>
-                                                <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img alt="noticeIcon" className="menu-icon" src={noticeIcon}></img>
-                                                    <Typography gutterBottom variant="subtitle2">공지사항</Typography>
-                                                </Grid>
-                                            </ButtonBase>
-                                        </Paper>
-                                    </div>
-                                    <div className="menu-cell">
-                                        <Paper className="menu-paper">
-                                            <ButtonBase className="menu-button" onClick={getRedirector("/publish/issue-paper")}>
-                                                <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img alt="issuePaperIcon" className="menu-icon" src={issuePaperIcon}></img>
-                                                    <Typography gutterBottom variant="subtitle2">Issue Paper</Typography>
-                                                </Grid>
-                                            </ButtonBase>
-                                        </Paper>
-                                    </div>
-                                    <div className="menu-cell">
-                                        <Paper className="menu-paper">
-                                            <ButtonBase className="menu-button" onClick={getRedirector("/news/smart-news")}>
-                                                <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img alt="smartNews" className="menu-icon" src={smartNews}></img>
-                                                    <Typography gutterBottom variant="subtitle2">스마트뉴스</Typography>
-                                                </Grid>
-                                            </ButtonBase>
-                                        </Paper>
-                                    </div>
-                                </div>
-                                <div className="menu-row">
-                                    <div className="menu-cell">
-                                        <Paper className="menu-paper">
-                                            <ButtonBase className="menu-button" onClick={getRedirector("/hub")}>
-                                                <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img alt="smartCityHub" className="menu-icon" src={smartCityHub}></img>
-                                                    <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>
-                                                    <Typography gutterBottom variant="subtitle2">거점HUB</Typography>
-                                                </Grid>
-                                            </ButtonBase>
-                                        </Paper>
-                                    </div>
-                                    <div className="menu-cell">
-                                        <Paper className="menu-paper">
-                                            <ButtonBase className="menu-button" onClick={getRedirector("/publish/archive")}>
-                                                <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img alt="archiveIcon" className="menu-icon" src={archiveIcon}></img>
-                                                    <Typography gutterBottom variant="subtitle2">아카이브</Typography>
-                                                </Grid>
-                                            </ButtonBase>
-                                        </Paper>
-                                    </div>
-                                    <div className="menu-cell">
-                                        <Paper className="menu-paper">
-                                            <ButtonBase className="menu-button" onClick={viewArchive}>
-                                                <Grid container direction="column" justify="center" alignItems="center">
-                                                    <img alt="sitesIcon" className="menu-icon" src={sitesIcon}></img>
-                                                    <Typography gutterBottom variant="subtitle2">관련 사이트</Typography>
-                                                </Grid>
-                                            </ButtonBase>
-                                        </Paper>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="notice-root">
+                        <div className="notice-layout">
+                            <NoticeBoard rowCount={4}></NoticeBoard>
                         </div>
                     </div>
 
@@ -256,9 +190,75 @@ export default function Home() {
 
             <div className="board-background">
                 <div className="board-column-container">
-                    <h3 className="board-title">최근에 게시된 글</h3>
-                    <div className="notice-root">
-                        <NoticeBoard></NoticeBoard>
+                    <h3 className="board-title">주요 기능 바로가기</h3>
+                    <div className="menu-board">
+                        <div className="menu-table">
+                            <div className="menu-row">
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/news/notices")}>
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <img alt="noticeIcon" className="menu-icon" src={noticeIcon}></img>
+                                                <Typography gutterBottom variant="subtitle2">공지사항</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/publish/issue-paper")}>
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <img alt="issuePaperIcon" className="menu-icon" src={issuePaperIcon}></img>
+                                                <Typography gutterBottom variant="subtitle2">Issue Paper</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/news/smart-news")}>
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <img alt="smartNews" className="menu-icon" src={smartNews}></img>
+                                                <Typography gutterBottom variant="subtitle2">스마트뉴스</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                            </div>
+                            <div className="menu-row">
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/hub")}>
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <img alt="smartCityHub" className="menu-icon" src={smartCityHub}></img>
+                                                <Typography gutterBottom variant="subtitle2">스마트도시수출</Typography>
+                                                <Typography gutterBottom variant="subtitle2">거점HUB</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button" onClick={getRedirector("/publish/archive")}>
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <img alt="archiveIcon" className="menu-icon" src={archiveIcon}></img>
+                                                <Typography gutterBottom variant="subtitle2">아카이브</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                                <div className="menu-cell">
+                                    <Paper className="menu-paper">
+                                        <ButtonBase className="menu-button" onClick={viewArchive}>
+                                            <Grid container direction="column" justify="center" alignItems="center">
+                                                <img alt="sitesIcon" className="menu-icon" src={sitesIcon}></img>
+                                                <Typography gutterBottom variant="subtitle2">관련 사이트</Typography>
+                                            </Grid>
+                                        </ButtonBase>
+                                    </Paper>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -18,55 +18,45 @@ $header-color: rgb(12, 0, 78);
         right: 0;
         height: 100%;
     }
+}
 
-    .menu-root {
-        z-index: 1;
-        position: absolute;
-        top: 50%;
-        transform: translate(0, -50%);
-        height: $slide-height;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.menu-board {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-        .menu-board {
-            width: $page-width;
+    .menu-table {
+        width: 75%;
+        display: table;
 
-            .menu-table {
-                display: table;
-                flex-grow: 1;
-                flex-shrink: 1;
-                flex-basis: auto;
-    
-                .menu-row {
-                    display: table-row;
-    
-                    .menu-cell {
-                        display: table-cell;
-                        vertical-align: middle;
-                        padding: 10px;
-                    
-                        h4 {
-                            margin: 10px;
-                        }
-    
-                        .menu-paper {
-                            height: 180px;
-                            width: 200px;
-                        }
-    
-                        .menu-button {
-                            width: 100%;
-                            height: 100%;
-                            padding-top: 5px !important;
-                            padding-bottom: 5px !important;
-    
-                            .menu-icon {
-                                width: 120px !important;
-                                height: 120px !important;
-                            }
-                        }
+        .menu-row {
+            display: table-row;
+
+            .menu-cell {
+                display: table-cell;
+                vertical-align: middle;
+                padding: 10px;
+            
+                h4 {
+                    margin: 10px;
+                }
+
+                .menu-paper {
+                    height: 180px;
+                }
+
+                .menu-button {
+                    width: 100%;
+                    height: 100%;
+                    padding-top: 5px !important;
+                    padding-bottom: 5px !important;
+
+                    .menu-icon {
+                        width: 120px !important;
+                        height: 120px !important;
                     }
                 }
             }
@@ -189,9 +179,24 @@ $header-color: rgb(12, 0, 78);
 }
 
 .notice-root {
+    z-index: 1;
+    position: absolute;
+    height: $slide-height;
     width: 100%;
-    height: 310px;
-    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .notice-layout {
+        width: $page-width;
+        padding: 10px;
+        display: flex;
+
+        & > div {
+            width: 50%;
+            min-height: 360px;
+        }
+    }
 }
 
 .modal {
