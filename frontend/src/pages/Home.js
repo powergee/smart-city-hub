@@ -195,7 +195,7 @@ export default function Home() {
                         <div className="menu-table">
                             <div className="menu-row">
                                 <div className="menu-cell">
-                                    <Paper className="menu-paper">
+                                    <Paper className="menu-paper" variant="outlined">
                                         <ButtonBase className="menu-button" onClick={getRedirector("/news/notices")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="noticeIcon" className="menu-icon" src={noticeIcon}></img>
@@ -205,7 +205,7 @@ export default function Home() {
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper className="menu-paper">
+                                    <Paper className="menu-paper" variant="outlined">
                                         <ButtonBase className="menu-button" onClick={getRedirector("/publish/issue-paper")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="issuePaperIcon" className="menu-icon" src={issuePaperIcon}></img>
@@ -215,7 +215,7 @@ export default function Home() {
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper className="menu-paper">
+                                    <Paper className="menu-paper" variant="outlined">
                                         <ButtonBase className="menu-button" onClick={getRedirector("/news/smart-news")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="smartNews" className="menu-icon" src={smartNews}></img>
@@ -227,7 +227,7 @@ export default function Home() {
                             </div>
                             <div className="menu-row">
                                 <div className="menu-cell">
-                                    <Paper className="menu-paper">
+                                    <Paper className="menu-paper" variant="outlined">
                                         <ButtonBase className="menu-button" onClick={getRedirector("/hub")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="smartCityHub" className="menu-icon" src={smartCityHub}></img>
@@ -238,7 +238,7 @@ export default function Home() {
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper className="menu-paper">
+                                    <Paper className="menu-paper" variant="outlined">
                                         <ButtonBase className="menu-button" onClick={getRedirector("/publish/archive")}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="archiveIcon" className="menu-icon" src={archiveIcon}></img>
@@ -248,7 +248,7 @@ export default function Home() {
                                     </Paper>
                                 </div>
                                 <div className="menu-cell">
-                                    <Paper className="menu-paper">
+                                    <Paper className="menu-paper" variant="outlined">
                                         <ButtonBase className="menu-button" onClick={viewArchive}>
                                             <Grid container direction="column" justify="center" alignItems="center">
                                                 <img alt="sitesIcon" className="menu-icon" src={sitesIcon}></img>
