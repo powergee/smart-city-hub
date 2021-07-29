@@ -90,7 +90,7 @@ export default function NoticeBoard(props) {
 
             setCounts(newCounts);
         })
-    }, []);
+    }, [rowCount]);
 
     function handleArticleClick(article) {
         if (article.kind === "notices" || article.kind === "smart-news") {
