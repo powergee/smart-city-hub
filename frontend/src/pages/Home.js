@@ -157,8 +157,8 @@ export default function Home() {
 
             <div className="comment-background">
                 <div className="comment-container">
-                    <h2>국제도시 및 인프라 연구센터</h2>
-                    <p>서울시립대학교 국제도시 및 인프라 연구센터에 오신 것을 환영합니다!</p>
+                    <h2>인문사회연구소지원사업(2020~2023)</h2>
+                    <p>한-아세안 다학제 민관 네트워크기반의 스마트도시수출 거점HUB 플랫폼 구축</p>
                 </div>
             </div>
 

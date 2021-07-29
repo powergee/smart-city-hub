@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import "./NoticeBoard.scss"
-import { Paper, Button } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
 import { getArticles, countArticles } from "../shared/BackendRequests"
 import ArticlePreview from './ArticlePreview';
 import { useHistory } from 'react-router-dom';
-
-import noticeIcon from "../images/menu-icons/notice.svg";
-import smartNewsIcon from "../images/menu-icons/smart-news.svg";
-import archiveIcon from "../images/menu-icons/archive.svg";
-import sitesIcon from "../images/menu-icons/sites.svg";
 
 export default function NoticeBoard(props) {
     const { rowCount } = props;
@@ -28,13 +23,6 @@ export default function NoticeBoard(props) {
         "archive": 0
     });
     const history = useHistory();
-
-    const kindImageDict = {
-        "notices": noticeIcon,
-        "smart-news": smartNewsIcon,
-        "archive": archiveIcon,
-        "community": sitesIcon
-    };
 
     useEffect(() => {
         const associatedKinds = {
@@ -117,13 +105,34 @@ export default function NoticeBoard(props) {
     }
 
     return (
-        <Paper variant="outlined" className="board-paper">
+        <Paper variant="outlined" square className="board-paper">
             <div className="board-table">
                 <div className="board-header">
-                    <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
+                    <div
+                        onClick={getButtonHandler("notices")}
+                        className={"board-header-button board-header-" + (selected === "notices" ? "primary" : "")}>
+                        <h4>공지사항</h4>
+                    </div>
+                    <div
+                        onClick={getButtonHandler("smart-news")}
+                        className={"board-header-button board-header-" + (selected === "smart-news" ? "primary" : "")}>
+                        <h4>스마트 뉴스</h4>
+                    </div>
+                    <div
+                        onClick={getButtonHandler("community")}
+                        className={"board-header-button board-header-" + (selected === "community" ? "primary" : "")}>
+                        <h4>커뮤니티</h4>
+                    </div>
+                    <div
+                        onClick={getButtonHandler("archive")}
+                        className={"board-header-button board-header-" + (selected === "archive" ? "primary" : "")}>
+                        <h4>아카이브</h4>
+                    </div>
+
+                    {/* <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>
                     <Button onClick={getButtonHandler("smart-news")} color={(selected === "smart-news" ? "primary" : "default")} size="large">스마트 뉴스</Button>
                     <Button onClick={getButtonHandler("community")} color={(selected === "community" ? "primary" : "default")} size="large">커뮤니티</Button>
-                    <Button onClick={getButtonHandler("archive")} color={(selected === "archive" ? "primary" : "default")} size="large">아카이브</Button>
+                    <Button onClick={getButtonHandler("archive")} color={(selected === "archive" ? "primary" : "default")} size="large">아카이브</Button> */}
                 </div>
                 <div className="board-contents">
                     {articles[selected].map(element => <ArticlePreview article={element} onClick={handleArticleClick}></ArticlePreview>)}
@@ -132,8 +141,6 @@ export default function NoticeBoard(props) {
                     <a href onClick={moveToList}>{counts[selected] + "개의 게시물이 있습니다."}</a>
                 </div>
             </div>
-
-            <img className="board-kind-image" alt="" src={kindImageDict[selected]}></img>
         </Paper>
     )
 }

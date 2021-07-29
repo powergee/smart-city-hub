@@ -8,6 +8,7 @@ $category-font: 18px;
 // $border-radius: 3px;
 $boundary-color: #696f7c;
 $more-hover: #463FCA;
+$header-color: #627edb;
 
 .board-paper {
     height: 100%;
@@ -20,9 +21,30 @@ $more-hover: #463FCA;
 }
 
 .board-header {
-    display: block;
-    // background-color: $header-color;
-    // border-radius: $border-radius $border-radius 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    .board-header-button {
+        flex-grow: 1;
+        border-bottom: 3px solid $header-color;
+        cursor: pointer;
+
+        h4 {
+            margin: 0;
+            margin-block-start: 10px;
+            margin-block-end: 10px;
+            text-align: center;
+        }
+    }
+
+    .board-header-primary {
+        background-color: $header-color;
+
+        h4 {
+            color: white;
+        }
+    }
 
     ul {
         list-style-type: none;
