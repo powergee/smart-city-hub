@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { NoticeBoard, CardBoard, DocumentPreview } from '../components'
 import { Paper, ButtonBase, Grid, Modal, Typography } from '@material-ui/core'
 import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
-import 'react-slideshow-image/dist/styles.css'
+import { Fade } from 'react-slideshow-image';
 import { getArticles, getFileInfo } from '../shared/BackendRequests'
 import { dateToString } from '../shared/DateToString'
 import kindTable from "../shared/ArticleKindTable.json";
+import currProj from "../shared/CurrentProjects.json";
 import getArchives from "../shared/Archives.js";
-import './Home.scss'
 import { useHistory } from 'react-router-dom';
 
 import bannerImage from "../images/banner.svg";
@@ -18,11 +18,15 @@ import smartCityHub from "../images/menu-icons/smart-city-hub.svg";
 import archiveIcon from "../images/menu-icons/archive.svg";
 import sitesIcon from "../images/menu-icons/sites.svg";
 
+import 'react-slideshow-image/dist/styles.css'
+import './Home.scss'
+
 export default function Home() {
     const [archOpen, setArchOpen] = useState(false);
     const [imageCards, setImageCards] = useState([]);
     const [issuePaperPreview, setIssuePaperPreview] = useState([]);
     const [archivePreview, setArchivePreview] = useState([]);
+    const [currProjSlides, setCurrProjSlides] = useState(undefined);
     const history = useHistory();
     const archMenu = getArchives();
 
@@ -131,6 +135,28 @@ export default function Home() {
                 }
                 setArchivePreview(archPrev);
             });
+
+        const projSlides = [];
+        let singleSlide = [];
+        currProj.forEach((proj) => {
+            singleSlide.push((
+                <div className="comment-each">
+                    <h2>{proj.title}</h2>
+                    <h5>{proj.subtitle}</h5>
+                </div>
+            ));
+            if (singleSlide.length === 3) {
+                projSlides.push((
+                    <div className="comment-background">
+                        <div className="comment-container">
+                            {singleSlide}
+                        </div>
+                    </div>
+                ));
+                singleSlide = [];
+            }
+        });
+        setCurrProjSlides(projSlides);
     }, [history])
 
     function viewArchive() {
@@ -143,8 +169,8 @@ export default function Home() {
 
     return (
         <React.Fragment>
-            <div className="slide-container">
-                <div className="campus-slide">
+            <div className="banner-root">
+                <div className="banner-layout">
                     <div className="notice-root">
                         <div className="notice-layout">
                             <NoticeBoard rowCount={4}></NoticeBoard>
@@ -155,11 +181,10 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="comment-background">
-                <div className="comment-container">
-                    <h2>인문사회연구소지원사업(2020~2023)</h2>
-                    <p>한-아세안 다학제 민관 네트워크기반의 스마트도시수출 거점HUB 플랫폼 구축</p>
-                </div>
+            <div className="slide-container">
+                <Fade>
+                    {currProjSlides}
+                </Fade>
             </div>
 
             <div className="board-background board-puple">

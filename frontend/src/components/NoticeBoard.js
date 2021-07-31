@@ -111,22 +111,22 @@ export default function NoticeBoard(props) {
                     <div
                         onClick={getButtonHandler("notices")}
                         className={"board-header-button board-header-" + (selected === "notices" ? "primary" : "")}>
-                        <h4>공지사항</h4>
+                        <h3>공지사항</h3>
                     </div>
                     <div
                         onClick={getButtonHandler("smart-news")}
                         className={"board-header-button board-header-" + (selected === "smart-news" ? "primary" : "")}>
-                        <h4>스마트 뉴스</h4>
+                        <h3>스마트 뉴스</h3>
                     </div>
                     <div
                         onClick={getButtonHandler("community")}
                         className={"board-header-button board-header-" + (selected === "community" ? "primary" : "")}>
-                        <h4>커뮤니티</h4>
+                        <h3>커뮤니티</h3>
                     </div>
                     <div
                         onClick={getButtonHandler("archive")}
                         className={"board-header-button board-header-" + (selected === "archive" ? "primary" : "")}>
-                        <h4>아카이브</h4>
+                        <h3>아카이브</h3>
                     </div>
 
                     {/* <Button onClick={getButtonHandler("notices")} color={(selected === "notices" ? "primary" : "default")} size="large">공지사항</Button>

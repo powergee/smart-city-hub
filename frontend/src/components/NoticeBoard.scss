@@ -30,10 +30,10 @@ $header-color: #627edb;
         border-bottom: 3px solid $header-color;
         cursor: pointer;
 
-        h4 {
+        & > * {
             margin: 0;
-            margin-block-start: 10px;
-            margin-block-end: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
             text-align: center;
         }
     }
@@ -41,7 +41,7 @@ $header-color: #627edb;
     .board-header-primary {
         background-color: $header-color;
 
-        h4 {
+        & > * {
             color: white;
         }
     }

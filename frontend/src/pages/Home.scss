@@ -1,17 +1,16 @@
 @import "../shared/shared.scss";
 
-$slide-height: 500px;
-$slide-text-size: 50px;
+$banner-height: 500px;
 $header-color: rgb(12, 0, 78);
 
-.slide-container {
+.banner-root {
     min-width: $page-width;
-    height: $slide-height;
+    height: $banner-height;
     width: 100%;
     position: relative;
 }
 
-.campus-slide {
+.banner-layout {
     & > img {
         z-index: 0;
         position: absolute;
@@ -64,33 +63,57 @@ $header-color: rgb(12, 0, 78);
     }
 }
 
-.comment-background {
+.slide-container {
     min-width: $page-width;
     width: 100%;
     background-color: #273447;
-    display: flex;
-    justify-content: center;
-    padding: 30px 0 30px 0;
 }
 
-.comment-container {
+.comment-background {
+    min-width: $page-width;
+    width: 100%;
+    height: 200px;
     display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    width: $page-width;
-    
-    h2 {
-        font-weight: 500;
-        font-size: 30px;
-        color: white;
-        border-bottom: 1px solid whitesmoke;
-    }
+    flex-direction: row;
+    justify-content: center;
+    padding: 30px 0 30px 0;
 
-    p {
-        font-weight: 50;
-        font-size: 15px;
-        color: whitesmoke;
+    .comment-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: $page-width;
+
+        .comment-each {
+            flex-grow: 1;
+            flex-basis: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-left: white dashed 0.3px;
+            
+            h2 {
+                font-weight: 700;
+                font-size: 22px;
+                color: white;
+                text-align: center;
+                word-break: keep-all;
+            }
+        
+            h5 {
+                font-weight: 50;
+                font-size: 17px;
+                color: whitesmoke;
+                text-align: center;
+            }
+        }
+
+        .comment-each:first-child {
+            border-left: 0;
+        }
     }
 }
 
@@ -181,7 +204,7 @@ $header-color: rgb(12, 0, 78);
 .notice-root {
     z-index: 1;
     position: absolute;
-    height: $slide-height;
+    height: $banner-height;
     width: 100%;
     display: flex;
     justify-content: center;
