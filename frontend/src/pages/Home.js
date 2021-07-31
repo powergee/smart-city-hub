@@ -156,6 +156,15 @@ export default function Home() {
                 singleSlide = [];
             }
         });
+        if (singleSlide.length) {
+            projSlides.push((
+                <div className="comment-background">
+                    <div className="comment-container">
+                        {singleSlide}
+                    </div>
+                </div>
+            ));
+        }
         setCurrProjSlides(projSlides);
     }, [history])
 
