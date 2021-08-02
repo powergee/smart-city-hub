@@ -142,7 +142,7 @@ export default function Home() {
             singleSlide.push((
                 <div className="comment-each">
                     <h2>{proj.title}</h2>
-                    <h5>{`[${proj.client}] ${proj.when}`}</h5>
+                    <h5>{`${proj.client} [${proj.when}]`}</h5>
                 </div>
             ));
             if (singleSlide.length === 3) {
