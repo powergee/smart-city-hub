@@ -53,6 +53,7 @@ function GeneralArticleList(props) {
             return;
         }
 
+        setArticles(undefined);
         getArticles(page, perPage, kind)
             .then((res) => {
                 setArticles(res);
@@ -79,7 +80,6 @@ function GeneralArticleList(props) {
     }, [page, perPage, kind, history]);
 
     function handlePageChange(_, value) {
-        setArticles(undefined);
         setPage(value);
     }
 
