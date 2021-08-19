@@ -72,6 +72,7 @@ $header-color: rgb(12, 0, 78);
 .comment-background {
     min-width: $page-width;
     width: 100%;
+    min-height: 180px;
     display: flex;
     flex-direction: row;
     justify-content: center;
