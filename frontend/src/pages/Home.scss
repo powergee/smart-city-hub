@@ -75,50 +75,6 @@ $header-color: rgb(12, 0, 78);
     }
 }
 
-.menu-board {
-    width: 100%;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    .menu-table {
-        width: 75%;
-        display: table;
-
-        .menu-row {
-            display: table-row;
-
-            .menu-cell {
-                display: table-cell;
-                vertical-align: middle;
-                padding: 10px;
-            
-                h4 {
-                    margin: 10px;
-                }
-
-                .menu-paper {
-                    height: 180px;
-                }
-
-                .menu-button {
-                    width: 100%;
-                    height: 100%;
-                    padding-top: 5px !important;
-                    padding-bottom: 5px !important;
-
-                    .menu-icon {
-                        width: 120px !important;
-                        height: 120px !important;
-                    }
-                }
-            }
-        }
-    }
-}
-
 .slide-container {
     min-width: $page-width;
     width: 100%;
@@ -185,6 +141,15 @@ $header-color: rgb(12, 0, 78);
 
 .board-puple {
     background-color: #f5f6fa;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: #dedfe7;
+}
+
+.board-light-puple {
+    background-color: #f5f6faa6;
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-top-style: solid;
@@ -306,5 +271,15 @@ $header-color: rgb(12, 0, 78);
     width: 80%;
     div {
         justify-content: left !important;
+    }
+}
+
+.bottom-banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    & > img {
+        width: $page-width;
     }
 }
