@@ -65,7 +65,6 @@ function FirstCategoryViewer(props) {
                 link: section[section.length - 1].link + "/" + next,
                 title: nextCate[next],
                 image: CategoryImage[nextCate[next]],
-                // image: Math.random() > 0.66 ? (Samp3) : (Math.random() > 0.5 ? (Samp2) : (Samp1)),
                 description: CateToEng[nextCate[next]]
             })
         }

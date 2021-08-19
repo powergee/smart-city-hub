@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { NoticeBoard, CardBoard, DocumentPreview } from '../components'
-import { Paper, ButtonBase, Grid, Modal, Typography } from '@material-ui/core'
+import { Paper, ButtonBase, Grid, Modal, Typography, Button } from '@material-ui/core'
 import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
 import { Fade } from 'react-slideshow-image';
 import { getArticles, getFileInfo } from '../shared/BackendRequests'
 import { dateToString } from '../shared/DateToString'
 import kindTable from "../shared/ArticleKindTable.json";
 import currProj from "../shared/CurrentProjects.json";
+import hubJson from "../hub-data/generated/domestic-parsed.json"
+import categoryImage from '../shared/CategoryImage';
 import getArchives from "../shared/Archives.js";
 import { useHistory } from 'react-router-dom';
 
-import bannerImage from "../images/banner.svg";
+// import bannerImage from "../images/banner.svg";
 import noticeIcon from "../images/menu-icons/notice.svg";
 import issuePaperIcon from "../images/menu-icons/issue-paper.svg";
 import smartNews from "../images/menu-icons/smart-news.svg";
@@ -27,10 +29,17 @@ export default function Home() {
     const [issuePaperPreview, setIssuePaperPreview] = useState([]);
     const [archivePreview, setArchivePreview] = useState([]);
     const [currProjSlides, setCurrProjSlides] = useState(undefined);
+    const [hubPreviewRows, setHubPreviewRows] = useState([]);
     const history = useHistory();
     const archMenu = getArchives();
 
     useEffect(() => {
+        updateDocumentPreviews();
+        updateProjectSlides();
+        updateHubPreviews();
+    }, []);
+
+    function updateDocumentPreviews() {
         function extractSrc(html) {
             const tempElement = document.createElement("div");
             tempElement.innerHTML = html;
@@ -135,7 +144,9 @@ export default function Home() {
                 }
                 setArchivePreview(archPrev);
             });
+    }
 
+    function updateProjectSlides() {
         const projSlides = [];
         let singleSlide = [];
         currProj.forEach((proj) => {
@@ -166,7 +177,40 @@ export default function Home() {
             ));
         }
         setCurrProjSlides(projSlides);
-    }, [history])
+    }
+
+    function updateHubPreviews() {
+        function getClickHandler(index) {
+            return () => {
+                history.push(`/hub/${index}`)
+            }
+        }
+
+        const buttons = [];
+        hubJson.firstCate.forEach((title, index) => {
+            buttons.push(
+                <Paper
+                    className="hub-preview-paper"
+                    elevation={4}
+                    style={{
+                        background: `url(${categoryImage[title]})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center"
+                    }}
+                >
+                    <ButtonBase className="hub-preview-button" onClick={getClickHandler(index)}>
+                        <span className="hub-preview-text">{title}</span>
+                    </ButtonBase>
+                </Paper>
+            );
+        });
+
+        setHubPreviewRows([
+            buttons.slice(0, 6),
+            buttons.slice(7, 13),
+            buttons.slice(14, 20),
+        ]);
+    }
 
     function viewArchive() {
         setArchOpen(true);
@@ -180,13 +224,15 @@ export default function Home() {
         <React.Fragment>
             <div className="banner-root">
                 <div className="banner-layout">
-                    <div className="notice-root">
-                        <div className="notice-layout">
-                            <NoticeBoard rowCount={4}></NoticeBoard>
-                        </div>
+                    <div className="notice-layout">
+                        <NoticeBoard rowCount={4}></NoticeBoard>
                     </div>
 
-                    <img alt="bannerImage" src={bannerImage} />
+                    <div className="hub-preview-layout">
+                        {hubPreviewRows.map(row => (
+                            <div>{row}</div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
