@@ -15,19 +15,14 @@ $header-color: #627edb;
     position: relative;
 }
 
-.board-table {
-    z-index: 1;
-    position: relative;
-}
-
 .board-header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    border-bottom: 3px solid $header-color;
 
     .board-header-button {
         flex-grow: 1;
-        border-bottom: 3px solid $header-color;
         cursor: pointer;
 
         & > * {

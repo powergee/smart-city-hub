@@ -2,6 +2,7 @@
 
 $banner-height: 500px;
 $header-color: rgb(12, 0, 78);
+$hub-header-color: #627edb;
 
 .banner-root {
     min-width: $page-width;
@@ -17,57 +18,90 @@ $header-color: rgb(12, 0, 78);
     height: 100%;
     width: $page-width;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    .notice-layout {
-        width: 37%;
-        min-height: 400px;
-        padding: 10px;
+
+    .banner-row {
+        width: 100%;
+        height: 400px;
         display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
 
-        & > div {
-            width: 100%;
-        }
-    }
-
-    .hub-preview-layout {
-        width: 60%;
-        min-height: 400px;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-
-        & > div {
+        .notice-layout {
+            width: 37%;
             display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            flex-grow: 1;
+            height: 100%;
 
-            .hub-preview-paper {
-                flex-grow: 1;
-                flex-basis: 0;
-                margin: 20px 5px 20px 5px;
-                min-height: 90px;
+            & > div {
+                width: 100%;
+            }
+        }
 
-                .hub-preview-button {
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba($color: #000000, $alpha: 0.3);
+        .hub-preview-layout {
+            width: 60%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
 
-                    &:hover {
-                        background-color: rgba($color: #000000, $alpha: 0.0);
-                        -webkit-transition: background-color 200ms linear;
-                        -ms-transition: background-color 200ms linear;
-                        transition: background-color 200ms linear;
-                    }
+            .hub-preview-header {
+                border-bottom: 3px solid $hub-header-color;
+                h4 {
+                    text-align: center;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                }
+            }
 
-                    .hub-preview-text {
-                        font-weight: 600;
-                        font-size: 15px;
-                        color: white;
+            .hub-preview-table {
+                margin: 0 10px 0 10px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                .hub-preview-row {
+                    padding: 10px 0 0 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    flex-grow: 1;
+
+                    .hub-preview-paper {
+                        flex-grow: 1;
+                        flex-basis: 0;
+                        margin: 0px 5px 0px 5px;
+                        min-height: 90px;
+
+                        .hub-preview-button {
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba($color: #000000, $alpha: 0.3);
+                            display: flex;
+                            flex-direction: column;
+
+                            &:hover {
+                                background-color: rgba($color: #000000, $alpha: 0.0);
+                                -webkit-transition: background-color 200ms linear;
+                                -ms-transition: background-color 200ms linear;
+                                transition: background-color 200ms linear;
+                            }
+
+                            .hub-preview-text {
+                                margin-top: 3px;
+                                margin-bottom: 3px;
+                                font-size: 13px;
+                                color: white;
+                            }
+
+                            .hub-preview-text:first-child {
+                                font-weight: 600;
+                                font-size: 15px;
+                            }
+                        }
                     }
                 }
             }

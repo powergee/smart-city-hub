@@ -9,6 +9,7 @@ import kindTable from "../shared/ArticleKindTable.json";
 import currProj from "../shared/CurrentProjects.json";
 import hubJson from "../hub-data/generated/domestic-parsed.json"
 import categoryImage from '../shared/CategoryImage';
+import cateToEng from "../hub-data/cateToEng.json"
 import getArchives from "../shared/Archives.js";
 import bannerImage from "../images/banner.svg"
 import { useHistory } from 'react-router-dom';
@@ -193,6 +194,7 @@ export default function Home() {
                 >
                     <ButtonBase className="hub-preview-button" onClick={getClickHandler(index)}>
                         <span className="hub-preview-text">{title}</span>
+                        <span className="hub-preview-text">{cateToEng[title]}</span>
                     </ButtonBase>
                 </Paper>
             );
@@ -209,14 +211,21 @@ export default function Home() {
         <React.Fragment>
             <div className="banner-root">
                 <div className="banner-layout">
-                    <div className="notice-layout">
-                        <NoticeBoard rowCount={4}></NoticeBoard>
-                    </div>
+                    <div className="banner-row">
+                        <div className="notice-layout">
+                            <NoticeBoard rowCount={4}></NoticeBoard>
+                        </div>
+                        <div className="hub-preview-layout">
+                            <Paper className="hub-preview-header" square variant="outlined">
+                                <h4>스마트도시수출 거점HUB 플랫폼 {"&"} Smart City Export HUB Platform</h4>
+                            </Paper>
 
-                    <div className="hub-preview-layout">
-                        {hubPreviewRows.map(row => (
-                            <div>{row}</div>
-                        ))}
+                            <div className="hub-preview-table">
+                                {hubPreviewRows.map(row => (
+                                    <div className="hub-preview-row">{row}</div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
