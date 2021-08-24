@@ -309,11 +309,32 @@ $hub-header-color: #627edb;
 }
 
 .bottom-banner {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    display: block !important;
+    position: relative;
 
-    & > img {
-        width: $page-width;
+    & > .board-column-container {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        left: 50%;
+        transform: translate(-50%, 0);
+        
+        & > div {
+            width: $page-width;
+
+        }
+    }
+
+    & > .board-banner-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 1;
+
+        img {
+            width: 80%;
+            min-width: $page-width;
+        }
     }
 }

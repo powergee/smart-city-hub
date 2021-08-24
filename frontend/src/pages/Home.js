@@ -263,7 +263,12 @@ export default function Home() {
             </div>
 
             <div className="board-background bottom-banner board-light-puple">
-                <img src={bannerImage}></img>
+                <div className="board-column-container">
+                    <div><h3 className="board-title">한-아세안 스마트도시수출 거점HUB 플랫폼</h3></div>
+                </div>
+                <div className="board-banner-container">
+                    <img src={bannerImage}></img>
+                </div>
             </div>
 
             <Modal open={archOpen} className="modal" onClose={() => setArchOpen(false)}>
