@@ -48,11 +48,13 @@ $hub-header-color: #627edb;
             justify-content: flex-end;
 
             .hub-preview-header {
-                border-bottom: 3px solid $hub-header-color;
+                background-color: #273447;
+                border-bottom: 3px solid #042658;
                 h4 {
                     text-align: center;
                     margin-top: 15px;
                     margin-bottom: 15px;
+                    color: white;
                 }
             }
 
