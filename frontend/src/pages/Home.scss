@@ -243,12 +243,68 @@ $hub-header-color: #627edb;
     padding: 5px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-card-video {
+    width: 500px;
+    height: 300px;
+    margin-right: 20px;
+    overflow: hidden;
+    position: relative;
+
+    .menu-card-video-thumb {
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        transition: all .5s;
+    }
+
+    &:hover .menu-card-video-thumb,
+    &:focus .menu-card-video-thumb {
+        transform: scale(1.2);
+    }
+
+    .menu-card-video-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: linear-gradient(rgba($color: #000000, $alpha: 0.0), rgba($color: #000000, $alpha: 0.6));
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        & > * {
+            width: 60px;
+            height: 60px;
+        }
+    };
+
+    .menu-card-video-bottom {
+        position: absolute;
+        bottom: 15px;
+        left: 10px;
+
+        strong {
+            font-size: 25px;
+            word-break: keep-all;
+            color: white;
+        }
+
+        span {
+            color: white;
+        }
+    }
 }
 
 .menu-card-root {
-    max-width: 400px;
-    width: 100%;
-    margin: 15px;
+    width: 300px;
+    margin: 10px;
 }
 
 .menu-card-title {
@@ -258,7 +314,7 @@ $hub-header-color: #627edb;
 }
 
 .menu-card-media {
-    height: 220px;
+    height: 180px;
 }
 
 .modal {

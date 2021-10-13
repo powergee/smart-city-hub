@@ -5,6 +5,7 @@ import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
 import { Fade } from 'react-slideshow-image';
 import { getArticles, getFileInfo } from '../shared/BackendRequests'
 import { dateToString } from '../shared/DateToString'
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import kindTable from "../shared/ArticleKindTable.json";
 import currProj from "../shared/CurrentProjects.json";
 import hubJson from "../hub-data/generated/domestic-parsed.json"
@@ -12,6 +13,7 @@ import categoryImage from '../shared/CategoryImage';
 import cateToEng from "../hub-data/cateToEng.json"
 import getArchives from "../shared/Archives.js";
 import bannerImage from "../images/banner.svg"
+import videoImage from "../images/video-image.jpg"
 import { useHistory } from 'react-router-dom';
 
 import 'react-slideshow-image/dist/styles.css'
@@ -77,7 +79,7 @@ export default function Home() {
             }
         }
 
-        getArticles(1, 3, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
+        getArticles(1, 2, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
             .then((res) => {
                 const imCards = [];
                 res.forEach(element => {
@@ -91,7 +93,7 @@ export default function Home() {
                                     className="menu-card-media"
                                 />
                                 <CardContent>
-                                    <Typography className="menu-card-title" gutterBottom variant="h6">
+                                    <Typography className="menu-card-title" gutterBottom variant="subtitle1">
                                         {element.title}
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
@@ -238,8 +240,24 @@ export default function Home() {
 
             <div className="board-background board-puple">
                 <div className="board-column-container">
-                    <h3 className="board-title">사진으로 보는 최근 소식</h3>
+                    <h3 className="board-title">미디어로 보는 최근 소식</h3>
                     <div className="menu-card-layout">
+                        {/* 
+                            대표 영상 이미지는 아래와 같이 하드코딩하였음.
+                            바람직한 구현은 아니므로, 추후 개선이 필요.
+                         */}
+                         <a onClick={() => { history.push("/news/notices/141"); }}>
+                            <Paper className='menu-card-video'>
+                                <div className='menu-card-video-thumb' style={{ backgroundImage: `url(${videoImage})` }}></div>
+                                <div className='menu-card-video-overlay'>
+                                    <PlayCircleOutlineIcon color="action"></PlayCircleOutlineIcon>
+                                </div>
+                                <div className='menu-card-video-bottom'>
+                                    <strong>차세대 메타버스 플랫폼 제페토에 서울시립대학교 중앙도서관이 문을 열었습니다.</strong>
+                                    <span>공지사항 · 2021-10-14</span>
+                                </div>
+                            </Paper>
+                        </a>
                         {imageCards}
                     </div>
                 </div>
