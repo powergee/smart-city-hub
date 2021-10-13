@@ -33,6 +33,7 @@ import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar.js";
 import TextTransformation from "@ckeditor/ckeditor5-typing/src/texttransformation.js";
 import Underline from "@ckeditor/ckeditor5-basic-styles/src/underline.js";
 import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
+import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed';
 
 const installedPlugins = [
     Base64UploadAdapter,
@@ -66,6 +67,7 @@ const installedPlugins = [
     TableToolbar,
     TextTransformation,
     Underline,
+    MediaEmbed
 ];
 
 function ArticleEditor(props) {
@@ -101,6 +103,7 @@ function ArticleEditor(props) {
                     "blockQuote",
                     "imageUpload",
                     "insertTable",
+                    "mediaEmbed",
                     "|",
                     "undo",
                     "redo",
@@ -139,7 +142,8 @@ function ArticleEditor(props) {
                         '|',
                         'imageTextAlternative'
                     ]
-                }
+                },
+                mediaEmbed: { previewsInData: true }
             }}
             {...props}
         />
