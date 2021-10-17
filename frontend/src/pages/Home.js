@@ -79,7 +79,7 @@ export default function Home() {
             }
         }
 
-        getArticles(1, 2, undefined, "[.\r\n]*<img.*src.*>[.\r\n]*", undefined, undefined)
+        getArticles(1, 2, undefined, /<img.*>/.source, undefined, undefined)
             .then((res) => {
                 const imCards = [];
                 res.forEach(element => {
