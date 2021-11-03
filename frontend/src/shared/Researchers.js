@@ -2,6 +2,7 @@ import resJYS from "../images/res-JYS.jpg";
 import resKDI from "../images/res-KDI.jpg";
 import resKDW from "../images/res-KDW.jpg";
 import resKJY from "../images/res-KJY.jpg";
+import resKJYong from "../images/res-KJYeong.jpg";
 import resPSC from "../images/res-PSC.jpg";
 import resYCH from "../images/res-YCH.jpg";
 
@@ -71,6 +72,16 @@ export default function getResearchers() {
                 "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
                 "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
                 "이메일: qkdsiddl1@uos.ac.kr"
+            ]
+        },
+        {
+            name: "김지영",
+            image: resKJYong,
+            details: [
+                "연구원",
+                "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
+                "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
+                "이메일: rrhkwk@gmail.com"
             ]
         },
         {
