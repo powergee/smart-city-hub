@@ -26,15 +26,27 @@ $main-color: rgb(12, 0, 78);
     }
 }
 
+.researchers-tab-container {
+    display: flex;
+    flex-direction: row;
+    
+    & > * {
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+}
+
 .researchers-paper {
     margin-top: 30px;
 }
 
 .researchers-grid {
     & > img {
-        width: 300px;
-        max-width: 300px;
-        height: auto;
+        object-fit: cover;
+        width: 240px;
+        max-width: 240px;
+        height: 300px;
+        max-height: 300px;
         margin-right: 20px;
     }
 
