@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { ContentHeader } from "../components"
 import { getArticle, getFileInfo, downloadFile, deleteArticle as deleteArticleFromBack } from "../shared/BackendRequests";
 import { useHistory } from "react-router-dom";
 import { withCookies } from "react-cookie";
@@ -13,25 +12,12 @@ import { dateToString } from '../shared/DateToString';
 import getToken from "../shared/GetToken";
 
 function GeneralArticleView(props) {
-    const { superTitle, title, superCaption, caption, listLink } = props;
+    const { listLink } = props;
     const articleId = props.match.params.articleId;
     
     const [article, setArticle] = useState(undefined);
     const [files, setFiles] = useState([]);
     const history = useHistory();
-
-    const sections = [
-        {
-            title: superTitle,
-            link: listLink,
-            caption: superCaption
-        },
-        {
-            title: title,
-            link: listLink + "/" + articleId,
-            caption: caption
-        }
-    ];
 
     useEffect(() => {
         getArticle(articleId)
@@ -86,7 +72,7 @@ function GeneralArticleView(props) {
     }
 
     return (
-        <ContentHeader sections={sections}>
+        <React.Fragment>
             {article === undefined ? (
                 <h2 className="article-fetching">게시글을 가져오는 중입니다..!</h2>
             ) : (
@@ -168,7 +154,7 @@ function GeneralArticleView(props) {
                         }
                     </React.Fragment>
                 )}
-        </ContentHeader>
+        </React.Fragment>
     )
 }
 

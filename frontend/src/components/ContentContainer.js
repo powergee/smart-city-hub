@@ -4,6 +4,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import "./ContentContainer.scss";
 import { useHistory } from 'react-router-dom';
+import introImage from "../images/page-pics/introduction.png"
 
 function NavigatorRow(props) {
     const { defaultOpen, title, subPath, link, depth } = props;
@@ -40,8 +41,15 @@ function NavigatorRow(props) {
 }
 
 export default function ContentContainer(props) {
-    const { children, currentPath } = props;
+    const { children, currentPath, sections, showSecondary = true, image = introImage } = props;
     const [paths, setPaths] = useState([]);
+    const history = useHistory();
+
+    function getLinkHandler(url) {
+        return () => {
+            history.push(url);
+        }
+    }
 
     useEffect(() => {
         let defaultPaths = [
@@ -168,6 +176,10 @@ export default function ContentContainer(props) {
 
     return (
         <div className="content-background">
+            <div className="content-banner" style={{backgroundImage: `url(${image})`}}>
+
+            </div>
+
             <div className="content-root">
                 <div className="content-left">
                     <Paper variant="outlined" className="content-navi">

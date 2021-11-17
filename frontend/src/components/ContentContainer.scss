@@ -1,14 +1,24 @@
 @import "../shared/shared.scss";
 
+$primary-color: #404A5D;
+$link-color: #404A5D;
+$link-hover: #6a7da0;
+
 .content-background {
     min-width: $page-width;
     width: 100%;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-banner {
+    width: 100%;
+    height: 250px;
 }
 
 .content-root {
     width: $page-width;
-    margin: 0 auto 0 auto;
     display: flex;
     flex-direction: row;
 

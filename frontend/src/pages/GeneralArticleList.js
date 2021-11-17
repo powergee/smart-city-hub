@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { ContentHeader } from "../components"
 import { getArticles, countArticles, getFileInfo, downloadFile } from "../shared/BackendRequests";
 import { dateToString } from '../shared/DateToString';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
@@ -12,7 +11,7 @@ import { useHistory } from "react-router-dom";
 import "./GeneralArticleList.scss"
 
 function GeneralArticleList(props) {
-    const { superTitle, title, superCaption, caption, link, kind } = props;
+    const { link, kind } = props;
 
     const [page, setPage] = useState(undefined);
     const [total, setTotal] = useState(undefined);
@@ -20,19 +19,6 @@ function GeneralArticleList(props) {
     const [articles, setArticles] = useState(undefined);
     const [fileInfo, setFileInfo] = useState({});
     const history = useHistory();
-
-    const sections = [
-        {
-            title: superTitle,
-            link: link,
-            caption: superCaption
-        },
-        {
-            title: title,
-            link: link,
-            caption: caption
-        }
-    ];
 
     useEffect(() => {
         if (total !== undefined) {
@@ -92,7 +78,7 @@ function GeneralArticleList(props) {
     }
 
     return (
-        <ContentHeader sections={sections}>
+        <React.Fragment>
             {articles === undefined ? (
                 <h2 className="list-fetching">게시글을 가져오는 중입니다..!</h2>
             ) : (
@@ -156,7 +142,7 @@ function GeneralArticleList(props) {
                         </div>
                     </React.Fragment>
                 )}
-        </ContentHeader>
+        </React.Fragment>
     )
 }
 

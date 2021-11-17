@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { NoticeBoard, CardBoard, DocumentPreview } from '../components'
-import { Paper, ButtonBase, Modal, Typography } from '@material-ui/core'
+import { Paper, ButtonBase, Modal, Typography, Tooltip } from '@material-ui/core'
 import { Card, CardActionArea, CardContent, CardMedia } from '@material-ui/core'
 import { Fade } from 'react-slideshow-image';
 import { getArticles, getFileInfo } from '../shared/BackendRequests'
@@ -194,10 +194,12 @@ export default function Home() {
                         backgroundPosition: "center"
                     }}
                 >
-                    <ButtonBase className="hub-preview-button" onClick={getClickHandler(index)}>
-                        <span className="hub-preview-text">{title}</span>
-                        <span className="hub-preview-text">{cateToEng[title]}</span>
-                    </ButtonBase>
+                    <Tooltip title={`클릭하시면 \'${title}\' 분야의 기업들을 볼 수 있습니다.`}>
+                        <ButtonBase className="hub-preview-button" onClick={getClickHandler(index)}>
+                            <span className="hub-preview-text">{title}</span>
+                            <span className="hub-preview-text">{cateToEng[title]}</span>
+                        </ButtonBase>
+                    </Tooltip>
                 </Paper>
             );
         });

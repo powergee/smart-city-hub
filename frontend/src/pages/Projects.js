@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom';
-import { ContentContainer, ContentHeader, MarkdownViewer, ProjectTable, PreparingContents } from "../components"
+import { ContentContainer, MarkdownViewer, ProjectTable, PreparingContents } from "../components"
 import projList from "../shared/ProjectList.json"
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
 import smartDoc from "../docs/스마트재난안전관련사업 개요.md"
@@ -24,11 +24,9 @@ function Summary() {
         rows[i].no = rows.length - i;
 
     return (
-        <ContentContainer currentPath={sections[1].link}>
-            <ContentHeader sections={sections}>
-                <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
-                <ProjectTable rows={rows}></ProjectTable>
-            </ContentHeader>
+        <ContentContainer currentPath={sections[1].link} sections={sections}>
+            <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
+            <ProjectTable rows={rows}></ProjectTable>
         </ContentContainer>
     )
 }
@@ -55,10 +53,8 @@ function WithHumanism() {
     }, []);
 
     return (
-        <ContentContainer currentPath={sections[1].link}>
-            <ContentHeader sections={sections}>
-                <MarkdownViewer source={source}></MarkdownViewer>
-            </ContentHeader>
+        <ContentContainer currentPath={sections[1].link} sections={sections}>
+            <MarkdownViewer source={source}></MarkdownViewer>
         </ContentContainer>
     )
 }
@@ -85,10 +81,8 @@ function SmartDisasterPrep() {
     }, []);
 
     return (
-        <ContentContainer currentPath={sections[1].link}>
-            <ContentHeader sections={sections}>
-                <MarkdownViewer source={source}></MarkdownViewer>
-            </ContentHeader>
+        <ContentContainer currentPath={sections[1].link} sections={sections}>
+            <MarkdownViewer source={source}></MarkdownViewer>
         </ContentContainer>
     )
 }
@@ -106,10 +100,8 @@ function EtcProjects() {
     ];
 
     return (
-        <ContentContainer currentPath={sections[1].link}>
-            <ContentHeader sections={sections}>
-                <PreparingContents></PreparingContents>
-            </ContentHeader>
+        <ContentContainer currentPath={sections[1].link} sections={sections}>
+            <PreparingContents></PreparingContents>
         </ContentContainer>
     )
 }

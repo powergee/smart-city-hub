@@ -12,9 +12,6 @@ function Notices() {
                 <Route exact path="/news/notices"
                     render={() => 
                         <GeneralArticleList
-                            superTitle="소식"
-                            superCaption="지역연구 관련 정보제공"
-                            title="공지사항"
                             link="/news/notices"
                             kind="notices"
                         />}>
@@ -22,9 +19,6 @@ function Notices() {
                 <Route exact path="/news/notices/writer"
                     render={() => 
                         <GeneralArticleWriter
-                            superTitle="소식"
-                            superCaption="지역연구 관련 정보제공"
-                            pageTitle="공지사항"
                             link="/news/notices"
                             kind="notices"
                         />}>
@@ -33,9 +27,6 @@ function Notices() {
                     render={(props) => 
                         <GeneralArticleWriter
                             {...props}
-                            superTitle="소식"
-                            superCaption="지역연구 관련 정보제공"
-                            pageTitle="공지사항"
                             link="/news/notices"
                             kind="notices"
                         />}>
@@ -44,9 +35,6 @@ function Notices() {
                     render={(props) => 
                         <GeneralArticleView 
                             {...props}
-                            superTitle="소식"
-                            superCaption="지역연구 관련 정보제공"
-                            title="공지사항"
                             listLink="/news/notices"
                             kind="notices"
                         />}>
@@ -61,13 +49,13 @@ function SmartNews() {
         <ContentContainer currentPath={"/news/smart-news"}>
             <Switch>
                 <Route exact path="/news/smart-news"
-                    render={() => <GeneralArticleList superTitle="소식" title="스마트 뉴스" link="/news/smart-news" kind="smart-news"></GeneralArticleList>}></Route>
+                    render={() => <GeneralArticleList link="/news/smart-news" kind="smart-news"></GeneralArticleList>}></Route>
                 <Route exact path="/news/smart-news/writer"
-                    render={() => <GeneralArticleWriter superTitle="소식" pageTitle="스마트 뉴스" link="/news/smart-news" kind="smart-news"></GeneralArticleWriter>}></Route>
+                    render={() => <GeneralArticleWriter link="/news/smart-news" kind="smart-news"></GeneralArticleWriter>}></Route>
                 <Route path="/news/smart-news/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="소식" pageTitle="스마트 뉴스" link="/news/smart-news" kind="smart-news"></GeneralArticleWriter>}></Route>
+                    render={(props) => <GeneralArticleWriter {...props} link="/news/smart-news" kind="smart-news"></GeneralArticleWriter>}></Route>
                 <Route exact path="/news/smart-news/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="소식" title="스마트 뉴스" listLink="/news/smart-news" kind="smart-news"></GeneralArticleView>}></Route>
+                    render={(props) => <GeneralArticleView {...props} listLink="/news/smart-news" kind="smart-news"></GeneralArticleView>}></Route>
             </Switch>
         </ContentContainer>
     )
@@ -78,13 +66,13 @@ function Research() {
         <ContentContainer currentPath={"/news/research"}>
             <Switch>
                 <Route exact path="/news/research"
-                    render={() => <GeneralArticleList superTitle="소식" superCaption="국제등재학술지 & 국내등재학술지" title="연구실적" link="/news/research" kind="research"></GeneralArticleList>}></Route>
+                    render={() => <GeneralArticleList link="/news/research" kind="research"></GeneralArticleList>}></Route>
                 <Route exact path="/news/research/writer"
-                    render={() => <GeneralArticleWriter superTitle="소식" superCaption="국제등재학술지 & 국내등재학술지" pageTitle="연구실적" link="/news/research" kind="research"></GeneralArticleWriter>}></Route>
+                    render={() => <GeneralArticleWriter link="/news/research" kind="research"></GeneralArticleWriter>}></Route>
                 <Route path="/news/research/writer/:articleId"
-                    render={(props) => <GeneralArticleWriter {...props} superTitle="소식" superCaption="국제등재학술지 & 국내등재학술지" pageTitle="연구실적" link="/news/research" kind="research"></GeneralArticleWriter>}></Route>
+                    render={(props) => <GeneralArticleWriter {...props} link="/news/research" kind="research"></GeneralArticleWriter>}></Route>
                 <Route exact path="/news/research/:articleId"
-                    render={(props) => <GeneralArticleView {...props} superTitle="소식" superCaption="국제등재학술지 & 국내등재학술지" title="연구실적" listLink="/news/research" kind="research"></GeneralArticleView>}></Route>
+                    render={(props) => <GeneralArticleView {...props} listLink="/news/research" kind="research"></GeneralArticleView>}></Route>
             </Switch>
         </ContentContainer>
     )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ContentHeader, ArticleEditor } from '../components';
+import { ArticleEditor } from '../components';
 import getToken from "../shared/GetToken";
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import SaveIcon from '@material-ui/icons/Save';
@@ -12,7 +12,7 @@ import { Prompt, useHistory } from 'react-router-dom';
 import { uploadFile, postArticle, getArticle, getFileInfo } from "../shared/BackendRequests";
 
 function GeneralArticleWriter(props) {
-    const { superTitle, superCation, pageTitle, pageCaption, link, kind } = props;
+    const { link, kind } = props;
     const articleId = props?.match?.params?.articleId;
 
     const history = useHistory();
@@ -28,19 +28,6 @@ function GeneralArticleWriter(props) {
     const [saveButtonText, setSaveButtonText] = useState("저장하기");
     const [saveButtonColor, setSaveButtonColor] = useState("primary");
     const [routeToMove, setRouteToMove] = useState(undefined);
-
-    const sections = [
-        {
-            title: superTitle,
-            link: link,
-            caption: superCation
-        },
-        {
-            title: pageTitle,
-            link: link,
-            caption: pageCaption
-        }
-    ];
 
     useEffect(() => {
         const token = getToken(props.cookies);
@@ -204,7 +191,7 @@ function GeneralArticleWriter(props) {
     }
 
     return (
-        <ContentHeader sections={sections}>
+        <React.Fragment>
             <Prompt when={routeToMove === undefined} message="아직 작성중인 게시글을 저장하지 않았습니다. 정말 나가시겠습니까?"></Prompt>
 
             <div className="writer-props">
@@ -274,7 +261,7 @@ function GeneralArticleWriter(props) {
                     {saveButtonText}
                 </Button>
             </div>
-        </ContentHeader>
+        </React.Fragment>
     )
 }
 
