@@ -2,17 +2,18 @@ $sep-color: #404a5d41;
 $caption-color: rgba(0, 0, 0, 0.575);
 
 .hub-description {
-    p {
+    * {
         text-align: center;
         margin-left: 30px;
         margin-right: 30px;
         word-break: keep-all;
+        font-size: 13px;
     }
 }
 
 .hub-control-paper {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     padding-top: 10px;
     padding-bottom: 30px;
 

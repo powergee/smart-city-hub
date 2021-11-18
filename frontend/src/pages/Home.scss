@@ -57,7 +57,7 @@ $hub-header-color: #627edb;
             justify-content: flex-end;
 
             .hub-preview-header {
-                background-color: #273447;
+                background-color: #273447d7;
                 border-bottom: 3px solid #042658;
                 h4 {
                     text-align: center;
@@ -123,13 +123,13 @@ $hub-header-color: #627edb;
 .slide-container {
     min-width: $page-width;
     width: 100%;
-    background-color: #273447b0;
+    background-color: #273447d0;
 }
 
 .comment-background {
     min-width: $page-width;
     width: 100%;
-    min-height: 200px;
+    min-height: 175px;
     display: flex;
     flex-direction: row;
     justify-content: center;

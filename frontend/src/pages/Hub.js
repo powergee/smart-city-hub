@@ -91,13 +91,13 @@ function SecondCategoryViewer(props) {
             image={CategoryImage[firstStr]}
             imageOffset={0.5}
         >
-            {CategoryDescription[firstStr] && <div className="hub-description">
-                {CategoryDescription[firstStr].map(para => (
-                    <p>{para}</p>
-                ))}
-            </div>}
-
             <Paper className="hub-control-paper" elevation={4}>
+                {CategoryDescription[firstStr] && <div className="hub-description">
+                    {CategoryDescription[firstStr].map(para => (
+                        <p>{para}</p>
+                    ))}
+                </div>}
+
                 <h3 className="hub-control-notice">{`아래 소분류를 선택해서 ${firstStr} 분야의 국내 기업들을 확인해보세요.`}</h3>
                 <Divider className="hub-divider"></Divider>
                 <div className="hub-control-contents">
