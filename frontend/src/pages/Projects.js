@@ -5,6 +5,8 @@ import projList from "../shared/ProjectList.json"
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md"
 import smartDoc from "../docs/스마트재난안전관련사업 개요.md"
 
+import projImage from "../images/page-pics/projects.jpeg";
+
 // 총괄 연구 & 사업
 function Summary() {
     const sections = [
@@ -24,7 +26,7 @@ function Summary() {
         rows[i].no = rows.length - i;
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={projImage} imageOffset={0.7} title={"연구 & 사업"} subtitle={"총괄 연구 & 사업"}>
             <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
             <ProjectTable rows={rows}></ProjectTable>
         </ContentContainer>
@@ -53,7 +55,7 @@ function WithHumanism() {
     }, []);
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={projImage} imageOffset={0.7} title={"연구 & 사업"} subtitle="인문사회연구소">
             <MarkdownViewer source={source}></MarkdownViewer>
         </ContentContainer>
     )
@@ -81,7 +83,7 @@ function SmartDisasterPrep() {
     }, []);
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={projImage} imageOffset={0.7} title={"연구 & 사업"} subtitle="스마트재난안전">
             <MarkdownViewer source={source}></MarkdownViewer>
         </ContentContainer>
     )
@@ -100,7 +102,7 @@ function EtcProjects() {
     ];
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={projImage} imageOffset={0.7} title={"연구 & 사업"} subtitle="기타">
             <PreparingContents></PreparingContents>
         </ContentContainer>
     )

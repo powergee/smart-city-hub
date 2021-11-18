@@ -7,6 +7,8 @@ import { getGlobalRes, getProjectRes } from "../shared/Researchers.js";
 import goalDoc from "../docs/설립 배경 및 목적.md"
 import "./Introduction.scss"
 
+import introImage from "../images/page-pics/introduction.png";
+
 function Greeting() {
     const sections = [
         {
@@ -20,7 +22,7 @@ function Greeting() {
     ];
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={introImage} title="센터소개" subtitle="인사말">
             <div className="introduction-contents">
                 <h3>국제도시 및 인프라 연구센터는 4차 산업혁명시대에 도시, 교통, 환경, 재난 등 사람을 위한 연구를 추진하고 있습니다.</h3>
 
@@ -59,7 +61,7 @@ function Goal() {
     }, []);
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={introImage} title="센터소개" subtitle="설립배경 및 목적">
             <MarkdownViewer source={source}></MarkdownViewer>
         </ContentContainer>
     )
@@ -83,7 +85,7 @@ function Researchers() {
     const projectRes = getProjectRes();
 
     return (
-        <ContentContainer currentPath={sections[1].link} sections={sections}>
+        <ContentContainer currentPath={sections[1].link} image={introImage} title="센터소개" subtitle="연구진">
             <div className="researchers-tab-container">
                 <Button 
                     size="large"

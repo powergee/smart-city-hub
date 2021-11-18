@@ -214,30 +214,32 @@ export default function Home() {
     return (
         <React.Fragment>
             <div className="banner-root">
-                <div className="banner-layout">
-                    <div className="banner-row">
-                        <div className="notice-layout">
-                            <NoticeBoard rowCount={4}></NoticeBoard>
-                        </div>
-                        <div className="hub-preview-layout">
-                            <Paper className="hub-preview-header" square variant="outlined">
-                                <h4>스마트도시수출 거점HUB 플랫폼 {"&"} Smart City Export HUB Platform</h4>
-                            </Paper>
+                <div className="banner-overlay">
+                    <div className="banner-layout">
+                        <div className="banner-row">
+                            <div className="notice-layout">
+                                <NoticeBoard rowCount={4}></NoticeBoard>
+                            </div>
+                            <div className="hub-preview-layout">
+                                <Paper className="hub-preview-header" square variant="outlined">
+                                    <h4>스마트도시수출 거점HUB 플랫폼 {"&"} Smart City Export HUB Platform</h4>
+                                </Paper>
 
-                            <div className="hub-preview-table">
-                                {hubPreviewRows.map(row => (
-                                    <div className="hub-preview-row">{row}</div>
-                                ))}
+                                <div className="hub-preview-table">
+                                    {hubPreviewRows.map(row => (
+                                        <div className="hub-preview-row">{row}</div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div className="slide-container">
-                <Fade>
-                    {currProjSlides}
-                </Fade>
+                    <div className="slide-container">
+                        <Fade>
+                            {currProjSlides}
+                        </Fade>
+                    </div>
+                </div>
             </div>
 
             <div className="board-background board-puple">

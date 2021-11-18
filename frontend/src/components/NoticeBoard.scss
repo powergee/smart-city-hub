@@ -1,11 +1,7 @@
 @import "../shared/shared.scss";
 
-// $header-color: #67748d;
 $category-padding: 0 20px 0 0;
-// $category-enabled: #ffffff;
-// $category-disabled: #B3C6DF;
 $category-font: 18px;
-// $border-radius: 3px;
 $boundary-color: #696f7c;
 $more-hover: #463FCA;
 $header-color: #627edb;
@@ -13,6 +9,7 @@ $header-color: #627edb;
 .board-paper {
     height: 100%;
     position: relative;
+    background-color: rgba($color: #ffffff, $alpha: 0.5) !important;
 }
 
 .board-header {

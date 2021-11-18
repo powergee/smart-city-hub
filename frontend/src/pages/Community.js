@@ -5,17 +5,11 @@ import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
 import GeneralArticleWriter from './GeneralArticleWriter';
 
-function getSection(title, caption, link) {
-    return {
-        title: title,
-        link: link,
-        caption: caption
-    };
-}
+import commImage from "../images/page-pics/community.jpeg";
 
 function Seminar() {
     return (
-        <ContentContainer currentPath={"/community/seminar"}>
+        <ContentContainer currentPath={"/community/seminar"} image={commImage} imageOffset={0.35} title="커뮤니티" description="정부·민간기업 등 대상 설명회" subtitle="세미나">
             <Switch>
                 <Route exact path="/community/seminar"
                     render={() => <GeneralArticleList link="/community/seminar" kind="seminar"></GeneralArticleList>}></Route>
@@ -32,7 +26,7 @@ function Seminar() {
 
 function Workshop() {
     return (
-        <ContentContainer currentPath={"/community/workshop"}>
+        <ContentContainer currentPath={"/community/workshop"} image={commImage} imageOffset={0.35} title="커뮤니티" description="기관 및 기업 소개">
             <Switch>
                 <Route exact path="/community/workshop"
                     render={() => <GeneralArticleList link="/community/workshop" kind="workshop"></GeneralArticleList>}></Route>

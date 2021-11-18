@@ -1,10 +1,11 @@
-import { Paper, ButtonBase, Collapse } from '@material-ui/core';
+import { Paper, ButtonBase, Collapse, Typography } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import "./ContentContainer.scss";
 import { useHistory } from 'react-router-dom';
-import introImage from "../images/page-pics/introduction.png"
+
+import defaultImage from "../images/page-pics/introduction.png";
 
 function NavigatorRow(props) {
     const { defaultOpen, title, subPath, link, depth } = props;
@@ -41,15 +42,8 @@ function NavigatorRow(props) {
 }
 
 export default function ContentContainer(props) {
-    const { children, currentPath, sections, showSecondary = true, image = introImage } = props;
+    const { children, currentPath, image=defaultImage, imageOffset=0, title, description, subtitle } = props;
     const [paths, setPaths] = useState([]);
-    const history = useHistory();
-
-    function getLinkHandler(url) {
-        return () => {
-            history.push(url);
-        }
-    }
 
     useEffect(() => {
         let defaultPaths = [
@@ -176,8 +170,12 @@ export default function ContentContainer(props) {
 
     return (
         <div className="content-background">
-            <div className="content-banner" style={{backgroundImage: `url(${image})`}}>
-
+            <div className="content-banner" style={{backgroundImage: `url(${image})`, backgroundPositionY: `${100*imageOffset}%`}}>
+                <div className="content-banner-overlay">
+                    <Typography className="content-banner-title" variant='h2'>{title}</Typography>
+                    <Typography className="content-banner-subtitle" variant='h4'>{subtitle}</Typography>
+                    {description && (<Typography className="content-banner-description" variant='h6'>{`(${description})`}</Typography>)}
+                </div>
             </div>
 
             <div className="content-root">

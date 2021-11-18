@@ -77,10 +77,7 @@ function FirstCategoryViewer(props) {
 
     return (
         section && categories ? ( 
-            <ContentContainer currentPath={section[section.length - 1].link} sections={section}>
-                <ul>
-                    <li>아래 목록에서 원하시는 대분류를 선택해주세요.</li>
-                </ul>
+            <ContentContainer currentPath={section[section.length - 1].link} title="스마트도시수출 거점 HUB" description="아래 목록에서 원하시는 대분류를 선택해주세요." subtitle="Smart City Export HUB Platform">
                 <CardBoard variant="large" menuList={categories}></CardBoard>
             </ContentContainer>
         ) : (
@@ -91,11 +88,13 @@ function FirstCategoryViewer(props) {
 
 function SecondCategoryViewer(props) {
     const first = props?.match?.params?.first;
+    const [second, setSecond] = useState(undefined);
+    const [third, setThird] = useState(undefined);
     const [section, setSection] = useState();
     const [secondNode, setSecondNode] = useState();
 
     useEffect(() => {
-        let [section, currentNode,] = parsePath(first, undefined, undefined);
+        let [section, currentNode,] = parsePath(first, second, third);
         setSecondNode(currentNode);
         setSection(section);
     }, [first]);
@@ -134,7 +133,7 @@ function SecondCategoryViewer(props) {
 
     return (
         section ? ( 
-            <ContentContainer currentPath={section[section.length - 1].link} sections={section}>
+            <ContentContainer currentPath={section[section.length - 1].link} title="Hub" description="Hub Description" subtitle="Hub Subtitle">
                 <ul>
                     <li>'{section[1].title}' 대분류에 대한 {Object.keys(secondNode.next).length} 가지 중분류가 있습니다.</li>
                     <li>아래 목록에서 중분류에 대응되는 소분류를 선택해주시면 리스트에 목록이 나타납니다.</li>
@@ -174,41 +173,11 @@ function SecondCategoryViewer(props) {
     )
 }
 
-function ListViewer(props) {
-    const first = props?.match?.params?.first;
-    const second = props?.match?.params?.second;
-    const third = props?.match?.params?.third;
-
-    const [section, setSection] = useState();
-
-    useEffect(() => {
-        let [section, ,] = parsePath(first, second, third);
-        setSection(section);
-    }, [first, second, third]);
-
-    return (
-        section ? (
-            <ContentContainer currentPath={section[section.length - 1].link} sections={section}>
-                <ul>
-                    <li>'{section[1].title}' - '{section[2].title}' - '{section[3].title}'에 대한 검색 결과입니다.</li>
-                    <li>각 행의 좌측에 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
-                    <li>각 행의 기업명을 클릭하시면 그 기업의 홈페이지로 이동하실 수 있습니다.</li>
-                </ul>
-
-                <CompanyList firstIndex={first} secondIndex={second} thirdIndex={third}></CompanyList>
-            </ContentContainer>
-        ) : (
-            <React.Fragment></React.Fragment>
-        )
-    );
-}
-
 export default function Hub() {
     return (
         <Switch>
             <Route exact path="/hub" component={FirstCategoryViewer}></Route>
             <Route exact path="/hub/:first" component={SecondCategoryViewer}></Route>
-            <Route exact path="/hub/:first/:second/:third" component={ListViewer}></Route>
         </Switch>
     )
 }

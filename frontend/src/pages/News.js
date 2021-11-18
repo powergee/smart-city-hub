@@ -5,9 +5,11 @@ import GeneralArticleList from './GeneralArticleList';
 import GeneralArticleView from './GeneralArticleView';
 import GeneralArticleWriter from './GeneralArticleWriter';
 
+import newsImage from "../images/page-pics/news.jpeg";
+
 function Notices() {
     return (
-        <ContentContainer currentPath={"/news/notices"}>
+        <ContentContainer currentPath={"/news/notices"} image={newsImage} imageOffset={0.5} title="소식" description="지역연구 관련 정보제공" subtitle="공지사항">
             <Switch>
                 <Route exact path="/news/notices"
                     render={() => 
@@ -46,7 +48,7 @@ function Notices() {
 
 function SmartNews() {
     return (
-        <ContentContainer currentPath={"/news/smart-news"}>
+        <ContentContainer currentPath={"/news/smart-news"} image={newsImage} imageOffset={0.5} title="소식" subtitle="스마트 뉴스">
             <Switch>
                 <Route exact path="/news/smart-news"
                     render={() => <GeneralArticleList link="/news/smart-news" kind="smart-news"></GeneralArticleList>}></Route>
@@ -63,7 +65,7 @@ function SmartNews() {
 
 function Research() {
     return (
-        <ContentContainer currentPath={"/news/research"}>
+        <ContentContainer currentPath={"/news/research"} image={newsImage} imageOffset={0.5} title="소식" description={"국제등재학술지 & 국내등재학술지"} subtitle="연구실적">
             <Switch>
                 <Route exact path="/news/research"
                     render={() => <GeneralArticleList link="/news/research" kind="research"></GeneralArticleList>}></Route>

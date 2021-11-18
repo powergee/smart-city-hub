@@ -1,17 +1,26 @@
 @import "../shared/shared.scss";
 
-$banner-height: 500px;
+$banner-height: 800px;
 $header-color: rgb(12, 0, 78);
 $hub-header-color: #627edb;
 
 .banner-root {
+    background-image: url("../images/home-background.jpeg");
+    background-size: cover;
+    background-position-y: 60%;
     min-width: $page-width;
     height: $banner-height;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+
+    .banner-overlay {
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #ffffff, $alpha: 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .banner-layout {
@@ -114,13 +123,13 @@ $hub-header-color: #627edb;
 .slide-container {
     min-width: $page-width;
     width: 100%;
-    background-color: #273447;
+    background-color: #273447a2;
 }
 
 .comment-background {
     min-width: $page-width;
     width: 100%;
-    min-height: 180px;
+    min-height: 200px;
     display: flex;
     flex-direction: row;
     justify-content: center;
