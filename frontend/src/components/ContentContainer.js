@@ -174,7 +174,7 @@ export default function ContentContainer(props) {
                 <div className="content-banner-overlay">
                     <Typography className="content-banner-title" variant='h2'>{title}</Typography>
                     <Typography className="content-banner-subtitle" variant='h4'>{subtitle}</Typography>
-                    {description && (<Typography className="content-banner-description" variant='h6'>{`(${description})`}</Typography>)}
+                    {description && (<Typography className="content-banner-description" variant='h6'>{description}</Typography>)}
                 </div>
             </div>
 

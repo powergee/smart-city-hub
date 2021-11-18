@@ -194,7 +194,7 @@ export default function Home() {
                         backgroundPosition: "center"
                     }}
                 >
-                    <Tooltip title={`클릭하시면 \'${title}\' 분야의 기업들을 볼 수 있습니다.`}>
+                    <Tooltip title={`클릭하시면 '${title}' 분야의 기업들을 볼 수 있습니다.`}>
                         <ButtonBase className="hub-preview-button" onClick={getClickHandler(index)}>
                             <span className="hub-preview-text">{title}</span>
                             <span className="hub-preview-text">{cateToEng[title]}</span>

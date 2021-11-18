@@ -1,83 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import { ContentContainer, CardBoard, CompanyList } from "../components"
-import { Paper, ButtonBase, Typography } from '@material-ui/core'
+import { Paper, Button, Typography, Divider } from '@material-ui/core'
 import HubJson from "../hub-data/generated/domestic-parsed.json"
 import CateToEng from "../hub-data/cateToEng.json"
 import CategoryImage from '../shared/CategoryImage';
+import CategoryDescription from "../shared/CategoryDescription.json";
 import "./Hub.scss"
 
-function parsePath(first, second, third) {
-    let section = [
-        {
-            title: "스마트도시수출 거점HUB",
-            link: "/hub"
-        }
-    ];
-
-    let currentNode = HubJson["tree"];
-    let nextCate = HubJson["firstCate"];
-
-    if (first) {
-        let cateName = HubJson["firstCate"][first];
-        nextCate = HubJson["secondCate"];
-        section.push({
-            title: cateName,
-            index: first,
-            link: "/hub/" + first
-        });
-        currentNode = currentNode.next[cateName];
-
-        if (second) {
-            cateName = HubJson["secondCate"][second];
-            nextCate = HubJson["thirdCate"];
-            section.push({
-                title: cateName,
-                index: second,
-                link: "/hub/" + first + "/" + second
-            });
-            currentNode = currentNode.next[cateName];
-
-            if (third) {
-                cateName = HubJson["thirdCate"][third];
-                nextCate = undefined;
-                section.push({
-                    title: cateName,
-                    index: third,
-                    link: "/hub/" + first + "/" + second + "/" + third
-                });
-                currentNode = currentNode.next[cateName];
-            }
-        }
-    }
-
-    return [section, currentNode, nextCate];
-}
-
 function FirstCategoryViewer(props) {
-    const [section, setSection] = useState();
     const [categories, setCategories] = useState();
 
     useEffect(() => {
-        let [section, , nextCate] = parsePath(undefined, undefined, undefined);
         let categories = [];
     
-        for (const next in nextCate) {
+        for (const title of HubJson.firstCate) {
             categories.push({
-                link: section[section.length - 1].link + "/" + next,
-                title: nextCate[next],
-                image: CategoryImage[nextCate[next]],
-                description: CateToEng[nextCate[next]]
+                link: "/hub/" + HubJson.firstCate.indexOf(title),
+                title: title,
+                image: CategoryImage[title],
+                description: CateToEng[title]
             })
         }
 
-        setSection(section);
         setCategories(categories);
     }, [props])
 
     return (
-        section && categories ? ( 
-            <ContentContainer currentPath={section[section.length - 1].link} title="스마트도시수출 거점 HUB" description="아래 목록에서 원하시는 대분류를 선택해주세요." subtitle="Smart City Export HUB Platform">
+        categories ? ( 
+            <ContentContainer currentPath="/hub" title="스마트도시수출 거점 HUB" description="아래 목록에서 원하시는 대분류를 선택해주세요." subtitle="Smart City Export HUB Platform">
                 <CardBoard variant="large" menuList={categories}></CardBoard>
             </ContentContainer>
         ) : (
@@ -88,19 +39,17 @@ function FirstCategoryViewer(props) {
 
 function SecondCategoryViewer(props) {
     const first = props?.match?.params?.first;
+    const firstStr = HubJson.firstCate[first];
     const [second, setSecond] = useState(undefined);
     const [third, setThird] = useState(undefined);
-    const [section, setSection] = useState();
-    const [secondNode, setSecondNode] = useState();
+    const [selected, setSelected] = useState(undefined);
+    const listRef = useRef(null);
 
-    useEffect(() => {
-        let [section, currentNode,] = parsePath(first, second, third);
-        setSecondNode(currentNode);
-        setSection(section);
-    }, [first]);
-
-    function showList(category, title) {
-
+    function showList(secondStr, thirdStr) {
+        setSecond(HubJson["secondCate"].indexOf(secondStr));
+        setThird(HubJson["thirdCate"].indexOf(thirdStr));
+        setSelected(thirdStr);
+        listRef.current.scrollIntoView({behavior: 'smooth'});
     }
 
     function getThirdButtons(category, node) {
@@ -110,11 +59,14 @@ function SecondCategoryViewer(props) {
         const result = [];
         Object.keys(node.next).forEach((title) => {
             result.push((
-                <Paper className="hub-second-paper" variant="outlined">
-                    <ButtonBase onClick={() => showList(category, title)}>
-                        {title}
-                    </ButtonBase>
-                </Paper>
+                <Button
+                    className="hub-second-paper"
+                    variant={title === selected ? "contained" : "outlined"}
+                    color={title === selected ? "secondary" : "default"}
+                    onClick={() => showList(category, title)}
+                >
+                    {title}
+                </Button>
             ))
         });
 
@@ -132,44 +84,55 @@ function SecondCategoryViewer(props) {
     }
 
     return (
-        section ? ( 
-            <ContentContainer currentPath={section[section.length - 1].link} title="Hub" description="Hub Description" subtitle="Hub Subtitle">
-                <ul>
-                    <li>'{section[1].title}' 대분류에 대한 {Object.keys(secondNode.next).length} 가지 중분류가 있습니다.</li>
-                    <li>아래 목록에서 중분류에 대응되는 소분류를 선택해주시면 리스트에 목록이 나타납니다.</li>
-                </ul>
-
-                <div className="hub-header">
-                    <div className="hub-subtitle hub-first">
-                        <Typography variant="h6" align="center">중분류</Typography>
-                    </div>
-                    
-                    <div className="hub-subtitle hub-second">
-                        <Typography variant="h6" align="center">소분류</Typography>
-                    </div>
-                </div>
-
-                {Object.entries(secondNode.next).map(([category, node]) => (
-                    <div className="hub-row">
-                        <Paper className="hub-first hub-first-paper" variant="outlined">
-                            <strong>{category}</strong>
-                        </Paper>
-
-                        <div className="hub-second">{getThirdButtons(category, node)}</div>
-                    </div>
+        <ContentContainer
+            currentPath={`/hub/${first}`}
+            title={firstStr}
+            subtitle={CateToEng[firstStr]}
+            image={CategoryImage[firstStr]}
+            imageOffset={0.5}
+        >
+            {CategoryDescription[firstStr] && <div className="hub-description">
+                {CategoryDescription[firstStr].map(para => (
+                    <p>{para}</p>
                 ))}
+            </div>}
 
-                <ul>
-                    <li>{section.slice(1, section.length).map(s => s.title).join(" - ")} 분류에 대한 검색 결과입니다.</li>
-                    <li>각 행의 좌측에 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
-                    <li>각 행의 기업명을 클릭하시면 그 기업의 홈페이지로 이동하실 수 있습니다.</li>
-                </ul>
+            <Paper className="hub-control-paper" elevation={4}>
+                <h3 className="hub-control-notice">{`아래 소분류를 선택해서 ${firstStr} 분야의 국내 기업들을 확인해보세요.`}</h3>
+                <Divider className="hub-divider"></Divider>
+                <div className="hub-control-contents">
+                    <div className="hub-header">
+                        <div className="hub-subtitle hub-first">
+                            <Typography variant="h6" align="center">중분류</Typography>
+                        </div>
+                        
+                        <div className="hub-subtitle hub-second">
+                            <Typography variant="h6" align="center">소분류</Typography>
+                        </div>
+                    </div>
 
-                <CompanyList firstIndex={first}></CompanyList>
-            </ContentContainer>
-        ) : (
-            <React.Fragment></React.Fragment>
-        )
+                    {Object.entries(HubJson.tree.next[firstStr].next).map(([category, node]) => (
+                        <div className="hub-row">
+                            <Paper className="hub-first hub-first-paper" variant="outlined">
+                                <strong>{category}</strong>
+                            </Paper>
+
+                            <div className="hub-second">{getThirdButtons(category, node)}</div>
+                        </div>
+                    ))}
+                </div>
+            </Paper>
+
+            <Divider className="hub-divider"></Divider>
+
+            <ul ref={listRef}>
+                <li>{firstStr} 분류에 대한 검색 결과입니다.</li>
+                <li>각 행의 좌측에 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
+                <li>각 행의 기업명을 클릭하시면 그 기업의 홈페이지로 이동하실 수 있습니다.</li>
+            </ul>
+
+            <CompanyList firstIndex={first} secondIndex={second} thirdIndex={third}></CompanyList>
+        </ContentContainer>
     )
 }
 
