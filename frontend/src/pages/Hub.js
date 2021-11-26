@@ -5,7 +5,7 @@ import { Paper, Button, Typography, Divider } from '@material-ui/core'
 import HubJson from "../hub-data/generated/domestic-parsed.json"
 import CateToEng from "../hub-data/cateToEng.json"
 import CategoryImage from '../shared/CategoryImage';
-import CategoryDescription from "../shared/CategoryDescription.json";
+import getDescriptions from "../shared/CategoryDescription.js";
 import "./Hub.scss"
 
 function FirstCategoryViewer(props) {
@@ -40,6 +40,8 @@ function FirstCategoryViewer(props) {
 function SecondCategoryViewer(props) {
     const first = props?.match?.params?.first;
     const firstStr = HubJson.firstCate[first];
+    const descriptions = getDescriptions();
+
     const [second, setSecond] = useState(undefined);
     const [third, setThird] = useState(undefined);
     const [selected, setSelected] = useState(undefined);
@@ -92,10 +94,16 @@ function SecondCategoryViewer(props) {
             imageOffset={0.5}
         >
             <Paper className="hub-control-paper" elevation={4}>
-                {CategoryDescription[firstStr] && <div className="hub-description">
-                    {CategoryDescription[firstStr].map(para => (
+                {descriptions[firstStr] && <div className="hub-description">
+                    {descriptions[firstStr].text.map(para => (
                         <p>{para}</p>
                     ))}
+
+                    {descriptions[firstStr].images.length > 0 && (<div className="hub-images">
+                        {descriptions[firstStr].images.map(img => (
+                            <div style={{backgroundImage: `url(${img})`}}></div>
+                        ))}
+                    </div>)}
                 </div>}
 
                 <h3 className="hub-control-notice">{`아래 소분류를 선택해서 ${firstStr} 분야의 국내 기업들을 확인해보세요.`}</h3>
