@@ -57,7 +57,7 @@ $hub-header-color: #627edb;
             justify-content: flex-end;
 
             .hub-preview-header {
-                background-color: #273447d7;
+                background-color: rgba(39, 52, 71, 0.84);
                 border-bottom: 3px solid #042658;
                 h4 {
                     text-align: center;
@@ -123,7 +123,7 @@ $hub-header-color: #627edb;
 .slide-container {
     min-width: $page-width;
     width: 100%;
-    background-color: #273447d0;
+    background-color: rgba(39, 52, 71, 0.82);
 }
 
 .comment-background {
@@ -194,7 +194,7 @@ $hub-header-color: #627edb;
 }
 
 .board-light-puple {
-    background-color: #f5f6faa6;
+    background-color: rgba(245, 246, 250, 0.65);
     border-top-width: 1px;
     border-bottom-width: 1px;
     border-top-style: solid;
