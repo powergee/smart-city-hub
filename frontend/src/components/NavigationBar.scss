@@ -8,7 +8,7 @@ $header-button-text-hover: #ffffff;
 $header-button-hover: #463fca;
 $header-button-padding: 4px 16px;
 
-$menu-logo-maxheight: 60px;
+$menu-logo-maxheight: 80px;
 $menu-primary-padding: 10px;
 $menu-primary-color: black;
 $menu-primary-hover: #1d4d8b;
@@ -26,7 +26,7 @@ a:hover:not(.active) {
 .navbar-root {
   min-width: $page-width;
   width: 100%;
-  height: $header-height;
+  height: max-content;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -98,7 +98,7 @@ a:hover:not(.active) {
 
 .menu-background {
   border-bottom: 1px solid #d1d1d1;
-  height: 100%;
+  height: max-content;
 }
 
 .menu {
@@ -108,7 +108,7 @@ a:hover:not(.active) {
   align-items: center;
 
   & > a {
-    margin: 10px auto 10px 10px;
+    margin: 10px auto 10px 120px;
     img {
       max-height: $menu-logo-maxheight;
     }
