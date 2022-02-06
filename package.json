@@ -1,0 +1,5 @@
+{
+    "name": "smart-city-hub",
+    "scripts": {"start": "concurrently \"npm run start --prefix backend\" \"npm run start --prefix frontend\""}
+    
+}

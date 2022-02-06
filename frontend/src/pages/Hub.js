@@ -6,6 +6,7 @@ import HubJson from "../hub-data/generated/domestic-parsed.json"
 import CateToEng from "../hub-data/cateToEng.json"
 import CategoryImage from '../shared/CategoryImage';
 import getDescriptions from "../shared/CategoryDescription.js";
+import Coord from "../shared/SecondCategoryCoord";
 import "./Hub.scss"
 
 function FirstCategoryViewer(props) {
@@ -108,27 +109,54 @@ function SecondCategoryViewer(props) {
 
                 <h3 className="hub-control-notice">{`아래 소분류를 선택해서 ${firstStr} 분야의 국내 기업들을 확인해보세요.`}</h3>
                 <Divider className="hub-divider"></Divider>
-                <div className="hub-control-contents">
-                    <div className="hub-header">
-                        <div className="hub-subtitle hub-first">
-                            <Typography variant="h6" align="center">중분류</Typography>
-                        </div>
-                        
-                        <div className="hub-subtitle hub-second">
-                            <Typography variant="h6" align="center">소분류</Typography>
-                        </div>
+
+                {firstStr in Coord ? 
+                    /* NEW: 이미지로 중분류를 선택하는 방식 */
+                    <div className="hub-control-contents-v2">
+                        <img src={Coord[firstStr].image} alt="selection-image"></img>
+                        {Coord[firstStr].secondCategory.map(cate => 
+                            <div className="hub-second" style={{top: `${cate.y}%`, left: `${cate.x}%`}}>
+                                <div className="hub-second-title">
+                                    <strong className="noselect">{cate.title}</strong>
+                                </div>
+                                <div className="hub-second-dropdown">
+                                    <li>
+                                        {Object.entries(HubJson.tree.next[firstStr].next[cate.title].next).map(([thirdStr,]) => (
+                                            <a className="noselect" onClick={() => showList(cate.title, thirdStr)}>{thirdStr}</a>
+                                        ))}
+                                    </li>
+                                </div>
+                            </div>
+                        )}
                     </div>
 
-                    {Object.entries(HubJson.tree.next[firstStr].next).map(([category, node]) => (
-                        <div className="hub-row">
-                            <Paper className="hub-first hub-first-paper" variant="outlined">
-                                <strong>{category}</strong>
-                            </Paper>
+                    :
 
-                            <div className="hub-second">{getThirdButtons(category, node)}</div>
+                    /* LAGACY: 중분류를 이미지에서 선택하는 방식으로 모두 업데이트 완료하면
+                               아래 컴포넌트와 getThirdButtons 함수를 삭제해야 함. */
+                    <div className="hub-control-contents">
+                        <div className="hub-header">
+                            <div className="hub-subtitle hub-first">
+                                <Typography variant="h6" align="center">중분류</Typography>
+                            </div>
+                            
+                            <div className="hub-subtitle hub-second">
+                                <Typography variant="h6" align="center">소분류</Typography>
+                            </div>
                         </div>
-                    ))}
-                </div>
+
+                        {Object.entries(HubJson.tree.next[firstStr].next).map(([category, node]) => (
+                            <div className="hub-row">
+                                <Paper className="hub-first hub-first-paper" variant="outlined">
+                                    <strong>{category}</strong>
+                                </Paper>
+
+                                <div className="hub-second">{getThirdButtons(category, node)}</div>
+                            </div>
+                        ))}
+                    </div>
+                }
+                
             </Paper>
 
             <Divider className="hub-divider"></Divider>
