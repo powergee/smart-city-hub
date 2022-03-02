@@ -1,5 +1,5 @@
 import construction from "../images/second-categories/construction.png";
-
+import employment from "../images/second-categories/laberemployment.png";
 export default {
   건설: {
     image: construction,
@@ -26,6 +26,23 @@ export default {
         x: 54.8,
         y: 69,
         title: "스마트 홈",
+        defaultOpen: "False",
+      },
+    ],
+  },
+  고용노동: {
+    image: employment,
+    secondCategory: [
+      {
+        x: 21.8,
+        y: 25.6,
+        title: "근무환경 관리",
+        defaultOpen: "True",
+      },
+      {
+        x: 61.4,
+        y: 11.3,
+        title: "스마트 인재관리",
         defaultOpen: "False",
       },
     ],
