@@ -119,7 +119,11 @@ function SecondCategoryViewer(props) {
             <img src={Coord[firstStr].image} alt="selection-image"></img>
             {Coord[firstStr].secondCategory.map((cate) => (
               <div
-                className="hub-second"
+                className={
+                  cate.defaultOpen == "True"
+                    ? "hub-second  hub-second-open"
+                    : "hub-second"
+                }
                 style={{ top: `${cate.y}%`, left: `${cate.x}%` }}
               >
                 <div className="hub-second-title">
