@@ -7,11 +7,7 @@ import CateToEng from "../hub-data/cateToEng.json";
 import CategoryImage from "../shared/CategoryImage";
 import getDescriptions from "../shared/CategoryDescription.js";
 import Coord from "../shared/SecondCategoryCoord";
-<<<<<<< HEAD
 import "./Hub.scss";
-=======
-import "./Hub.scss"
->>>>>>> f231f934e2470bd50c415a2b3a11a7ba39023eeb
 
 function FirstCategoryViewer(props) {
   const [categories, setCategories] = useState();
@@ -86,7 +82,6 @@ function SecondCategoryViewer(props) {
       );
     }
 
-<<<<<<< HEAD
     return <div className="hub-wrap-layout">{result}</div>;
   }
 
@@ -164,74 +159,6 @@ function SecondCategoryViewer(props) {
                 </Typography>
               </div>
             </div>
-=======
-                    {descriptions[firstStr].images.length > 0 && (<div className="hub-images">
-                        {descriptions[firstStr].images.map(img => (
-                            <div style={{backgroundImage: `url(${img})`}}></div>
-                        ))}
-                    </div>)}
-                </div>}
-
-                <h3 className="hub-control-notice">{`아래 소분류를 선택해서 ${firstStr} 분야의 국내 기업들을 확인해보세요.`}</h3>
-                <Divider className="hub-divider"></Divider>
-
-                {firstStr in Coord ? 
-                    /* NEW: 이미지로 중분류를 선택하는 방식 */
-                    <div className="hub-control-contents-v2">
-                        <img src={Coord[firstStr].image} alt="selection-image"></img>
-                        {Coord[firstStr].secondCategory.map(cate => 
-                            <div className="hub-second" style={{top: `${cate.y}%`, left: `${cate.x}%`}}>
-                                <div className="hub-second-title">
-                                    <strong className="noselect">{cate.title}</strong>
-                                </div>
-                                <div className="hub-second-dropdown">
-                                    <li>
-                                        {Object.entries(HubJson.tree.next[firstStr].next[cate.title].next).map(([thirdStr,]) => (
-                                            <a className="noselect" onClick={() => showList(cate.title, thirdStr)}>{thirdStr}</a>
-                                        ))}
-                                    </li>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-
-                    :
-
-                    /* LAGACY: 중분류를 이미지에서 선택하는 방식으로 모두 업데이트 완료하면
-                               아래 컴포넌트와 getThirdButtons 함수를 삭제해야 함. */
-                    <div className="hub-control-contents">
-                        <div className="hub-header">
-                            <div className="hub-subtitle hub-first">
-                                <Typography variant="h6" align="center">중분류</Typography>
-                            </div>
-                            
-                            <div className="hub-subtitle hub-second">
-                                <Typography variant="h6" align="center">소분류</Typography>
-                            </div>
-                        </div>
-
-                        {Object.entries(HubJson.tree.next[firstStr].next).map(([category, node]) => (
-                            <div className="hub-row">
-                                <Paper className="hub-first hub-first-paper" variant="outlined">
-                                    <strong>{category}</strong>
-                                </Paper>
-
-                                <div className="hub-second">{getThirdButtons(category, node)}</div>
-                            </div>
-                        ))}
-                    </div>
-                }
-                
-            </Paper>
-
-            <Divider className="hub-divider"></Divider>
-
-            <ul ref={listRef}>
-                <li>{firstStr} 분류에 대한 검색 결과입니다.</li>
-                <li>각 행의 좌측에 화살표를 클릭하시면 추가 정보를 보실 수 있습니다.</li>
-                <li>각 행의 기업명을 클릭하시면 그 기업의 홈페이지로 이동하실 수 있습니다.</li>
-            </ul>
->>>>>>> f231f934e2470bd50c415a2b3a11a7ba39023eeb
 
             {Object.entries(HubJson.tree.next[firstStr].next).map(
               ([category, node]) => (

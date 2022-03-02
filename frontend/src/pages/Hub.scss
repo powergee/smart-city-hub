@@ -43,12 +43,7 @@ $caption-color: rgba(0, 0, 0, 0.575);
 
   .hub-control-contents-v2 {
     width: 100%;
-<<<<<<< HEAD
     position: relative;
-=======
-    margin-top: 10px;
-    padding-top: 10px;
->>>>>>> f231f934e2470bd50c415a2b3a11a7ba39023eeb
 
     img {
       width: 100%;
@@ -61,90 +56,8 @@ $caption-color: rgba(0, 0, 0, 0.575);
       height: 35px;
       border-radius: 1rem;
 
-<<<<<<< HEAD
       .hub-second-title {
         margin: 0;
-=======
-    .hub-control-contents-v2 {
-        width: 100%;
-        position: relative;
-        
-        img {
-            width: 100%;
-            height: auto;
-        }
-
-        .hub-second {
-            position: absolute;
-            background-color: rgba($color: #ffffff, $alpha: 0.7);
-            width: 160px;
-            height: 50px;
-            border-radius: 1rem;
-
-            .hub-second-title {
-                margin: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            &:hover {
-                background-color: rgba($color: #ffead8, $alpha: 0.75);
-                -webkit-transition: background-color 100ms linear;
-                -ms-transition: background-color 100ms linear;
-                transition: background-color 100ms linear;
-            }
-
-            .hub-second-dropdown {
-                display: none;
-                position: absolute;
-                background-color: white;
-                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-                border-radius: 0.5rem;
-                width: 160px;
-                z-index: 1;
-
-                li {
-                    width: 100%;
-                    list-style-type: none;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                    display: inline-block;
-                    font-size: 14px;
-
-                    a {
-                        display: block;
-                        text-align: center;
-                        text-decoration: none;
-                        padding: 10px 0 10px 0;
-                    }
-
-                    a:hover {
-                        background-color: rgba($color: #fff3e8, $alpha: 0.75);
-                        -webkit-transition: background-color 100ms linear;
-                        -ms-transition: background-color 100ms linear;
-                        transition: background-color 100ms linear;
-                    }
-
-                    a:active {
-                        background-color: rgba($color: #e7d8cb, $alpha: 0.75);
-                    }
-                }
-            }
-
-            &:hover > .hub-second-dropdown {
-                display: block;
-            }
-        }
-    }
-
-    .hub-control-contents {
-        margin-top: 40px;
-        padding-bottom: 30px;
->>>>>>> f231f934e2470bd50c415a2b3a11a7ba39023eeb
         width: 100%;
         height: 100%;
         display: flex;
@@ -278,7 +191,6 @@ $caption-color: rgba(0, 0, 0, 0.575);
 }
 
 .hub-divider {
-<<<<<<< HEAD
   margin-top: 40px !important;
 }
 
@@ -291,17 +203,3 @@ $caption-color: rgba(0, 0, 0, 0.575);
   user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome and Opera */
 }
-=======
-    margin-top: 40px !important;
-}
-
-.noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome and Opera */
-}
->>>>>>> f231f934e2470bd50c415a2b3a11a7ba39023eeb
