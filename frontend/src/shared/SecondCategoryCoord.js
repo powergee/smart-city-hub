@@ -1,5 +1,7 @@
 import construction from "../images/second-categories/construction.png";
 import employment from "../images/second-categories/laberemployment.png";
+import factory from "../images/second-categories/factory.png";
+import tourism from "../images/second-categories/tourism.png";
 export default {
   건설: {
     image: construction,
@@ -45,6 +47,43 @@ export default {
         title: "스마트 인재관리",
         defaultOpen: "False",
       },
+    ],
+  },
+  공장: {
+    image: factory,
+    secondCategory: [
+      {
+        x: 43,
+        y: 7.1,
+        title: "생산 및 운영 관리시스템",
+        defaultOpen: "False",
+      },
+      {
+        x: 7.4,
+        y: 32.5,
+        title: "작업장 관리 시스템",
+        defaultOpen: "True",
+      },
+      {
+        x: 80.3,
+        y: 30.4,
+        title: "안전 사고 방지",
+        defaultOpen: "False",
+      },
+      {
+        x: 54.5,
+        y: 53.5,
+        title: "설비 관리시스템",
+        defaultOpen: "False",
+      },
+    ],
+  },
+  관광: {
+    image: tourism,
+    secondCategory: [
+      { x: 5.17, y: 14.1, title: "관광 정보", defaultOpen: "True" },
+      { x: 69.1, y: 26.3, title: "스마트 안내", defaultOpen: "False" },
+      { x: 34.7, y: 6.6, title: "스마트 관광 단지", defaultOpen: "False" },
     ],
   },
 };
