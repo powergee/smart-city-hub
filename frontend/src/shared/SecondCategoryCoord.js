@@ -2,6 +2,7 @@ import construction from "../images/second-categories/construction.png";
 import employment from "../images/second-categories/laberemployment.png";
 import factory from "../images/second-categories/factory.png";
 import tourism from "../images/second-categories/tourism.png";
+import education from "../images/second-categories/education.png";
 export default {
   건설: {
     image: construction,
@@ -84,6 +85,15 @@ export default {
       { x: 5.17, y: 14.1, title: "관광 정보", defaultOpen: "True" },
       { x: 69.1, y: 26.3, title: "스마트 안내", defaultOpen: "False" },
       { x: 34.7, y: 6.6, title: "스마트 관광 단지", defaultOpen: "False" },
+    ],
+  },
+  교육: {
+    image: education,
+    secondCategory: [
+      { x: 48.7, y: 25.8, title: "교육 콘텐츠", defaultOpen: "False" },
+      { x: 79.9, y: 12.9, title: "교내 시설 스마트화", defaultOpen: "False" },
+      { x: 32.1, y: 29.45, title: "어린이 교육", defaultOpen: "False" },
+      { x: 2.15, y: 16.93, title: "스마트 학습 보조", defaultOpen: "True" },
     ],
   },
 };
