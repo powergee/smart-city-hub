@@ -9,6 +9,12 @@ import finance from "../images/second-categories/finance.png";
 import agriculture from "../images/second-categories/agriculture.png";
 import cultureandart from "../images/second-categories/cultureandart.png";
 import watermanagement from "../images/second-categories/watermanagement.png";
+import logistic from "../images/second-categories/logistic.png";
+import disasterprevention from "../images/second-categories/disasterprevention.png";
+import welfare from "../images/second-categories/welfare.png";
+import refusedisposal from "../images/second-categories/refusedisposal.png";
+import medicalhealth from "../images/second-categories/medicalhealth.png";
+
 export default {
   건설: {
     image: construction,
@@ -268,6 +274,91 @@ export default {
         title: "지능형 정수장 관리시스템",
         defaultOpen: "False",
       },
+    ],
+  },
+  물류: {
+    image: logistic,
+    secondCategory: [
+      { x: 70.08, y: 12.41, title: "자동 물류 시스템", defaultOpen: "False" },
+      { x: 39.2, y: 12.61, title: "선박 운영 시스템", defaultOpen: "False" },
+      { x: 10.46, y: 30.53, title: "물류 관리시스템", defaultOpen: "True" },
+    ],
+  },
+  방재: {
+    image: disasterprevention,
+    secondCategory: [
+      {
+        x: 17.38,
+        y: 45.52,
+        title: "사고현장 실시간 대응서비스",
+        defaultOpen: "True",
+      },
+      {
+        x: 46.96,
+        y: 5.84,
+        title: "공공시설물 안전관리 서비스",
+        defaultOpen: "False",
+      },
+      {
+        x: 73.21,
+        y: 42.59,
+        title: "자연재해 및 재난관리시스템",
+        defaultOpen: "False",
+      },
+    ],
+  },
+  복지: {
+    image: welfare,
+    secondCategory: [
+      {
+        x: 42,
+        y: 8.36,
+        title: "실버 케어 서비스",
+        defaultOpen: "True",
+      },
+    ],
+  },
+  쓰레기처리: {
+    image: refusedisposal,
+    secondCategory: [
+      {
+        x: 21.15,
+        y: 47.16,
+        title: "쓰레기 수거 경로 최적화",
+        defaultOpen: "False",
+      },
+      { x: 8.3, y: 3.83, title: "스마트 쓰레기통", defaultOpen: "Ralse" },
+      { x: 50.85, y: 2.0, title: "재활용 보상 서비스", defaultOpen: "False" },
+      {
+        x: 78.83,
+        y: 51.93,
+        title: "대형 폐기물 처리 서비스",
+        defaultOpen: "False",
+      },
+      {
+        x: 80.85,
+        y: 3.27,
+        title: "쓰레기 요금 자동 정산 시스템",
+        defaultOpen: "True",
+      },
+    ],
+  },
+  의료·보건: {
+    image: medicalhealth,
+    secondCategory: [
+      { x: 11.33, y: 56.3, title: "검진 및 재활 기기", defaultOpen: "False" },
+      { x: 61.43, y: 57.94, title: "스마트 헬스케어", defaultOpen: "False" },
+      { x: 80.11, y: 11.51, title: "원격의료 시스템", defaultOpen: "False" },
+      { x: 0.533, y: 3.1, title: "디지털 의료정보 관리", defaultOpen: "False" },
+      {
+        x: 44.16,
+        y: 5.27,
+        title: "전염성 질병 감시 시스템",
+        defaultOpen: "True",
+      },
+      { x: 39.3, y: 29.6, title: "미래형 의료 산업", defaultOpen: "False" },
+      { x: 35.3, y: 66.18, title: "공공시설 보건 관리", defaultOpen: "False" },
+      { x: 21.05, y: 6.57, title: "병원 운영 시스템", defaultOpen: "False" },
     ],
   },
 };
