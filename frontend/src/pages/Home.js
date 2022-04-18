@@ -292,10 +292,10 @@ export default function Home() {
                 </div>
                 <div className="menu-card-video-bottom">
                   <strong>
-                    차세대 메타버스 플랫폼 제페토에 서울시립대학교 중앙도서관이
-                    문을 열었습니다.
+                    과야킬시 스마트시티 조성을 위한 한국 대표단의 세부실태조사
+                    방문 목적 설명회
                   </strong>
-                  <span>공지사항 · 2021-10-14</span>
+                  <span>공지사항 · 2022-04-15</span>
                 </div>
               </Paper>
             </a>
