@@ -92,45 +92,56 @@ export default function Home() {
         return false;
       }
     }
-
-    getArticles(1, 2, undefined, /<img.*>/.source, undefined, undefined).then(
-      (res) => {
-        const imCards = [];
-        res.forEach((element) => {
-          const src = extractSrc(element.contents);
-          imCards.push(
-            <Card className="menu-card-root" variant="outlined">
-              <CardActionArea onClick={getLinkHandler(element)}>
-                <CardMedia
-                  image={src}
-                  title={element.title}
-                  className="menu-card-media"
-                />
-                <CardContent>
-                  <Typography
-                    className="menu-card-title"
-                    gutterBottom
-                    variant="subtitle1"
-                  >
-                    {element.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {`${kindTable[element.kind].text} · ${dateToString(
-                      element.meta.createdAt
-                    )}`}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          );
-        });
-        setImageCards(imCards);
-      }
+    const noticesArticles = getArticles(
+      1,
+      1,
+      "notices",
+      /<img.*>/.source,
+      undefined,
+      undefined
     );
+    const newsArticles = getArticles(
+      1,
+      1,
+      "smart-news",
+      /<img.*>/.source,
+      undefined,
+      undefined
+    );
+
+    Promise.all([noticesArticles, newsArticles]).then((res) => {
+      const imgArticles = res[0].concat(res[1]);
+      const imCards = [];
+      imgArticles.forEach((element) => {
+        const src = extractSrc(element.contents);
+        imCards.push(
+          <Card className="menu-card-root" variant="outlined">
+            <CardActionArea onClick={getLinkHandler(element)}>
+              <CardMedia
+                image={src}
+                title={element.title}
+                className="menu-card-media"
+              />
+              <CardContent>
+                <Typography
+                  className="menu-card-title"
+                  gutterBottom
+                  variant="subtitle1"
+                >
+                  {element.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {`${kindTable[element.kind].text} · ${dateToString(
+                    element.meta.createdAt
+                  )}`}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        );
+      });
+      setImageCards(imCards);
+    });
 
     getArticles(1, 10, "issue-paper", undefined, undefined, undefined).then(
       async (res) => {
