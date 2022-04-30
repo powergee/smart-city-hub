@@ -14,6 +14,7 @@ import disasterprevention from "../images/second-categories/disasterprevention.p
 import welfare from "../images/second-categories/welfare.png";
 import refusedisposal from "../images/second-categories/refusedisposal.png";
 import medicalhealth from "../images/second-categories/medicalhealth.png";
+import business from "../images/second-categories/business.png";
 
 export default {
   건설: {
@@ -359,6 +360,23 @@ export default {
       { x: 39.3, y: 29.6, title: "미래형 의료 산업", defaultOpen: "False" },
       { x: 35.3, y: 66.18, title: "공공시설 보건 관리", defaultOpen: "False" },
       { x: 21.05, y: 6.57, title: "병원 운영 시스템", defaultOpen: "False" },
+    ],
+  },
+  비즈니스: {
+    image: business,
+    secondCategory: [
+      {
+        x: 14.8,
+        y: 32.9,
+        title: "기업 운영 및 정보 관리",
+        defaultOpen: "False",
+      },
+      { x: 25, y: 49.3, title: "스마트 마케팅 솔루션", defaultOpen: "False" },
+      { x: 47.7, y: 16.9, title: "비즈니스 협력 지원", defaultOpen: "True" },
+      { x: 77.6, y: 25.6, title: "고객센터 운영", defaultOpen: "False" },
+      { x: 66.3, y: 49.5, title: "기업용 ICT 서비스", defaultOpen: "False" },
+      { x: 76.0, y: 62.7, title: "점포 무인화", defaultOpen: "False" },
+      { x: 50.2, y: 80.8, title: "전자상거래", defaultOpen: "False" },
     ],
   },
 };
