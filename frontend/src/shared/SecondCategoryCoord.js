@@ -15,6 +15,7 @@ import welfare from "../images/second-categories/welfare.png";
 import refusedisposal from "../images/second-categories/refusedisposal.png";
 import medicalhealth from "../images/second-categories/medicalhealth.png";
 import business from "../images/second-categories/business.png";
+import crimeprevention from "../images/second-categories/crimeprevention.png";
 
 export default {
   건설: {
@@ -377,6 +378,27 @@ export default {
       { x: 66.3, y: 49.5, title: "기업용 ICT 서비스", defaultOpen: "False" },
       { x: 76.0, y: 62.7, title: "점포 무인화", defaultOpen: "False" },
       { x: 50.2, y: 80.8, title: "전자상거래", defaultOpen: "False" },
+    ],
+  },
+  방범: {
+    image: crimeprevention,
+    secondCategory: [
+      {
+        x: 4.3,
+        y: 5.8,
+        title: "실시간 위치 기반 서비스",
+        defaultOpen: "False",
+      },
+      { x: 4.3, y: 37.9, title: "국방 시스템", defaultOpen: "True" },
+      { x: 4.3, y: 66.6, title: "공공공간 안전관리", defaultOpen: "False" },
+      { x: 77.3, y: 5.8, title: "보안 시스템", defaultOpen: "False" },
+      {
+        x: 77.3,
+        y: 37.9,
+        title: "실시간 범죄 모니터링 시스템",
+        defaultOpen: "False",
+      },
+      { x: 77.3, y: 66.6, title: "지하공간 모니터링", defaultOpen: "False" },
     ],
   },
 };
