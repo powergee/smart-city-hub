@@ -16,6 +16,9 @@ import refusedisposal from "../images/second-categories/refusedisposal.png";
 import medicalhealth from "../images/second-categories/medicalhealth.png";
 import business from "../images/second-categories/business.png";
 import crimeprevention from "../images/second-categories/crimeprevention.png";
+import citizenparticipation from "../images/second-categories/citizenparticipation.png";
+import egoverment from "../images/second-categories/egoverment.png";
+import communicationtechnology from "../images/second-categories/communicationtechnology.png";
 
 export default {
   건설: {
@@ -399,6 +402,53 @@ export default {
         defaultOpen: "False",
       },
       { x: 77.3, y: 66.6, title: "지하공간 모니터링", defaultOpen: "False" },
+    ],
+  },
+  시민참여: {
+    image: citizenparticipation,
+    secondCategory: [
+      {
+        x: 12.36,
+        y: 16.11,
+        title: "지역주민 참여 애플리케이션",
+        defaultOpen: "False",
+      },
+      { x: 42.21, y: 61.64, title: "시민 참여 시스템", defaultOpen: "True" },
+    ],
+  },
+  전자정부: {
+    image: egoverment,
+    secondCategory: [
+      { x: 9.2, y: 37.79, title: "도시 관제 시스템", defaultOpen: "Fasle" },
+      {
+        x: 40.95,
+        y: 27.94,
+        title: "디지털 행정시스템 구축",
+        defaultOpen: "Fasle",
+      },
+      { x: 9.2, y: 6.97, title: "디지털 정보 보안", defaultOpen: "Fasle" },
+      {
+        x: 77.13,
+        y: 6.97,
+        title: "디지털 문서화 및 투표",
+        defaultOpen: "Fasle",
+      },
+      { x: 9.2, y: 68.21, title: "데이터 분석", defaultOpen: "Fasle" },
+      {
+        x: 77.13,
+        y: 68.21,
+        title: "국공유지 및 공간정보 관리시스템",
+        defaultOpen: "Fasle",
+      },
+      { x: 77.13, y: 37.79, title: "지적재 조사 서비스", defaultOpen: "Fasle" },
+    ],
+  },
+  통신기술: {
+    image: communicationtechnology,
+    secondCategory: [
+      { x: 70.05, y: 6.6, title: "스마트 통신 연결", defaultOpen: "Fasle" },
+      { x: 70.05, y: 35.47, title: "ICT 기술 및 모듈", defaultOpen: "Fasle" },
+      { x: 70.05, y: 64.35, title: "데이터 이미지화", defaultOpen: "Fasle" },
     ],
   },
 };
