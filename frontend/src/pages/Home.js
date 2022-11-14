@@ -255,9 +255,15 @@ export default function Home() {
                 </Paper>
 
                 <div className="hub-preview-table">
-                  {hubPreviewRows.map((row) => (
-                    <div className="hub-preview-row">{row}</div>
-                  ))}
+                  <div className="hub-preview-table-left">신남방</div>
+                  <div
+                    className="hub-preview-table-right"
+                    onClick={() => {
+                      history.push("/hub");
+                    }}
+                  >
+                    HUB
+                  </div>
                 </div>
               </div>
             </div>
