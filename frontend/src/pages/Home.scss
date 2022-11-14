@@ -71,14 +71,13 @@ $hub-header-color: #627edb;
         margin: 0 10px 0 10px;
         flex: 1;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-around;
-        text-align: center; 
 
-        .hub-preview-table-left .hub-preview-table-right {
+        .hub-preview-row {
           padding: 10px 0 0 0;
           display: flex;
-          flex-direction: coulmn;
+          flex-direction: row;
           justify-content: space-around;
           flex-grow: 1;
 

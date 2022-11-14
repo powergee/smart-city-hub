@@ -255,7 +255,10 @@ export default function Home() {
                 </Paper>
 
                 <div className="hub-preview-table">
-                  <div className="hub-preview-table-left">신남방</div>
+                  {hubPreviewRows.map((row) => (
+                    <div className="hub-preview-row">{row}</div>
+                  ))}
+                  {/* <div className="hub-preview-table-left">신남방</div>
                   <div
                     className="hub-preview-table-right"
                     onClick={() => {
@@ -263,7 +266,7 @@ export default function Home() {
                     }}
                   >
                     HUB
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
