@@ -1,5 +1,4 @@
 import resKDI from "../images/res-KDI.jpg";
-import resKDW from "../images/res-KDW.jpg";
 import resKJY from "../images/res-KJY.jpg";
 import resKJYong from "../images/res-KJYeong.jpg";
 import resPSC from "../images/res-PSC.jpg";
@@ -54,13 +53,13 @@ function getGlobalRes() {
       ],
     },
     {
-      name: "김동우",
-      image: resKDW,
+      name: "이예린",
+      image: undefined,
       details: [
-        "공학박사",
+        "지리학박사/박사후연구원",
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일:  dkim166@uos.ac.kr",
+        "이메일:  X",
       ],
     },
     {
