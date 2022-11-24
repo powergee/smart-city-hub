@@ -5,6 +5,7 @@ import resPSC from "../images/res-PSC.jpg";
 import resYCH from "../images/res-YCH.jpg";
 import resLGR from "../images/res-LGR.jpg";
 import resHMH from "../images/res-HMH.jpg";
+import resLYR from "../images/res-LYR.jpg";
 
 import resProjCYS from "../images/res-project-CYS.png";
 import resProjKKI from "../images/res-project-KKI.jpg";
@@ -54,7 +55,7 @@ function getGlobalRes() {
     },
     {
       name: "이예린",
-      image: undefined,
+      image: resLYR,
       details: [
         "지리학박사/박사후연구원",
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
@@ -283,7 +284,7 @@ function getProjectRes() {
     },
     {
       name: "이예린",
-      image: undefined,
+      image: resLYR,
       details: [
         "공동연구원 (전임연구인력)",
         "기타 연구",
