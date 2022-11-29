@@ -1,0 +1,86 @@
+[
+    {
+        "mainCategory": "건설",
+        "middleCategories": ["스마트 건설", "스마트 빌딩", "도시계획 컨설팅", "스마트 홈"]
+    },
+    {
+        "mainCategory": "고용노동",
+        "middleCategories": ["근무환경 관리", "스마트 인재관리"]
+    },
+    {
+        "mainCategory":"공장",
+        "middleCategories": ["작업장 관리 시스템", "생산 및 운영 관리시스템", "설비 관리시스템"]
+    },
+    {
+        "mainCategory":"관광",
+        "middleCategories": ["관광 정보"]
+    },
+    {
+        "mainCategory":"교육",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"교통",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"그린·에너지",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"금융",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"농업",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"문화예술",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"물관리",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"물류",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"방범",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"방재",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"복지",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"비지니스",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"시민참여",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"쓰레기처리",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"의료·보건",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"전자정부",
+        "middleCategories": [""]
+    },
+    {
+        "mainCategory":"통신기술",
+        "middleCategories": [""]
+    }
+]

@@ -1,0 +1,12 @@
+.solution-cardboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.solution-card {
+    box-sizing: border-box;
+    width: 33%;
+    padding: 15px;
+}
