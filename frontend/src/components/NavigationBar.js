@@ -187,14 +187,14 @@ function NavigationBar(props) {
                   </li>
                   <li className="menu-large">
                     <a class="font-small" href onClick={getLinkHandler("/hub")}>
-                      거점HUB로 이동하기
+                      거점HUB
                     </a>
                     <a
                       class="font-small"
                       href
                       onClick={getLinkHandler("/solution")}
                     >
-                      솔루션목록으로 이동하기
+                      솔루션목록
                     </a>
                   </li>
                 </ul>
