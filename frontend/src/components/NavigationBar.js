@@ -194,7 +194,7 @@ function NavigationBar(props) {
                       href
                       onClick={getLinkHandler("/solution")}
                     >
-                      솔루션목록
+                      스마트도시 솔루션
                     </a>
                   </li>
                 </ul>
