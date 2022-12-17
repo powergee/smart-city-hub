@@ -84,16 +84,6 @@ function getGlobalRes() {
       ],
     },
     {
-      name: "Ehab 이합",
-      image: undefined,
-      details: [
-        "연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: ehab.shahat@gmail.com",
-      ],
-    },
-    {
       name: "김정현",
       image: undefined,
       details: [
