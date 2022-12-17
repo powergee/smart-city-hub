@@ -3,7 +3,7 @@ import resKJY from "../images/res-KJY.jpg";
 import resKJYong from "../images/res-KJYeong.jpg";
 import resPSC from "../images/res-PSC.jpg";
 import resYCH from "../images/res-YCH.jpg";
-import resLGR from "../images/res-LGR.jpg";
+import resJHH from "../images/res-JHH.jpg";
 import resHMH from "../images/res-HMH.jpg";
 import resLYR from "../images/res-LYR.jpg";
 
@@ -94,26 +94,6 @@ function getGlobalRes() {
       ],
     },
     {
-      name: "권준호",
-      image: undefined,
-      details: [
-        "연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: unknownpgr@gmail.com",
-      ],
-    },
-    {
-      name: "이준영",
-      image: undefined,
-      details: [
-        "연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: leegwae@gmail.com",
-      ],
-    },
-    {
       name: "김정현",
       image: undefined,
       details: [
@@ -125,7 +105,7 @@ function getGlobalRes() {
     },
     {
       name: "이가람",
-      image: resLGR,
+      image: undefined,
       details: [
         "연구원",
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
@@ -141,6 +121,16 @@ function getGlobalRes() {
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
         "이메일: darkblue31415@gmail.com",
+      ],
+    },
+    {
+      name: "정현호",
+      image: resJHH,
+      details: [
+        "연구원",
+        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
+        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
+        "이메일: jhh001202@gmail.com",
       ],
     },
   ];
