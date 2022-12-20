@@ -53,6 +53,12 @@ export default function Home() {
       return tempElement.querySelector("img").getAttribute("src");
     }
 
+    function extractVedioUrl(html) {
+      const tempElement = document.createElement("div");
+      tempElement.innerHTML = html;
+      return tempElement.querySelector("iframe").getAttribute("src");
+    }
+
     function getArticlePath(articleId, kind) {
       return `${kindTable[kind].path}/${articleId}`;
     }
@@ -92,13 +98,66 @@ export default function Home() {
         return false;
       }
     }
+    const noticesArticles = getArticles(
+      1,
+      1,
+      "notices",
+      /<img.*>/.source,
+      undefined,
+      undefined
+    );
+    const newsArticles = getArticles(
+      1,
+      1,
+      "smart-news",
+      /<img.*>/.source,
+      undefined,
+      undefined
+    );
 
-    getArticles(1, 2, undefined, /<img.*>/.source, undefined, undefined).then(
-      (res) => {
-        const imCards = [];
-        res.forEach((element) => {
+    const videoArticles = getArticles(
+      1,
+      1,
+      undefined,
+      /(https?\:\/\/)?(www\.youtube\.com|youtu\.be)\/.+/.source,
+      undefined,
+      undefined
+    );
+
+    videoArticles.then((element) => {
+      const vedeoUrl = extractVedioUrl(element[0].contents);
+      const imCard = [];
+      imCard.push(
+        <a
+          onClick={() => {
+            history.push("/news/notices/" + element[0].articleId);
+          }}
+        >
+          <Paper className="menu-card-video">
+            <div
+              className="menu-card-video-thumb"
+              style={{
+                backgroundImage: `url(http://img.youtube.com/vi/${vedeoUrl.slice(
+                  30
+                )}/0.jpg)`,
+              }}
+            ></div>
+            <div className="menu-card-video-overlay">
+              <PlayCircleOutlineIcon color="action"></PlayCircleOutlineIcon>
+            </div>
+            <div className="menu-card-video-bottom">
+              <strong>{element[0].title}</strong>
+              <span>공지사항 · {element[0].meta.createdAt.slice(0, 10)}</span>
+            </div>
+          </Paper>
+        </a>
+      );
+
+      Promise.all([noticesArticles, newsArticles, imageCards]).then((res) => {
+        const imgArticles = res[0].concat(res[1]);
+        imgArticles.forEach((element) => {
           const src = extractSrc(element.contents);
-          imCards.push(
+          imCard.push(
             <Card className="menu-card-root" variant="outlined">
               <CardActionArea onClick={getLinkHandler(element)}>
                 <CardMedia
@@ -128,9 +187,9 @@ export default function Home() {
             </Card>
           );
         });
-        setImageCards(imCards);
-      }
-    );
+        setImageCards(imCard);
+      });
+    });
 
     getArticles(1, 10, "issue-paper", undefined, undefined, undefined).then(
       async (res) => {
@@ -281,35 +340,7 @@ export default function Home() {
       <div className="board-background board-puple">
         <div className="board-column-container">
           <h3 className="board-title">미디어로 보는 최근 소식</h3>
-          <div className="menu-card-layout">
-            {/* 
-                            대표 영상 이미지는 아래와 같이 하드코딩하였음.
-                            바람직한 구현은 아니므로, 추후 개선이 필요.
-                         */}
-            <a
-              onClick={() => {
-                history.push("/news/notices/220");
-              }}
-            >
-              <Paper className="menu-card-video">
-                <div
-                  className="menu-card-video-thumb"
-                  style={{ backgroundImage: `url(${videoImage})` }}
-                ></div>
-                <div className="menu-card-video-overlay">
-                  <PlayCircleOutlineIcon color="action"></PlayCircleOutlineIcon>
-                </div>
-                <div className="menu-card-video-bottom">
-                  <strong>
-                    과야킬시 스마트시티 조성을 위한 한국 대표단의 세부실태조사
-                    방문 목적 설명회
-                  </strong>
-                  <span>공지사항 · 2022-04-15</span>
-                </div>
-              </Paper>
-            </a>
-            {imageCards}
-          </div>
+          <div className="menu-card-layout">{imageCards}</div>
         </div>
       </div>
 

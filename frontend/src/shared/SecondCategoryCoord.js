@@ -14,6 +14,11 @@ import disasterprevention from "../images/second-categories/disasterprevention.p
 import welfare from "../images/second-categories/welfare.png";
 import refusedisposal from "../images/second-categories/refusedisposal.png";
 import medicalhealth from "../images/second-categories/medicalhealth.png";
+import business from "../images/second-categories/business.png";
+import crimeprevention from "../images/second-categories/crimeprevention.png";
+import citizenparticipation from "../images/second-categories/citizenparticipation.png";
+import egoverment from "../images/second-categories/egoverment.png";
+import communicationtechnology from "../images/second-categories/communicationtechnology.png";
 
 export default {
   건설: {
@@ -359,6 +364,91 @@ export default {
       { x: 39.3, y: 29.6, title: "미래형 의료 산업", defaultOpen: "False" },
       { x: 35.3, y: 66.18, title: "공공시설 보건 관리", defaultOpen: "False" },
       { x: 21.05, y: 6.57, title: "병원 운영 시스템", defaultOpen: "False" },
+    ],
+  },
+  비즈니스: {
+    image: business,
+    secondCategory: [
+      {
+        x: 14.8,
+        y: 32.9,
+        title: "기업 운영 및 정보 관리",
+        defaultOpen: "False",
+      },
+      { x: 25, y: 49.3, title: "스마트 마케팅 솔루션", defaultOpen: "False" },
+      { x: 47.7, y: 16.9, title: "비즈니스 협력 지원", defaultOpen: "True" },
+      { x: 77.6, y: 25.6, title: "고객센터 운영", defaultOpen: "False" },
+      { x: 66.3, y: 49.5, title: "기업용 ICT 서비스", defaultOpen: "False" },
+      { x: 76.0, y: 62.7, title: "점포 무인화", defaultOpen: "False" },
+      { x: 50.2, y: 80.8, title: "전자상거래", defaultOpen: "False" },
+    ],
+  },
+  방범: {
+    image: crimeprevention,
+    secondCategory: [
+      {
+        x: 4.3,
+        y: 5.8,
+        title: "실시간 위치 기반 서비스",
+        defaultOpen: "False",
+      },
+      { x: 4.3, y: 37.9, title: "국방 시스템", defaultOpen: "True" },
+      { x: 4.3, y: 66.6, title: "공공공간 안전관리", defaultOpen: "False" },
+      { x: 77.3, y: 5.8, title: "보안 시스템", defaultOpen: "False" },
+      {
+        x: 77.3,
+        y: 37.9,
+        title: "실시간 범죄 모니터링 시스템",
+        defaultOpen: "False",
+      },
+      { x: 77.3, y: 66.6, title: "지하공간 모니터링", defaultOpen: "False" },
+    ],
+  },
+  시민참여: {
+    image: citizenparticipation,
+    secondCategory: [
+      {
+        x: 12.36,
+        y: 16.11,
+        title: "지역주민 참여 애플리케이션",
+        defaultOpen: "False",
+      },
+      { x: 42.21, y: 61.64, title: "시민 참여 시스템", defaultOpen: "True" },
+    ],
+  },
+  전자정부: {
+    image: egoverment,
+    secondCategory: [
+      { x: 9.2, y: 37.79, title: "도시 관제 시스템", defaultOpen: "Fasle" },
+      {
+        x: 40.95,
+        y: 27.94,
+        title: "디지털 행정시스템 구축",
+        defaultOpen: "Fasle",
+      },
+      { x: 9.2, y: 6.97, title: "디지털 정보 보안", defaultOpen: "Fasle" },
+      {
+        x: 77.13,
+        y: 6.97,
+        title: "디지털 문서화 및 투표",
+        defaultOpen: "Fasle",
+      },
+      { x: 9.2, y: 68.21, title: "데이터 분석", defaultOpen: "Fasle" },
+      {
+        x: 77.13,
+        y: 68.21,
+        title: "국공유지 및 공간정보 관리시스템",
+        defaultOpen: "Fasle",
+      },
+      { x: 77.13, y: 37.79, title: "지적재 조사 서비스", defaultOpen: "Fasle" },
+    ],
+  },
+  통신기술: {
+    image: communicationtechnology,
+    secondCategory: [
+      { x: 70.05, y: 6.6, title: "스마트 통신 연결", defaultOpen: "Fasle" },
+      { x: 70.05, y: 35.47, title: "ICT 기술 및 모듈", defaultOpen: "Fasle" },
+      { x: 70.05, y: 64.35, title: "데이터 이미지화", defaultOpen: "Fasle" },
     ],
   },
 };
