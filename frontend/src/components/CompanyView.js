@@ -58,6 +58,9 @@ export default function CompanyView(props) {
         <Grid item xs={8}>
           <List>
             <ListItem>
+              <CustomListItemText primary="대표자" secondary={data.owner} />
+            </ListItem>
+            <ListItem>
               <CustomListItemText primary="주소" secondary={data.address} />
             </ListItem>
             <ListItem>
@@ -69,9 +72,11 @@ export default function CompanyView(props) {
           </List>
         </Grid>
         <Grid item xs={4}>
-          <div className="solutions-count">
-            <div>솔루션 개수</div>
-            <div>{data.solutions.length}</div>
+          <div className="solutions-count-wrap">
+            <div className="solutions-count">
+              <div style={{ fontSize: "2rem" }}>솔루션 개수</div>
+              <div style={{ fontSize: "4rem" }}>{data.solutions.length}</div>
+            </div>
           </div>
         </Grid>
       </Grid>

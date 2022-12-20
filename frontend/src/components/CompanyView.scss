@@ -10,3 +10,18 @@
     width: 33%;
     padding: 15px;
 }
+
+.solutions-count-wrap {
+    height: 80%;
+    margin: 10% 2rem 10% 2rem;
+}
+
+.solutions-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid gray;
+    border-radius: 2rem;
+    height:100%;
+}
