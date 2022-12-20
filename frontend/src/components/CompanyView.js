@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -38,9 +39,41 @@ function CustomListItemText(props) {
   );
 }
 
+function SolutionContent(props) {
+  const { solutions } = props;
+  const { solutionIdx } = useParams();
+  const solution = solutions[solutionIdx];
+  return (
+    <div>
+      <h1 style={{ textAlign: "center" }}>{solution.name}</h1>
+      <List>
+        <ListItem>
+          <CustomListItemText
+            primary="솔루션 개요"
+            secondary={solution.introduction}
+          />
+        </ListItem>
+        <ListItem>
+          <CustomListItemText
+            primary="솔루션 특징"
+            secondary={solution.features}
+          />
+        </ListItem>
+        <ListItem>
+          <CustomListItemText
+            primary="솔루션 구성"
+            secondary={solution.structure}
+          />
+        </ListItem>
+      </List>
+    </div>
+  );
+}
+
 export default function CompanyView(props) {
   const { data, logo } = props;
   const classes = useStyles();
+  const { path } = useRouteMatch();
 
   return (
     <div>
@@ -81,23 +114,36 @@ export default function CompanyView(props) {
         </Grid>
       </Grid>
       <div className="company-comment">{data.comment}</div>
-      <h1 style={{ textAlign: "center" }}>스마트도시 솔루션</h1>
-      <div className="solution-cardboard">
-        {data.solutions.map((solution) => (
-          <div className="solution-card">
-            <Card>
-              <CardActionArea className={classes.root}>
-                <CardContent>
-                  <Typography variant="h5">{solution.name}</Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {solution.introduction}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </div>
-        ))}
-      </div>
+      <Switch>
+        <Route
+          path={`${path}/:solutionIdx`}
+          render={() => <SolutionContent solutions={data.solutions} />}
+        />
+        <Route
+          path={`${path}`}
+          render={() => (
+            <div>
+              <h1 style={{ textAlign: "center" }}>솔루션 목록</h1>
+              <div className="solution-cardboard">
+                {data.solutions.map((solution) => (
+                  <div className="solution-card">
+                    <Card>
+                      <CardActionArea className={classes.root}>
+                        <CardContent>
+                          <Typography variant="h5">{solution.name}</Typography>
+                          <Typography variant="body2" color="textSecondary">
+                            {solution.introduction}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        />
+      </Switch>
     </div>
   );
 }

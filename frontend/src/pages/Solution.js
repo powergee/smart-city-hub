@@ -76,13 +76,8 @@ export default function Solution() {
               component={SolutionTableSection}
             />
             <Route
-              exact
               path={`${path}/:companyIdx`}
               component={CompanyViewSection}
-            />
-            <Route
-              path={`${path}/:companyIdx/:solutionIdx`}
-              render={() => <div>솔루션 표시하기</div>}
             />
           </Switch>
         </div>
