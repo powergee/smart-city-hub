@@ -3,13 +3,17 @@ import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import "./CompanyView.scss";
+import { useHistory } from "react-router-dom";
+
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
 
 const makeListItemStyles = (styles) => {
   return makeStyles((theme) => ({
@@ -74,6 +78,16 @@ export default function CompanyView(props) {
   const { data, logo } = props;
   const classes = useStyles();
   const { path } = useRouteMatch();
+  const { companyIdx } = useParams();
+
+  const history = useHistory();
+
+  function getLinkHandler(url) {
+    return () => {
+      if (url[0] === "/") history.push(url);
+      else window.open(url);
+    };
+  }
 
   return (
     <div>
@@ -125,9 +139,11 @@ export default function CompanyView(props) {
             <div>
               <h1 style={{ textAlign: "center" }}>솔루션 목록</h1>
               <div className="solution-cardboard">
-                {data.solutions.map((solution) => (
+                {data.solutions.map((solution, idx) => (
                   <div className="solution-card">
-                    <Card>
+                    <Card
+                      onClick={getLinkHandler(`/solution/${companyIdx}/${idx}`)}
+                    >
                       <CardActionArea className={classes.root}>
                         <CardContent>
                           <Typography variant="h5">{solution.name}</Typography>
