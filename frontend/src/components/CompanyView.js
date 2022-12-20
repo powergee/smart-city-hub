@@ -44,13 +44,17 @@ export default function CompanyView(props) {
 
   return (
     <div>
-      <h1 className="companyName" style={{ textAlign: "center" }}>
-        {data.name}
-      </h1>
       <Grid container>
-        <Grid item xs={4}>
+        <Grid item xs={9}>
+          <h1 className="companyName" style={{ textAlign: "center" }}>
+            {data.name}
+          </h1>
+        </Grid>
+        <Grid item xs={3}>
           <img src={logo} alt="회사로고" style={{ width: "100%" }} />
         </Grid>
+      </Grid>
+      <Grid container>
         <Grid item xs={8}>
           <List>
             <ListItem>
@@ -63,6 +67,12 @@ export default function CompanyView(props) {
               <CustomListItemText primary="TEL/FAX" secondary={data.contact} />
             </ListItem>
           </List>
+        </Grid>
+        <Grid item xs={4}>
+          <div className="solutions-count">
+            <div>솔루션 개수</div>
+            <div>{data.solutions.length}</div>
+          </div>
         </Grid>
       </Grid>
       <div className="company-comment">{data.comment}</div>

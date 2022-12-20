@@ -1,6 +1,7 @@
 [
     {
         "name": "한화테크윈(주)",
+        "owner": "안순홍",
         "address": "경기도 성남시 분당구 판교로319번길 6(삼평동)",
         "contact": "TEL: 1588-5772, FAX: 031-8018-3703",
         "homepage": "https://www.hanwha-security.com/ko/",
@@ -11,6 +12,14 @@
                 "introduction": "한화테크윈 CCTV 시스템의 통합 관제를 위한 VMS 솔루션",
                 "features": "라이브 모니터링, 검색 및 재생, 이벤트 모니터링",
                 "structure": "다중 서버 클러스터링 지원 (최대 8개)",
+                "mainCategory": 0,
+                "middleCategories": 0
+            },
+            {
+                "name": "스마트시티 리테일 솔루션",
+                "introduction": "스마트 시티의 효율적인 매장관리용 솔루션",
+                "features": "매장 방문 고객 정보 시각화 솔루션, 여러 매장의 정보를 한번에 효과적으로 분석",
+                "structure": "초소형 컴팩트 사이즈 (99mm)",
                 "mainCategory": 0,
                 "middleCategories": 0
             }
