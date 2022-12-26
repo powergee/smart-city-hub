@@ -154,6 +154,10 @@ export default function ContentContainer(props) {
             title: "솔루션",
             link: "/solution",
           },
+          {
+            title: "아세안",
+            link: "/asean",
+          },
         ],
       },
     ];

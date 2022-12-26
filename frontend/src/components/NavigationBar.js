@@ -186,7 +186,7 @@ function NavigationBar(props) {
                     </a>
                   </li>
                   <li className="menu-large">
-                    <a class="font-small" href onClick={getLinkHandler("/hub")}>
+                    <a href onClick={getLinkHandler("/hub")}>
                       거점HUB
                     </a>
                     <a
@@ -195,6 +195,9 @@ function NavigationBar(props) {
                       onClick={getLinkHandler("/solution")}
                     >
                       스마트도시 솔루션
+                    </a>
+                    <a href onClick={getLinkHandler("/asean")}>
+                      아세안 국가 정보
                     </a>
                   </li>
                 </ul>

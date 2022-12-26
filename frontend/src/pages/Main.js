@@ -12,6 +12,7 @@ import {
   News,
   Community,
   Solution,
+  Asean,
 } from ".";
 import "./Main.scss";
 import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
@@ -37,6 +38,7 @@ export default function Main() {
           <Route path="/projects" component={Projects}></Route>
           <Route path="/hub" component={Hub}></Route>
           <Route path="/solution" component={Solution}></Route>
+          <Route path="/asean" component={Asean}></Route>
           <Route path="*" component={NotFound}></Route>
         </Switch>
       </div>

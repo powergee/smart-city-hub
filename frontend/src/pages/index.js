@@ -12,3 +12,4 @@ export { default as GeneralArticleList } from "./GeneralArticleList";
 export { default as GeneralArticleView } from "./GeneralArticleView";
 export { default as GeneralArticleWriter } from "./GeneralArticleWriter";
 export { default as Solution } from "./Solution";
+export { default as Asean } from "./Asean";
