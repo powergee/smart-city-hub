@@ -12,7 +12,7 @@ import resProjKKI from "../images/res-project-KKI.jpg";
 import resProjLS from "../images/res-project-LS.png";
 import resProjPH from "../images/res-project-PH.png";
 import resProjPHM from "../images/res-project-PHM.jpg";
-import resProjPJ from "../images/res-project-PJ.jpg";
+import resProjPJ from "../images/res-project-PJ.png";
 import resProjSSB from "../images/res-project-SSB.jpg";
 
 function getGlobalRes() {
