@@ -41,7 +41,6 @@ function AseanTableView() {
 function AseanTableSection() {
   const { countryIdx } = useParams();
   const countryData = CountryJson[countryIdx];
-  console.log(`countryData: ${countryData.name}`);
   return <AseanTable data={countryData} />;
 }
 
