@@ -12,6 +12,7 @@ import {
   Card,
   CardActionArea,
   CardContent,
+  CardMedia,
   Typography,
 } from "@material-ui/core";
 
@@ -75,7 +76,7 @@ function SolutionContent(props) {
 }
 
 export default function CompanyView(props) {
-  const { data, logo } = props;
+  const { data, logo, solImgs } = props;
   const classes = useStyles();
   const { path } = useRouteMatch();
   const { companyIdx } = useParams();
@@ -91,75 +92,96 @@ export default function CompanyView(props) {
 
   return (
     <div>
-      <Grid container>
-        <Grid item xs={9}>
-          <h1 className="companyName" style={{ textAlign: "center" }}>
-            {data.name}
-          </h1>
-        </Grid>
-        <Grid item xs={3}>
-          <img src={logo} alt="회사로고" style={{ width: "100%" }} />
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={8}>
-          <List>
-            <ListItem>
-              <CustomListItemText primary="대표자" secondary={data.owner} />
-            </ListItem>
-            <ListItem>
-              <CustomListItemText primary="주소" secondary={data.address} />
-            </ListItem>
-            <ListItem>
-              <CustomListItemText primary="사이트" secondary={data.homepage} />
-            </ListItem>
-            <ListItem>
-              <CustomListItemText primary="TEL/FAX" secondary={data.contact} />
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item xs={4}>
-          <div className="solutions-count-wrap">
-            <div className="solutions-count">
-              <div style={{ fontSize: "2rem" }}>솔루션 개수</div>
-              <div style={{ fontSize: "4rem" }}>{data.solutions.length}</div>
-            </div>
-          </div>
-        </Grid>
-      </Grid>
-      <div className="company-comment">{data.comment}</div>
-      <Switch>
-        <Route
-          path={`${path}/:solutionIdx`}
-          render={() => <SolutionContent solutions={data.solutions} />}
-        />
-        <Route
-          path={`${path}`}
-          render={() => (
-            <div>
-              <h1 style={{ textAlign: "center" }}>솔루션 목록</h1>
-              <div className="solution-cardboard">
-                {data.solutions.map((solution, idx) => (
-                  <div className="solution-card">
-                    <Card
-                      onClick={getLinkHandler(`/solution/${companyIdx}/${idx}`)}
-                    >
-                      <CardActionArea className={classes.root}>
-                        <CardContent>
-                          <Typography variant="h5">{solution.name}</Typography>
-                          <Typography variant="body2" color="textSecondary">
-                            {solution.introduction}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </div>
-                ))}
+      <div className="Comp-view-box">
+        <Grid container>
+          <Grid item xs={8}>
+            <h1 className="companyName" style={{ textAlign: "center" }}>
+              {data.name}
+            </h1>
+            <List>
+              <ListItem>
+                <CustomListItemText primary="대표자" secondary={data.owner} />
+              </ListItem>
+              <ListItem>
+                <CustomListItemText primary="주소" secondary={data.address} />
+              </ListItem>
+              <ListItem>
+                <CustomListItemText
+                  primary="사이트"
+                  secondary={data.homepage}
+                />
+              </ListItem>
+              <ListItem>
+                <CustomListItemText
+                  primary="TEL/FAX"
+                  secondary={data.contact}
+                />
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid item xs={4}>
+            <img
+              src={logo}
+              alt="회사로고"
+              style={{ width: "80%", margin: "2rem" }}
+            />
+            <div className="solutions-count-wrap">
+              <div className="solutions-count">
+                <div style={{ fontSize: "2rem" }}>솔루션 개수</div>
+                <div style={{ fontSize: "4rem" }}>{data.solutions.length}</div>
               </div>
             </div>
-          )}
-        />
-      </Switch>
+          </Grid>
+        </Grid>
+        <div className="company-comment" style={{ padding: "2rem" }}>
+          {data.comment}
+        </div>
+      </div>
+      <div className="Comp-view-box">
+        <Switch>
+          <Route
+            path={`${path}/:solutionIdx`}
+            render={() => <SolutionContent solutions={data.solutions} />}
+          />
+          <Route
+            path={`${path}`}
+            render={() => (
+              <div>
+                <h1 style={{ textAlign: "center", paddingTop: "1.5rem" }}>
+                  솔루션 목록
+                </h1>
+                <div className="solution-cardboard">
+                  {data.solutions.map((solution, idx) => (
+                    <div className="solution-card">
+                      <Card
+                        onClick={getLinkHandler(
+                          `/solution/${companyIdx}/${idx}`
+                        )}
+                      >
+                        <CardActionArea>
+                          <CardMedia
+                            component="img"
+                            src={solImgs[idx]}
+                            height="160px"
+                          />
+                          <CardContent>
+                            <Typography variant="h5">
+                              {solution.name}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary">
+                              {solution.introduction}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          />
+        </Switch>
+      </div>
     </div>
   );
 }

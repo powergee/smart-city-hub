@@ -7,6 +7,7 @@ import CompanyView from "../components/CompanyView";
 
 import CompaniesJson from "../solution-data/companies.json";
 import CompanyLogos from "../solution-data/CompanyLogos";
+import SolutionImages from "../solution-data/SolutionImages";
 
 function SolutionTableSection(props) {
   const { main, middle } = useParams();
@@ -51,9 +52,10 @@ function CompanyViewSection(props) {
   const { companyIdx } = useParams();
   const companyData = CompaniesJson[companyIdx];
   const companyLogo = CompanyLogos[companyIdx];
+  const SolImgs = SolutionImages[companyIdx];
 
   return companyData ? (
-    <CompanyView data={companyData} logo={companyLogo} />
+    <CompanyView data={companyData} logo={companyLogo} solImgs={SolImgs} />
   ) : (
     <div>회사 정보가 없습니다</div>
   );
