@@ -5,6 +5,10 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+import "./AseanTable.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +52,14 @@ export default function AseanTable(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{contents.overview}</Typography>
+          <Typography>
+            <ReactMarkdown
+              className="markdown-body"
+              remarkPlugins={[remarkGfm]}
+            >
+              {contents.overview}
+            </ReactMarkdown>
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -66,7 +77,14 @@ export default function AseanTable(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{contents.constTrends}</Typography>
+          <Typography>
+            <ReactMarkdown
+              className="markdown-body"
+              remarkPlugins={[remarkGfm]}
+            >
+              {contents.constTrends}
+            </ReactMarkdown>
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
