@@ -5,10 +5,10 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-
+import { Document, Page, pdfjs } from "react-pdf";
 import "./AseanTable.css";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,14 +26,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function AseanTable(props) {
-  const countryName = props.data.name;
-  const contents = props.data.contents;
+  const { data } = props;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  function RenderAseanPDF(props) {
+    const { path, pages } = props;
+
+    return (
+      <Document file={path}>
+        {pages.map(([page, pageHeight], index) => (
+          <div style={{ height: pageHeight || "unset", overflow: "hidden" }}>
+            <Page
+              key={index}
+              width={1000}
+              pageNumber={page}
+              renderMode="svg"
+              renderTextLayer={false}
+            />
+          </div>
+        ))}
+      </Document>
+    );
+  }
 
   return (
     <div className={classes.root}>
@@ -53,12 +72,7 @@ export default function AseanTable(props) {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <ReactMarkdown
-              className="markdown-body"
-              remarkPlugins={[remarkGfm]}
-            >
-              {contents.overview}
-            </ReactMarkdown>
+            <RenderAseanPDF path={data.pdf} pages={data.sections.overview} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -78,12 +92,7 @@ export default function AseanTable(props) {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <ReactMarkdown
-              className="markdown-body"
-              remarkPlugins={[remarkGfm]}
-            >
-              {contents.constTrends}
-            </ReactMarkdown>
+            <RenderAseanPDF path={data.pdf} pages={data.sections.constTrends} />
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -102,7 +111,9 @@ export default function AseanTable(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{contents.urbanTrends}</Typography>
+          <Typography>
+            <RenderAseanPDF path={data.pdf} pages={data.sections.urbanTrends} />
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -122,7 +133,12 @@ export default function AseanTable(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{contents.smartCityStatus}</Typography>
+          <Typography>
+            <RenderAseanPDF
+              path={data.pdf}
+              pages={data.sections.smartCityStatus}
+            />
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -142,7 +158,12 @@ export default function AseanTable(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{contents.adoptionDemand}</Typography>
+          <Typography>
+            <RenderAseanPDF
+              path={data.pdf}
+              pages={data.sections.adoptionDemand}
+            />
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -162,7 +183,9 @@ export default function AseanTable(props) {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{contents.example}</Typography>
+          <Typography>
+            <RenderAseanPDF path={data.pdf} pages={data.sections.example} />
+          </Typography>
         </AccordionDetails>
       </Accordion>
     </div>
