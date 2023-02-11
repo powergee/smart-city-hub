@@ -41,13 +41,7 @@ export default function AseanTable(props) {
       <Document file={path}>
         {pages.map(([page, pageHeight], index) => (
           <div style={{ height: pageHeight || "unset", overflow: "hidden" }}>
-            <Page
-              key={index}
-              width={1000}
-              pageNumber={page}
-              renderMode="svg"
-              renderTextLayer={false}
-            />
+            <Page key={index} width={1000} pageNumber={page} renderMode="svg" />
           </div>
         ))}
       </Document>
