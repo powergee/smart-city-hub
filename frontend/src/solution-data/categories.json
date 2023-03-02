@@ -13,74 +13,74 @@
     },
     {
         "mainCategory":"관광",
-        "middleCategories": ["관광 정보"]
+        "middleCategories": ["관광 정보","스마트 안내","스마트 관광 단지"]
     },
     {
         "mainCategory":"교육",
-        "middleCategories": [""]
+        "middleCategories": ["교육 콘텐츠","교내 시설 스마트화","어린이 교육","스마트 학습 보조"]
     },
     {
         "mainCategory":"교통",
-        "middleCategories": [""]
+        "middleCategories": ["무인 단속 플랫폼","스마트 파킹 서비스","스마트 횡단보도","도시 공유자동차 서비스","교통정보 제공 및 관리","운전 경고 알림 서비스","교통 안전 관리 시스템","자율주행 교통 시스템","도시 공유자전거 서비스","스마트 자동차 제어시스템","스마트 항공 시스템","스마트 대중교통 서비스","교통요금 전자결제 서비스","스마트 항로표지 서비스"]
     },
     {
         "mainCategory":"그린·에너지",
-        "middleCategories": [""]
+        "middleCategories": ["대기질 모니터링 서비스","에너지 절감 및 활용","신재생 에너지 생산 및 관리시설","도시·시설물·운영관리","전기요금 관리 서비스","전력 생산 및 공급","전력 판매 및 통신"]
     },
     {
         "mainCategory":"금융",
-        "middleCategories": [""]
+        "middleCategories": ["금융데이터 구축/서비스","전자결제시스템","금융SW/ IT 서비스","모바일 뱅킹"]
     },
     {
         "mainCategory":"농업",
-        "middleCategories": [""]
+        "middleCategories": ["농축산업 정보 제공 시스템","스마트 농장"]
     },
     {
         "mainCategory":"문화예술",
-        "middleCategories": [""]
+        "middleCategories": ["영상 전송 시스템","스마트 콘텐츠 서비스","인공지능 창작","게임","공연장 운영"]
     },
     {
         "mainCategory":"물관리",
-        "middleCategories": [""]
+        "middleCategories": ["스마트 워터 시티 사업","실시간 누수 관측 및 제어 시스템","물 여과 시스템","자가진단형 하수처리장 기술","스마트 미터링 서비스","지능형 정수장 관리시스템"]
     },
     {
         "mainCategory":"물류",
-        "middleCategories": [""]
+        "middleCategories": ["자동 물류 시스템","선박 운영 시스템","물류 관리시스템"]
     },
     {
         "mainCategory":"방범",
-        "middleCategories": [""]
+        "middleCategories": ["실시간 위치 기반 서비스","국방 시스템","공공공간 안전관리","보안 시스템","실시간 범죄 모니터링 시스템","지하공간 모니터링"]
     },
     {
         "mainCategory":"방재",
-        "middleCategories": [""]
+        "middleCategories": ["사고현장 실시간 대응서비스","공공시설물 안전관리 서비스","자연재해 및 재난관리시스템"]
     },
     {
         "mainCategory":"복지",
-        "middleCategories": [""]
+        "middleCategories": ["실버 케어 서비스"]
     },
     {
         "mainCategory":"비지니스",
-        "middleCategories": [""]
+        "middleCategories": ["기업 운영 및 정보 관리","스마트 마케팅 솔루션","비즈니스 협력 지원","고객센터 운영","기업용 ICT 서비스","점포 무인화","전자상거래"]
     },
     {
         "mainCategory":"시민참여",
-        "middleCategories": [""]
+        "middleCategories": ["지역주민 참여 애플리케이션","시민 참여 시스템"]
     },
     {
         "mainCategory":"쓰레기처리",
-        "middleCategories": [""]
+        "middleCategories": ["쓰레기 수거 경로 최적화","스마트 쓰레기통","재활용 보상 서비스","대형 폐기물 처리 서비스","쓰레기 요금 자동 정산 시스템"]
     },
     {
         "mainCategory":"의료·보건",
-        "middleCategories": [""]
+        "middleCategories": ["검진 및 재활 기기","스마트 헬스케어","원격의료 시스템","디지털 의료정보 관리","전염성 질병 감시 시스템","미래형 의료 산업","공공시설 보건 관리","병원 운영 시스템"]
     },
     {
         "mainCategory":"전자정부",
-        "middleCategories": [""]
+        "middleCategories": ["도시 관제 시스템","디지털 행정시스템 구축","디지털 정보 보안","디지털 문서화 및 투표","데이터 분석","국공유지 및 공간정보 관리시스템","지적재 조사 서비스"]
     },
     {
         "mainCategory":"통신기술",
-        "middleCategories": [""]
+        "middleCategories": ["스마트 통신 연결","ICT 기술 및 모듈","데이터 이미지화"]
     }
 ]
