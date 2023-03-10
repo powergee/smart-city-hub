@@ -1,7 +1,7 @@
 [
     {
-        "name": "한화테크윈(주)",
         "compN": "0",
+        "name": "한화테크윈(주)",
         "owner": "안순홍",
         "address": "경기도 성남시 분당구 판교로319번길 6(삼평동)",
         "contact": "TEL: 1588-5772, FAX: 031-8018-3703",
@@ -27,8 +27,8 @@
         ]
     },
     {
-        "name": "플럭시티(주)",
         "compN": "1",
+        "name": "플럭시티(주)",
         "owner": "윤재민",
         "address": "서울특별시 서초구 양재대로2길 18, 호반파크 2관 4층 테크랩 T01",
         "contact": "TEL: 02-332-9002, FAX: 02-332-9005",
@@ -46,8 +46,8 @@
         ]
     },
     {
-        "name": "네모(주)",
         "compN": "2",
+        "name": "네모(주)",
         "owner": "윤준열",
         "address": "경기도 용인시 기흥구 흥덕중앙로 120, 1404호",
         "contact": "TEL: 031-215-7065, FAX: 0507-0302-5481",
@@ -65,8 +65,8 @@
         ]
     },
     {
-        "name": "(주)KT",
         "compN": "3",
+        "name": "(주)KT",
         "owner": "이진우",
         "address": "경기도 성남시 분당구 불정로 90",
         "contact": "TEL: 010-6733-8265, FAX: _",
@@ -84,8 +84,8 @@
         ]
     },
     {
-        "name": "에스지에이강원(주)",
         "compN": "4",
+        "name": "에스지에이강원(주)",
         "owner": "김정호",
         "address": "강원도 춘천시 칠전동길 43-2, 1층",
         "contact": "TEL: 033-241-8200, FAX: 033-244-3401",
@@ -111,8 +111,8 @@
         ]
     },
     {
-        "name": "(주)아이노리랩",
         "compN": "5",
+        "name": "(주)아이노리랩",
         "owner": "황광만",
         "address": "서울특별시 서초구 방배로 205, 7층",
         "contact": "TEL:02-3475-2675, FAX: 02-3475-2666",
@@ -130,8 +130,8 @@
         ]
     },
     {
-        "name": "(주)제브라앤시퀀스",
         "compN": "6",
+        "name": "(주)제브라앤시퀀스",
         "owner": "오동근",
         "address": "인천연구수 송도과학로56, 송도테크노파크 BT센터 522호",
         "contact": "TEL: 1599-9801, FAX: 032-816-0827",
@@ -149,8 +149,8 @@
         ]
     },
     {
-        "name": "주식회사 가디언이엔지",
         "compN": "7",
+        "name": "주식회사 가디언이엔지",
         "owner": "윤병식",
         "address": "경기도 안양시 동안구 엘에스로91번길 16-39 603호",
         "contact": "TEL: 031-451-3310, FAX: 02-6280-2808",
@@ -168,8 +168,8 @@
         ]
     },
     {
-        "name": "주식회사 그린랩스",
         "compN": "8",
+        "name": "주식회사 그린랩스",
         "owner": "안동현, 최성우, 신상훈",
         "address": "서울특별시 송파구 정의로 8길 9, 3-6층",
         "contact": "TEL: 02-6956-4022, FAX: 02-6952-0457",
@@ -187,8 +187,8 @@
         ]
     },
     {
-        "name": "(주)제로웹",
         "compN": "9",
+        "name": "(주)제로웹",
         "owner": "이재현",
         "address": "부산광역시 해운대구 수영강변대로 140, 부산문화콘텐츠콤플렉스 8F",
         "contact": "TEL: 1544-6044, FAX: 051-746-6140",
@@ -206,8 +206,8 @@
         ]
     },
     {
-        "name": "대진기술정보(주)",
         "compN": "10",
+        "name": "대진기술정보(주)",
         "owner": "권재국",
         "address": "대구광역시 동구 국채보상로159길41",
         "contact": "TEL: 053-424, FAX: 053-424-9549",
@@ -225,8 +225,8 @@
         ]
     },
     {
-        "name": "CJ올리브네트웍스",
         "compN": "11",
+        "name": "CJ올리브네트웍스",
         "owner": "이경배",
         "address": "서울특별시 용산구 한강대로 366 트윈시티 10층",
         "contact": "TEL: _, FAX: _",
@@ -242,95 +242,4 @@
                 "middleCategories": 2
             }
         ]
-    },
-    {
-        "name": "",
-        "owner": "",
-        "address": "",
-        "contact": "TEL: , FAX: ",
-        "homepage": "",
-        "comment": "",
-        "solutions": [
-            {
-                "name": "",
-                "introduction": "",
-                "features": "",
-                "structure": "",
-                "mainCategory": 11,
-                "middleCategories": 0
-            }
-        ]
-    },
-    {
-        "name": "",
-        "owner": "",
-        "address": "",
-        "contact": "TEL: , FAX: ",
-        "homepage": "",
-        "comment": "",
-        "solutions": [
-            {
-                "name": "",
-                "introduction": "",
-                "features": "",
-                "structure": "",
-                "mainCategory": 12,
-                "middleCategories": 0
-            }
-        ]
-    },
-    {
-        "name": "",
-        "owner": "",
-        "address": "",
-        "contact": "TEL: , FAX: ",
-        "homepage": "",
-        "comment": "",
-        "solutions": [
-            {
-                "name": "",
-                "introduction": "",
-                "features": "",
-                "structure": "",
-                "mainCategory": 13,
-                "middleCategories": 0
-            }
-        ]
-    },
-    {
-        "name": "",
-        "owner": "",
-        "address": "",
-        "contact": "TEL: , FAX: ",
-        "homepage": "",
-        "comment": "",
-        "solutions": [
-            {
-                "name": "",
-                "introduction": "",
-                "features": "",
-                "structure": "",
-                "mainCategory": 14,
-                "middleCategories": 0
-            }
-        ]
-    },
-    {
-        "name": "",
-        "owner": "",
-        "address": "",
-        "contact": "TEL: , FAX: ",
-        "homepage": "",
-        "comment": "",
-        "solutions": [
-            {
-                "name": "",
-                "introduction": "",
-                "features": "",
-                "structure": "",
-                "mainCategory": 15,
-                "middleCategories": 0
-            }
-        ]
-    }
-]
+    }]
