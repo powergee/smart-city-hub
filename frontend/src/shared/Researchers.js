@@ -1,10 +1,9 @@
+import resASS from "../images/res-ASS.jpg";
 import resKDI from "../images/res-KDI.jpg";
 import resKJY from "../images/res-KJY.jpg";
-import resKJYong from "../images/res-KJYeong.jpg";
+import resKJYeong from "../images/res-KJYeong.jpg";
 import resPSC from "../images/res-PSC.jpg";
 import resYCH from "../images/res-YCH.jpg";
-import resLYR from "../images/res-LYR.jpg";
-import resASS from "../images/res-ASS.jpg";
 
 import resProjHMH from "../images/res-project-HMH.png";
 import resProjKKI from "../images/res-project-KKI.jpg";
@@ -63,16 +62,6 @@ function getGlobalRes() {
       ],
     },
     {
-      name: "이예린",
-      image: resLYR,
-      details: [
-        "지리학박사/박사후연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일:  sophiekelee@uos.ac.kr",
-      ],
-    },
-    {
       name: "박성찬 Sungchan Park",
       image: resPSC,
       details: [
@@ -84,7 +73,7 @@ function getGlobalRes() {
     },
     {
       name: "김지영",
-      image: resKJYong,
+      image: resKJYeong,
       details: [
         "연구원",
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
@@ -251,18 +240,6 @@ function getProjectRes() {
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
         "이메일:  kkim019@uos.ac.kr",
-      ],
-    },
-    {
-      name: "이예린",
-      image: resLYR,
-      details: [
-        "공동연구원 (전임연구인력)",
-        "스마트도시수출 거점국가 선정(지역학)",
-        "지리학박사",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일:  sophiekelee@uos.ac.kr",
       ],
     },
   ];
