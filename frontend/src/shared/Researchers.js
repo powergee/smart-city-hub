@@ -3,6 +3,7 @@ import resKDI from "../images/res-KDI.jpg";
 import resKJY from "../images/res-KJY.jpg";
 import resKJYeong from "../images/res-KJYeong.jpg";
 import resPSC from "../images/res-PSC.jpg";
+import resPSE from "../images/res-PSE.jpg";
 import resYCH from "../images/res-YCH.jpg";
 
 import resProjHMH from "../images/res-project-HMH.png";
@@ -79,6 +80,16 @@ function getGlobalRes() {
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
         "이메일: jiyoung8@uos.ac.kr",
+      ],
+    },
+    {
+      name: "박시은",
+      image: resPSE,
+      details: [
+        "연구원",
+        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
+        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
+        "이메일: pyhee99@naver.com",
       ],
     },
     {
