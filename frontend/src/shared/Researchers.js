@@ -3,12 +3,12 @@ import resKJY from "../images/res-KJY.jpg";
 import resKJYong from "../images/res-KJYeong.jpg";
 import resPSC from "../images/res-PSC.jpg";
 import resYCH from "../images/res-YCH.jpg";
-import resJHH from "../images/res-JHH.jpg";
-import resHMH from "../images/res-HMH.jpg";
 import resLYR from "../images/res-LYR.jpg";
+import resASS from "../images/res-ASS.jpg";
 
-import resProjCYS from "../images/res-project-CYS.png";
+import resProjHMH from "../images/res-project-HMH.png";
 import resProjKKI from "../images/res-project-KKI.jpg";
+import resProjKKS from "../images/res-project-KKS.jpg";
 import resProjLS from "../images/res-project-LS.png";
 import resProjPH from "../images/res-project-PH.png";
 import resProjPHM from "../images/res-project-PHM.jpg";
@@ -39,8 +39,17 @@ function getGlobalRes() {
       details: [
         "서울시립대학교 도시과학연구원 박사/연구교수",
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "전    화: 02-6490-5320",
         "이메일: gojy@uos.ac.kr",
+      ],
+    },
+    {
+      name: "안성숙",
+      image: resASS,
+      details: [
+        "경영학박사/연구교수",
+        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
+        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
+        "이메일: ssahn78@uos.ac.kr",
       ],
     },
     {
@@ -84,43 +93,13 @@ function getGlobalRes() {
       ],
     },
     {
-      name: "김정현",
+      name: "이성호",
       image: undefined,
       details: [
         "연구원",
         "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: powergee101@gmail.com",
-      ],
-    },
-    {
-      name: "이가람",
-      image: undefined,
-      details: [
-        "연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: river01@uos.ac.kr",
-      ],
-    },
-    {
-      name: "오규민",
-      image: undefined,
-      details: [
-        "연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: darkblue31415@gmail.com",
-      ],
-    },
-    {
-      name: "정현호",
-      image: resJHH,
-      details: [
-        "연구원",
-        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
-        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
-        "이메일: jhh001202@gmail.com",
+        "이메일: shythm@outlook.com",
       ],
     },
   ];
@@ -144,7 +123,7 @@ function getProjectRes() {
     },
     {
       name: "한만희",
-      image: resHMH,
+      image: resProjHMH,
       details: [
         "대외협력부총장",
         "지역정책, 주택정책, 부동산금융, 해외건설",
@@ -155,15 +134,15 @@ function getProjectRes() {
       ],
     },
     {
-      name: "최윤수",
-      image: resProjCYS,
+      name: "김강수",
+      image: resProjKKS,
       details: [
         "공동연구원 (일반공동)",
         "측지 및 측량 분야 수출 기술 발굴",
-        "서울시립대학교 공간정보학과",
-        "서울시 동대문구 서울시립대로 163, 21세기관 509호",
-        "전    화: 02-6490-2887",
-        "Email : choiys@uos.ac.kr",
+        "서울시립대학교 건축공학과",
+        "서울시 동대문구 서울시립대로 163, 건설공학관 3-516호",
+        "전    화: 02-6490-2762",
+        "Email : kangkim@uos.ac.kr",
       ],
     },
     {
@@ -248,6 +227,18 @@ function getProjectRes() {
         "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
         "전    화: 02-6490-5320",
         "이메일: gojy@uos.ac.kr",
+      ],
+    },
+    {
+      name: "안성숙",
+      image: resASS,
+      details: [
+        "공동연구원 (전임연구인력)",
+        "스마트도시 기술 수출 플랫폼 개발",
+        "경영학박사/연구교수",
+        "서울시립대학교 국제도시 및 인프라연구센터[도시과학연구원]",
+        "서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호",
+        "이메일: ssahn78@uos.ac.kr",
       ],
     },
     {
