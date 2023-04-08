@@ -1,47 +1,52 @@
 import React from "react";
-import { Route, Switch, useParams } from "react-router-dom";
-import CountryJson from "../asean-data/country.json";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom";
+import { Route, Switch, useHistory, useParams } from "react-router-dom";
+import CountryData from "../asean-data/CountryData";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 import { ContentContainer, AseanTable } from "../components";
+import Grid from "@material-ui/core/Grid";
+import "./Asean.scss";
 
-function AseanTableView() {
-  const countries = CountryJson;
-
-  return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>번호</TableCell>
-            <TableCell>국가명</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {countries.map((country, index) => (
-            <TableRow key={index}>
-              <TableCell>{index + 1}</TableCell>
-              <TableCell>
-                <Link to={`/asean/${index}`}>{country.name}</Link>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+function AseanNavigator() {
+  const { countryIdx } = useParams();
+  const data = CountryData[countryIdx];
+  return <AseanTable data={data} />;
 }
 
-function AseanTableSection() {
-  const { countryIdx } = useParams();
-  const countryData = CountryJson[countryIdx];
-  return <AseanTable data={countryData} />;
+function AseanSelector() {
+  const history = useHistory();
+
+  return (
+    <Grid className="asean-selector-container" container spacing={2}>
+      {CountryData.map((country, index) => (
+        <Grid item className="asean-selector-item">
+          <Card>
+            <CardActionArea onClick={() => history.push(`/asean/${index}`)}>
+              <img
+                style={{ width: "100%" }}
+                src={country.flag}
+                title={`${country.name} 국기`}
+              />
+              <CardContent>
+                <Typography variant="h6" component="div">
+                  {country.name}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="textSecondary"
+                  component="div"
+                >
+                  {country.nameEng}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
+  );
 }
 
 export default function Asean() {
@@ -53,11 +58,11 @@ export default function Asean() {
       subtitle="Smart City Network"
     >
       <Switch>
-        <Route exact path="/asean" component={AseanTableView}></Route>
+        <Route exact path="/asean" component={AseanSelector}></Route>
         <Route
           exact
           path="/asean/:countryIdx"
-          component={AseanTableSection}
+          component={AseanNavigator}
         ></Route>
       </Switch>
     </ContentContainer>
