@@ -1,8 +1,25 @@
 .asean-selector-container {
-  padding: 24px;
-  
   .asean-selector-item {
     max-width: 20% !important;
     flex-basis: 20% !important;
+  }
+}
+
+.asean-sub {
+  border-left: 3px solid #0c004e;
+  padding-left: 10px;
+}
+
+.asean-view {
+  .asean-view-name-sub {
+    display: inline-block;
+    margin-left: 12px;
+    color: #757575;
+    font-size: 0.75em;
+  }
+
+  .asean-view-flag {
+    margin-left: 12px;
+    width: 24px;
   }
 }

@@ -10,4 +10,3 @@ export { default as ArticlePreview } from "./ArticlePreview";
 export { default as CompanyList } from "./CompanyList";
 export { default as ArticleEditor } from "./ArticleEditor";
 export { default as DocumentPreview } from "./DocumentPreview";
-export { default as AseanTable } from "./AseanTable";
