@@ -22,12 +22,6 @@ const makeListItemStyles = (styles) => {
   }));
 };
 
-const useStyles = makeStyles({
-  root: {
-    height: 150,
-  },
-});
-
 function CustomListItemText(props) {
   const { primary, secondary } = props;
   const primaryClasses = makeListItemStyles({ fontSize: "1.5rem" })();
@@ -77,7 +71,6 @@ function SolutionContent(props) {
 
 export default function CompanyView(props) {
   const { data, logo, solImgs } = props;
-  const classes = useStyles();
   const { path } = useRouteMatch();
   const { companyIdx } = useParams();
 

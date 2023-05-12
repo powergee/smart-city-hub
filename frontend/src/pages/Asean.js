@@ -35,6 +35,7 @@ function AseanSelector() {
                   style={{ width: "100%" }}
                   src={country.flag}
                   title={`${country.name} 국기`}
+                  alt={`${country.name} 국기`}
                 />
                 <CardContent>
                   <Typography variant="h6" component="div">
@@ -99,6 +100,7 @@ function AseanView() {
           className="asean-view-flag"
           src={country.flag}
           title={`${country.name} 국기`}
+          alt={`${country.name} 국기`}
         />
         <div className="asean-view-name-sub">{country.nameEng}</div>
       </h2>

@@ -16,8 +16,8 @@ function SolutionTableSection(props) {
   for (let i = 0; i < CompaniesJson.length; i++) {
     for (let j = 0; j < CompaniesJson[i].solutions.length; j++) {
       if (
-        CompaniesJson[i].solutions[j].mainCategory == main &&
-        CompaniesJson[i].solutions[j].middleCategories == middle
+        CompaniesJson[i].solutions[j].mainCategory === main &&
+        CompaniesJson[i].solutions[j].middleCategories === middle
       ) {
         companies.push({ ...CompaniesJson[i], absoluteIndex: i });
         break;
@@ -36,8 +36,8 @@ function SolutionMainSection(props) {
   for (let i = 0; i < CompaniesJson.length; i++) {
     for (let j = 0; j < CompaniesJson[i].solutions.length; j++) {
       if (
-        CompaniesJson[i].solutions[j].mainCategory == main &&
-        CompaniesJson[i].solutions[j].middleCategories == middle
+        CompaniesJson[i].solutions[j].mainCategory === main &&
+        CompaniesJson[i].solutions[j].middleCategories === middle
       ) {
         companies.push({ ...CompaniesJson[i], absoluteIndex: i });
         break;

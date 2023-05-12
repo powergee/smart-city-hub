@@ -93,22 +93,26 @@ $caption-color: rgba(0, 0, 0, 0.575);
           display: inline-block;
           font-size: 12px;
 
-          a {
+          button {
             display: block;
+            border: none;
+            background: none;
+            cursor: pointer;
             text-align: center;
             text-decoration: none;
             padding: 10px 0 10px 0;
             text-decoration: underline;
+            width: 100%;
           }
 
-          a:hover {
+          button:hover {
             background-color: rgba($color: #fff3e8, $alpha: 0.75);
             -webkit-transition: background-color 100ms linear;
             -ms-transition: background-color 100ms linear;
             transition: background-color 100ms linear;
           }
 
-          a:active {
+          button:active {
             background-color: rgba($color: #e7d8cb, $alpha: 0.75);
           }
         }

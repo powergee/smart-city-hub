@@ -116,11 +116,11 @@ function SecondCategoryViewer(props) {
         {firstStr in Coord ? (
           /* NEW: 이미지로 중분류를 선택하는 방식 */
           <div className="hub-control-contents-v2">
-            <img src={Coord[firstStr].image} alt="selection-image"></img>
+            <img src={Coord[firstStr].image} alt="smart-city-background"></img>
             {Coord[firstStr].secondCategory.map((cate) => (
               <div
                 className={
-                  cate.defaultOpen == "True"
+                  cate.defaultOpen === "True"
                     ? "hub-second  hub-second-open"
                     : "hub-second"
                 }
@@ -134,12 +134,12 @@ function SecondCategoryViewer(props) {
                     {Object.entries(
                       HubJson.tree.next[firstStr].next[cate.title].next
                     ).map(([thirdStr]) => (
-                      <a
+                      <button
                         className="noselect"
                         onClick={() => showList(cate.title, thirdStr)}
                       >
                         {thirdStr}
-                      </a>
+                      </button>
                     ))}
                   </li>
                 </div>

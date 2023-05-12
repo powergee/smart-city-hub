@@ -66,7 +66,7 @@ export default function Main() {
           </strong>
         </div>
         <div>
-          <img className="footer-image" src={logo}></img>
+          <img className="footer-image" src={logo} alt="footer logo"></img>
         </div>
       </footer>
     </div>

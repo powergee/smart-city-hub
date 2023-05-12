@@ -24,7 +24,6 @@ import categoryImage from "../shared/CategoryImage";
 import cateToEng from "../hub-data/cateToEng.json";
 import getArchives from "../shared/Archives.js";
 import bannerImage from "../images/banner.svg";
-import videoImage from "../images/video-image.png";
 import { useHistory } from "react-router-dom";
 
 import "react-slideshow-image/dist/styles.css";
@@ -119,39 +118,41 @@ export default function Home() {
       1,
       1,
       undefined,
-      /(https?\:\/\/)?(www\.youtube\.com|youtu\.be)\/.+/.source,
+      /(https?:\/\/)?(www\.youtube\.com|youtu\.be)\/.+/.source,
       undefined,
       undefined
     );
 
     videoArticles.then((element) => {
-      const vedeoUrl = extractVedioUrl(element[0].contents);
       const imCard = [];
-      imCard.push(
-        <a
-          onClick={() => {
-            history.push("/news/notices/" + element[0].articleId);
-          }}
-        >
-          <Paper className="menu-card-video">
-            <div
-              className="menu-card-video-thumb"
-              style={{
-                backgroundImage: `url(http://img.youtube.com/vi/${vedeoUrl.slice(
-                  30
-                )}/0.jpg)`,
-              }}
-            ></div>
-            <div className="menu-card-video-overlay">
-              <PlayCircleOutlineIcon color="action"></PlayCircleOutlineIcon>
-            </div>
-            <div className="menu-card-video-bottom">
-              <strong>{element[0].title}</strong>
-              <span>공지사항 · {element[0].meta.createdAt.slice(0, 10)}</span>
-            </div>
-          </Paper>
-        </a>
-      );
+      if (element[0]) {
+        const vedeoUrl = extractVedioUrl(element[0].contents);
+        imCard.push(
+          <a
+            onClick={() => {
+              history.push("/news/notices/" + element[0].articleId);
+            }}
+          >
+            <Paper className="menu-card-video">
+              <div
+                className="menu-card-video-thumb"
+                style={{
+                  backgroundImage: `url(http://img.youtube.com/vi/${vedeoUrl.slice(
+                    30
+                  )}/0.jpg)`,
+                }}
+              ></div>
+              <div className="menu-card-video-overlay">
+                <PlayCircleOutlineIcon color="action"></PlayCircleOutlineIcon>
+              </div>
+              <div className="menu-card-video-bottom">
+                <strong>{element[0].title}</strong>
+                <span>공지사항 · {element[0].meta.createdAt.slice(0, 10)}</span>
+              </div>
+            </Paper>
+          </a>
+        );
+      }
 
       Promise.all([noticesArticles, newsArticles, imageCards]).then((res) => {
         const imgArticles = res[0].concat(res[1]);
@@ -368,7 +369,7 @@ export default function Home() {
           </div>
         </div>
         <div className="board-banner-container">
-          <img src={bannerImage}></img>
+          <img src={bannerImage} alt="Board Banner"></img>
         </div>
       </div>
 
