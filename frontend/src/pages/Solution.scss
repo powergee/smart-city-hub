@@ -1,31 +1,37 @@
 @import "../shared/shared.scss";
 
 .solution-container {
-    min-width: $page-width;
-    width: 100%;
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  min-width: $page-width;
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .solution-root {
-    width: $page-width;
-    display: flex;
-    flex-direction: row;
+  width: $page-width;
+  display: flex;
+  flex-direction: row;
 
-    .content-left {
-        min-height: 750px;
-        width: 18%;
-        margin-left: 1%;
-        margin-right: 1%;
-    }
+  .content-left {
+    min-height: 750px;
+    width: 18%;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
 
-    .content-right {
-        height: 100%;
-        width: 78%;
-        margin-left: 1%;
-        margin-right: 1%;
-        padding-bottom: 50px;
-    }
+  .content-right {
+    height: 100%;
+    width: 78%;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-bottom: 50px;
+  }
+}
+
+.company-editor {
+  img.company-logo {
+    width: 100%;
+  }
 }
