@@ -15,21 +15,19 @@ router.use(BodyParser());
  * GET /solutions/
  * 모든 솔루션 정보를 `detail` 필드를 제외하고 가져옵니다.
  *
- * <사용 가능한 쿼리>
- * `category`: 원하는 카테고리를 콤마로 지정하여 가져옵니다.
+ * <사용 가능한 요청 본문>
+ * `categories`: 원하는 카테고리를 배열 형태로 요청하면,
+ *               그에 해당하는 카테고리만 가져옵니다.
  */
 router.get("/", async (ctx: Koa.Context) => {
   let categoryTag: RegExp = /(?:)/;
 
   // 콤마로 구분된 카테고리 태그 쿼리를 위한 정규표현식 설정
-  if (ctx.query.category) {
-    const categoryQuery: string = ctx.query.category;
+  if (ctx.request.body.categories) {
+    const categories: string[] = ctx.request.body.categories;
 
     categoryTag = new RegExp(
-      categoryQuery
-        .split(",")
-        .map((cat) => `(\\b${cat}\\b)`)
-        .join("|")
+      categories.map((cat) => `(\\b${cat}\\b)`).join("|")
     );
   }
 
