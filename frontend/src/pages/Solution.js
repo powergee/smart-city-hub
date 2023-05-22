@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { Route, Switch, useLocation } from "react-router-dom";
 import axios from "axios";
-
-import { Route, Switch } from "react-router-dom";
-
-import {
-  ContentContainer,
-  SolutionCategorySelector,
-  SolutionCompanyManager,
-  SolutionCompanyTable,
-} from "../components";
 
 import { Paper, Grid } from "@material-ui/core";
 
-function SolutionCompanyPage() {
+import {
+  ContentContainer,
+  SolutionManager,
+  SolutionCategorySelector,
+  SolutionCompanyTable,
+} from "../components";
+
+function SolutionManagerPage() {
   return (
     <ContentContainer
       currentPath="/solution/company"
@@ -20,7 +19,7 @@ function SolutionCompanyPage() {
       subtitle="Smart City Solution"
       description="솔루션 회사를 관리하는 페이지입니다."
     >
-      <SolutionCompanyManager />
+      <SolutionManager />
     </ContentContainer>
   );
 }
@@ -60,8 +59,7 @@ function SolutionPage() {
 export default function Solution() {
   return (
     <Switch>
-      <Route exact path="/solution/company" component={SolutionCompanyPage} />
-      <Route exact path="/solution/company/:id" />
+      <Route exact path="/solution/manager" component={SolutionManagerPage} />
       <Route exact path="/solution" component={SolutionPage} />
       <Route exact path="/solution/:id" />
     </Switch>
