@@ -7,6 +7,7 @@ import {
   SolutionCompanyModel,
 } from "./models/solutionCompanyModel";
 import { Solution, SolutionModel } from "./models/solutionModel";
+import { FilterQuery } from "mongoose";
 
 const router = new Router();
 router.use(BodyParser());
@@ -14,9 +15,10 @@ router.use(BodyParser());
 /**
  * GET /solutions/companies/
  * 등록된 모든 회사 정보를 가져옵니다.
+ * 이때, 회사 이름, 영문 이름 및 요약 정보만을 가져옵니다.
  */
 router.get("/companies", async (ctx: Koa.Context) => {
-  const companies = await SolutionCompanyModel.find({});
+  const companies = await SolutionCompanyModel.find({}, "name nameEng summary");
   ctx.body = companies;
 });
 
@@ -77,23 +79,34 @@ router.delete("/companies/:id", async (ctx: Koa.Context) => {
  * GET /solutions/
  * 모든 솔루션 정보를 `detail` 필드를 제외하고 가져옵니다.
  *
- * <사용 가능한 요청 본문>
+ * <사용 가능한 쿼리>
+ * `companyId`: companyId에 해당하는 솔루션 회사의 솔루션만 가져옵니다.
+ *
+ * <요청 본문>
  * `categories`: 원하는 카테고리를 배열 형태로 요청하면,
  *               그에 해당하는 카테고리만 가져옵니다.
  */
 router.get("/", async (ctx: Koa.Context) => {
-  let categoryTag: RegExp = /(?:)/;
+  const filter: FilterQuery<Solution> = {};
 
-  // 콤마로 구분된 카테고리 태그 쿼리를 위한 정규표현식 설정
+  let categoryTag: RegExp = /(?:)/;
   if (ctx.request.body.categories) {
+    // 콤마로 구분된 카테고리 태그 쿼리를 위한 정규표현식 설정
     const categories: string[] = ctx.request.body.categories;
 
     categoryTag = new RegExp(
       categories.map((cat) => `(\\b${cat}\\b)`).join("|")
     );
   }
+  filter.categoryTag = categoryTag;
 
-  ctx.body = await SolutionModel.find({ categoryTag }, "-detail");
+  // 쿼리 처리
+  const { companyId } = ctx.request.query;
+  if (companyId && companyId !== "") {
+    filter.companyId = companyId;
+  }
+
+  ctx.body = await SolutionModel.find(filter, "-detail");
 });
 
 /**
