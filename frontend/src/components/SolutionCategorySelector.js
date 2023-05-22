@@ -11,10 +11,10 @@ import {
 } from "@material-ui/core";
 import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
-import solutionCategories from "../solution-data/SolutionCategories";
+import categorySolution from "../shared/CategorySolution";
 
 export default function CategorySelector(props) {
-  const { onChange } = props;
+  const { onChange, ...restProps } = props;
   const [checked, setChecked] = useState(null);
   const [collapsed, setCollapsed] = useState(null);
 
@@ -22,19 +22,20 @@ export default function CategorySelector(props) {
     // initialize checked state
     if (!checked) {
       const newChecked = {};
-      solutionCategories.forEach((main) => {
-        main.sub.forEach((sub) => {
-          newChecked[sub.tag] = false;
+      categorySolution.forEach((item) => {
+        item.subs.forEach((sub) => {
+          newChecked[sub] = false;
         });
       });
+
       setChecked(newChecked);
     }
 
     // initialilze collapsed state
     if (!collapsed) {
       const newCollapsed = {};
-      solutionCategories.forEach((main) => {
-        newCollapsed[main.name] = true;
+      categorySolution.forEach((item) => {
+        newCollapsed[item.main] = true;
       });
 
       setCollapsed(newCollapsed);
@@ -42,9 +43,9 @@ export default function CategorySelector(props) {
   }, []);
 
   useEffect(() => {
-    // call onChange event when checked has been changed
+    // checked 상태가 변경되면 onChange 이벤트 호출
     if (typeof onChange === "function") {
-      onChange(checked);
+      checked && onChange(checked);
     }
   }, [checked]);
 
@@ -53,19 +54,21 @@ export default function CategorySelector(props) {
       subheader={<ListSubheader>분류 선택</ListSubheader>}
       dense
       disablePadding
+      {...restProps}
     >
       {checked &&
-        solutionCategories.map((main) => {
+        categorySolution.map((value) => {
           let orChecked = false;
           let andChecked = true;
 
-          main.sub.forEach((sub) => {
-            orChecked |= checked[sub.tag];
-            andChecked &= checked[sub.tag];
+          value.subs.forEach((sub) => {
+            orChecked |= checked[sub];
+            andChecked &= checked[sub];
           });
 
           return (
             <>
+              {/* main 카테고리 */}
               <ListItem dense>
                 <Checkbox
                   edge="start"
@@ -73,38 +76,42 @@ export default function CategorySelector(props) {
                   checked={andChecked}
                   onClick={() => {
                     const newChecked = { ...checked };
-                    main.sub.forEach((sub) => {
-                      newChecked[sub.tag] = !andChecked;
+                    value.subs.forEach((sub) => {
+                      newChecked[sub] = !andChecked;
                     });
+
                     setChecked(newChecked);
                   }}
                 />
-                <ListItemText primary={main.name} />
+                <ListItemText primary={value.main} />
                 <IconButton
                   size="small"
                   onClick={() => {
                     const newCollapsed = { ...collapsed };
-                    newCollapsed[main.name] = !newCollapsed[main.name];
+                    newCollapsed[value.main] = !newCollapsed[value.main];
+
                     setCollapsed(newCollapsed);
                   }}
                 >
-                  {collapsed[main.name] ? <ExpandMore /> : <ExpandLess />}
+                  {collapsed[value.main] ? <ExpandMore /> : <ExpandLess />}
                 </IconButton>
               </ListItem>
-              <Collapse in={!collapsed[main.name]} timeout="auto">
+              {/* sub 카테고리 */}
+              <Collapse in={!collapsed[value.main]} timeout="auto">
                 <List disablePadding>
-                  {main.sub.map((sub) => (
+                  {value.subs.map((sub) => (
                     <ListItem dense>
                       <Checkbox
                         size="small"
                         onClick={() => {
                           const newChecked = { ...checked };
-                          newChecked[sub.tag] = !newChecked[sub.tag];
+                          newChecked[sub] = !newChecked[sub];
+
                           setChecked(newChecked);
                         }}
-                        checked={checked[sub.tag]}
+                        checked={checked[sub]}
                       />
-                      <ListItemText primary={sub.name} />
+                      <ListItemText primary={sub} />
                     </ListItem>
                   ))}
                 </List>
