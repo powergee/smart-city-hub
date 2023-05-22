@@ -216,3 +216,25 @@ export async function downloadFile(fileId) {
     throw err;
   }
 }
+
+export async function getSolutionCompany(id) {
+  try {
+    let reqUrl = "/v1/solutions/companies";
+    if (id) {
+      reqUrl += `/${id}`;
+    }
+    const res = await axios.get(reqUrl);
+    return res.data;
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
+export async function getSolutionByCompanyId(companyId) {
+  try {
+    const res = await axios.get(`/v1/solutions?companyId=${companyId}`);
+    return res.data;
+  } catch (err) {
+    console.error(err.message);
+  }
+}
