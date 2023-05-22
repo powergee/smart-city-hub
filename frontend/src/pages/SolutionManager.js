@@ -1,3 +1,5 @@
+import "./SolutionManager.scss";
+
 import React, { useState, useEffect, useMemo } from "react";
 import { useForm, useFormContext, FormProvider } from "react-hook-form";
 import axios from "axios";
@@ -16,8 +18,10 @@ import {
 } from "@material-ui/core";
 
 import { ArticleEditor, SolutionCategorySelector } from "../components";
-
-import "./SolutionManager.scss";
+import {
+  getSolutionCompany,
+  getSolutionByCompanyId,
+} from "../shared/BackendRequests";
 
 function CustomTextField(props) {
   const { label, name } = props;
@@ -149,76 +153,43 @@ function SolutionCompanyEditor(props) {
   );
 }
 
-function SolutionCompanyList(props) {
-  const { onClick, target } = props;
-  const [companies, setCompanies] = useState([]);
+function CompanyList(props) {
+  const { onClick, target, companies } = props;
 
-  useEffect(() => {
-    async function getCompanies() {
-      const res = await axios.get("/v1/solutions/companies");
-      setCompanies(res.data);
-    }
-
-    getCompanies();
-  }, [target]);
+  const getClickHandler = (e) => {
+    return () => {
+      if (typeof onClick === "function") {
+        onClick(e);
+      }
+    };
+  };
 
   return (
-    <div>
+    <div className="company-list">
       <List component="div">
         <ListItem
           dense
           button
           selected={target === null}
-          onClick={() => {
-            if (typeof onClick === "function") {
-              onClick(null);
-            }
-          }}
+          onClick={getClickHandler(null)}
         >
           <ListItemText primary="새 회사" />
         </ListItem>
       </List>
       <Divider />
       <List component="div">
-        {companies.map((company) => (
-          <ListItem
-            dense
-            button
-            selected={company._id === target?._id}
-            onClick={() => {
-              if (typeof onClick === "function") {
-                onClick(company);
-              }
-            }}
-            key={company._id}
-          >
-            <ListItemText primary={company.name} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-}
-
-function SolutionList(props) {
-  const { onClick } = props;
-  const [target, setTarget] = useState(null);
-
-  return (
-    <div>
-      <List component="div">
-        <ListItem
-          dense
-          button
-          selected={target === null}
-          onClick={() => {
-            if (typeof onClick === "function") {
-              onClick(null);
-            }
-          }}
-        >
-          <ListItemText primary="새 솔루션" />
-        </ListItem>
+        {companies &&
+          companies.map((company) => (
+            <ListItem
+              dense
+              button
+              selected={company._id === target?._id}
+              onClick={getClickHandler(company)}
+              key={company._id}
+            >
+              <ListItemText primary={company.name} />
+            </ListItem>
+          ))}
       </List>
     </div>
   );
@@ -280,89 +251,164 @@ function SolutionEditor(props) {
   );
 }
 
-export default function SolutionCompanyManager() {
-  const [targetCompany, setTargetCompany] = useState(null);
-  const [targetSolution, setTargetSolution] = useState(null);
+function SolutionList(props) {
+  const { onClick, target, solutions } = props;
+
+  const getClickHandler = (e) => {
+    return () => {
+      if (typeof onClick === "function") {
+        onClick(e);
+      }
+    };
+  };
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={3}>
-        <Paper>
-          <SolutionCompanyList
-            onClick={async (company) => {
-              if (company) {
-                const res = await axios.get(
-                  `/v1/solutions/companies/${company._id}`
-                );
-                setTargetCompany(res.data);
-              } else {
-                setTargetCompany(null);
-              }
-            }}
-            target={targetCompany}
-          />
-        </Paper>
-        <Paper style={{ marginTop: "16px" }}>
-          <SolutionList target={targetSolution} />
-        </Paper>
-      </Grid>
-      <Grid item xs={9}>
-        <Paper style={{ padding: "24px" }}>
-          <SolutionCompanyEditor
-            data={targetCompany}
-            onSubmit={async (company) => {
-              if (
-                window.confirm(
-                  `정말로 ${company.name} 회사를 ${
-                    company._id ? "수정" : "등록"
-                  }하겠습니까?`
-                )
-              ) {
-                try {
-                  const res = await axios.post(
-                    "/v1/solutions/companies",
-                    company
-                  );
-                  setTargetCompany(res.data);
-                  window.alert("성공");
-                } catch (err) {
-                  window.alert(err);
-                }
-              }
-            }}
-            onDeleteClick={async (company) => {
-              if (
-                window.confirm(`정말로 ${company.name} 회사를 삭제하겠습니까?`)
-              ) {
-                try {
-                  await axios.delete(`/v1/solutions/companies/${company._id}`);
+    <div className="solution-list">
+      <List component="div">
+        <ListItem
+          dense
+          button
+          selected={target === null}
+          onClick={getClickHandler(null)}
+        >
+          <ListItemText primary="새 솔루션" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List component="div">
+        {solutions &&
+          solutions.map((solution) => (
+            <ListItem
+              dense
+              button
+              selected={solution._id === target?._id}
+              onClick={getClickHandler(solution)}
+              key={solution._id}
+            >
+              <ListItemText primary={solution.title} />
+            </ListItem>
+          ))}
+      </List>
+    </div>
+  );
+}
+
+export default function SolutionManager() {
+  const [companies, setCompanies] = useState([]);
+  const [targetCompany, setTargetCompany] = useState(null);
+  const [solutions, setSolutions] = useState([]);
+  const [targetSolution, setTargetSolution] = useState(null);
+
+  useEffect(() => {
+    getSolutionCompany().then((data) => setCompanies(data));
+
+    if (targetCompany) {
+      getSolutionByCompanyId(targetCompany._id).then((data) =>
+        setSolutions(data)
+      );
+    }
+  }, [targetCompany]);
+
+  return (
+    <div className="solution-manager">
+      <h1>스마트도시 솔루션 관리 페이지</h1>
+
+      <Grid container spacing={3}>
+        <Grid item xs={3}>
+          {/* 왼쪽 사이드바: 솔루션 회사 리스트 및 선택한 회사에 따른 솔루션 리스트 */}
+          <Paper>
+            <CompanyList
+              onClick={async (company) => {
+                if (company) {
+                  const data = await getSolutionCompany(company._id);
+                  setTargetCompany(data);
+                } else {
                   setTargetCompany(null);
-                  window.alert("성공");
-                } catch (err) {
-                  window.alert(err);
                 }
-              }
-            }}
-          />
-        </Paper>
-        {targetCompany && (
-          <Paper style={{ padding: "24px", marginBottom: "24px" }}>
-            <SolutionEditor
-              companyId={targetCompany._id}
-              onSubmit={async (data) => {
-                try {
-                  const res = await axios.post(`/v1/solutions`, data);
-                  setTargetSolution(res.data);
-                  window.alert("솔루션 등록에 성공했습니다!");
-                } catch (err) {
-                  window.alert(err.message);
-                  setTargetSolution(null);
+              }}
+              companies={companies}
+              target={targetCompany}
+            />
+          </Paper>
+          {targetCompany && (
+            <Paper style={{ marginTop: "16px" }}>
+              <SolutionList
+                onClick={async (solution) => {
+                  if (solution) {
+                    setTargetSolution(solution);
+                  } else {
+                    setTargetSolution(null);
+                  }
+                }}
+                solutions={solutions}
+                target={targetSolution}
+              />
+            </Paper>
+          )}
+        </Grid>
+        <Grid item xs={9}>
+          {/* 오른쪽 사이드바: 솔루션 회사 및 솔루션 생성/편집/삭제 */}
+          <Paper style={{ padding: "24px" }}>
+            <SolutionCompanyEditor
+              data={targetCompany}
+              onSubmit={async (company) => {
+                if (
+                  window.confirm(
+                    `정말로 ${company.name} 회사를 ${
+                      company._id ? "수정" : "등록"
+                    }하겠습니까?`
+                  )
+                ) {
+                  try {
+                    const res = await axios.post(
+                      "/v1/solutions/companies",
+                      company
+                    );
+                    setTargetCompany(res.data);
+                    window.alert("성공");
+                  } catch (err) {
+                    window.alert(err);
+                  }
+                }
+              }}
+              onDeleteClick={async (company) => {
+                if (
+                  window.confirm(
+                    `정말로 ${company.name} 회사를 삭제하겠습니까?`
+                  )
+                ) {
+                  try {
+                    await axios.delete(
+                      `/v1/solutions/companies/${company._id}`
+                    );
+                    setTargetCompany(null);
+                    window.alert("성공");
+                  } catch (err) {
+                    window.alert(err);
+                  }
                 }
               }}
             />
           </Paper>
-        )}
+          {targetCompany && (
+            <Paper style={{ padding: "24px", marginBottom: "24px" }}>
+              <SolutionEditor
+                companyId={targetCompany._id}
+                onSubmit={async (data) => {
+                  try {
+                    const res = await axios.post(`/v1/solutions`, data);
+                    setTargetSolution(res.data);
+                    window.alert("솔루션 등록에 성공했습니다!");
+                  } catch (err) {
+                    window.alert(err.message);
+                    setTargetSolution(null);
+                  }
+                }}
+              />
+            </Paper>
+          )}
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }

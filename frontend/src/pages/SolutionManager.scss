@@ -1,3 +1,11 @@
+@import "../shared/shared.scss";
+
+.solution-manager {
+  width: $page-width;
+  margin: 32px auto 16px;
+  padding: 16px;
+}
+
 .solution-company-editor {
   .ck.ck-content:not(.ck-comment__input *) {
     height: 300px;
