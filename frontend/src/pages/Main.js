@@ -12,6 +12,7 @@ import {
   News,
   Community,
   Solution,
+  SolutionManager,
   Asean,
 } from ".";
 import "./Main.scss";
@@ -38,6 +39,7 @@ export default function Main() {
           <Route path="/projects" component={Projects}></Route>
           <Route path="/hub" component={Hub}></Route>
           <Route path="/solution" component={Solution}></Route>
+          <Route path="/solution-manager" component={SolutionManager}></Route>
           <Route path="/asean" component={Asean}></Route>
           <Route path="*" component={NotFound}></Route>
         </Switch>

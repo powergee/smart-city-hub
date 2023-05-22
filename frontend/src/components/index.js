@@ -11,6 +11,5 @@ export { default as CompanyList } from "./CompanyList";
 export { default as ArticleEditor } from "./ArticleEditor";
 export { default as DocumentPreview } from "./DocumentPreview";
 export { default as SolutionCategorySelector } from "./SolutionCategorySelector";
-export { default as SolutionManager } from "./SolutionManager";
 export { default as SolutionCompanyTable } from "./SolutionCompanyTable";
 export { default as SolutionCompanyView } from "./SolutionCompanyView";

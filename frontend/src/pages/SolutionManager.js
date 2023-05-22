@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFormContext, FormProvider } from "react-hook-form";
 import axios from "axios";
 
 import {
@@ -15,9 +15,21 @@ import {
   Paper,
 } from "@material-ui/core";
 
-import { ArticleEditor } from ".";
+import { ArticleEditor, SolutionCategorySelector } from "../components";
 
 import "./SolutionManager.scss";
+
+function CustomTextField(props) {
+  const { label, name } = props;
+  const { register } = useFormContext();
+
+  return (
+    <FormControl fullWidth>
+      <InputLabel shrink>{label}</InputLabel>
+      <Input fullWidth {...register(name)} />
+    </FormControl>
+  );
+}
 
 function SolutionCompanyEditor(props) {
   const { data, onSubmit, onDeleteClick } = props;
@@ -188,8 +200,89 @@ function SolutionCompanyList(props) {
   );
 }
 
+function SolutionList(props) {
+  const { onClick } = props;
+  const [target, setTarget] = useState(null);
+
+  return (
+    <div>
+      <List component="div">
+        <ListItem
+          dense
+          button
+          selected={target === null}
+          onClick={() => {
+            if (typeof onClick === "function") {
+              onClick(null);
+            }
+          }}
+        >
+          <ListItemText primary="새 솔루션" />
+        </ListItem>
+      </List>
+    </div>
+  );
+}
+
+function SolutionEditor(props) {
+  const { onSubmit, companyId } = props;
+  const [detailEditor, setDetailEditor] = useState(null);
+  const [categoryTag, setCategoryTag] = useState("");
+  const form = useForm();
+
+  return (
+    <FormProvider {...form}>
+      <form
+        className="solution-editor"
+        onSubmit={form.handleSubmit(async (formData) => {
+          const solution = {
+            companyId,
+            ...formData,
+            categoryTag,
+            detail: detailEditor?.getData(),
+          };
+
+          if (typeof onSubmit === "function") {
+            await onSubmit(solution);
+          }
+        })}
+      >
+        <Grid container>
+          <Grid item xs={8}>
+            <h3>솔루션 기본 정보</h3>
+            <CustomTextField name="title" label="제목" />
+            <CustomTextField name="summary" label="요약" />
+            <h3>솔루션 상세 정보</h3>
+            <ArticleEditor
+              onReady={(editor) => {
+                setDetailEditor(editor);
+              }}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <SolutionCategorySelector
+              className="category-selector"
+              onChange={(categories) =>
+                setCategoryTag(
+                  Object.keys(categories)
+                    .filter((key) => categories[key])
+                    .join(",")
+                )
+              }
+            />
+          </Grid>
+        </Grid>
+        <Button type="submit" variant="contained" color="secondary">
+          등록
+        </Button>
+      </form>
+    </FormProvider>
+  );
+}
+
 export default function SolutionCompanyManager() {
   const [targetCompany, setTargetCompany] = useState(null);
+  const [targetSolution, setTargetSolution] = useState(null);
 
   return (
     <Grid container spacing={3}>
@@ -208,6 +301,9 @@ export default function SolutionCompanyManager() {
             }}
             target={targetCompany}
           />
+        </Paper>
+        <Paper style={{ marginTop: "16px" }}>
+          <SolutionList target={targetSolution} />
         </Paper>
       </Grid>
       <Grid item xs={9}>
@@ -249,6 +345,23 @@ export default function SolutionCompanyManager() {
             }}
           />
         </Paper>
+        {targetCompany && (
+          <Paper style={{ padding: "24px", marginBottom: "24px" }}>
+            <SolutionEditor
+              companyId={targetCompany._id}
+              onSubmit={async (data) => {
+                try {
+                  const res = await axios.post(`/v1/solutions`, data);
+                  setTargetSolution(res.data);
+                  window.alert("솔루션 등록에 성공했습니다!");
+                } catch (err) {
+                  window.alert(err.message);
+                  setTargetSolution(null);
+                }
+              }}
+            />
+          </Paper>
+        )}
       </Grid>
     </Grid>
   );

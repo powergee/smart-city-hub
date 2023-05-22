@@ -1,0 +1,20 @@
+.solution-company-editor {
+  .ck.ck-content:not(.ck-comment__input *) {
+    height: 300px;
+    overflow-y: auto;
+  }
+}
+
+.solution-editor {
+  height: 600px;
+
+  .ck.ck-content:not(.ck-comment__input *) {
+    height: 300px;
+    overflow-y: auto;
+  }
+
+  .category-selector {
+    height: 640px;
+    overflow-y: auto;
+  }
+}

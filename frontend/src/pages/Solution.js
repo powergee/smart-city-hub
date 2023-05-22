@@ -6,25 +6,36 @@ import { Paper, Grid } from "@material-ui/core";
 
 import {
   ContentContainer,
-  SolutionManager,
   SolutionCategorySelector,
   SolutionCompanyTable,
+  SolutionCompanyView,
 } from "../components";
 
-function SolutionManagerPage() {
-  return (
-    <ContentContainer
-      currentPath="/solution/company"
-      title="스마트도시 솔루션"
-      subtitle="Smart City Solution"
-      description="솔루션 회사를 관리하는 페이지입니다."
-    >
-      <SolutionManager />
-    </ContentContainer>
-  );
-}
-
 function SolutionPage() {
+  const [company, setCompany] = useState(null);
+  const { search } = useLocation();
+
+  const searchParams = new URLSearchParams(search);
+  const companyId = searchParams.get("company");
+
+  useEffect(() => {
+    async function getCompany(id) {
+      try {
+        const res = await axios.get(`/v1/solutions/companies/${id}`);
+        setCompany(res.data);
+      } catch (err) {
+        window.alert(err.message);
+        setCompany(null);
+      }
+    }
+
+    if (companyId) {
+      getCompany(companyId);
+    } else {
+      setCompany(null);
+    }
+  }, [companyId]);
+
   return (
     <ContentContainer
       currentPath="/solution"
@@ -35,11 +46,14 @@ function SolutionPage() {
       <Grid container spacing={3}>
         <Grid item xs={9}>
           <Paper>
+            {/* Left Section */}
+            {company && <SolutionCompanyView data={company} />}
             <SolutionCompanyTable />;
           </Paper>
         </Grid>
         <Grid item xs={3}>
           <Paper>
+            {/* Right Section: Category Select Sidebar */}
             <SolutionCategorySelector
               onChange={(categories) => {
                 console.log(
@@ -59,7 +73,6 @@ function SolutionPage() {
 export default function Solution() {
   return (
     <Switch>
-      <Route exact path="/solution/manager" component={SolutionManagerPage} />
       <Route exact path="/solution" component={SolutionPage} />
       <Route exact path="/solution/:id" />
     </Switch>
