@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
@@ -16,7 +16,8 @@ import {
 } from "@material-ui/core";
 
 import { ArticleEditor } from ".";
-import { LaptopWindows } from "@material-ui/icons";
+
+import "./SolutionManager.scss";
 
 function SolutionCompanyEditor(props) {
   const { data, onSubmit, onDeleteClick } = props;
@@ -64,6 +65,7 @@ function SolutionCompanyEditor(props) {
 
   return (
     <form
+      className="solution-company-editor"
       onSubmit={handleSubmit(async (formData) => {
         // form data + detail ckeditor data + logo data
         const company = {
