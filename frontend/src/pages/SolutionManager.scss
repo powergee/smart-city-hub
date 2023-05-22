@@ -4,25 +4,19 @@
   width: $page-width;
   margin: 32px auto 16px;
   padding: 16px;
-}
 
-.solution-company-editor {
+  .sidebar-right > div {
+    margin-bottom: 24px;
+    padding: 12px;
+  }
+
+  .custom-text-field {
+    margin-bottom: 12px;
+  }
+
   .ck.ck-content:not(.ck-comment__input *) {
     height: 300px;
     overflow-y: auto;
-  }
-}
-
-.solution-editor {
-  height: 600px;
-
-  .ck.ck-content:not(.ck-comment__input *) {
-    height: 300px;
-    overflow-y: auto;
-  }
-
-  .category-selector {
-    height: 640px;
-    overflow-y: auto;
+    margin-bottom: 12px;
   }
 }

@@ -238,3 +238,12 @@ export async function getSolutionByCompanyId(companyId) {
     console.error(err.message);
   }
 }
+
+export async function getSolutionById(id) {
+  try {
+    const res = await axios.get(`/v1/solutions/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error(err.message);
+  }
+}

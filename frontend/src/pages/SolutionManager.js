@@ -1,6 +1,6 @@
 import "./SolutionManager.scss";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useForm, useFormContext, FormProvider } from "react-hook-form";
 import axios from "axios";
 
@@ -21,6 +21,7 @@ import { ArticleEditor, SolutionCategorySelector } from "../components";
 import {
   getSolutionCompany,
   getSolutionByCompanyId,
+  getSolutionById,
 } from "../shared/BackendRequests";
 
 function CustomTextField(props) {
@@ -28,7 +29,7 @@ function CustomTextField(props) {
   const { register } = useFormContext();
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth className="custom-text-field">
       <InputLabel shrink>{label}</InputLabel>
       <Input fullWidth {...register(name)} />
     </FormControl>
@@ -52,7 +53,7 @@ function SolutionCompanyEditor(props) {
 
   const [detailEditor, setDetailEditor] = useState(null); // 상세 정보를 담는 HTML 편집기 Element
   const [logoImage, setLogoImage] = useState(""); // 로고 이미지의 Base64 형태
-  const { register, reset, handleSubmit } = useForm({
+  const form = useForm({
     defaultValues: { ...defaultValues }, // 이외의 간단한 필드들
   });
 
@@ -61,95 +62,90 @@ function SolutionCompanyEditor(props) {
 
     if (!data) {
       // data가 없거나 null일 경우, 빈 값으로 모두 초기화
-      reset({ ...defaultValues });
+      form.reset({ ...defaultValues });
       detailEditor.setData("");
       setLogoImage("");
     } else {
       // data가 주어진 경우, 이에 맞게 여러 Component 채워 넣기
-      reset(data);
+      form.reset({ ...data });
       detailEditor.setData(data.detail || "");
       setLogoImage(data.logo);
     }
-  }, [data, detailEditor, reset, defaultValues]);
-
-  const CustomTextField = ({ label, name }) => (
-    <FormControl fullWidth>
-      <InputLabel shrink>{label}</InputLabel>
-      <Input fullWidth {...register(name)} />
-    </FormControl>
-  );
+  }, [data, detailEditor, defaultValues, form]);
 
   return (
-    <form
-      className="solution-company-editor"
-      onSubmit={handleSubmit(async (formData) => {
-        // form data + detail ckeditor data + logo data
-        const company = {
-          ...formData,
-          logo: logoImage,
-          detail: detailEditor?.getData(),
-        };
+    <FormProvider {...form}>
+      <form
+        className="solution-company-editor"
+        onSubmit={form.handleSubmit(async (formData) => {
+          // form data + detail ckeditor data + logo data
+          const company = {
+            ...formData,
+            logo: logoImage,
+            detail: detailEditor?.getData(),
+          };
 
-        if (typeof onSubmit === "function") {
-          // 데이터 가공만 해당 컴포넌트에서 하고, 서버 요청은 전적으로 부모 컴포넌트에게 위임한다.
-          await onSubmit(company);
-        }
-      })}
-    >
-      <h3>회사 기본 정보</h3>
-      <Grid container>
-        <Grid item xs={6}>
-          <img className="company-logo" alt="회사 로고" src={logoImage} />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(event) => {
-              const file = event.target.files[0];
+          if (typeof onSubmit === "function") {
+            // 데이터 가공만 해당 컴포넌트에서 하고, 서버 요청은 전적으로 부모 컴포넌트에게 위임한다.
+            await onSubmit(company);
+          }
+        })}
+      >
+        <h3>회사 기본 정보</h3>
+        <Grid container>
+          <Grid item xs={6}>
+            <img className="company-logo" alt="회사 로고" src={logoImage} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(event) => {
+                const file = event.target.files[0];
 
-              if (file) {
-                const reader = new FileReader();
-                reader.onloadend = function () {
-                  setLogoImage(reader.result);
-                };
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onloadend = function () {
+                    setLogoImage(reader.result);
+                  };
 
-                reader.readAsDataURL(file);
+                  reader.readAsDataURL(file);
+                }
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <CustomTextField label="이름" name="name" />
+            <CustomTextField label="영문 이름" name="nameEng" />
+            <CustomTextField label="대표" name="representative" />
+            <CustomTextField label="주소" name="location" />
+            <CustomTextField label="요약/간단 설명" name="summary" />
+            <CustomTextField label="웹사이트" name="website" />
+            <CustomTextField label="연락처" name="contact" />
+          </Grid>
+        </Grid>
+        <h3>회사 상세 설명</h3>
+        <ArticleEditor
+          onReady={(editor) => {
+            setDetailEditor(editor);
+          }}
+        />
+        <Button type="submit" variant="contained" color="secondary">
+          등록
+        </Button>{" "}
+        {data?._id && (
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={async () => {
+              if (typeof onDeleteClick === "function") {
+                await onDeleteClick(data);
               }
             }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <CustomTextField label="이름" name="name" />
-          <CustomTextField label="영문 이름" name="nameEng" />
-          <CustomTextField label="대표" name="representative" />
-          <CustomTextField label="주소" name="location" />
-          <CustomTextField label="요약/간단 설명" name="summary" />
-          <CustomTextField label="웹사이트" name="website" />
-          <CustomTextField label="연락처" name="contact" />
-        </Grid>
-      </Grid>
-      <h3>회사 상세 설명</h3>
-      <ArticleEditor
-        onReady={(editor) => {
-          setDetailEditor(editor);
-        }}
-      />
-      <Button type="submit" variant="contained" color="secondary">
-        등록
-      </Button>{" "}
-      {data?._id && (
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={async () => {
-            if (typeof onDeleteClick === "function") {
-              await onDeleteClick(data);
-            }
-          }}
-        >
-          삭제
-        </Button>
-      )}
-    </form>
+          >
+            삭제
+          </Button>
+        )}
+      </form>
+    </FormProvider>
   );
 }
 
@@ -196,10 +192,33 @@ function CompanyList(props) {
 }
 
 function SolutionEditor(props) {
-  const { onSubmit, companyId } = props;
+  const { data, companyId, onSubmit, onDeleteClick } = props;
+
   const [detailEditor, setDetailEditor] = useState(null);
   const [categoryTag, setCategoryTag] = useState("");
-  const form = useForm();
+  const defaultValues = useMemo(
+    () => ({
+      title: "",
+      summary: "",
+    }),
+    []
+  );
+
+  const form = useForm({ defaultValues: { ...defaultValues } });
+
+  useEffect(() => {
+    if (!detailEditor) return;
+
+    if (!data) {
+      form.reset({ ...defaultValues });
+      detailEditor.setData("");
+      setCategoryTag("");
+    } else {
+      form.reset({ ...data });
+      detailEditor.setData(data.detail || "");
+      setCategoryTag(data.categoryTag);
+    }
+  }, [data, detailEditor, defaultValues, form]);
 
   return (
     <FormProvider {...form}>
@@ -218,7 +237,7 @@ function SolutionEditor(props) {
           }
         })}
       >
-        <Grid container>
+        <Grid container spacing={4}>
           <Grid item xs={8}>
             <h3>솔루션 기본 정보</h3>
             <CustomTextField name="title" label="제목" />
@@ -299,22 +318,38 @@ export default function SolutionManager() {
   const [solutions, setSolutions] = useState([]);
   const [targetSolution, setTargetSolution] = useState(null);
 
+  const companyPaperRef = useRef();
+  const solutionPaperRef = useRef();
+
   useEffect(() => {
     getSolutionCompany().then((data) => setCompanies(data));
 
     if (targetCompany) {
-      getSolutionByCompanyId(targetCompany._id).then((data) =>
-        setSolutions(data)
-      );
+      getSolutionByCompanyId(targetCompany._id).then((data) => {
+        setSolutions(data);
+        setTargetSolution(null);
+      });
     }
   }, [targetCompany]);
+
+  function scrollToTargetAdjusted(ref) {
+    const element = ref.current;
+    const headerOffset = 150;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
 
   return (
     <div className="solution-manager">
       <h1>스마트도시 솔루션 관리 페이지</h1>
 
       <Grid container spacing={3}>
-        <Grid item xs={3}>
+        <Grid item xs={3} className="sidebar-left">
           {/* 왼쪽 사이드바: 솔루션 회사 리스트 및 선택한 회사에 따른 솔루션 리스트 */}
           <Paper>
             <CompanyList
@@ -325,6 +360,7 @@ export default function SolutionManager() {
                 } else {
                   setTargetCompany(null);
                 }
+                scrollToTargetAdjusted(companyPaperRef);
               }}
               companies={companies}
               target={targetCompany}
@@ -335,10 +371,12 @@ export default function SolutionManager() {
               <SolutionList
                 onClick={async (solution) => {
                   if (solution) {
-                    setTargetSolution(solution);
+                    const data = await getSolutionById(solution._id);
+                    setTargetSolution(data);
                   } else {
                     setTargetSolution(null);
                   }
+                  scrollToTargetAdjusted(solutionPaperRef);
                 }}
                 solutions={solutions}
                 target={targetSolution}
@@ -346,9 +384,9 @@ export default function SolutionManager() {
             </Paper>
           )}
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={9} className="sidebar-right">
           {/* 오른쪽 사이드바: 솔루션 회사 및 솔루션 생성/편집/삭제 */}
-          <Paper style={{ padding: "24px" }}>
+          <Paper ref={companyPaperRef}>
             <SolutionCompanyEditor
               data={targetCompany}
               onSubmit={async (company) => {
@@ -391,8 +429,9 @@ export default function SolutionManager() {
             />
           </Paper>
           {targetCompany && (
-            <Paper style={{ padding: "24px", marginBottom: "24px" }}>
+            <Paper ref={solutionPaperRef}>
               <SolutionEditor
+                data={targetSolution}
                 companyId={targetCompany._id}
                 onSubmit={async (data) => {
                   try {
