@@ -19,4 +19,15 @@
     overflow-y: auto;
     margin-bottom: 12px;
   }
+
+  .solution-editor {
+    .category-selector {
+      height: 820px;
+      overflow-y: auto;
+
+      li:first-child {
+        background-color: white;
+      }
+    }
+  }
 }

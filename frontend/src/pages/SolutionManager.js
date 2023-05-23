@@ -195,7 +195,7 @@ function SolutionEditor(props) {
   const { data, companyId, onSubmit, onDeleteClick } = props;
 
   const [detailEditor, setDetailEditor] = useState(null);
-  const [categoryTag, setCategoryTag] = useState("");
+  const [categoryTag, setCategoryTag] = useState([]);
   const defaultValues = useMemo(
     () => ({
       title: "",
@@ -212,7 +212,7 @@ function SolutionEditor(props) {
     if (!data) {
       form.reset({ ...defaultValues });
       detailEditor.setData("");
-      setCategoryTag("");
+      setCategoryTag([]);
     } else {
       form.reset({ ...data });
       detailEditor.setData(data.detail || "");
@@ -252,19 +252,27 @@ function SolutionEditor(props) {
           <Grid item xs={4}>
             <SolutionCategorySelector
               className="category-selector"
-              onChange={(categories) =>
-                setCategoryTag(
-                  Object.keys(categories)
-                    .filter((key) => categories[key])
-                    .join(",")
-                )
-              }
+              value={categoryTag}
+              onChange={(e) => setCategoryTag(e)}
             />
           </Grid>
         </Grid>
         <Button type="submit" variant="contained" color="secondary">
           등록
-        </Button>
+        </Button>{" "}
+        {data?._id && (
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={async () => {
+              if (typeof onDeleteClick === "function") {
+                await onDeleteClick(data);
+              }
+            }}
+          >
+            삭제
+          </Button>
+        )}
       </form>
     </FormProvider>
   );
@@ -322,15 +330,22 @@ export default function SolutionManager() {
   const solutionPaperRef = useRef();
 
   useEffect(() => {
+    // 회사 리스트 가져오기
     getSolutionCompany().then((data) => setCompanies(data));
 
     if (targetCompany) {
+      // 솔루션 리스트 가져오기
       getSolutionByCompanyId(targetCompany._id).then((data) => {
         setSolutions(data);
-        setTargetSolution(null);
       });
+
+      if (targetSolution) {
+        if (targetSolution.companyId !== targetCompany._id) {
+          setTargetSolution(null);
+        }
+      }
     }
-  }, [targetCompany]);
+  }, [targetCompany, targetSolution]);
 
   function scrollToTargetAdjusted(ref) {
     const element = ref.current;
@@ -349,8 +364,8 @@ export default function SolutionManager() {
       <h1>스마트도시 솔루션 관리 페이지</h1>
 
       <Grid container spacing={3}>
+        {/* 왼쪽 사이드바: 솔루션 회사 리스트 및 선택한 회사에 따른 솔루션 리스트 */}
         <Grid item xs={3} className="sidebar-left">
-          {/* 왼쪽 사이드바: 솔루션 회사 리스트 및 선택한 회사에 따른 솔루션 리스트 */}
           <Paper>
             <CompanyList
               onClick={async (company) => {
@@ -384,19 +399,13 @@ export default function SolutionManager() {
             </Paper>
           )}
         </Grid>
+        {/* 오른쪽 사이드바: 솔루션 회사 및 솔루션 생성/편집/삭제 */}
         <Grid item xs={9} className="sidebar-right">
-          {/* 오른쪽 사이드바: 솔루션 회사 및 솔루션 생성/편집/삭제 */}
           <Paper ref={companyPaperRef}>
             <SolutionCompanyEditor
               data={targetCompany}
               onSubmit={async (company) => {
-                if (
-                  window.confirm(
-                    `정말로 ${company.name} 회사를 ${
-                      company._id ? "수정" : "등록"
-                    }하겠습니까?`
-                  )
-                ) {
+                if (window.confirm("정말로 해당 요청을 보내겠습니까?")) {
                   try {
                     const res = await axios.post(
                       "/v1/solutions/companies",
@@ -410,11 +419,7 @@ export default function SolutionManager() {
                 }
               }}
               onDeleteClick={async (company) => {
-                if (
-                  window.confirm(
-                    `정말로 ${company.name} 회사를 삭제하겠습니까?`
-                  )
-                ) {
+                if (window.confirm("정말로 삭제하겠습니까?")) {
                   try {
                     await axios.delete(
                       `/v1/solutions/companies/${company._id}`
@@ -433,14 +438,26 @@ export default function SolutionManager() {
               <SolutionEditor
                 data={targetSolution}
                 companyId={targetCompany._id}
-                onSubmit={async (data) => {
-                  try {
-                    const res = await axios.post(`/v1/solutions`, data);
-                    setTargetSolution(res.data);
-                    window.alert("솔루션 등록에 성공했습니다!");
-                  } catch (err) {
-                    window.alert(err.message);
-                    setTargetSolution(null);
+                onSubmit={async (solution) => {
+                  if (window.confirm("정말로 해당 요청을 보내겠습니까?")) {
+                    try {
+                      const res = await axios.post(`/v1/solutions`, solution);
+                      setTargetSolution(res.data);
+                      window.alert("성공");
+                    } catch (err) {
+                      window.alert(err.message);
+                    }
+                  }
+                }}
+                onDeleteClick={async (solution) => {
+                  if (window.confirm("정말로 삭제하겠습니까?")) {
+                    try {
+                      await axios.delete(`/v1/solutions/${solution._id}`);
+                      setTargetSolution(null);
+                      window.alert("성공");
+                    } catch (err) {
+                      window.alert(err.message);
+                    }
                   }
                 }}
               />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Checkbox,
@@ -14,40 +14,26 @@ import { ExpandLess, ExpandMore } from "@material-ui/icons";
 import categorySolution from "../shared/CategorySolution";
 
 export default function CategorySelector(props) {
-  const { onChange, ...restProps } = props;
-  const [checked, setChecked] = useState(null);
-  const [collapsed, setCollapsed] = useState(null);
+  /**
+   * `value`: An Array where checked categories are
+   */
+  const { value, onChange, ...restProps } = props;
+  const [spread, setSpread] = useState({});
 
-  useEffect(() => {
-    // initialize checked state
-    if (!checked) {
-      const newChecked = {};
-      categorySolution.forEach((item) => {
-        item.subs.forEach((sub) => {
-          newChecked[sub] = false;
-        });
-      });
+  /**
+   * `checked`: An dictionary to store which category is checked
+   */
+  const checked =
+    value?.reduce((acc, cur) => {
+      acc[cur] = true;
+      return acc;
+    }, {}) || {};
 
-      setChecked(newChecked);
-    }
-
-    // initialilze collapsed state
-    if (!collapsed) {
-      const newCollapsed = {};
-      categorySolution.forEach((item) => {
-        newCollapsed[item.main] = true;
-      });
-
-      setCollapsed(newCollapsed);
-    }
-  }, []);
-
-  useEffect(() => {
-    // checked 상태가 변경되면 onChange 이벤트 호출
+  const invokeChange = (checked) => {
     if (typeof onChange === "function") {
-      checked && onChange(checked);
+      onChange(Object.keys(checked).filter((category) => checked[category]));
     }
-  }, [checked]);
+  };
 
   return (
     <List
@@ -56,69 +42,68 @@ export default function CategorySelector(props) {
       disablePadding
       {...restProps}
     >
-      {checked &&
-        categorySolution.map((value) => {
-          let orChecked = false;
-          let andChecked = true;
+      {categorySolution.map((value) => {
+        let orChecked = false;
+        let andChecked = true;
 
-          value.subs.forEach((sub) => {
-            orChecked |= checked[sub];
-            andChecked &= checked[sub];
-          });
+        value.subs.forEach((sub) => {
+          orChecked |= !!checked[sub];
+          andChecked &= !!checked[sub];
+        });
 
-          return (
-            <>
-              {/* main 카테고리 */}
-              <ListItem dense>
-                <Checkbox
-                  edge="start"
-                  indeterminate={!andChecked && orChecked}
-                  checked={andChecked}
-                  onClick={() => {
-                    const newChecked = { ...checked };
-                    value.subs.forEach((sub) => {
-                      newChecked[sub] = !andChecked;
-                    });
+        return (
+          <div key={value.main}>
+            {/* main 카테고리 */}
+            <ListItem dense>
+              <Checkbox
+                edge="start"
+                indeterminate={!andChecked && orChecked}
+                checked={andChecked}
+                onClick={() => {
+                  const newChecked = { ...checked };
+                  value.subs.forEach((sub) => {
+                    newChecked[sub] = !andChecked;
+                  });
 
-                    setChecked(newChecked);
-                  }}
-                />
-                <ListItemText primary={value.main} />
-                <IconButton
-                  size="small"
-                  onClick={() => {
-                    const newCollapsed = { ...collapsed };
-                    newCollapsed[value.main] = !newCollapsed[value.main];
+                  invokeChange(newChecked);
+                }}
+              />
+              <ListItemText primary={value.main} />
+              <IconButton
+                size="small"
+                onClick={() => {
+                  const newSpread = { ...spread };
+                  newSpread[value.main] = !newSpread[value.main];
 
-                    setCollapsed(newCollapsed);
-                  }}
-                >
-                  {collapsed[value.main] ? <ExpandMore /> : <ExpandLess />}
-                </IconButton>
-              </ListItem>
-              {/* sub 카테고리 */}
-              <Collapse in={!collapsed[value.main]} timeout="auto">
-                <List disablePadding>
-                  {value.subs.map((sub) => (
-                    <ListItem dense>
-                      <Checkbox
-                        size="small"
-                        onClick={() => {
-                          const newChecked = { ...checked };
-                          newChecked[sub] = !newChecked[sub];
+                  setSpread(newSpread);
+                }}
+              >
+                {spread[value.main] ? <ExpandLess /> : <ExpandMore />}
+              </IconButton>
+            </ListItem>
+            {/* sub 카테고리 */}
+            <Collapse in={!!spread[value.main]} timeout="auto">
+              <List disablePadding>
+                {value.subs.map((sub) => (
+                  <ListItem dense key={sub}>
+                    <Checkbox
+                      size="small"
+                      onClick={() => {
+                        const newChecked = { ...checked };
+                        newChecked[sub] = !newChecked[sub];
 
-                          setChecked(newChecked);
-                        }}
-                        checked={checked[sub]}
-                      />
-                      <ListItemText primary={sub} />
-                    </ListItem>
-                  ))}
-                </List>
-              </Collapse>
-            </>
-          );
-        })}
+                        invokeChange(newChecked);
+                      }}
+                      checked={!!checked[sub]}
+                    />
+                    <ListItemText primary={sub} />
+                  </ListItem>
+                ))}
+              </List>
+            </Collapse>
+          </div>
+        );
+      })}
     </List>
   );
 }
