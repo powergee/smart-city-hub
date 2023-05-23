@@ -83,22 +83,23 @@ router.delete("/companies/:id", async (ctx: Koa.Context) => {
  * `companyId`: companyId에 해당하는 솔루션 회사의 솔루션만 가져옵니다.
  *
  * <요청 본문>
- * `categories`: 원하는 카테고리를 배열 형태로 요청하면,
+ * `categoryTag`: 원하는 카테고리를 배열 형태로 요청하면,
  *               그에 해당하는 카테고리만 가져옵니다.
  */
 router.get("/", async (ctx: Koa.Context) => {
   const filter: FilterQuery<Solution> = {};
 
-  let categoryTag: RegExp = /(?:)/;
-  if (ctx.request.body.categories) {
-    // 콤마로 구분된 카테고리 태그 쿼리를 위한 정규표현식 설정
-    const categories: string[] = ctx.request.body.categories;
+  // 요청 본문 처리
+  const { categoryTag } = ctx.request.body;
+  if (categoryTag) {
+    if (!Array.isArray(categoryTag)) {
+      ctx.throw(400, "categoryTag must be array of strings");
+    }
 
-    categoryTag = new RegExp(
-      categories.map((cat) => `(\\b${cat}\\b)`).join("|")
-    );
+    filter.categoryTag = {
+      $in: categoryTag,
+    };
   }
-  filter.categoryTag = categoryTag;
 
   // 쿼리 처리
   const { companyId } = ctx.request.query;
