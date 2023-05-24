@@ -12,29 +12,23 @@ import {
 } from "../components";
 
 function SolutionPage() {
+  const [categoryTag, setCategoryTag] = useState([]);
+  const [solutionCompany, setSolutionCompany] = useState([]);
+
+  useEffect(() => {
+    async function getSolutionCompany(tag) {
+      const res = await axios.post("/v1/solutions/cat2com", tag);
+      setSolutionCompany(res.data);
+    }
+
+    getSolutionCompany(categoryTag);
+  }, [categoryTag]);
+
   const [company, setCompany] = useState(null);
   const { search } = useLocation();
 
   const searchParams = new URLSearchParams(search);
   const companyId = searchParams.get("company");
-
-  useEffect(() => {
-    async function getCompany(id) {
-      try {
-        const res = await axios.get(`/v1/solutions/companies/${id}`);
-        setCompany(res.data);
-      } catch (err) {
-        window.alert(err.message);
-        setCompany(null);
-      }
-    }
-
-    if (companyId) {
-      getCompany(companyId);
-    } else {
-      setCompany(null);
-    }
-  }, [companyId]);
 
   return (
     <ContentContainer
@@ -45,23 +39,20 @@ function SolutionPage() {
     >
       <Grid container spacing={3}>
         <Grid item xs={9}>
+          {/* Left Section */}
           <Paper>
-            {/* Left Section */}
             {company && <SolutionCompanyView data={company} />}
-            <SolutionCompanyTable />;
+            <SolutionCompanyTable
+              data={solutionCompany.map((item) => item.company)}
+            />
           </Paper>
         </Grid>
         <Grid item xs={3}>
+          {/* Right Section: Category Select Sidebar */}
           <Paper>
-            {/* Right Section: Category Select Sidebar */}
             <SolutionCategorySelector
-              onChange={(categories) => {
-                console.log(
-                  Object.keys(categories)
-                    .filter((key) => categories[key])
-                    .join(",")
-                );
-              }}
+              value={categoryTag}
+              onChange={(value) => setCategoryTag(value)}
             />
           </Paper>
         </Grid>
