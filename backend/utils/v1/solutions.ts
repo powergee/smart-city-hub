@@ -76,30 +76,75 @@ router.delete("/companies/:id", async (ctx: Koa.Context) => {
 });
 
 /**
+ * POST /solutions/cat2com
+ * 본문의 카테고리 문자열 배열을 통해 해당 카테고리의 솔루션을
+ * `solutions`라는 필드와 함께 간단한 회사 정보를 포함하여 응답합니다.
+ *
+ * <요청 본문>
+ * categoryTag 문자열 배열
+ * 예: ["스마트 건설", "스마트 빌딩"]
+ */
+router.post("/cat2com", async (ctx: Koa.Context) => {
+  const categoryTag: string[] = ctx.request.body;
+
+  if (categoryTag) {
+    // 예외 처리: categoryTag가 배열이 아닌 경우
+    if (!Array.isArray(categoryTag)) {
+      ctx.throw(400, "categoryTag must be array of strings");
+    }
+  }
+
+  // 먼저, categoryTag에 속한 solution 문서들을 가져온다.
+  const solutions: Solution[] = await SolutionModel.find(
+    { categoryTag: { $in: categoryTag } },
+    "-detail"
+  );
+
+  const res: {
+    company: SolutionCompany;
+    solutions: Solution[];
+  }[] = [];
+
+  for (let i = 0; i < solutions.length; i++) {
+    const { companyId } = solutions[i];
+
+    // Solution에 맞는 SolutionCompany 찾기
+    let index = -1;
+    for (let j = 0; j < res.length; j++) {
+      if (res[j].company._id === companyId) {
+        index = j;
+        break;
+      }
+    }
+
+    // Solution에 맞는 SolutionCompany가 없으면 쿼리하여 추가
+    if (index === -1) {
+      index = res.length;
+      res.push({
+        company: await SolutionCompanyModel.findById(
+          companyId,
+          "name nameEng summary"
+        ),
+        solutions: [],
+      });
+    }
+
+    // Solution 추가
+    res[index].solutions.push(solutions[i]);
+  }
+
+  ctx.body = res;
+});
+
+/**
  * GET /solutions/
  * 모든 솔루션 정보를 `detail` 필드를 제외하고 가져옵니다.
  *
  * <사용 가능한 쿼리>
  * `companyId`: companyId에 해당하는 솔루션 회사의 솔루션만 가져옵니다.
- *
- * <요청 본문>
- * `categoryTag`: 원하는 카테고리를 배열 형태로 요청하면,
- *               그에 해당하는 카테고리만 가져옵니다.
  */
 router.get("/", async (ctx: Koa.Context) => {
   const filter: FilterQuery<Solution> = {};
-
-  // 요청 본문 처리
-  const { categoryTag } = ctx.request.body;
-  if (categoryTag) {
-    if (!Array.isArray(categoryTag)) {
-      ctx.throw(400, "categoryTag must be array of strings");
-    }
-
-    filter.categoryTag = {
-      $in: categoryTag,
-    };
-  }
 
   // 쿼리 처리
   const { companyId } = ctx.request.query;
