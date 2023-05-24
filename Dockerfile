@@ -8,7 +8,7 @@ RUN npm run build
 
 FROM node:12 AS product
 COPY ./backend /app
-COPY --from=builder /frontend /app/client
+COPY --from=builder /frontend/build /app/client
 
 # build backend
 WORKDIR /app
