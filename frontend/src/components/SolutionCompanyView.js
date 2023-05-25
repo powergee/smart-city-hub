@@ -1,28 +1,53 @@
+import "./SolutionCompanyView.scss";
+
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, Paper } from "@material-ui/core";
+import { DetailBox } from ".";
 
 export default function SolutionCompanyView(props) {
-  const { data } = props;
+  const { solutions, company } = props;
 
   return (
     <div className="solution-company-view">
       <Grid container>
-        <Grid item xs={6}>
-          <div className="section-info">
-            <div className="c-name">{data.name}</div>
-            <div className="c-name-eng">{data.nameEng}</div>
-            <div className="">대표자: {data.representative}</div>
-            <div className="">위치: {data.location}</div>
-            <div className="">연락처: {data.contact}</div>
-            <div className="">웹사이트: {data.website}</div>
-            <div className="">{data.summary}</div>
+        <Grid item xs={8}>
+          <div className="c-name">{company.name}</div>
+          <div className="c-name-eng">{company.nameEng}</div>
+          <div className="c-info-container">
+            <div className="c-info-item">
+              <div>대표자</div>
+              <div>{company.representative}</div>
+            </div>
+            <div className="c-info-item">
+              <div>위치</div>
+              <div>{company.location}</div>
+            </div>
+            <div className="c-info-item">
+              <div>연락처</div>
+              <div>{company.contact}</div>
+            </div>
+            <div className="c-info-item">
+              <div>웹사이트</div>
+              <div>
+                <a
+                  href={company.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {company.website}
+                </a>
+              </div>
+            </div>
           </div>
+          <div>{company.summary}</div>
         </Grid>
-        <Grid item xs={6}>
-          회사 로고 및 솔루션 보유 개수
+        <Grid item xs={4}>
+          <img className="c-logo" src={company.logo} alt="company" />
         </Grid>
       </Grid>
-      <div dangerouslySetInnerHTML={{ __html: data.detail }} />
+      <DetailBox height={300}>
+        <div dangerouslySetInnerHTML={{ __html: company.detail }} />
+      </DetailBox>
     </div>
   );
 }

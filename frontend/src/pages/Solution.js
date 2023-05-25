@@ -52,16 +52,27 @@ function SolutionPage() {
       <Grid container spacing={3}>
         <Grid item xs={9}>
           {/* Left Section */}
-          <Paper>
-            {company && <SolutionCompanyView data={company} />}
-            <SolutionCompanyTable
-              data={solutionCompany}
-              href={(id) => `?companyId=${id}`}
-              onClick={(item) => {
-                history.push(`?companyId=${item.company._id}`);
-              }}
-            />
-          </Paper>
+          <div>
+            {company && (
+              <SolutionCompanyView
+                company={company}
+                solutions={
+                  solutionCompany.find(
+                    (item) => item.company._id === company._id
+                  )?.solutions
+                }
+              />
+            )}
+            <Paper>
+              <SolutionCompanyTable
+                data={solutionCompany}
+                href={(id) => `?companyId=${id}`}
+                onClick={(item) => {
+                  history.push(`?companyId=${item.company._id}`);
+                }}
+              />
+            </Paper>
+          </div>
         </Grid>
         <Grid item xs={3}>
           {/* Right Section: Category Select Sidebar */}
