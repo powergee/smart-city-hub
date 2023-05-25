@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import { Paper, Grid } from "@material-ui/core";
@@ -14,6 +14,7 @@ import {
 function SolutionPage() {
   const [categoryTag, setCategoryTag] = useState([]);
   const [solutionCompany, setSolutionCompany] = useState([]);
+  const [company, setCompany] = useState(null);
 
   useEffect(() => {
     async function getSolutionCompany(tag) {
@@ -24,11 +25,22 @@ function SolutionPage() {
     getSolutionCompany(categoryTag);
   }, [categoryTag]);
 
-  const [company, setCompany] = useState(null);
   const { search } = useLocation();
-
   const searchParams = new URLSearchParams(search);
-  const companyId = searchParams.get("company");
+  const companyId = searchParams.get("companyId");
+
+  useEffect(() => {
+    async function getCompany(id) {
+      const res = await axios.get(`/v1/solutions/companies/${id}`);
+      setCompany(res.data);
+    }
+
+    if (companyId && companyId !== "") {
+      getCompany(companyId);
+    }
+  }, [companyId]);
+
+  const history = useHistory();
 
   return (
     <ContentContainer
@@ -43,7 +55,11 @@ function SolutionPage() {
           <Paper>
             {company && <SolutionCompanyView data={company} />}
             <SolutionCompanyTable
-              data={solutionCompany.map((item) => item.company)}
+              data={solutionCompany}
+              href={(id) => `?companyId=${id}`}
+              onClick={(item) => {
+                history.push(`?companyId=${item.company._id}`);
+              }}
             />
           </Paper>
         </Grid>
