@@ -39,7 +39,7 @@ function SolutionCards(props) {
           <Card variant="outlined">
             <CardMedia
               title="solution"
-              image="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+              image={solution.mainImage}
               style={{ height: 160 }}
             />
             <CardContent>
