@@ -6,6 +6,7 @@ interface Solution extends Document {
   summary: string;
   categoryTag: string[];
   detail: string;
+  mainImage: string;
 }
 
 const schema = new Schema({
@@ -14,6 +15,7 @@ const schema = new Schema({
   summary: String,
   categoryTag: [String],
   detail: String,
+  mainImage: String,
 });
 
 const SolutionModel = model<Solution>("Solution", schema);

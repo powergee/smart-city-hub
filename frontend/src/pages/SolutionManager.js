@@ -196,6 +196,7 @@ function SolutionEditor(props) {
 
   const [detailEditor, setDetailEditor] = useState(null);
   const [categoryTag, setCategoryTag] = useState([]);
+  const [mainImage, setMainImage] = useState("");
   const defaultValues = useMemo(
     () => ({
       title: "",
@@ -213,10 +214,12 @@ function SolutionEditor(props) {
       form.reset({ ...defaultValues });
       detailEditor.setData("");
       setCategoryTag([]);
+      setMainImage("");
     } else {
       form.reset({ ...data });
       detailEditor.setData(data.detail || "");
       setCategoryTag(data.categoryTag);
+      setMainImage(data.mainImage);
     }
   }, [data, detailEditor, defaultValues, form]);
 
@@ -230,6 +233,7 @@ function SolutionEditor(props) {
             ...formData,
             categoryTag,
             detail: detailEditor?.getData(),
+            mainImage,
           };
 
           if (typeof onSubmit === "function") {
@@ -242,6 +246,27 @@ function SolutionEditor(props) {
             <h3>솔루션 기본 정보</h3>
             <CustomTextField name="title" label="제목" />
             <CustomTextField name="summary" label="요약" />
+            <img
+              className="solution-main"
+              alt="솔루션 대표 이미지"
+              src={mainImage}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(event) => {
+                const file = event.target.files[0];
+
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onloadend = function () {
+                    setMainImage(reader.result);
+                  };
+
+                  reader.readAsDataURL(file);
+                }
+              }}
+            />
             <h3>솔루션 상세 정보</h3>
             <ArticleEditor
               onReady={(editor) => {
