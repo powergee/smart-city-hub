@@ -1,11 +1,80 @@
 import "./SolutionCompanyView.scss";
 
 import React from "react";
-import { Grid, Paper } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+
+import {
+  Grid,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  Badge,
+} from "@material-ui/core";
 import { DetailBox } from ".";
 
+function SolutionCards(props) {
+  const { solutions, col, solutionPath } = props;
+  const row = Math.ceil(solutions.length / col);
+
+  const history = useHistory();
+
+  const rows = [];
+  for (let i = 0; i < row; i++) {
+    const cols = [];
+
+    for (let j = 0; j < col; j++) {
+      const index = i * col + j;
+
+      if (solutions.length < index + 1) {
+        break;
+      }
+
+      const solution = solutions[index];
+
+      cols.push(
+        <Grid item xs={Math.floor(12 / col)}>
+          <Card variant="outlined">
+            <CardMedia
+              title="solution"
+              image="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+              style={{ height: 160 }}
+            />
+            <CardContent>
+              <Typography variant="h6" component="h6">
+                {solution.title}
+              </Typography>
+              <Typography color="textSecondary">{solution.summary}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                size="small"
+                onClick={() => {
+                  history.push(solutionPath(solution));
+                }}
+              >
+                자세히 보기
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      );
+    }
+
+    rows.push(
+      <Grid container spacing={2}>
+        {cols}
+      </Grid>
+    );
+  }
+
+  return <div>{rows}</div>;
+}
+
 export default function SolutionCompanyView(props) {
-  const { solutions, company } = props;
+  const { solutions, company, solutionPath } = props;
 
   return (
     <div className="solution-company-view">
@@ -48,6 +117,24 @@ export default function SolutionCompanyView(props) {
       <DetailBox height={300}>
         <div dangerouslySetInnerHTML={{ __html: company.detail }} />
       </DetailBox>
+      {solutions && (
+        <div>
+          <Badge color="secondary" badgeContent={solutions.length}>
+            <Typography
+              variant="h5"
+              component="h5"
+              style={{ fontWeight: "bold", marginBottom: "16px" }}
+            >
+              보유 솔루션
+            </Typography>
+          </Badge>
+          <SolutionCards
+            solutions={solutions}
+            col={3}
+            solutionPath={solutionPath}
+          />
+        </div>
+      )}
     </div>
   );
 }
