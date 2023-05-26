@@ -1,3 +1,5 @@
+import "./Solution.scss";
+
 import React, { useState, useEffect } from "react";
 import { Route, Switch, useLocation, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -52,7 +54,7 @@ function SolutionPage() {
       <Grid container spacing={3}>
         <Grid item xs={9}>
           {/* Left Section */}
-          <div>
+          <div className="left-section">
             {company && (
               <SolutionCompanyView
                 company={company}
@@ -61,6 +63,7 @@ function SolutionPage() {
                     (item) => item.company._id === company._id
                   )?.solutions
                 }
+                solutionPath={(item) => `/solution/${item._id}`}
               />
             )}
             <Paper>
@@ -76,7 +79,7 @@ function SolutionPage() {
         </Grid>
         <Grid item xs={3}>
           {/* Right Section: Category Select Sidebar */}
-          <Paper>
+          <Paper className="right-section">
             <SolutionCategorySelector
               value={categoryTag}
               onChange={(value) => setCategoryTag(value)}
