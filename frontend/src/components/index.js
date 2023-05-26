@@ -14,3 +14,4 @@ export { default as SolutionCategorySelector } from "./SolutionCategorySelector"
 export { default as SolutionCompanyTable } from "./SolutionCompanyTable";
 export { default as SolutionCompanyView } from "./SolutionCompanyView";
 export { default as DetailBox } from "./DetailBox";
+export { default as SolutionView } from "./SolutionView";

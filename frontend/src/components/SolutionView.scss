@@ -1,0 +1,54 @@
+.solution-view {
+  .s-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 16px 0;
+    color: #004db3;
+  }
+
+  .s-summary {
+    font-size: 1.2rem;
+    color: #777;
+    margin: 8px 0;
+  }
+
+  .s-category-container {
+    .s-category {
+      display: inline-block;
+      padding: 2px 4px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+
+      margin-right: 4px;
+      font-size: 0.8rem;
+      background-color: #eee;
+    }
+  }
+
+  .s-company {
+    margin-top: 24px;
+    padding: 8px;
+
+    div {
+      margin: 2px 0;
+      font-size: 0.9rem;
+    }
+
+    .sc-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .sc-nameEng {
+      color: #777;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+  }
+
+  .s-detail {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 24px 0;
+  }
+}
