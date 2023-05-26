@@ -1,7 +1,13 @@
 import "./Solution.scss";
 
 import React, { useState, useEffect } from "react";
-import { Route, Switch, useLocation, useHistory } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  useLocation,
+  useHistory,
+  useParams,
+} from "react-router-dom";
 import axios from "axios";
 
 import { Paper, Grid } from "@material-ui/core";
@@ -11,9 +17,10 @@ import {
   SolutionCategorySelector,
   SolutionCompanyTable,
   SolutionCompanyView,
+  SolutionView,
 } from "../components";
 
-function SolutionPage() {
+function SolutionCompanyPage() {
   const [categoryTag, setCategoryTag] = useState([]);
   const [solutionCompany, setSolutionCompany] = useState([]);
   const [company, setCompany] = useState(null);
@@ -91,11 +98,45 @@ function SolutionPage() {
   );
 }
 
+function SolutionPage(props) {
+  const { id } = useParams();
+  const [solution, setSolution] = useState(null);
+  const [company, setCompany] = useState(null);
+
+  useEffect(() => {
+    async function getSolution(id) {
+      const res = await axios.get(`/v1/solutions/${id}`);
+      setSolution(res.data);
+    }
+
+    id && getSolution(id);
+  }, [id]);
+
+  useEffect(() => {
+    async function getCompany(id) {
+      const res = await axios.get(`/v1/solutions/companies/${id}?detail=false`);
+      setCompany(res.data);
+    }
+
+    solution && getCompany(solution.companyId);
+  }, [solution]);
+
+  return (
+    <ContentContainer
+      currentPath="/solution/:id"
+      title="스마트도시 솔루션"
+      subtitle="Smart City Solution"
+    >
+      <SolutionView solution={solution} company={company} />
+    </ContentContainer>
+  );
+}
+
 export default function Solution() {
   return (
     <Switch>
-      <Route exact path="/solution" component={SolutionPage} />
-      <Route exact path="/solution/:id" />
+      <Route exact path="/solution" component={SolutionCompanyPage} />
+      <Route exact path="/solution/:id" component={SolutionPage} />
     </Switch>
   );
 }
