@@ -20,10 +20,18 @@ import {
   SolutionView,
 } from "../components";
 
+import { updateCategoryTag } from "../shared/LocalStorage";
+
 function SolutionCompanyPage() {
-  const [categoryTag, setCategoryTag] = useState([]);
+  const [categoryTag, setCategoryTag] = useState(null);
   const [solutionCompany, setSolutionCompany] = useState([]);
   const [company, setCompany] = useState(null);
+
+  useEffect(() => {
+    if (!categoryTag) {
+      setCategoryTag(updateCategoryTag());
+    }
+  }, []);
 
   useEffect(() => {
     async function getSolutionCompany(tag) {
@@ -31,6 +39,7 @@ function SolutionCompanyPage() {
       setSolutionCompany(res.data);
     }
 
+    updateCategoryTag(categoryTag);
     getSolutionCompany(categoryTag);
   }, [categoryTag]);
 
