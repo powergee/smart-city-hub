@@ -55,6 +55,8 @@ function SolutionCompanyPage() {
 
     if (companyId && companyId !== "") {
       getCompany(companyId);
+    } else {
+      setCompany(null);
     }
   }, [companyId]);
 
