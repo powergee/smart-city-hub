@@ -111,7 +111,7 @@ router.post("/cat2com", async (ctx: Koa.Context) => {
     // Solution에 맞는 SolutionCompany 찾기
     let index = -1;
     for (let j = 0; j < res.length; j++) {
-      if (res[j].company._id === companyId) {
+      if (companyId.equals(res[j].company._id)) {
         index = j;
         break;
       }
