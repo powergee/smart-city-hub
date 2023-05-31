@@ -11,8 +11,6 @@ import {
 export default function CompanyTable(props) {
   const { data, href, onClick } = props;
 
-  console.log(data);
-
   return (
     <TableContainer className="solution-company-table">
       <Table>
