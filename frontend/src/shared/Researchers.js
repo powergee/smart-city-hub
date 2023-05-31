@@ -6,13 +6,13 @@ import resPSC from "../images/res-PSC.jpg";
 import resPSE from "../images/res-PSE.jpg";
 import resYCH from "../images/res-YCH.jpg";
 
-import resProjHMH from "../images/res-project-HMH.png";
+import resProjHMH from "../images/res-project-HMH.jpg";
 import resProjKKI from "../images/res-project-KKI.jpg";
 import resProjKKS from "../images/res-project-KKS.jpg";
-import resProjLS from "../images/res-project-LS.png";
-import resProjPH from "../images/res-project-PH.png";
+import resProjLS from "../images/res-project-LS.jpg";
+import resProjPH from "../images/res-project-PH.jpg";
 import resProjPHM from "../images/res-project-PHM.jpg";
-import resProjPJ from "../images/res-project-PJ.png";
+import resProjPJ from "../images/res-project-PJ.jpg";
 import resProjSSB from "../images/res-project-SSB.jpg";
 
 function getGlobalRes() {
