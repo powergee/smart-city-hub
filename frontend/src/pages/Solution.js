@@ -82,6 +82,7 @@ function SolutionCompanyPage() {
                   )?.solutions
                 }
                 solutionPath={(item) => `/solution/${item._id}`}
+                posterPath={(item) => `/v1/solutions/poster/${item._id}`}
               />
             )}
             <Paper>

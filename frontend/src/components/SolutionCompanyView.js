@@ -16,7 +16,7 @@ import {
 import { DetailBox } from ".";
 
 function SolutionCards(props) {
-  const { solutions, col, solutionPath } = props;
+  const { solutions, col, solutionPath, posterPath } = props;
   const row = Math.ceil(solutions.length / col);
 
   const history = useHistory();
@@ -39,7 +39,9 @@ function SolutionCards(props) {
           <Card variant="outlined">
             <CardMedia
               title="solution"
-              image={solution.mainImage}
+              image={
+                typeof posterPath === "function" ? posterPath(solution) : null
+              }
               style={{ height: 160 }}
             />
             <CardContent>
@@ -74,7 +76,7 @@ function SolutionCards(props) {
 }
 
 export default function SolutionCompanyView(props) {
-  const { solutions, company, solutionPath } = props;
+  const { solutions, company, solutionPath, posterPath } = props;
 
   return (
     <div className="solution-company-view">
@@ -132,6 +134,7 @@ export default function SolutionCompanyView(props) {
             solutions={solutions}
             col={3}
             solutionPath={solutionPath}
+            posterPath={posterPath}
           />
         </div>
       )}
