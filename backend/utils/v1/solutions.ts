@@ -1,6 +1,7 @@
 import Koa from "koa";
 import Router from "koa-router";
 import BodyParser from "koa-bodyparser";
+import mime from "mime-types";
 
 import {
   SolutionCompany,
@@ -97,7 +98,7 @@ router.post("/cat2com", async (ctx: Koa.Context) => {
   // 먼저, categoryTag에 속한 solution 문서들을 가져온다.
   const solutions: Solution[] = await SolutionModel.find(
     { categoryTag: { $in: categoryTag } },
-    "-detail"
+    "companyId title summary categoryTag"
   );
 
   const res: {
@@ -152,7 +153,40 @@ router.get("/", async (ctx: Koa.Context) => {
     filter.companyId = companyId;
   }
 
-  ctx.body = await SolutionModel.find(filter, "-detail");
+  ctx.body = await SolutionModel.find(
+    filter,
+    "companyId title summary categoryTag"
+  );
+});
+
+router.get("/poster/:id", async (ctx: Koa.Context) => {
+  const id = ctx.params.id;
+  const solution: Solution = await SolutionModel.findById(id, "mainImage");
+
+  if (!solution) {
+    ctx.throw(404, "No document according to given id");
+  }
+
+  if (!solution.mainImage) {
+    ctx.throw(404, "No poster was founded");
+  }
+
+  const base64Data = solution.mainImage.split(",");
+  const imageData = Buffer.from(base64Data[1], "base64");
+
+  const match = base64Data[0].match(/data:([^;]+);base64/i);
+  let mimeType = "application/octet-stream";
+  if (match) {
+    mimeType = match[1];
+  }
+
+  // 파일 응답 설정
+  ctx.set(
+    "Content-Disposition",
+    `attachment; filename=${id}.${mime.extension(mimeType)}`
+  ); // 다운로드할 파일 이름 설정
+  ctx.set("Content-Type", mimeType); // 파일의 MIME 타입 설정
+  ctx.body = imageData; // base64 데이터를 response body에 할당
 });
 
 /**
