@@ -6,7 +6,7 @@ import {
   deleteArticle as deleteArticleFromBack,
 } from "../shared/BackendRequests";
 import { useHistory } from "react-router-dom";
-import { withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import LockIcon from "@material-ui/icons/Lock";
 import { IconButton, Button } from "@material-ui/core";
 import CreateIcon from "@material-ui/icons/Create";
@@ -16,12 +16,13 @@ import "./GeneralArticleView.scss";
 import { dateToString } from "../shared/DateToString";
 import getToken from "../shared/GetToken";
 
-function GeneralArticleView(props) {
+export default function GeneralArticleView(props) {
   const { listLink } = props;
   const articleId = props.match.params.articleId;
 
   const [article, setArticle] = useState(undefined);
   const [files, setFiles] = useState([]);
+  const [cookies] = useCookies();
   const history = useHistory();
 
   useEffect(() => {
@@ -145,7 +146,7 @@ function GeneralArticleView(props) {
             ))}
           </div>
 
-          {getToken(props.cookies) && (
+          {getToken(cookies) && (
             <div className="article-edit">
               <Button
                 variant="contained"
@@ -172,5 +173,3 @@ function GeneralArticleView(props) {
     </React.Fragment>
   );
 }
-
-export default withCookies(GeneralArticleView);

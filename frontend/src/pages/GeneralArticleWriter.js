@@ -12,7 +12,7 @@ import {
   Switch,
 } from "@material-ui/core";
 import path from "path";
-import { withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import "./GeneralArticleWriter.scss";
 import { Prompt, useHistory } from "react-router-dom";
 import {
@@ -22,7 +22,7 @@ import {
   getFileInfo,
 } from "../shared/BackendRequests";
 
-function GeneralArticleWriter(props) {
+export default function GeneralArticleWriter(props) {
   const { link, kind } = props;
   const articleId = props?.match?.params?.articleId;
 
@@ -39,9 +39,10 @@ function GeneralArticleWriter(props) {
   const [saveButtonText, setSaveButtonText] = useState("저장하기");
   const [saveButtonColor, setSaveButtonColor] = useState("primary");
   const [routeToMove, setRouteToMove] = useState(undefined);
+  const [cookies] = useCookies();
 
   useEffect(() => {
-    const token = getToken(props.cookies);
+    const token = getToken(cookies);
     if (!token || !token.isManager) {
       alert("글을 작성할 권한이 없습니다. 관리자 계정으로 로그인해주세요.");
       history.push(link);
@@ -81,7 +82,7 @@ function GeneralArticleWriter(props) {
           history.push(link);
         });
     }
-  }, [articleId, editor, history, link, props.cookies]);
+  }, [articleId, editor, history, link, cookies]);
 
   useEffect(() => {
     if (routeToMove === undefined) {
@@ -308,5 +309,3 @@ function GeneralArticleWriter(props) {
     </React.Fragment>
   );
 }
-
-export default withCookies(GeneralArticleWriter);

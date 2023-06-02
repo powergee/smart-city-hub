@@ -3,13 +3,14 @@ import "./NavigationBar.scss";
 import logo from "../images/hub-logo.png";
 import { useHistory } from "react-router-dom";
 import getToken from "../shared/GetToken";
-import { withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import { tryLogout } from "../shared/BackendRequests";
 
-function NavigationBar(props) {
+export default function NavigationBar(props) {
   const uosURL = "https://www.uos.ac.kr/";
   const history = useHistory();
-  const token = getToken(props.cookies);
+  const [cookies] = useCookies();
+  const token = getToken(cookies);
 
   function getLinkHandler(url) {
     return () => {
@@ -209,5 +210,3 @@ function NavigationBar(props) {
     </header>
   );
 }
-
-export default withCookies(NavigationBar);

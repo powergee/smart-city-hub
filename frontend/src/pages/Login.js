@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
 import { tryLogin } from "../shared/BackendRequests";
 import getToken from "../shared/GetToken";
@@ -13,27 +13,23 @@ import {
 } from "@material-ui/core";
 import "./Login.scss";
 
-function Login(props) {
+export default function Login() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [buttonText, setButtonText] = useState("Login");
   const [checked, setChecked] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies();
   const history = useHistory();
 
   useEffect(() => {
-    if (getToken(props.cookies)) {
-      alert("이미 로그인 되어있습니다. 로그아웃을 한 뒤 다시 시도하십시오.");
-      history.push("/");
-    }
-
-    if (props.cookies) {
-      let savedId = props.cookies.get("savedId");
+    if (cookies) {
+      let savedId = cookies.savedId;
       if (savedId) {
-        setId(String(savedId));
+        setId(savedId);
         setChecked(true);
       }
     }
-  }, [props.cookies, history]);
+  }, [cookies, history]);
 
   function changeId(event) {
     setId(event.target.value);
@@ -56,9 +52,9 @@ function Login(props) {
 
   function redirectTo(path) {
     if (checked) {
-      props.cookies.set("savedId", id, { path: "/" });
+      setCookie("savedId", id, { path: "/" });
     } else {
-      props.cookies.remove("savedId", { path: "/" });
+      removeCookie("savedId", { path: "/" });
     }
 
     history.push(path);
@@ -145,5 +141,3 @@ function Login(props) {
     </div>
   );
 }
-
-export default withCookies(Login);

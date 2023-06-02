@@ -11,11 +11,11 @@ import Pagination from "@material-ui/lab/Pagination";
 import CreateIcon from "@material-ui/icons/Create";
 import { Button, IconButton, Tooltip } from "@material-ui/core";
 import getToken from "../shared/GetToken";
-import { withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
 import "./GeneralArticleList.scss";
 
-function GeneralArticleList(props) {
+export default function GeneralArticleList(props) {
   const { link, kind } = props;
 
   const [page, setPage] = useState(undefined);
@@ -23,6 +23,7 @@ function GeneralArticleList(props) {
   const [perPage, setPerPage] = useState(undefined);
   const [articles, setArticles] = useState(undefined);
   const [fileInfo, setFileInfo] = useState({});
+  const [cookies] = useCookies();
   const history = useHistory();
 
   useEffect(() => {
@@ -90,7 +91,7 @@ function GeneralArticleList(props) {
         <h2 className="list-fetching">게시글을 가져오는 중입니다..!</h2>
       ) : (
         <React.Fragment>
-          {getToken(props.cookies) && (
+          {getToken(cookies) && (
             <Button
               variant="contained"
               color="primary"
@@ -166,5 +167,3 @@ function GeneralArticleList(props) {
     </React.Fragment>
   );
 }
-
-export default withCookies(GeneralArticleList);
