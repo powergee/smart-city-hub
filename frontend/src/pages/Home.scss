@@ -387,7 +387,6 @@ $hub-header-color: #627edb;
 
   & > .board-column-container {
     position: absolute;
-    z-index: 2;
     display: flex;
     left: 50%;
     transform: translate(-50%, 0);
@@ -398,15 +397,35 @@ $hub-header-color: #627edb;
   }
 
   & > .board-banner-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     position: relative;
-    z-index: 1;
+    width: $page-width;
+    height: 560px;
+    margin: 0 auto;
 
-    img {
-      width: 80%;
-      min-width: $page-width;
+    background-image: url("../images/asean-banner.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    .click-area-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      .click-area-item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 124px;
+        height: 44px;
+        background-color: black;
+        opacity: 0;
+        transition: opacity 0.2s;
+
+        &:hover {
+          cursor: pointer;
+          opacity: 0.2;
+        }
+      }
     }
   }
 }

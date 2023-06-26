@@ -23,7 +23,7 @@ import hubJson from "../hub-data/generated/domestic-parsed.json";
 import categoryImage from "../shared/CategoryImage";
 import cateToEng from "../hub-data/cateToEng.json";
 import getArchives from "../shared/Archives.js";
-import bannerImage from "../images/banner.svg";
+import countries from "../asean-data/CountryData";
 import { useHistory } from "react-router-dom";
 
 import "react-slideshow-image/dist/styles.css";
@@ -369,7 +369,17 @@ export default function Home() {
           </div>
         </div>
         <div className="board-banner-container">
-          <img src={bannerImage} alt="Board Banner"></img>
+          <div className="click-area-container">
+            {countries.map(({ bannerPosition }, index) => (
+              <div
+                className="click-area-item"
+                style={{ left: bannerPosition[0], top: bannerPosition[1] }}
+                onClick={() => {
+                  history.push(`/asean/${index}`);
+                }}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
