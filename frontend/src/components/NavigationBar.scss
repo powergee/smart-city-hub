@@ -18,6 +18,8 @@ $menu-secondary-hover: #1d4d8b;
 $menu-secondary-border: #d9d8d5;
 
 header {
+  min-width: $page-width;
+
   a:hover {
     cursor: pointer;
   }
