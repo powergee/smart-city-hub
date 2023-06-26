@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./NavigationBar.scss";
 import logo from "../images/hub-logo.png";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import getToken from "../shared/GetToken";
 import { useCookies } from "react-cookie";
 import { tryLogout } from "../shared/BackendRequests";
+import { useTranslation } from "react-i18next";
 
 export default function NavigationBar(props) {
-  const uosURL = "https://www.uos.ac.kr/";
+  const { className } = props;
   const history = useHistory();
   const [cookies] = useCookies();
   const token = getToken(cookies);
-
+  const [t, i18n] = useTranslation();
+  const [english, setEnglish] = useState(false);
   function getLinkHandler(url) {
     return () => {
       history.push(url);
@@ -24,187 +26,170 @@ export default function NavigationBar(props) {
     window.location.reload();
   }
 
-  return (
-    <header className="navbar-root">
-      <div className="header-background">
-        <div className="header">
-          <div className="header-left header-button-container">
-            <ul>
-              <li>
-                <a href={uosURL}>서울시립대학교</a>
-              </li>
-            </ul>
-          </div>
+  useEffect(() => {
+    if (english) {
+      i18n.changeLanguage("en-US");
+    } else {
+      i18n.changeLanguage("ko-KR");
+    }
+  }, [english]);
 
-          <div className="header-right header-button-container">
-            {token ? (
-              <React.Fragment>
-                <strong>{token.userName}</strong>
-                <p>님, 환영합니다!</p>
-                <ul>
-                  <li>
-                    <a href onClick={logout}>
-                      로그아웃
-                    </a>
-                  </li>
-                </ul>
-              </React.Fragment>
-            ) : (
-              <ul>
-                <li>
-                  <a href onClick={getLinkHandler("/login")}>
-                    로그인
+  return (
+    <header className={className}>
+      <div className="header-slim-background">
+        <div className="header-slim">
+          <ul className="header-container header-left">
+            <li className="header-item">
+              <a href="https://uos.ac.kr" className="header-button">
+                {t("서울시립대학교")}
+              </a>
+            </li>
+          </ul>
+          <ul className="header-container header-right">
+            <li className="header-item">
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEnglish(!english);
+                }}
+              >
+                <b>{english ? "한국어" : "English"}</b>
+              </a>
+            </li>
+            <li className="header-item">
+              {token ? (
+                <>
+                  <span>
+                    <strong>{token.userName}</strong>님, 환영합니다!
+                  </span>
+                  <a href onClick={logout} className="header-button">
+                    {t("로그아웃")}
                   </a>
-                </li>
-              </ul>
-            )}
-          </div>
+                </>
+              ) : (
+                <Link to="/login" className="header-button">
+                  {t("로그인")}
+                </Link>
+              )}
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className="menu-background">
-        <div className="menu">
-          <a href onClick={getLinkHandler("/")}>
-            <img alt="Main Logo" src={logo}></img>
-          </a>
+      <div className="header-gnb">
+        <a href onClick={getLinkHandler("/")}>
+          <img alt="Main Logo" src={logo}></img>
+        </a>
 
-          <div className="menu-primary">
-            <ul>
-              <li>
-                <a
-                  href
-                  className="menu-small"
-                  onClick={getLinkHandler("/introduction")}
-                >
-                  센터소개
-                </a>
-              </li>
-              <li>
-                <a
-                  href
-                  className="menu-large"
-                  onClick={getLinkHandler("/projects")}
-                >
-                  연구{" & "}사업
-                </a>
-              </li>
-              <li>
-                <a
-                  href
-                  className="menu-large"
-                  onClick={getLinkHandler("/publish/issue-paper")}
-                >
-                  발간물
-                </a>
-              </li>
-              <li>
-                <a
-                  href
-                  className="menu-small"
-                  onClick={getLinkHandler("/news/notices")}
-                >
-                  소식
-                </a>
-              </li>
-              <li>
-                <a
-                  href
-                  className="menu-small"
-                  onClick={getLinkHandler("/community/seminar")}
-                >
-                  커뮤니티
-                </a>
-              </li>
-              <li>
-                <a
-                  href
-                  className="menu-large font-small"
-                  onClick={getLinkHandler("/hub")}
-                >
-                  스마트도시수출 거점HUB
-                </a>
-              </li>
+        <div className="menu-primary">
+          <ul>
+            <li>
+              <Link to="/introduction" className="menu-small">
+                {t("센터소개")}
+              </Link>
+            </li>
+            <li>
+              <Link to="/projects" className="menu-small">
+                {t("연구 & 사업")}
+              </Link>
+            </li>
+            <li>
+              <Link to="/publish/issue-paper" className="menu-small">
+                {t("발간물")}
+              </Link>
+            </li>
+            <li>
+              <Link to="/news/notices" className="menu-small">
+                {t("소식")}
+              </Link>
+            </li>
+            <li>
+              <Link to="/community/seminar" className="menu-small">
+                {t("커뮤니티")}
+              </Link>
+            </li>
+            <li>
+              <Link to="/hub" className="menu-large font-small">
+                {t("스마트도시수출 거점HUB")}
+              </Link>
+            </li>
 
-              <div class="menu-dropdown">
-                <ul>
-                  <li className="menu-small">
-                    <a href onClick={getLinkHandler("/introduction/greeting")}>
-                      인사말
-                    </a>
-                    <a href onClick={getLinkHandler("/introduction/goal")}>
-                      설립배경 및 목적
-                    </a>
-                    <a
-                      href
-                      onClick={getLinkHandler("/introduction/researchers")}
-                    >
-                      연구진
-                    </a>
-                  </li>
-                  <li className="menu-large">
-                    <a href onClick={getLinkHandler("/projects/summary")}>
-                      총괄 연구 {" & "} 사업
-                    </a>
-                    <a href onClick={getLinkHandler("/projects/withhs")}>
-                      인문사회연구소
-                    </a>
-                    <a href onClick={getLinkHandler("/projects/smtdstpre")}>
-                      스마트재난안전
-                    </a>
-                    <a href onClick={getLinkHandler("/projects/etc")}>
-                      기타
-                    </a>
-                  </li>
-                  <li className="menu-large">
-                    <a href onClick={getLinkHandler("/publish/issue-paper")}>
-                      Issue Paper
-                    </a>
-                    <a href onClick={getLinkHandler("/publish/archive")}>
-                      아카이브
-                    </a>
-                  </li>
-                  <li className="menu-small">
-                    <a href onClick={getLinkHandler("/news/notices")}>
-                      공지사항
-                    </a>
-                    <a href onClick={getLinkHandler("/news/smart-news")}>
-                      스마트뉴스
-                    </a>
-                    <a href onClick={getLinkHandler("/news/research")}>
-                      연구실적
-                    </a>
-                  </li>
-                  <li className="menu-small">
-                    <a href onClick={getLinkHandler("/community/seminar")}>
-                      세미나
-                    </a>
-                    <a
-                      class="font-small"
-                      href
-                      onClick={getLinkHandler("/community/workshop")}
-                    >
-                      기관 및 기업 소개
-                    </a>
-                  </li>
-                  <li className="menu-large">
-                    <a href onClick={getLinkHandler("/hub")}>
-                      거점HUB
-                    </a>
-                    <a
-                      class="font-small"
-                      href
-                      onClick={getLinkHandler("/solution")}
-                    >
-                      스마트도시 솔루션
-                    </a>
-                    <a href onClick={getLinkHandler("/asean")}>
-                      아세안 국가 정보
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </ul>
-          </div>
+            <div class="menu-dropdown">
+              <ul>
+                <li className="menu-small">
+                  <a href onClick={getLinkHandler("/introduction/greeting")}>
+                    인사말
+                  </a>
+                  <a href onClick={getLinkHandler("/introduction/goal")}>
+                    설립배경 및 목적
+                  </a>
+                  <a href onClick={getLinkHandler("/introduction/researchers")}>
+                    연구진
+                  </a>
+                </li>
+                <li className="menu-large">
+                  <a href onClick={getLinkHandler("/projects/summary")}>
+                    총괄 연구 {" & "} 사업
+                  </a>
+                  <a href onClick={getLinkHandler("/projects/withhs")}>
+                    인문사회연구소
+                  </a>
+                  <a href onClick={getLinkHandler("/projects/smtdstpre")}>
+                    스마트재난안전
+                  </a>
+                  <a href onClick={getLinkHandler("/projects/etc")}>
+                    기타
+                  </a>
+                </li>
+                <li className="menu-large">
+                  <a href onClick={getLinkHandler("/publish/issue-paper")}>
+                    Issue Paper
+                  </a>
+                  <a href onClick={getLinkHandler("/publish/archive")}>
+                    아카이브
+                  </a>
+                </li>
+                <li className="menu-small">
+                  <a href onClick={getLinkHandler("/news/notices")}>
+                    공지사항
+                  </a>
+                  <a href onClick={getLinkHandler("/news/smart-news")}>
+                    스마트뉴스
+                  </a>
+                  <a href onClick={getLinkHandler("/news/research")}>
+                    연구실적
+                  </a>
+                </li>
+                <li className="menu-small">
+                  <a href onClick={getLinkHandler("/community/seminar")}>
+                    세미나
+                  </a>
+                  <a
+                    class="font-small"
+                    href
+                    onClick={getLinkHandler("/community/workshop")}
+                  >
+                    기관 및 기업 소개
+                  </a>
+                </li>
+                <li className="menu-large">
+                  <a href onClick={getLinkHandler("/hub")}>
+                    거점HUB
+                  </a>
+                  <a
+                    class="font-small"
+                    href
+                    onClick={getLinkHandler("/solution")}
+                  >
+                    스마트도시 솔루션
+                  </a>
+                  <a href onClick={getLinkHandler("/asean")}>
+                    아세안 국가 정보
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </ul>
         </div>
       </div>
     </header>

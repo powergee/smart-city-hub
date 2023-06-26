@@ -1,17 +1,5 @@
 @import "../shared/shared.scss";
 
-.main-header {
-  // position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
-.main-body {
-  // padding-top: $header-height;
-}
-
 .main-footer {
   min-width: $page-width;
   min-height: 150px;

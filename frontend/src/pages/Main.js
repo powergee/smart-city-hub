@@ -24,9 +24,7 @@ import logo from "../images/footer-logo.png";
 export default function Main() {
   return (
     <div>
-      <div className="main-header">
-        <NavigationBar></NavigationBar>
-      </div>
+      <NavigationBar />
       <div className="main-body">
         <Switch>
           <Route exact path="/" component={Home}></Route>
