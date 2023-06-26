@@ -6,6 +6,7 @@ import getToken from "../shared/GetToken";
 import { useCookies } from "react-cookie";
 import { tryLogout } from "../shared/BackendRequests";
 import { useTranslation } from "react-i18next";
+import { updateLocale } from "../shared/LocalStorage";
 
 export default function NavigationBar(props) {
   const { className } = props;
@@ -13,7 +14,8 @@ export default function NavigationBar(props) {
   const [cookies] = useCookies();
   const token = getToken(cookies);
   const [t, i18n] = useTranslation();
-  const [english, setEnglish] = useState(false);
+  const [locale, setLocale] = useState();
+
   function getLinkHandler(url) {
     return () => {
       history.push(url);
@@ -27,12 +29,12 @@ export default function NavigationBar(props) {
   }
 
   useEffect(() => {
-    if (english) {
-      i18n.changeLanguage("en-US");
-    } else {
-      i18n.changeLanguage("ko-KR");
+    if (!locale) {
+      setLocale(updateLocale());
     }
-  }, [english]);
+
+    i18n.changeLanguage(updateLocale(locale));
+  }, [locale]);
 
   return (
     <header className={className}>
@@ -50,10 +52,14 @@ export default function NavigationBar(props) {
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  setEnglish(!english);
+                  if (locale === "en-US") {
+                    setLocale("ko-KR");
+                  } else if (locale == "ko-KR") {
+                    setLocale("en-US");
+                  }
                 }}
               >
-                <b>{english ? "한국어" : "English"}</b>
+                <b>{locale === "en-US" ? "한국어" : "English"}</b>
               </a>
             </li>
             <li className="header-item">
