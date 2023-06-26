@@ -37,6 +37,7 @@ const countries = [
         [14, 820],
       ],
     },
+    bannerPosition: [261, 478],
   },
   {
     name: "필리핀",
@@ -61,6 +62,7 @@ const countries = [
       adoptionDemand: [[9, 730]],
       example: [[10, 1230]],
     },
+    bannerPosition: [512, 162],
   },
   {
     name: "베트남",
@@ -86,6 +88,7 @@ const countries = [
         [11, 1070],
       ],
     },
+    bannerPosition: [376, 149],
   },
   {
     name: "싱가포르",
@@ -111,6 +114,7 @@ const countries = [
       adoptionDemand: [[10, 420]],
       example: [[11, 1100]],
     },
+    bannerPosition: [395, 420],
   },
   {
     name: "태국",
@@ -141,6 +145,7 @@ const countries = [
       adoptionDemand: [[15, 1230]],
       example: [[16, 710]],
     },
+    bannerPosition: [159, 358],
   },
   {
     name: "미얀마",
@@ -162,6 +167,7 @@ const countries = [
       adoptionDemand: [[8, 260]],
       example: [[9, 930]],
     },
+    bannerPosition: [147, 179],
   },
   {
     name: "캄보디아",
@@ -191,6 +197,7 @@ const countries = [
       adoptionDemand: [[14, 540]],
       example: [[15, 980]],
     },
+    bannerPosition: [199, 416],
   },
   {
     name: "말레이시아",
@@ -216,6 +223,7 @@ const countries = [
       adoptionDemand: [[12, 840]],
       example: [[13, 1240]],
     },
+    bannerPosition: [431, 371],
   },
   {
     name: "라오스",
@@ -237,6 +245,7 @@ const countries = [
       adoptionDemand: [[8, 250]],
       example: [[9, 620]],
     },
+    bannerPosition: [223, 103],
   },
   {
     name: "브루나이",
@@ -255,6 +264,7 @@ const countries = [
       adoptionDemand: [[7, 0]],
       example: [[8, 0]],
     },
+    bannerPosition: [589, 296],
   },
 ];
 
