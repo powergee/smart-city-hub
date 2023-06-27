@@ -3,18 +3,13 @@ import React, { useState, useEffect } from "react";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "./ContentContainer.scss";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import defaultImage from "../images/page-pics/introduction.png";
 
 function NavigatorRow(props) {
   const { defaultOpen, title, subPath, link, depth } = props;
   const [open, setOpen] = useState(defaultOpen);
-  const history = useHistory();
-
-  const getRedirector = (path) => () => {
-    history.push(path);
-  };
 
   return subPath ? (
     <React.Fragment>
@@ -36,9 +31,9 @@ function NavigatorRow(props) {
       </Collapse>
     </React.Fragment>
   ) : (
-    <ButtonBase className="nav-row-sub-button" onClick={getRedirector(link)}>
-      <h4>{title}</h4>
-    </ButtonBase>
+    <Link to={link} className="nav-row-sub-button">
+      {title}
+    </Link>
   );
 }
 
