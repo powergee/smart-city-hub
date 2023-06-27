@@ -20,8 +20,11 @@ import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import PhoneIcon from "@material-ui/icons/Phone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import logo from "../images/footer-logo.png";
+import { useTranslation } from "react-i18next";
 
 export default function Main() {
+  const [t] = useTranslation();
+
   return (
     <div>
       <NavigationBar />
@@ -44,10 +47,7 @@ export default function Main() {
       </div>
       <footer className="main-footer">
         <div className="main-footer-content">
-          <p>
-            서울시립대학교 도시과학연구원 국제도시 및 인프라 연구센터
-            (서울특별시 동대문구 서울시립대로 163, 21세기관 104-1호)
-          </p>
+          <p>{t("labAddress")}</p>
           <p>
             <PhoneIcon className="footer-icon" />
             Tel : +82-2-6490-5154
