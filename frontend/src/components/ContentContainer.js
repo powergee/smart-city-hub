@@ -4,6 +4,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "./ContentContainer.scss";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import defaultImage from "../images/page-pics/introduction.png";
 
@@ -48,12 +49,13 @@ export default function ContentContainer(props) {
     subtitle,
   } = props;
   const [paths, setPaths] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    let defaultPaths = [
+    const defaultPaths = [
       {
         defaultOpen: false,
-        title: "센터소개",
+        title: t("센터소개"),
         subPath: [
           {
             title: "인사말",
@@ -71,7 +73,7 @@ export default function ContentContainer(props) {
       },
       {
         defaultOpen: false,
-        title: "연구 & 사업",
+        title: t("연구 & 사업"),
         subPath: [
           {
             title: "총괄 연구 & 사업",
@@ -93,7 +95,7 @@ export default function ContentContainer(props) {
       },
       {
         defaultOpen: false,
-        title: "발간물",
+        title: t("발간물"),
         subPath: [
           {
             title: "Issue Paper",
@@ -107,7 +109,7 @@ export default function ContentContainer(props) {
       },
       {
         defaultOpen: false,
-        title: "소식",
+        title: t("소식"),
         subPath: [
           {
             title: "공지사항",
@@ -125,7 +127,7 @@ export default function ContentContainer(props) {
       },
       {
         defaultOpen: false,
-        title: "커뮤니티",
+        title: t("커뮤니티"),
         subPath: [
           {
             title: "세미나",
@@ -139,7 +141,7 @@ export default function ContentContainer(props) {
       },
       {
         defaultOpen: false,
-        title: "스마트도시수출 거점HUB",
+        title: t("스마트도시수출 거점HUB"),
         subPath: [
           {
             title: "기업정보",
@@ -187,7 +189,7 @@ export default function ContentContainer(props) {
 
     openPaths(defaultPaths);
     setPaths(defaultPaths);
-  }, [currentPath]);
+  }, [currentPath, t]);
 
   return (
     <div className="content-background">

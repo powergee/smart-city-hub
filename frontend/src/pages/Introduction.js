@@ -2,39 +2,28 @@ import { Paper, Grid, Button } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ContentContainer, MarkdownViewer } from "../components";
-import jobs from "../shared/Jobs.json";
 import { getGlobalRes, getProjectRes } from "../shared/Researchers.js";
 import goalDoc from "../docs/설립 배경 및 목적.md";
 import "./Introduction.scss";
 
 import introImage from "../images/page-pics/introduction.png";
 
+import { useTranslation } from "react-i18next";
+
 function Greeting() {
-  const sections = [
-    {
-      title: "센터소개",
-      link: "/introduction",
-    },
-    {
-      title: "인사말",
-      link: "/introduction/greeting",
-    },
-  ];
+  const { t } = useTranslation();
 
   return (
     <ContentContainer
-      currentPath={sections[1].link}
+      currentPath={"/introduction/greeting"}
       image={introImage}
-      title="센터소개"
+      title={t("센터소개")}
       subtitle="인사말"
     >
       <div className="introduction-contents">
-        <h3>
-          국제도시 및 인프라 연구센터는 4차 산업혁명시대에 도시, 교통, 환경,
-          재난 등 사람을 위한 연구를 추진하고 있습니다.
-        </h3>
+        <h3>{t("greeting.h3")}</h3>
 
-        {jobs.map((j) => (
+        {t("greeting.jobs", { returnObjects: true }).map((j) => (
           <Paper variant="outlined" className="introduction-paper">
             <p>{j}</p>
           </Paper>

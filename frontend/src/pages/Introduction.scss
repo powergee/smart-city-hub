@@ -3,60 +3,62 @@
 $main-color: rgb(12, 0, 78);
 
 .introduction-contents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    & > h3 {
-        margin-top: 80px;
-        margin-bottom: 50px;
-        color: $main-color;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 32px;
+
+  & > h3 {
+    margin-top: 80px;
+    margin-bottom: 50px;
+    color: $main-color;
+    text-align: center;
+  }
 }
 
 .introduction-paper {
-    width: 600px;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 25px;
+  width: 600px;
+  margin-bottom: 25px;
+  padding: 0 16px;
 
-    & > p {
-        font-weight: bold;
-        font-size: 120%;
-    }
+  & > p {
+    font-weight: bold;
+    font-size: 120%;
+    text-align: center;
+  }
 }
 
 .researchers-tab-container {
-    display: flex;
-    flex-direction: row;
-    
-    & > * {
-        flex-basis: 0;
-        flex-grow: 1;
-    }
+  display: flex;
+  flex-direction: row;
+
+  & > * {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
 }
 
 .researchers-paper {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .researchers-grid {
-    & > img {
-        object-fit: cover;
-        width: 240px;
-        max-width: 240px;
-        height: 300px;
-        max-height: 300px;
-        margin-right: 20px;
-    }
+  & > img {
+    object-fit: cover;
+    width: 240px;
+    max-width: 240px;
+    height: 300px;
+    max-height: 300px;
+    margin-right: 20px;
+  }
 
-    h2 {
-        margin-top: 10px;
-        margin-bottom: 8px;
-    }
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+  }
 }
 
 .projects-subtitle {
-    border-left: 3px solid $main-color;
-    padding-left: 10px;
+  border-left: 3px solid $main-color;
+  padding-left: 10px;
 }
