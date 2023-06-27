@@ -7,5 +7,17 @@
   "소식": "News",
   "커뮤니티": "Community",
   "스마트도시수출 거점HUB": "Smart City Export Hub",
-  "labAddress": "International of Urban, Global Urban & Infrastructure Research Center, Seoulsiripdae-ro 163, Dongdaemun-gu, Seoul 02504, Korea"
+  "labAddress": "International of Urban, Global Urban & Infrastructure Research Center, Seoulsiripdae-ro 163, Dongdaemun-gu, Seoul 02504, Korea",
+  "greeting": {
+    "h3": "The International Urban and Infrastructure Research Center is advancing research for people in the areas of cities, transportation, environment, and disasters in the era of the 4th industrial revolution.",
+    "jobs": [
+      "Research on the planning, installation, and operation of infrastructure facilities",
+      "Research on smart city technology",
+      "Response research related to natural and social disasters",
+      "Research based on digital twins",
+      "Research on highway traffic safety",
+      "Development of measurement equipment based on AI",
+      "Research on urban regeneration and response to urban shrinkage"
+    ]
+  }
 }
