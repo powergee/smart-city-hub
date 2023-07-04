@@ -58,15 +58,15 @@ export default function ContentContainer(props) {
         title: t("센터소개"),
         subPath: [
           {
-            title: "인사말",
+            title: t("인사말"),
             link: "/introduction/greeting",
           },
           {
-            title: "설립배경 및 목적",
+            title: t("설립배경 및 목적"),
             link: "/introduction/goal",
           },
           {
-            title: "연구진",
+            title: t("연구진"),
             link: "/introduction/researchers",
           },
         ],

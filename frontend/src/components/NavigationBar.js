@@ -115,7 +115,7 @@ export default function NavigationBar(props) {
               </Link>
             </li>
             <li>
-              <Link to="/hub" className="menu-large font-small">
+              <Link to="/hub" className="menu-large">
                 {t("스마트도시수출 거점HUB")}
               </Link>
             </li>
@@ -124,10 +124,10 @@ export default function NavigationBar(props) {
               <ul>
                 <li className="menu-small">
                   <a href onClick={getLinkHandler("/introduction/greeting")}>
-                    인사말
+                    {t("인사말")}
                   </a>
                   <a href onClick={getLinkHandler("/introduction/goal")}>
-                    설립배경 및 목적
+                    {t("설립배경 및 목적")}
                   </a>
                   <a href onClick={getLinkHandler("/introduction/researchers")}>
                     연구진

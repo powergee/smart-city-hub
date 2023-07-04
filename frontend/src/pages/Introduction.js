@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import { ContentContainer, MarkdownViewer } from "../components";
 import { getGlobalRes, getProjectRes } from "../shared/Researchers.js";
 import goalDoc from "../docs/설립 배경 및 목적.md";
+import goalDocEng from "../docs/Establishment Background and Purpose.md";
 import "./Introduction.scss";
 
 import introImage from "../images/page-pics/introduction.png";
@@ -18,7 +19,7 @@ function Greeting() {
       currentPath={"/introduction/greeting"}
       image={introImage}
       title={t("센터소개")}
-      subtitle="인사말"
+      subtitle={t("인사말")}
     >
       <div className="introduction-contents">
         <h3>{t("greeting.h3")}</h3>
@@ -34,31 +35,26 @@ function Greeting() {
 }
 
 function Goal() {
+  const { t, i18n } = useTranslation();
   const [source, setSource] = useState("");
 
-  const sections = [
-    {
-      title: "센터소개",
-      link: "/introduction",
-    },
-    {
-      title: "설립배경 및 목적",
-      link: "/introduction/goal",
-    },
-  ];
-
   useEffect(() => {
-    fetch(goalDoc)
+    let doc = goalDoc;
+    if (i18n.resolvedLanguage === "en") {
+      doc = goalDocEng;
+    }
+
+    fetch(doc)
       .then((res) => res.text())
       .then((text) => setSource(text));
-  }, []);
+  }, [i18n.resolvedLanguage]);
 
   return (
     <ContentContainer
-      currentPath={sections[1].link}
+      currentPath={"/introduction/goal"}
       image={introImage}
-      title="센터소개"
-      subtitle="설립배경 및 목적"
+      title={t("센터소개")}
+      subtitle={t("설립배경 및 목적")}
     >
       <MarkdownViewer source={source}></MarkdownViewer>
     </ContentContainer>
@@ -67,27 +63,17 @@ function Goal() {
 
 function Researchers() {
   const [tab, setTab] = useState(0);
-
-  const sections = [
-    {
-      title: "센터소개",
-      link: "/introduction",
-    },
-    {
-      title: "연구진",
-      link: "/introduction/researchers",
-    },
-  ];
+  const { t } = useTranslation();
 
   const globalRes = getGlobalRes();
   const projectRes = getProjectRes();
 
   return (
     <ContentContainer
-      currentPath={sections[1].link}
+      currentPath={"/introduction/researchers"}
       image={introImage}
-      title="센터소개"
-      subtitle="연구진"
+      title={t("센터소개")}
+      subtitle={t("연구진")}
     >
       <div className="researchers-tab-container">
         <Button
