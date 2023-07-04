@@ -8,7 +8,9 @@ import {
   PreparingContents,
 } from "../components";
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md";
+import humanDocEng from "../docs/Humanities and Social Sciences Research Institute.md";
 import smartDoc from "../docs/스마트재난안전관련사업 개요.md";
+import smartDocEng from "../docs/Smart Disaster Safety Project.md";
 
 import projImage from "../images/page-pics/projects.jpeg";
 
@@ -37,14 +39,19 @@ function Summary() {
 
 // 인문사회연구소
 function WithHumanism() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [source, setSource] = useState("");
 
   useEffect(() => {
-    fetch(humanDoc)
+    let doc = humanDoc;
+    if (i18n.resolvedLanguage === "en") {
+      doc = humanDocEng;
+    }
+
+    fetch(doc)
       .then((res) => res.text())
       .then((text) => setSource(text));
-  }, []);
+  }, [i18n.resolvedLanguage]);
 
   return (
     <ContentContainer
@@ -61,14 +68,19 @@ function WithHumanism() {
 
 // 스마트재난안전
 function SmartDisasterPrep() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [source, setSource] = useState("");
 
   useEffect(() => {
-    fetch(smartDoc)
+    let doc = smartDoc;
+    if (i18n.resolvedLanguage === "en") {
+      doc = smartDocEng;
+    }
+
+    fetch(doc)
       .then((res) => res.text())
       .then((text) => setSource(text));
-  }, []);
+  }, [i18n.resolvedLanguage]);
 
   return (
     <ContentContainer
