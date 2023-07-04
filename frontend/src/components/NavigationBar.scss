@@ -83,14 +83,6 @@ header {
   }
 }
 
-.menu-small {
-  width: 115px;
-}
-
-.menu-large {
-  width: 130px;
-}
-
 .menu-dropdown {
   display: none;
   position: absolute;
@@ -118,6 +110,7 @@ header {
         text-align: center;
         font-size: $menu-secondary-text;
         margin: 15px 0 15px 0;
+        width: 115px;
       }
 
       & > a:hover:not(.active) {
@@ -161,6 +154,7 @@ header {
         text-align: center;
         text-decoration: none;
         word-break: keep-all;
+        width: 115px;
       }
 
       & > a {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./NavigationBar.scss";
 import logo from "../images/hub-logo.png";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import getToken from "../shared/GetToken";
 import { useCookies } from "react-cookie";
 import { tryLogout } from "../shared/BackendRequests";
@@ -10,17 +10,10 @@ import { updateLocale } from "../shared/LocalStorage";
 
 export default function NavigationBar(props) {
   const { className } = props;
-  const history = useHistory();
   const [cookies] = useCookies();
   const token = getToken(cookies);
   const [t, i18n] = useTranslation();
   const [locale, setLocale] = useState();
-
-  function getLinkHandler(url) {
-    return () => {
-      history.push(url);
-    };
-  }
 
   async function logout() {
     await tryLogout();
@@ -34,7 +27,7 @@ export default function NavigationBar(props) {
     }
 
     i18n.changeLanguage(updateLocale(locale));
-  }, [locale]);
+  }, [locale, i18n]);
 
   return (
     <header className={className}>
@@ -50,11 +43,12 @@ export default function NavigationBar(props) {
           <ul className="header-container header-right">
             <li className="header-item">
               <a
+                href="/"
                 onClick={(e) => {
                   e.preventDefault();
                   if (locale === "en-US") {
                     setLocale("ko-KR");
-                  } else if (locale == "ko-KR") {
+                  } else if (locale === "ko-KR") {
                     setLocale("en-US");
                   }
                 }}
@@ -83,115 +77,61 @@ export default function NavigationBar(props) {
       </div>
 
       <div className="header-gnb">
-        <a href onClick={getLinkHandler("/")}>
-          <img alt="Main Logo" src={logo}></img>
-        </a>
+        <Link to="/">
+          <img alt="Main Logo" src={logo} />
+        </Link>
 
         <div className="menu-primary">
           <ul>
             <li>
-              <Link to="/introduction" className="menu-small">
-                {t("센터소개")}
-              </Link>
+              <Link to="/introduction">{t("센터소개")}</Link>
             </li>
             <li>
-              <Link to="/projects" className="menu-small">
-                {t("연구 & 사업")}
-              </Link>
+              <Link to="/projects">{t("연구 & 사업")}</Link>
             </li>
             <li>
-              <Link to="/publish/issue-paper" className="menu-small">
-                {t("발간물")}
-              </Link>
+              <Link to="/publish/issue-paper">{t("발간물")}</Link>
             </li>
             <li>
-              <Link to="/news/notices" className="menu-small">
-                {t("소식")}
-              </Link>
+              <Link to="/news/notices">{t("소식")}</Link>
             </li>
             <li>
-              <Link to="/community/seminar" className="menu-small">
-                {t("커뮤니티")}
-              </Link>
+              <Link to="/community/seminar">{t("커뮤니티")}</Link>
             </li>
             <li>
-              <Link to="/hub" className="menu-large">
-                {t("스마트도시수출 거점HUB")}
-              </Link>
+              <Link to="/hub">{t("스마트도시수출 거점HUB")}</Link>
             </li>
 
             <div class="menu-dropdown">
               <ul>
                 <li className="menu-small">
-                  <a href onClick={getLinkHandler("/introduction/greeting")}>
-                    {t("인사말")}
-                  </a>
-                  <a href onClick={getLinkHandler("/introduction/goal")}>
-                    {t("설립배경 및 목적")}
-                  </a>
-                  <a href onClick={getLinkHandler("/introduction/researchers")}>
-                    {t("연구진")}
-                  </a>
+                  <Link to="/introduction/greeting">{t("인사말")}</Link>
+                  <Link to="/introduction/goal">{t("설립배경 및 목적")}</Link>
+                  <Link to="/introduction/researchers">{t("연구진")}</Link>
                 </li>
                 <li className="menu-large">
-                  <a href onClick={getLinkHandler("/projects/summary")}>
-                    {t("총괄 연구 & 사업")}
-                  </a>
-                  <a href onClick={getLinkHandler("/projects/withhs")}>
-                    {t("인문사회연구소")}
-                  </a>
-                  <a href onClick={getLinkHandler("/projects/smtdstpre")}>
-                    {t("스마트재난안전")}
-                  </a>
-                  <a href onClick={getLinkHandler("/projects/etc")}>
-                    {t("기타")}
-                  </a>
+                  <Link to="/projects/summary">{t("총괄 연구 & 사업")}</Link>
+                  <Link to="/projects/withhs">{t("인문사회연구소")}</Link>
+                  <Link to="/projects/smtdstpre">{t("스마트재난안전")}</Link>
+                  <Link to="/projects/etc">{t("기타")}</Link>
                 </li>
                 <li className="menu-large">
-                  <a href onClick={getLinkHandler("/publish/issue-paper")}>
-                    Issue Paper
-                  </a>
-                  <a href onClick={getLinkHandler("/publish/archive")}>
-                    아카이브
-                  </a>
+                  <Link to="/publish/issue-paper">{t("Issue Paper")}</Link>
+                  <Link to="/publish/archive">{t("아카이브")}</Link>
                 </li>
                 <li className="menu-small">
-                  <a href onClick={getLinkHandler("/news/notices")}>
-                    공지사항
-                  </a>
-                  <a href onClick={getLinkHandler("/news/smart-news")}>
-                    스마트뉴스
-                  </a>
-                  <a href onClick={getLinkHandler("/news/research")}>
-                    연구실적
-                  </a>
+                  <Link to="/news/notices">{t("공지사항")}</Link>
+                  <Link to="/news/smart-news">{t("스마트뉴스")}</Link>
+                  <Link to="/news/research">{t("연구실적")}</Link>
                 </li>
                 <li className="menu-small">
-                  <a href onClick={getLinkHandler("/community/seminar")}>
-                    세미나
-                  </a>
-                  <a
-                    class="font-small"
-                    href
-                    onClick={getLinkHandler("/community/workshop")}
-                  >
-                    기관 및 기업 소개
-                  </a>
+                  <Link to="/community/seminar">{t("세미나")}</Link>
+                  <Link to="/community/workshop">{t("기관 및 기업 소개")}</Link>
                 </li>
                 <li className="menu-large">
-                  <a href onClick={getLinkHandler("/hub")}>
-                    거점HUB
-                  </a>
-                  <a
-                    class="font-small"
-                    href
-                    onClick={getLinkHandler("/solution")}
-                  >
-                    스마트도시 솔루션
-                  </a>
-                  <a href onClick={getLinkHandler("/asean")}>
-                    아세안 국가 정보
-                  </a>
+                  <Link to="/hub">{t("거점HUB")}</Link>
+                  <Link to="/solution">{t("스마트도시 솔루션")}</Link>
+                  <Link to="/asean">{t("아세안 국가 정보")}</Link>
                 </li>
               </ul>
             </div>
