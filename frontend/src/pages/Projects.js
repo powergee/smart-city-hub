@@ -7,7 +7,6 @@ import {
   ProjectTable,
   PreparingContents,
 } from "../components";
-import projList from "../shared/ProjectList.json";
 import humanDoc from "../docs/인문사회연구소지원사업 개요.md";
 import smartDoc from "../docs/스마트재난안전관련사업 개요.md";
 
@@ -17,7 +16,7 @@ import projImage from "../images/page-pics/projects.jpeg";
 function Summary() {
   const { t } = useTranslation();
 
-  let rows = projList;
+  let rows = t("data", { ns: "projects", returnObjects: true });
   for (let i = 0; i < rows.length; ++i) {
     rows[i].no = rows.length - i;
   }
@@ -30,7 +29,7 @@ function Summary() {
       title={t("연구 & 사업")}
       subtitle={t("총괄 연구 & 사업")}
     >
-      <h2 className="projects-subtitle">총괄 연구 & 사업</h2>
+      <h2 className="projects-subtitle">{t("총괄 연구 & 사업")}</h2>
       <ProjectTable rows={rows} />
     </ContentContainer>
   );
