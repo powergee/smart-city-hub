@@ -72,6 +72,7 @@
     "html-webpack-plugin": "4.0.0-beta.5",
     "http-proxy-middleware": "^2.0.6",
     "i18next": "^23.2.3",
+    "i18next-browser-languagedetector": "^7.1.0",
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^1.1.0",
     "jest": "24.9.0",

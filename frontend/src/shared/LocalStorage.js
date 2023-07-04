@@ -11,17 +11,3 @@ export function updateCategoryTag(value) {
 
   return JSON.parse(localStorage.getItem(key));
 }
-
-export function updateLocale(value) {
-  const key = "locale";
-
-  if (localStorage.getItem(key) === null) {
-    localStorage.setItem(key, "ko-KR");
-  }
-
-  if (value) {
-    localStorage.setItem(key, value);
-  }
-
-  return localStorage.getItem(key);
-}

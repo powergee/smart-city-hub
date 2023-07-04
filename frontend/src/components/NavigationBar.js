@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./NavigationBar.scss";
 import logo from "../images/hub-logo.png";
 import { Link } from "react-router-dom";
@@ -6,14 +6,12 @@ import getToken from "../shared/GetToken";
 import { useCookies } from "react-cookie";
 import { tryLogout } from "../shared/BackendRequests";
 import { useTranslation } from "react-i18next";
-import { updateLocale } from "../shared/LocalStorage";
 
 export default function NavigationBar(props) {
   const { className } = props;
   const [cookies] = useCookies();
   const token = getToken(cookies);
   const [t, i18n] = useTranslation();
-  const [locale, setLocale] = useState();
 
   async function logout() {
     await tryLogout();
@@ -21,13 +19,7 @@ export default function NavigationBar(props) {
     window.location.reload();
   }
 
-  useEffect(() => {
-    if (!locale) {
-      setLocale(updateLocale());
-    }
-
-    i18n.changeLanguage(updateLocale(locale));
-  }, [locale, i18n]);
+  const locale = i18n.resolvedLanguage;
 
   return (
     <header className={className}>
@@ -44,16 +36,17 @@ export default function NavigationBar(props) {
             <li className="header-item">
               <a
                 href="/"
+                className="header-lng"
                 onClick={(e) => {
                   e.preventDefault();
-                  if (locale === "en-US") {
-                    setLocale("ko-KR");
-                  } else if (locale === "ko-KR") {
-                    setLocale("en-US");
+                  if (locale === "ko") {
+                    i18n.changeLanguage("en");
+                  } else if (locale === "en") {
+                    i18n.changeLanguage("ko");
                   }
                 }}
               >
-                <b>{locale === "en-US" ? "한국어" : "English"}</b>
+                <b>{locale === "en" ? "한국어" : "English"}</b>
               </a>
             </li>
             <li className="header-item">
