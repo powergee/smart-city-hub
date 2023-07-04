@@ -135,16 +135,16 @@ export default function NavigationBar(props) {
                 </li>
                 <li className="menu-large">
                   <a href onClick={getLinkHandler("/projects/summary")}>
-                    총괄 연구 {" & "} 사업
+                    {t("총괄 연구 & 사업")}
                   </a>
                   <a href onClick={getLinkHandler("/projects/withhs")}>
-                    인문사회연구소
+                    {t("인문사회연구소")}
                   </a>
                   <a href onClick={getLinkHandler("/projects/smtdstpre")}>
-                    스마트재난안전
+                    {t("스마트재난안전")}
                   </a>
                   <a href onClick={getLinkHandler("/projects/etc")}>
-                    기타
+                    {t("기타")}
                   </a>
                 </li>
                 <li className="menu-large">

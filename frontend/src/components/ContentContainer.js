@@ -76,19 +76,19 @@ export default function ContentContainer(props) {
         title: t("연구 & 사업"),
         subPath: [
           {
-            title: "총괄 연구 & 사업",
+            title: t("총괄 연구 & 사업"),
             link: "/projects/summary",
           },
           {
-            title: "인문사회연구소",
+            title: t("인문사회연구소"),
             link: "/projects/withhs",
           },
           {
-            title: "스마트재난안전",
+            title: t("스마트재난안전"),
             link: "/projects/smtdstpre",
           },
           {
-            title: "기타",
+            title: t("기타"),
             link: "/projects/etc",
           },
         ],
