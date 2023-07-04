@@ -2,7 +2,6 @@ import { Paper, Grid, Button } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { ContentContainer, MarkdownViewer } from "../components";
-import { getGlobalRes, getProjectRes } from "../shared/Researchers.js";
 import goalDoc from "../docs/설립 배경 및 목적.md";
 import goalDocEng from "../docs/Establishment Background and Purpose.md";
 import "./Introduction.scss";
@@ -65,8 +64,42 @@ function Researchers() {
   const [tab, setTab] = useState(0);
   const { t } = useTranslation();
 
-  const globalRes = getGlobalRes();
-  const projectRes = getProjectRes();
+  const globalResearchers = [
+    "염춘호",
+    "고주연",
+    "안성숙",
+    "김대일",
+    "박성찬",
+    "김지영",
+    "박시은",
+    "이성호",
+  ];
+  const globalProfessors = [
+    "염춘호",
+    "한만희",
+    "김강수",
+    "이신",
+    "박준",
+    "김광일",
+    "서승범",
+    "박현",
+    "박혜민",
+    "고주연",
+    "안성숙",
+    "김대일",
+  ];
+
+  const getGlobalResearchers = (names) => {
+    return names.map((name) =>
+      t(`researchers.${name}`, { ns: "researchers", returnObjects: true })
+    );
+  };
+
+  const getGlobalProfessors = (names) => {
+    return names.map((name) =>
+      t(name, { ns: "professors", returnObjects: true })
+    );
+  };
 
   return (
     <ContentContainer
@@ -83,9 +116,8 @@ function Researchers() {
           disabled={0 === tab}
           color="primary"
         >
-          국제도시 및 인프라 연구센터
+          {t("국제도시 및 인프라 연구센터")}
         </Button>
-
         <Button
           size="large"
           variant="outlined"
@@ -93,11 +125,11 @@ function Researchers() {
           disabled={1 === tab}
           color="primary"
         >
-          인문사회연구소지원사업 참여 교수
+          {t("인문사회연구소지원사업 참여 교수")}
         </Button>
       </div>
       <div style={{ display: tab === 0 ? "block" : "none" }}>
-        {globalRes.map((res) => (
+        {getGlobalResearchers(globalResearchers).map((res) => (
           <Paper variant="outlined" className="researchers-paper">
             <Grid
               className="researchers-grid"
@@ -105,7 +137,7 @@ function Researchers() {
               direction="row"
               alignItems="center"
             >
-              <img alt="" src={res.image}></img>
+              <img alt={res.name} src={`/researcher-images/${res.name}.jpg`} />
               <Grid item>
                 <h2>{res.name}</h2>
                 <ul>
@@ -119,10 +151,10 @@ function Researchers() {
         ))}
       </div>
       <div style={{ display: tab === 1 ? "block" : "none" }}>
-        {projectRes.map((res) => (
+        {getGlobalProfessors(globalProfessors).map((res) => (
           <Paper variant="outlined" className="researchers-paper">
             <Grid className="researchers-grid" container direction="row">
-              <img alt="" src={res.image}></img>
+              <img alt={res.name} src={`/researcher-images/${res.name}.jpg`} />
               <Grid item>
                 <h2>{res.name}</h2>
                 <ul>

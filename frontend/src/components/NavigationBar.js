@@ -130,7 +130,7 @@ export default function NavigationBar(props) {
                     {t("설립배경 및 목적")}
                   </a>
                   <a href onClick={getLinkHandler("/introduction/researchers")}>
-                    연구진
+                    {t("연구진")}
                   </a>
                 </li>
                 <li className="menu-large">
