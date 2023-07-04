@@ -18,7 +18,6 @@ import { getArticles, getFileInfo } from "../shared/BackendRequests";
 import { dateToString } from "../shared/DateToString";
 import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import kindTable from "../shared/ArticleKindTable.json";
-import currProj from "../shared/CurrentProjects.json";
 import hubJson from "../hub-data/generated/domestic-parsed.json";
 import categoryImage from "../shared/CategoryImage";
 import cateToEng from "../hub-data/cateToEng.json";
@@ -28,20 +27,20 @@ import { useHistory } from "react-router-dom";
 
 import "react-slideshow-image/dist/styles.css";
 import "./Home.scss";
+import { useTranslation } from "react-i18next";
 
 export default function Home() {
+  const { t } = useTranslation();
   const [archOpen, setArchOpen] = useState(false);
   const [imageCards, setImageCards] = useState([]);
   const [issuePaperPreview, setIssuePaperPreview] = useState([]);
   const [archivePreview, setArchivePreview] = useState([]);
-  const [currProjSlides, setCurrProjSlides] = useState(undefined);
   const [hubPreviewRows, setHubPreviewRows] = useState([]);
   const history = useHistory();
   const archMenu = getArchives();
 
   useEffect(() => {
     updateDocumentPreviews();
-    updateProjectSlides();
     updateHubPreviews();
   }, []);
 
@@ -227,33 +226,38 @@ export default function Home() {
     );
   }
 
-  function updateProjectSlides() {
-    const projSlides = [];
-    let singleSlide = [];
-    currProj.forEach((proj) => {
-      singleSlide.push(
+  function getProjectSlides() {
+    const projects = t("home", { ns: "projects", returnObjects: true });
+    let slides = [];
+    const container = [];
+
+    projects.forEach((proj) => {
+      slides.push(
         <div className="comment-each">
           <h2>{proj.title}</h2>
           <h5>{`${proj.client} [${proj.when}]`}</h5>
         </div>
       );
-      if (singleSlide.length === 3) {
-        projSlides.push(
+
+      if (slides.length === 3) {
+        container.push(
           <div className="comment-background">
-            <div className="comment-container">{singleSlide}</div>
+            <div className="comment-container">{slides}</div>
           </div>
         );
-        singleSlide = [];
+        slides = [];
       }
     });
-    if (singleSlide.length) {
-      projSlides.push(
+
+    if (slides.length) {
+      container.push(
         <div className="comment-background">
-          <div className="comment-container">{singleSlide}</div>
+          <div className="comment-container">{slides}</div>
         </div>
       );
     }
-    setCurrProjSlides(projSlides);
+
+    return container;
   }
 
   function updateHubPreviews() {
@@ -333,7 +337,7 @@ export default function Home() {
           </div>
 
           <div className="slide-container">
-            <Fade>{currProjSlides}</Fade>
+            <Fade>{getProjectSlides()}</Fade>
           </div>
         </div>
       </div>

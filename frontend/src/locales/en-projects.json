@@ -215,5 +215,27 @@
       "client": "Export-Import Bank of Korea",
       "title": "Development of the Smart City Master Plan for Aburra Valley in Colombia as part of the 2022/23 KSP Policy Advisory"
     }
+  ],
+  "home": [
+    {
+      "when": "2020~2023",
+      "client": "Korea Research Foundation",
+      "title": "Establishment of a multi-disciplinary public-private network-based smart city export hub between Korea and ASEAN"
+    },
+    {
+      "when": "2021~2025",
+      "client": "Ministry of Land, Infrastructure and Transport",
+      "title": "Technological cooperation for the modernization of Uzbekistan's construction regulations"
+    },
+    {
+      "when": "2022~2023",
+      "client": "Ministry of Land, Infrastructure and Transport",
+      "title": "Planning for the development of digital twin-based future new industries for land"
+    },
+    {
+      "when": "2022~2023",
+      "client": "Ministry of Land, Infrastructure and Transport",
+      "title": "Exploration and planning of strategic projects for Land, Transport, and ODA linked to Diplomacy"
+    }
   ]
 }
