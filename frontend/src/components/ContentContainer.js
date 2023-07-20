@@ -98,11 +98,11 @@ export default function ContentContainer(props) {
         title: t("발간물"),
         subPath: [
           {
-            title: "Issue Paper",
+            title: t("Issue Paper"),
             link: "/publish/issue-paper",
           },
           {
-            title: "아카이브",
+            title: t("아카이브"),
             link: "/publish/archive",
           },
         ],
@@ -112,15 +112,15 @@ export default function ContentContainer(props) {
         title: t("소식"),
         subPath: [
           {
-            title: "공지사항",
+            title: t("공지사항"),
             link: "/news/notices",
           },
           {
-            title: "스마트뉴스",
+            title: t("스마트뉴스"),
             link: "/news/smart-news",
           },
           {
-            title: "연구실적",
+            title: t("연구실적"),
             link: "/news/research",
           },
         ],
@@ -130,11 +130,11 @@ export default function ContentContainer(props) {
         title: t("커뮤니티"),
         subPath: [
           {
-            title: "세미나",
+            title: t("세미나"),
             link: "/community/seminar",
           },
           {
-            title: "기관 및 기업 소개",
+            title: t("기관 및 기업 소개"),
             link: "/community/workshop",
           },
         ],
@@ -144,15 +144,15 @@ export default function ContentContainer(props) {
         title: t("스마트도시수출 거점HUB"),
         subPath: [
           {
-            title: "기업정보",
+            title: t("거점HUB"),
             link: "/hub",
           },
           {
-            title: "솔루션",
+            title: t("스마트도시 솔루션"),
             link: "/solution",
           },
           {
-            title: "아세안",
+            title: t("아세안 국가 정보"),
             link: "/asean",
           },
         ],
