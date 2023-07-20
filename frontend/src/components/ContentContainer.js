@@ -116,7 +116,7 @@ export default function ContentContainer(props) {
             link: "/news/notices",
           },
           {
-            title: t("스마트뉴스"),
+            title: t("스마트 뉴스"),
             link: "/news/smart-news",
           },
           {

@@ -114,7 +114,7 @@ export default function NavigationBar(props) {
                 </li>
                 <li className="menu-small">
                   <Link to="/news/notices">{t("공지사항")}</Link>
-                  <Link to="/news/smart-news">{t("스마트뉴스")}</Link>
+                  <Link to="/news/smart-news">{t("스마트 뉴스")}</Link>
                   <Link to="/news/research">{t("연구실적")}</Link>
                 </li>
                 <li className="menu-small">
