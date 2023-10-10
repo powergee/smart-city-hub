@@ -5,7 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import ko from "./translation.ko.json";
 import en from "./translation.en.json";
 import { koResearchers, enResearchers } from "./researchers";
-import professors from "./professors.json";
+import professors from "./professors.people.json";
 import projectsKo from "./projects.ko.json";
 import projectsEn from "./projects.en.json";
 
