@@ -3,8 +3,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import ko from "./ko.json";
 import en from "./en.json";
-import koResearchers from "./ko-researchers.js";
-import enResearchers from "./en-researchers.js";
+import { koResearchers, enResearchers } from "./researchers";
 import professors from "./professors.json";
 import koProjects from "./ko-projects.json";
 import enProjects from "./en-projects.json";
@@ -17,7 +16,9 @@ i18n
       ko: {
         translation: ko,
         researchers: koResearchers(),
-        professors,
+        professors: {
+          people: professors,
+        },
         projects: koProjects,
       },
       en: {

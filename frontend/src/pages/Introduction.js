@@ -64,42 +64,26 @@ function Researchers() {
   const [tab, setTab] = useState(0);
   const { t } = useTranslation();
 
-  const globalResearchers = [
-    "염춘호",
-    "고주연",
-    "안성숙",
-    "김대일",
-    "박성찬",
-    "김지영",
-    "박시은",
-    "이성호",
-  ];
-  const globalProfessors = [
-    "염춘호",
-    "한만희",
-    "김강수",
-    "이신",
-    "박준",
-    "김광일",
-    "서승범",
-    "박현",
-    "박혜민",
-    "고주연",
-    "안성숙",
-    "김대일",
-  ];
-
-  const getGlobalResearchers = (names) => {
-    return names.map((name) =>
-      t(`researchers.${name}`, { ns: "researchers", returnObjects: true })
-    );
-  };
-
-  const getGlobalProfessors = (names) => {
-    return names.map((name) =>
-      t(name, { ns: "professors", returnObjects: true })
-    );
-  };
+  const Profile = ({ person }) => (
+    <Paper variant="outlined" className="researchers-paper" key={person.name}>
+      <Grid
+        className="researchers-grid"
+        container
+        direction="row"
+        alignItems="center"
+      >
+        <img alt={person.name} src={`/researcher-images/${person.name}.jpg`} />
+        <Grid item>
+          <h2>{person.name}</h2>
+          <ul>
+            {person.details.map((d) => (
+              <li>{d}</li>
+            ))}
+          </ul>
+        </Grid>
+      </Grid>
+    </Paper>
+  );
 
   return (
     <ContentContainer
@@ -129,42 +113,13 @@ function Researchers() {
         </Button>
       </div>
       <div style={{ display: tab === 0 ? "block" : "none" }}>
-        {getGlobalResearchers(globalResearchers).map((res) => (
-          <Paper variant="outlined" className="researchers-paper">
-            <Grid
-              className="researchers-grid"
-              container
-              direction="row"
-              alignItems="center"
-            >
-              <img alt={res.name} src={`/researcher-images/${res.name}.jpg`} />
-              <Grid item>
-                <h2>{res.name}</h2>
-                <ul>
-                  {res.details.map((d) => (
-                    <li>{d}</li>
-                  ))}
-                </ul>
-              </Grid>
-            </Grid>
-          </Paper>
+        {t("people", { ns: "researchers", returnObjects: true }).map((res) => (
+          <Profile person={res} key={res.name} />
         ))}
       </div>
       <div style={{ display: tab === 1 ? "block" : "none" }}>
-        {getGlobalProfessors(globalProfessors).map((res) => (
-          <Paper variant="outlined" className="researchers-paper">
-            <Grid className="researchers-grid" container direction="row">
-              <img alt={res.name} src={`/researcher-images/${res.name}.jpg`} />
-              <Grid item>
-                <h2>{res.name}</h2>
-                <ul>
-                  {res.details.map((d) => (
-                    <li>{d}</li>
-                  ))}
-                </ul>
-              </Grid>
-            </Grid>
-          </Paper>
+        {t("people", { ns: "professors", returnObjects: true }).map((res) => (
+          <Profile person={res} key={res.name} />
         ))}
       </div>
     </ContentContainer>

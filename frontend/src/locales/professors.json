@@ -1,5 +1,5 @@
-{
-  "염춘호": {
+[
+  {
     "name": "염춘호",
     "details": [
       "연구책임자",
@@ -12,7 +12,7 @@
       "Email : chunhoy7@uos.ac.kr"
     ]
   },
-  "한만희": {
+  {
     "name": "한만희",
     "details": [
       "대외협력부총장",
@@ -23,7 +23,7 @@
       "Email : mhhandc@uos.ac.kr"
     ]
   },
-  "김강수": {
+  {
     "name": "김강수",
     "details": [
       "공동연구원 (일반공동)",
@@ -34,7 +34,7 @@
       "Email : kangkim@uos.ac.kr"
     ]
   },
-  "이신": {
+  {
     "name": "이신",
     "details": [
       "공동연구원 (일반공동)",
@@ -45,7 +45,7 @@
       "Email : shinlee714@uos.ac.kr"
     ]
   },
-  "박준": {
+  {
     "name": "박준",
     "details": [
       "공동연구원 (일반공동)",
@@ -56,7 +56,7 @@
       "Email : joon.park@uos.ac.kr"
     ]
   },
-  "김광일": {
+  {
     "name": "김광일",
     "details": [
       "공동연구원 (일반공동)",
@@ -67,7 +67,7 @@
       "Email : kikim@uos.ac.kr"
     ]
   },
-  "서승범": {
+  {
     "name": "서승범",
     "details": [
       "공동연구원 (일반공동)",
@@ -78,7 +78,7 @@
       "Email : sbseo7@uos.ac.kr"
     ]
   },
-  "박현": {
+  {
     "name": "박현",
     "details": [
       "공동연구원 (일반공동)",
@@ -89,7 +89,7 @@
       "Email : hpark@uos.ac.kr"
     ]
   },
-  "박혜민": {
+  {
     "name": "박혜민",
     "details": [
       "공동연구원 (일반공동)",
@@ -100,7 +100,7 @@
       "Email : minpark@uos.ac.kr"
     ]
   },
-  "고주연": {
+  {
     "name": "고주연",
     "details": [
       "공동연구원 (전임연구인력)",
@@ -110,7 +110,7 @@
       "이메일: gojy@uos.ac.kr"
     ]
   },
-  "안성숙": {
+  {
     "name": "안성숙",
     "details": [
       "공동연구원 (전임연구인력)",
@@ -121,7 +121,7 @@
       "이메일: ssahn78@uos.ac.kr"
     ]
   },
-  "김대일": {
+  {
     "name": "김대일",
     "details": [
       "공동연구원 (전임연구인력)",
@@ -132,4 +132,4 @@
       "이메일:  kkim019@uos.ac.kr"
     ]
   }
-}
+]
