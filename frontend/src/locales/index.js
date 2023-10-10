@@ -1,12 +1,13 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import ko from "./ko.json";
-import en from "./en.json";
+
+import ko from "./translation.ko.json";
+import en from "./translation.en.json";
 import { koResearchers, enResearchers } from "./researchers";
 import professors from "./professors.json";
-import koProjects from "./ko-projects.json";
-import enProjects from "./en-projects.json";
+import projectsKo from "./projects.ko.json";
+import projectsEn from "./projects.en.json";
 
 i18n
   .use(initReactI18next)
@@ -19,12 +20,12 @@ i18n
         professors: {
           people: professors,
         },
-        projects: koProjects,
+        projects: projectsKo,
       },
       en: {
         translation: en,
         researchers: enResearchers(),
-        projects: enProjects,
+        projects: projectsEn,
       },
     },
     fallbackLng: "ko",
