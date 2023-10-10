@@ -4,9 +4,11 @@ import { Paper } from "@material-ui/core";
 import { getArticles, countArticles } from "../shared/BackendRequests";
 import ArticlePreview from "./ArticlePreview";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function NoticeBoard(props) {
   const { rowCount } = props;
+  const { t } = useTranslation();
 
   // 현재 NoticeBoard 에서는 소식(news), 커뮤니티(community) 분야의 글을 다루고 있음.
   const [selected, setSelected] = useState("notices");
@@ -121,7 +123,7 @@ export default function NoticeBoard(props) {
             (selected === "notices" ? "primary" : "")
           }
         >
-          <h4>공지사항</h4>
+          <h4>{t("공지사항")}</h4>
         </div>
         <div
           onClick={getButtonHandler("smart-news")}
@@ -130,7 +132,7 @@ export default function NoticeBoard(props) {
             (selected === "smart-news" ? "primary" : "")
           }
         >
-          <h4>스마트 뉴스</h4>
+          <h4>{t("스마트 뉴스")}</h4>
         </div>
         <div
           onClick={getButtonHandler("community")}
@@ -139,7 +141,7 @@ export default function NoticeBoard(props) {
             (selected === "community" ? "primary" : "")
           }
         >
-          <h4>커뮤니티</h4>
+          <h4>{t("커뮤니티")}</h4>
         </div>
         <div
           onClick={getButtonHandler("archive")}
@@ -148,7 +150,7 @@ export default function NoticeBoard(props) {
             (selected === "archive" ? "primary" : "")
           }
         >
-          <h4>아카이브</h4>
+          <h4>{t("아카이브")}</h4>
         </div>
       </div>
       <div className="board-contents">
@@ -161,7 +163,7 @@ export default function NoticeBoard(props) {
       </div>
       <div className="board-footer">
         <a href onClick={moveToList}>
-          {counts[selected] + "개의 게시물이 있습니다."}
+          {t("noticeBoardCount", { count: counts[selected] })}
         </a>
       </div>
     </Paper>

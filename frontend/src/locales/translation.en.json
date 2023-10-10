@@ -36,5 +36,7 @@
       "Development of measurement equipment based on AI",
       "Research on urban regeneration and response to urban shrinkage"
     ]
-  }
+  },
+  "noticeBoardCount_one": "There is {{count}} post.",
+  "noticeBoardCount_other": "There are {{count}} posts."
 }

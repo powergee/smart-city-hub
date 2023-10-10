@@ -11,5 +11,7 @@
       "AI기반의 측정장비 개발",
       "도시재생 및 도시축소 대응연구"
     ]
-  }
+  },
+  "noticeBoardCount_one": "{{count}}개의 게시물이 있습니다.",
+  "noticeBoardCount_other": "{{count}}개의 게시물이 있습니다."
 }
