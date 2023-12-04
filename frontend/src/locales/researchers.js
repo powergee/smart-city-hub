@@ -19,13 +19,15 @@ export function enResearchers() {
     글로벌건설학과: "Global Construction",
     주임교수: "Professor",
     연구교수: "Research Professor",
-    경영학박사: "PhD in Business Administration",
-    공학박사: "PhD in Engineering",
+    경영학박사: "PhD. Business Administration",
+    공학박사: "PhD. Engineering",
+    부동산학박사: "PhD. Real Estate",
     선임연구원: "Senior Researcher",
     연구원: "Researcher",
     전화: "Tel",
     연락처: "Phone",
     이메일: "E-mail",
+    부원장: "Vice Dean",
     lab: "Global Urban & Infrastructure Research Center",
     addresses: {
       연구실:
