@@ -11,7 +11,7 @@ import validateToken from "./validateAuth";
 
 const router = new Router();
 
-router.use(BodyParser());
+router.use(BodyParser({ jsonLimit: '64mb' })); // TODO: set jsonLimit by environment variable
 router.use(Cookie());
 
 router.get("/", async (ctx: Koa.Context) => {
