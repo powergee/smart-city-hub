@@ -68,11 +68,21 @@
     ]
   },
   {
+    "name": "송영주",
+    "details": [
+      "$t(연구원)",
+      "$t(lab)[$t(도시과학연구원)]",
+      "$t(addresses.연구실)",
+      "$t(이메일): jobsyj@naver.com"
+    ]
+  },
+  {
     "name": "이성호",
     "details": [
       "$t(연구원)",
       "$t(lab)[$t(도시과학연구원)]",
       "$t(addresses.연구실)",
+      "$t(이메일): leesh00@uos.ac.kr",
       "$t(이메일): shythm@outlook.com"
     ]
   }
