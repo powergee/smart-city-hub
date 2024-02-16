@@ -4,22 +4,22 @@ services:
   app:
     image: node:10
     volumes:
-      - ..:/workspaces:cached
+      - ..:/workspace:cached
     environment:
       - PORT=4000
       - MONGO_URI=mongodb://db:27017/smarthub
-      - FILES_DIRECTORY=/workspaces/.devcontainer/saved-files
+      - FILES_DIRECTORY=/workspace/.devcontainer/saved-files
     command: sleep infinity
     network_mode: service:db
 
   web:
     image: node:20
     volumes:
-      - ..:/workspaces:cached
+      - ..:/workspace:cached
     environment:
       - PORT=4000
       - MONGO_URI=mongodb://db:27017/smarthub
-      - FILES_DIRECTORY=/workspaces/.devcontainer/saved-files
+      - FILES_DIRECTORY=/workspace/.devcontainer/saved-files
     command: sleep infinity
 
   db:
