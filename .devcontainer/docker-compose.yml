@@ -12,6 +12,16 @@ services:
     command: sleep infinity
     network_mode: service:db
 
+  web:
+    image: node:20
+    volumes:
+      - ..:/workspaces:cached
+    environment:
+      - PORT=4000
+      - MONGO_URI=mongodb://db:27017/smarthub
+      - FILES_DIRECTORY=/workspaces/.devcontainer/saved-files
+    command: sleep infinity
+
   db:
     image: mongo:4.4.3
     restart: unless-stopped
