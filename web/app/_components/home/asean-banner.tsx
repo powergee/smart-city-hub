@@ -37,9 +37,7 @@ function AseanBannerLink(props: AseanBannerLinkProps) {
         />
       </div>
       <div className="min-w-0">
-        <div className="text-uos-emerald-light font-medium text-sm">
-          {title}
-        </div>
+        <div className="text-uos-emerald font-medium text-sm">{title}</div>
         <div className="text-xs font-light tracking-tighter whitespace-pre-wrap">
           {description}
         </div>
