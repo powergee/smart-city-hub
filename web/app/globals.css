@@ -1,0 +1,13 @@
+/* @tailwind directives for each of Tailwind’s layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgba(245, 246, 250, 0.65);
+}
