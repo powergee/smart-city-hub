@@ -1,27 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
+import { initTranslation, Translate } from "@locales";
 
 import logoImage from "@resources/images/logo.png";
 
-function ThinHeader() {
+function ThinHeader(props: { t: Translate }) {
+  const { t } = props;
+
   return (
     <div className="flex justify-end max-w-screen-2xl -mb-4 pt-1 lg:w-10/12 lg:mx-auto">
-      <Link
+      <a
         className="font-normal text-sm mr-4 py-1"
         href="https://uos.ac.kr/main.do"
       >
-        서울시립대학교
-      </Link>
-      <button className="font-normal text-sm mr-2 py-1">KOR</button>
-      <button className="font-normal text-sm mr-4 py-1">ENG</button>
+        {t("서울시립대학교")}
+      </a>
+      <button className="font-normal text-sm mr-2 py-1">
+        <Link href="/ko">KOR</Link>
+      </button>
+      <button className="font-normal text-sm mr-4 py-1">
+        <Link href="/en">ENG</Link>
+      </button>
       <button className="bg-uos-signiture-blue text-white font-normal text-sm px-4 py-1">
-        로그인
+        {t("로그인")}
       </button>
     </div>
   );
 }
 
-function NavigationBar() {
+function NavigationBar(props: { t: Translate }) {
+  const { t } = props;
+
   const NavLinkSeperator = () => (
     <span className="my-auto select-none text-slate-500 xl:px-8">·</span>
   );
@@ -47,25 +56,27 @@ function NavigationBar() {
         </Link>
       </div>
       <div className="w-full pt-4 hidden md:flex md:justify-evenly xl:justify-end">
-        <NavLink href="/introduction">소개</NavLink>
+        <NavLink href="/introduction">{t("소개")}</NavLink>
         <NavLinkSeperator />
-        <NavLink href="/project">연구 & 사업</NavLink>
+        <NavLink href="/project">{t("연구 & 사업")}</NavLink>
         <NavLinkSeperator />
-        <NavLink href="/publish">발간물</NavLink>
+        <NavLink href="/publish">{t("발간물")}</NavLink>
         <NavLinkSeperator />
-        <NavLink href="/news">소식</NavLink>
+        <NavLink href="/news">{t("소식")}</NavLink>
         <NavLinkSeperator />
-        <NavLink href="/hub">스마트도시수출 거점HUB</NavLink>
+        <NavLink href="/hub">{t("스마트도시수출 거점HUB")}</NavLink>
       </div>
     </nav>
   );
 }
 
-export default function Header() {
+export default async function Header(props: { lang: string }) {
+  const { t } = await initTranslation(props.lang);
+
   return (
     <header className="sticky top-0 backdrop-blur-md bg-white/80 border-b border-slate-900/10 pb-2 z-50">
-      <ThinHeader />
-      <NavigationBar />
+      <ThinHeader t={t} />
+      <NavigationBar t={t} />
     </header>
   );
 }

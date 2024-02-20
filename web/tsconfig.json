@@ -19,6 +19,7 @@
     ],
     "baseUrl": "./",
     "paths": {
+      "@locales": ["./app/_locales/index.ts"],
       "@resources/*": ["./app/_resources/*"],
       "@components/*": ["./app/_components/*"],
       "@/*": ["./app/*"]

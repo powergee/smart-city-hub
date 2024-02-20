@@ -1,11 +1,8 @@
-export type Country = {
-  name: string;
-  nameEng: string;
-};
+export const locales = ["ko", "en"] as const;
+export type Locale = (typeof locales)[number];
 
 export type AseanBannerItem = {
-  country: Country;
+  countryName: string;
   description: string[]; // for multiple lines
-  descriptionEng: string[]; // for multiple lines
   buttonPosition: [x: number, y: number];
 };

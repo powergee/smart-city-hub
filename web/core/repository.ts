@@ -1,5 +1,5 @@
-import { AseanBannerItem } from "core/model";
+import { AseanBannerItem, Locale } from "core/model";
 
 export interface AseanBannerRepository {
-  getItemAll: () => AseanBannerItem[];
+  getItemAll: (lang: Locale) => AseanBannerItem[];
 }
