@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { initTranslation, Translate } from "@locales";
+import LanguageChanger from "@components/language-changer";
 
 import logoImage from "@resources/images/logo.png";
 
@@ -15,12 +16,18 @@ function ThinHeader(props: { t: Translate }) {
       >
         {t("서울시립대학교")}
       </a>
-      <button className="font-normal text-sm mr-2 py-1">
-        <Link href="/ko">KOR</Link>
-      </button>
-      <button className="font-normal text-sm mr-4 py-1">
-        <Link href="/en">ENG</Link>
-      </button>
+      <LanguageChanger
+        lang="ko"
+        component={
+          <button className="font-normal text-sm mr-2 py-1">KOR</button>
+        }
+      />
+      <LanguageChanger
+        lang="en"
+        component={
+          <button className="font-normal text-sm mr-4 py-1">ENG</button>
+        }
+      />
       <button className="bg-uos-signiture-blue text-white font-normal text-sm px-4 py-1">
         {t("로그인")}
       </button>
