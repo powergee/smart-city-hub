@@ -16,6 +16,7 @@ function removePrefixes(str: string, prefixes: string[]) {
 export default function LanguageChanger(props: {
   lang: string;
   component: React.ReactElement;
+  preserveUrl?: boolean;
 }) {
   const router = useRouter();
   const currentPathname = usePathname();
@@ -25,18 +26,25 @@ export default function LanguageChanger(props: {
     const expires = new Date();
     expires.setTime(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires.toUTCString()};path=/`;
-
-    // refresh current page(automatically redirect to new locale page)
-    const targetPath = removePrefixes(
-      currentPathname,
-      locales.map((lang) => `/${lang}`)
-    );
-    router.push(targetPath + "/");
-    router.refresh();
   };
 
   const component = React.cloneElement(props.component, {
-    onClick: () => setLocaleCookie(props.lang),
+    onClick: (e: Event) => {
+      e.preventDefault();
+      setLocaleCookie(props.lang);
+
+      let targetPath = "/";
+      if (props.preserveUrl) {
+        // TODO: Query String 보존되도록 수정
+        targetPath = removePrefixes(
+          currentPathname,
+          locales.map((lang) => `/${lang}`)
+        );
+      }
+      // refresh current page(automatically redirect to new locale page)
+      router.push(targetPath);
+      router.refresh();
+    },
   });
 
   return component;

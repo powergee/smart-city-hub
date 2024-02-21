@@ -4,7 +4,7 @@ import { I18nextProvider } from "react-i18next";
 import { createInstance } from "i18next";
 import { initTranslation } from "@locales";
 
-export default function TranslationsProvider(props: {
+export default function TranslationProvider(props: {
   lang: string;
   namespaces?: string[];
   children?: React.ReactNode;

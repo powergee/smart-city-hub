@@ -5,8 +5,10 @@ import localFont from "next/font/local";
 
 import { locales } from "core/model";
 
+import { initTranslation } from "@locales";
 import Header from "@components/header";
-import TranslationsProvider from "@components/translation-provider";
+import Footer from "@components/footer";
+import TranslationProvider from "@components/translation-provider";
 
 // TODO: 아래의 메타데이터를 repository로부터 가져올 수 있어야 할 것(센터 소개 내용 동적 변경에 대비해야 함)
 export const metadata: Metadata = {
@@ -29,21 +31,23 @@ export async function generateStaticParams() {
  * 전체 웹 페이지의 뼈대가 되는 레이아웃입니다.
  * 각 디렉터리에 위치한 page.tsx의 페이지 컴포넌트를 해당 레이아웃과 함께 `{children}` 위치에 렌더링합니다.
  */
-export default function RootLayout(
+export default async function RootLayout(
   props: Readonly<{
     children: React.ReactNode;
     params: { lang: string };
   }>
 ) {
   const lang = props.params.lang;
+  const { t } = await initTranslation(lang);
 
   return (
     <html lang={lang}>
       <body className={font.className}>
-        <TranslationsProvider lang={lang}>
-          <Header lang={lang} />
+        <TranslationProvider lang={lang}>
+          <Header t={t} />
           {props.children}
-        </TranslationsProvider>
+          <Footer t={t} className="mt-8" />
+        </TranslationProvider>
       </body>
     </html>
   );

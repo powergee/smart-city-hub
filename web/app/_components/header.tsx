@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { initTranslation, Translate } from "@locales";
+import { Translate } from "@locales";
+
+import Container from "@components/container";
 import LanguageChanger from "@components/language-changer";
 
 import logoImage from "@resources/images/logo.png";
@@ -51,34 +53,36 @@ function NavigationBar(props: { t: Translate }) {
   };
 
   return (
-    <nav className="flex max-w-screen-2xl mx-4 lg:w-10/12 lg:mx-auto">
-      <div className="flex-none">
-        <Link href="/">
-          <Image
-            src={logoImage}
-            alt="Global Urban & Infrastructure Research Center"
-            width={224}
-            height={224}
-          />
-        </Link>
-      </div>
-      <div className="w-full pt-4 hidden md:flex md:justify-evenly xl:justify-end">
-        <NavLink href="/introduction">{t("소개")}</NavLink>
-        <NavLinkSeperator />
-        <NavLink href="/project">{t("연구 & 사업")}</NavLink>
-        <NavLinkSeperator />
-        <NavLink href="/publish">{t("발간물")}</NavLink>
-        <NavLinkSeperator />
-        <NavLink href="/news">{t("소식")}</NavLink>
-        <NavLinkSeperator />
-        <NavLink href="/hub">{t("스마트도시수출 거점HUB")}</NavLink>
-      </div>
-    </nav>
+    <Container>
+      <nav className="flex">
+        <div className="flex-none">
+          <Link href="/">
+            <Image
+              src={logoImage}
+              alt="Global Urban & Infrastructure Research Center"
+              width={224}
+              height={224}
+            />
+          </Link>
+        </div>
+        <div className="w-full pt-4 hidden md:flex md:justify-evenly xl:justify-end">
+          <NavLink href="/introduction">{t("소개")}</NavLink>
+          <NavLinkSeperator />
+          <NavLink href="/project">{t("연구 & 사업")}</NavLink>
+          <NavLinkSeperator />
+          <NavLink href="/publish">{t("발간물")}</NavLink>
+          <NavLinkSeperator />
+          <NavLink href="/news">{t("소식")}</NavLink>
+          <NavLinkSeperator />
+          <NavLink href="/hub">{t("스마트도시수출 거점HUB")}</NavLink>
+        </div>
+      </nav>
+    </Container>
   );
 }
 
-export default async function Header(props: { lang: string }) {
-  const { t } = await initTranslation(props.lang);
+export default async function Header(props: { t: Translate }) {
+  const { t } = props;
 
   return (
     <header className="sticky top-0 backdrop-blur-md bg-white/80 border-b border-slate-900/10 pb-2 z-50">
