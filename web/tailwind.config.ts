@@ -21,6 +21,8 @@ const config: Config = {
         "uos-gray-light": "#BBBCBC",
         "uos-gray-soft": "#D9D9D6",
         "uos-gray-mist": "#E7E7E0",
+        "global-gray-light": "#F5F6FA",
+        "global-gray-soft": "#F9F9FB",
       },
     },
   },
