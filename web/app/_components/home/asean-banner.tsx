@@ -70,7 +70,10 @@ export default function AseanBanner(props: {
   });
 
   return (
-    <div className="relative overflow-x-auto md:-mt-8" ref={aseanBanner}>
+    <div
+      className={`relative overflow-x-auto ${props.className ?? ""}`}
+      ref={aseanBanner}
+    >
       <Image
         src={aseanBannerImg}
         alt="ASEAN map"
