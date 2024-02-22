@@ -2,7 +2,7 @@
 
 import { I18nextProvider } from "react-i18next";
 import { createInstance } from "i18next";
-import { initTranslation } from "@locales";
+import { initTranslation } from ".";
 
 export default function TranslationProvider(props: {
   lang: string;

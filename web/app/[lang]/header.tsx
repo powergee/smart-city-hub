@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Translate } from "@locales";
 
+import { Translate, LanguageChanger } from "@locales";
 import Container from "@components/container";
-import LanguageChanger from "@components/language-changer";
 
 import logoImage from "@resources/images/logo.png";
 

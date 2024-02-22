@@ -5,6 +5,10 @@ import { initReactI18next } from "react-i18next/initReactI18next";
 import ko from "./default.ko.json";
 import en from "./default.en.json";
 
+// other components
+import LanguageChanger from "./language-changer";
+import TranslationProvider from "./translation-provider";
+
 const resources = {
   ko: { translation: ko },
   en: { translation: en },
@@ -26,13 +30,14 @@ export async function initTranslation(
     resources,
     lng: lang,
     fallbackLng: false, // (중요) 번역이 없는 경우, t 함수의 인자를 그대로 반환하도록 설정
-    ns: namespaces ?? ["translation"],
+    ns: namespaces ?? "translation",
     defaultNS: namespaces ? namespaces[0] : "translation",
-    fallbackNS: namespaces ?? ["translation"],
-    returnNull: true,
+    fallbackNS: namespaces ?? "translation",
   });
 
   const t: Translate = i18nInstance.t;
 
   return { i18n: i18nInstance, t };
 }
+
+export { TranslationProvider, LanguageChanger };

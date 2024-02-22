@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { Translate } from "@locales";
 import Container from "@components/container";
 
