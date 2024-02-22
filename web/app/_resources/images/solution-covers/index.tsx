@@ -22,14 +22,14 @@ import traffic from "./traffic.jpg";
 import water from "./water.jpg";
 import welfare from "./welfare.jpg";
 
-export const solutionCovers: { [key: string]: StaticImageData } = {
+const solutionCovers: { [key: string]: StaticImageData } = {
   건설: construction,
   고용노동: labor,
   공장: factory,
   관광: tourism,
   교육: education,
   교통: traffic,
-  "그린·에너지": green,
+  그린에너지: green,
   금융: finance,
   농업: agriculture,
   문화예술: culture,
@@ -41,7 +41,11 @@ export const solutionCovers: { [key: string]: StaticImageData } = {
   비즈니스: business,
   시민참여: citizen,
   쓰레기처리: refuse,
-  "의료·보건": medical,
+  의료보건: medical,
   전자정부: egoverment,
   통신기술: communication,
 };
+
+export function getSolutionCoverById(id: string): StaticImageData {
+  return solutionCovers[id];
+}
