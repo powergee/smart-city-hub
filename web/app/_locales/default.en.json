@@ -38,5 +38,6 @@
     ]
   },
   "noticeBoardCount_one": "There is {{count}} post.",
-  "noticeBoardCount_other": "There are {{count}} posts."
+  "noticeBoardCount_other": "There are {{count}} posts.",
+  "asean-banner-header": "Korea-ASEAN Smart City Export Hub Platform"
 }
