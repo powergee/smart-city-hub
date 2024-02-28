@@ -14,5 +14,7 @@
   },
   "noticeBoardCount_one": "{{count}}개의 게시물이 있습니다.",
   "noticeBoardCount_other": "{{count}}개의 게시물이 있습니다.",
-  "asean-banner-header": "한-아세안 스마트도시수출 거점HUB 플랫폼"
+  "asean-banner-header": "한-아세안 스마트도시수출 거점HUB 플랫폼",
+  "research-project-header": "총괄 연구 & 사업",
+  "research-center-introduction": "연구센터 소개"
 }

@@ -40,5 +40,7 @@
   },
   "noticeBoardCount_one": "There is {{count}} post.",
   "noticeBoardCount_other": "There are {{count}} posts.",
-  "asean-banner-header": "Korea-ASEAN Smart City Export Hub Platform"
+  "asean-banner-header": "Korea-ASEAN Smart City Export Hub Platform",
+  "research-project-header": "Comprehensive Research & Projects",
+  "research-center-introduction": "Introduction to the Research Center"
 }
