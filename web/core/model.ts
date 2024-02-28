@@ -6,3 +6,10 @@ export type AseanBannerItem = {
   description: string[]; // for multiple lines
   buttonPosition: [x: number, y: number];
 };
+
+export type ProjectRecordItem = {
+  year: [start: number, end: number];
+  client: string;
+  title: string;
+  isPrimary: boolean;
+};
