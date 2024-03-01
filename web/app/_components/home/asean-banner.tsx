@@ -38,9 +38,7 @@ function AseanBannerLink(props: AseanBannerLinkProps) {
       </div>
       <div className="min-w-0">
         <div className="text-uos-emerald font-medium text-sm">{title}</div>
-        <div className="text-xs font-light tracking-tighter whitespace-pre-wrap">
-          {description}
-        </div>
+        <div className="text-xs font-light tracking-tighter whitespace-pre-wrap">{description}</div>
       </div>
     </Link>
   );
@@ -70,10 +68,7 @@ export default function AseanBanner(props: {
   });
 
   return (
-    <div
-      className={`relative overflow-x-auto ${props.className ?? ""}`}
-      ref={aseanBanner}
-    >
+    <div className={`relative overflow-x-auto ${props.className ?? ""}`} ref={aseanBanner}>
       <Image
         src={aseanBannerImg}
         alt="ASEAN map"
@@ -81,7 +76,7 @@ export default function AseanBanner(props: {
         height={-1}
         className="hidden md:block top-0 left-0 pointer-events-none select-none max-w-none"
       />
-      <div className="grid grid-cols-2 gap-2 p-2 md:block">
+      <div className="grid grid-cols-2 gap-2 mt-3 md:block">
         {linkProps?.map((props, idx) => (
           <AseanBannerLink key={idx} {...props} />
         ))}
@@ -91,7 +86,7 @@ export default function AseanBanner(props: {
         alt="Smart City"
         width={640}
         height={-1}
-        className="absolute right-0 bottom-0 block md:hidden blur-3xl md:blur-none lg:block lg:w-1/3 xl:w-5/12 transition-all pointer-events-none select-none"
+        className="absolute right-0 bottom-0 hidden lg:block blur-3xl md:blur-none lg:w-1/3 xl:w-5/12 transition-all pointer-events-none select-none"
       />
     </div>
   );

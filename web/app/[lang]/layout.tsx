@@ -44,7 +44,7 @@ export default async function RootLayout(
       <body className={font.className}>
         <TranslationProvider lang={lang}>
           <Header />
-          <div>{props.children}</div>
+          {props.children}
           <Footer className="mt-8" t={t} />
         </TranslationProvider>
       </body>
