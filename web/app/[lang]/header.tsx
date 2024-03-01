@@ -77,10 +77,7 @@ export default function Header(props: { className?: string }) {
                 <ul className="grid grid-cols-3 gap-2 md:grid-cols-1 md:py-6 md:border-t-2 md:border-uos-gray-mist/50 md:group-hover:border-uos-blue">
                   {item.subNav?.map((item, idx) => (
                     <li key={idx}>
-                      <Link
-                        className="block hover:text-uos-blue hover:underline"
-                        href={item.href}
-                      >
+                      <Link className="block hover:text-uos-blue hover:underline" href={item.href}>
                         {t(item.text)}
                       </Link>
                     </li>
@@ -100,10 +97,7 @@ function ThinHeader(props: { t: Translate; className?: string }) {
 
   return (
     <div className={`flex justify-end ${className ?? ""}`}>
-      <a
-        className="font-normal text-sm mr-4 py-1"
-        href="https://uos.ac.kr/main.do"
-      >
+      <a className="font-normal text-sm mr-4 py-1" href="https://uos.ac.kr/main.do">
         {t("서울시립대학교")}
       </a>
       <LanguageChanger
@@ -137,10 +131,9 @@ function useSlideAnimation(initialHeight: number) {
   let reversedState: boolean = true;
   let reverseTarget: boolean = false;
   let animeInstance: anime.AnimeInstance | null = null; // null일 경우, 애니메이션이 끝난 상태를 의미
+  let hoverTimer: ReturnType<typeof setTimeout>;
 
-  const createSlideAnimeInstance = (
-    handleComplete?: (anim: anime.AnimeInstance) => void
-  ) => {
+  const createSlideAnimeInstance = (handleComplete?: (anim: anime.AnimeInstance) => void) => {
     if (!targetRef.current) {
       throw new Error("targetRef.current is null");
     }
@@ -183,8 +176,16 @@ function useSlideAnimation(initialHeight: number) {
     }
   };
 
-  const forward = () => toggle(false);
-  const backward = () => toggle(true);
+  const forward = () => {
+    clearTimeout(hoverTimer);
+    hoverTimer = setTimeout(() => {
+      toggle(false);
+    }, 100);
+  };
+  const backward = () => {
+    clearTimeout(hoverTimer);
+    toggle(true);
+  };
 
   return { targetRef, forward, backward, toggle };
 }
