@@ -41,7 +41,7 @@ export default async function RootLayout(
 
   return (
     <html lang={lang}>
-      <body className={font.className}>
+      <body className={font.className} style={{ paddingTop: 96 }}>
         <TranslationProvider lang={lang}>
           <Header />
           {props.children}

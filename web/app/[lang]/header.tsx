@@ -24,11 +24,10 @@ export default function Header(props: { className?: string }) {
 
   return (
     <header
-      className={`overflow-hidden sticky top-0 w-full z-50 backdrop-blur-lg bg-white/85 border-b ${
+      className={`overflow-hidden fixed top-0 w-full z-50 backdrop-blur-lg bg-white/85 border-b ${
         props.className ?? ""
       }`}
       style={{
-        // anime.js의 애니메이션을 위한 초기 높이 설정
         height: headerHeight,
         minHeight: headerHeight,
       }}
@@ -97,31 +96,26 @@ function ThinHeader(props: { t: Translate; className?: string }) {
 
   return (
     <div className={`flex justify-end ${className ?? ""}`}>
-      <a className="font-normal text-sm mr-4 py-1" href="https://uos.ac.kr/main.do">
+      {[
+        ["ko", "KOR"],
+        ["en", "ENG"],
+      ].map(([lang, text]) => (
+        <LanguageChanger
+          key={lang}
+          lang={lang}
+          component={
+            <button className="text-sm mr-2 py-1 hover:underline" type="button">
+              {text}
+            </button>
+          }
+        />
+      ))}
+      <a
+        className="bg-uos-signiture-blue hover:bg-uos-signiture-blue/90 transition text-white text-sm rounded-b-lg ml-1 px-3 py-1"
+        href="https://uos.ac.kr/main.do"
+      >
         {t("서울시립대학교")}
       </a>
-      <LanguageChanger
-        lang="ko"
-        component={
-          <button className="font-normal text-sm mr-2 py-1" type="button">
-            KOR
-          </button>
-        }
-      />
-      <LanguageChanger
-        lang="en"
-        component={
-          <button className="font-normal text-sm mr-4 py-1" type="button">
-            ENG
-          </button>
-        }
-      />
-      <button
-        className="bg-uos-signiture-blue text-white font-normal text-sm px-4 py-1"
-        type="button"
-      >
-        {t("로그인")}
-      </button>
     </div>
   );
 }
