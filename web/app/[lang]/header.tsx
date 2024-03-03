@@ -122,8 +122,8 @@ function ThinHeader(props: { t: Translate; className?: string }) {
 
 function useSlideAnimation(initialHeight: number) {
   const targetRef = useRef<HTMLElement | null>(null);
-  let reversedState: boolean = true;
-  let reverseTarget: boolean = false;
+  let reversedState: boolean | undefined;
+  let reverseTarget: boolean | undefined;
   let animeInstance: anime.AnimeInstance | null = null; // null일 경우, 애니메이션이 끝난 상태를 의미
   let hoverTimer: ReturnType<typeof setTimeout>;
 
