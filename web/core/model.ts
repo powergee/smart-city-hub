@@ -13,3 +13,19 @@ export type ProjectRecordItem = {
   title: string;
   isPrimary: boolean;
 };
+
+export type GeneralArticle = {
+  readonly id?: number;
+  title: string;
+  kind: string;
+  contents: string;
+  files: number[];
+  readonly views?: number;
+  isPublic: boolean;
+  readonly createdBy?: string;
+  readonly createdAt?: Date;
+  modifiedBy?: string;
+  modifiedAt?: Date;
+};
+
+export type GeneralArticleMeta = Omit<GeneralArticle, "contents">;

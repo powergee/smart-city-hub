@@ -1,4 +1,10 @@
-import { AseanBannerItem, ProjectRecordItem, Locale } from "core/model";
+import {
+  AseanBannerItem,
+  ProjectRecordItem,
+  Locale,
+  GeneralArticle,
+  GeneralArticleMeta,
+} from "core/model";
 
 type LocaleRepositoryMapper<R> = { [key in Locale]: R };
 
@@ -25,4 +31,20 @@ export interface SolutionRepository {
 export interface ProjectRecordRepository {
   setItemList: (items: ProjectRecordItem[]) => Promise<ProjectRecordItem[]>;
   getItemList: (primary?: boolean) => Promise<ProjectRecordItem[]>;
+}
+
+export interface GeneralArticleRepository {
+  getList: (
+    page: number,
+    perPage: number,
+    query?: {
+      kindRegex?: string;
+      contentsRegex?: string;
+      titleRegex?: string;
+    }
+  ) => Promise<GeneralArticleMeta[]>;
+  getCountByKind: (kind: string) => Promise<number>;
+  getById: (id: number) => Promise<GeneralArticle>;
+  post: (article: GeneralArticle) => Promise<GeneralArticle>;
+  delete: (id: number) => Promise<GeneralArticleMeta>;
 }
