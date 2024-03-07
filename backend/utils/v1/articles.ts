@@ -116,6 +116,50 @@ router.get("/:articleId", async (ctx: Koa.Context) => {
     }
 });
 
+router.get("/thumbnail/:articleId", async (ctx: Koa.Context) => {
+    // get thumbnail image from GeneralArticle.contents
+    // using img tag with src attribute
+    // if it is encoded in base64, decode it and send it as a response(with proper content-type)
+    // if it is just a link, send it as a response(with proper content-type)
+    // if it is not found, send 404
+
+    const articleId = Number(ctx.params.articleId);
+
+    if (articleId === undefined || isNaN(articleId)) {
+        ctx.throw(400, "articleId is not valid. The parameter was " + JSON.stringify(ctx.params));
+    }
+
+    const res = await GeneralArticleModel.findOne({ articleId }).exec() as IGeneralArticle;
+    if (res === null) {
+        ctx.throw(404, "There's no article with articleId = " + ctx.params.articleId);
+    }
+
+    const token = validateToken(ctx);
+    if (!res.isPublic && (token === undefined || !token.isManager)) {
+        ctx.throw(401, "It is unauthorized.");
+    }
+
+    const imgRegex = /<img(.|\n)*?src="(.*?)"/;
+    const imgRegexExec = imgRegex.exec(res.contents);
+    if (imgRegexExec === null) {
+        ctx.throw(404, "There's no image in the article with articleId = " + ctx.params.articleId);
+    }
+
+    const imgSrc = imgRegexExec[2];
+    if (imgSrc.startsWith("data:image")) {
+        const base64 = imgSrc.split(",")[1];
+        const buffer = Buffer.from(base64, "base64");
+        ctx.response.body = buffer;
+
+        const type = imgSrc.split(":")[1].split(';')[0]; // data:image/png;base64,~~~
+        ctx.response.type = type;
+    }
+
+    if (imgSrc.startsWith("http")) {
+        ctx.response.redirect(imgSrc);
+    }
+});
+
 router.post("/", async (ctx: Koa.Context) => {
     const token = validateToken(ctx);
 
