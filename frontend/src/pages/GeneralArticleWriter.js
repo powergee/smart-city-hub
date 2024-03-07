@@ -35,6 +35,7 @@ export default function GeneralArticleWriter(props) {
   const [uploadedFilesInfo, setUploadedFilesInfo] = useState({});
   const [uploadedImages, setUploadedImages] = useState([]);
   const [title, setTitle] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const [isPublic, setIsPublic] = useState(true);
   const [saveButtonText, setSaveButtonText] = useState("저장하기");
   const [saveButtonColor, setSaveButtonColor] = useState("primary");
@@ -122,6 +123,10 @@ export default function GeneralArticleWriter(props) {
     setTitle(event.target.value);
   }
 
+  function onCreatedAtChange(event) {
+    setCreatedAt(event.target.value);
+  }
+
   function onPublicChange(event) {
     setIsPublic(event.target.checked);
   }
@@ -188,6 +193,7 @@ export default function GeneralArticleWriter(props) {
         files: uploadedFiles.concat(fileIds.map((element) => Number(element))),
         kind: kind,
         isPublic: isPublic,
+        createdAt: createdAt && new Date(createdAt).toISOString(),
       };
 
       // 이미 생성된 글을 수정하는 것이라면,
@@ -205,6 +211,7 @@ export default function GeneralArticleWriter(props) {
       setSaveButtonColor("primary");
     }
   }
+  console.log(createdAt && new Date(createdAt).toISOString())
 
   return (
     <React.Fragment>
@@ -224,7 +231,20 @@ export default function GeneralArticleWriter(props) {
           onChange={onTitleChange}
           value={title}
         ></TextField>
-
+        {articleId &&
+          <TextField
+            className="writer-title"
+            type="datetime-local"
+            id="createdAt"
+            label="작성 날짜"
+            helperText="비워둘 시 작성 날짜를 변경하지 않습니다."
+            rowsMax={1}
+            value={createdAt}
+            InputLabelProps={{ shrink: true }}
+            style={{ maxWidth: 256, marginLeft: 12 }}
+            onChange={onCreatedAtChange}
+          />
+        }
         <FormControlLabel
           value="start"
           control={
