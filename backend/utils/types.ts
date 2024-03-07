@@ -53,7 +53,8 @@ export interface IArticlesGetRequest {
     kindRegex: string,
     contentsRegex: string,
     titleRegex: string,
-    createdByRegex: string
+    createdByRegex: string,
+    summary: boolean,
 }
 
 // Response
@@ -77,13 +78,14 @@ export interface IArticlesCountGetResponse {
 /* POST /v1/articles */
 // Request
 export interface IArticlesPostRequest {
-    articleId: number | undefined,
+    articleId?: number,
     title: string,
     contents: string,
     images: [number],
     files: [number],
     kind: string,
     isPublic: boolean
+    createdAt?: Date,
 }
 
 // Response

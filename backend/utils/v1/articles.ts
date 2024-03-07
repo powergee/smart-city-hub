@@ -21,7 +21,8 @@ router.get("/", async (ctx: Koa.Context) => {
         kindRegex: ctx.query.kindRegex,
         contentsRegex: ctx.query.contentsRegex,
         titleRegex: ctx.query.titleRegex,
-        createdByRegex: ctx.query.createdByRegex
+        createdByRegex: ctx.query.createdByRegex,
+        summary: ctx.query.summary === 'true'
     };
 
     if (body.page === undefined || body.perPage === undefined || isNaN(body.page) || isNaN(body.perPage) ||
@@ -55,10 +56,15 @@ router.get("/", async (ctx: Koa.Context) => {
         cursor = cursor.where("isPublic").equals(true);
     }
 
-    const res:IArticlesGetResponse = await cursor
-        .sort({ articleId: -1 })
-        .skip((body.page-1)*body.perPage)
-        .limit(body.perPage).exec();
+    if (body.summary) {
+        cursor = cursor.select("-contents");
+    }
+    
+    cursor = cursor.sort({ articleId: -1 });
+    cursor = cursor.skip((body.page - 1) * body.perPage);
+    cursor = cursor.limit(body.perPage);
+
+    const res:IArticlesGetResponse = await cursor.exec();
     ctx.response.body = res;
 });
 
@@ -184,7 +190,9 @@ router.post("/", async (ctx: Koa.Context) => {
         prevArticle.isPublic = body.isPublic;
         prevArticle.lastModifiedBy = token.userName;
         prevArticle.meta.modifiedAt = new Date();
-
+        if (body.createdAt) {
+            prevArticle.meta.createdAt = new Date(body.createdAt);
+        }
         const saved = await prevArticle.save();
 
         saved.files.forEach((element: number) => {
