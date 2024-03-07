@@ -90,34 +90,13 @@ export default function GeneralArticleView(props) {
           <h2 className="article-title">{article.title}</h2>
           <div className="article-props">
             {!article.isPublic && <LockIcon></LockIcon>}
-
             <div className="article-prop-pair">
-              <strong>최초 작성자 :</strong>
-              <p>{article.createdBy}</p>
+              <strong>작성 날짜 :</strong>
+              <span>{dateToString(article.meta.createdAt)}</span>
             </div>
-
-            <div className="article-prop-pair">
-              <strong>최초 작성 시간 :</strong>
-              <p>{dateToString(article.meta.createdAt)}</p>
-            </div>
-
-            {article.lastModifiedBy && (
-              <React.Fragment>
-                <div className="article-prop-pair">
-                  <strong>가장 최근에 수정한 사람 :</strong>
-                  <p>{article.lastModifiedBy}</p>
-                </div>
-
-                <div className="article-prop-pair">
-                  <strong>마지막 수정 시간 :</strong>
-                  <p>{dateToString(article.meta.modifiedAt)}</p>
-                </div>
-              </React.Fragment>
-            )}
-
             <div className="article-prop-pair">
               <strong>조회수 :</strong>
-              <p>{article.views}</p>
+              <span>{article.views}</span>
             </div>
           </div>
 
@@ -147,26 +126,33 @@ export default function GeneralArticleView(props) {
           </div>
 
           {getToken(cookies) && (
-            <div className="article-edit">
-              <Button
-                variant="contained"
-                color="primary"
-                className="list-create"
-                startIcon={<CreateIcon />}
-                onClick={editArticle}
-              >
-                이 게시글 수정하기
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                className="list-create"
-                startIcon={<DeleteIcon />}
-                onClick={deleteArticle}
-              >
-                이 게시글 삭제하기
-              </Button>
-            </div>
+            <>
+              <div style={{ lineHeight: '2px' }}>
+                <p>아래의 내용은 관리자에게만 보입니다.</p>
+                <p>최초 작성자: {article.createdBy}, 작성 일시(UTC, 변경 가능): {article.meta.createdAt}</p>
+                <p>마지막으로 수정한 사람: {article.lastModifiedBy}, 마지막으로 수정한 일시(UTC): {article.meta.modifiedAt}</p>
+              </div>
+              <div className="article-edit">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="list-create"
+                  startIcon={<CreateIcon />}
+                  onClick={editArticle}
+                >
+                  이 게시글 수정하기
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className="list-create"
+                  startIcon={<DeleteIcon />}
+                  onClick={deleteArticle}
+                >
+                  이 게시글 삭제하기
+                </Button>
+              </div>
+            </>
           )}
         </React.Fragment>
       )}
