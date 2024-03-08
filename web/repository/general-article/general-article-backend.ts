@@ -13,8 +13,8 @@ type GeneralArticleDTO = {
   createdBy: string;
   lastModifiedBy: string;
   meta: {
-    createdAt: Date;
-    modifiedAt: Date;
+    createdAt: string;
+    modifiedAt: string;
   };
 };
 
@@ -29,24 +29,24 @@ export default class GeneralArticleBackendRepo implements GeneralArticleReposito
     const searchParams = new URLSearchParams();
     searchParams.append("page", page.toString());
     searchParams.append("perPage", perPage.toString());
+    searchParams.append("summary", "true");
     if (query?.kindRegex) searchParams.append("kindRegex", query.kindRegex);
     if (query?.contentsRegex) searchParams.append("contentsRegex", query.contentsRegex);
     if (query?.titleRegex) searchParams.append("titleRegex", query.titleRegex);
 
-    const res = await fetch(`${this.BASE_URL}/v1/articles?${searchParams.toString()}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(`${this.BASE_URL}/v1/articles?${searchParams.toString()}`);
     const articles = (await res.json()) as GeneralArticleDTO[];
 
     return articles.map((article) => ({
       id: article.articleId,
       title: article.title,
       kind: article.kind,
-      contents: article.contents,
       files: article.files,
       isPublic: article.isPublic,
+      createdAt: new Date(article.meta.createdAt),
+      createdBy: article.createdBy,
+      modifiedAt: new Date(article.meta.modifiedAt),
       modifiedBy: article.lastModifiedBy,
-      modifiedAt: article.meta.modifiedAt,
     }));
   }
 
@@ -68,8 +68,10 @@ export default class GeneralArticleBackendRepo implements GeneralArticleReposito
       contents: article.contents,
       files: article.files,
       isPublic: article.isPublic,
+      createdAt: new Date(article.meta.createdAt),
+      createdBy: article.createdBy,
+      modifiedAt: new Date(article.meta.modifiedAt),
       modifiedBy: article.lastModifiedBy,
-      modifiedAt: article.meta.modifiedAt,
     };
   }
 
