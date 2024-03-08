@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { Locale } from "core/model";
 import { repo } from "repository";
@@ -89,7 +90,7 @@ export default async function Home(props: { params: { lang: string } }) {
                     [quickMenuIcons.groupIcon.src, t("연구진"), "/introduction"],
                     [quickMenuIcons.noticeIcon.src, t("공지사항"), "/introduction"],
                   ].map(([icon, text, href], idx) => (
-                    <a className="flex flex-col items-center" key={idx} href={href}>
+                    <Link className="flex flex-col items-center" key={idx} href={href}>
                       <div
                         className="w-2/3 aspect-square bg-white/75 hover:bg-white"
                         style={{
@@ -97,7 +98,7 @@ export default async function Home(props: { params: { lang: string } }) {
                         }}
                       />
                       <div className="text-center break-keep mt-4">{text}</div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -105,12 +106,93 @@ export default async function Home(props: { params: { lang: string } }) {
           </Container>
         </div>
       </div>
-      <Container>
-        <FormalHeader2 className="mt-6">최신 Update</FormalHeader2>
-        <FormalHeader2 className="mt-6">최신 Issue Paper</FormalHeader2>
-        <FormalHeader2 className="mt-6">최신 신남방 & 스마트도시 기술 리포트</FormalHeader2>
-        <FormalHeader2 className="mt-6">관련 웹페이지</FormalHeader2>
+      {/* 최신 Update 배너 */}
+      <section>
+        <Container className="mt-6">
+          <FormalHeader2>{t("latest-updates")}</FormalHeader2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+            {(
+              await repo.generalArticle.getList(1, 4, {
+                contentsRegex: /<img.*>/.source,
+                kindRegex: /notices|smart-news|research|seminar/.source,
+              })
+            ).map((article, idx) => (
+              <CardLink
+                href={`https://global.urbanscience.uos.ac.kr/news/${article.kind}/${article.id}`}
+                imgSrc={`https://global.urbanscience.uos.ac.kr/v1/articles/thumbnail/${article.id}`}
+                imgHeight={192}
+                title={article.title}
+                meta={`${t(article.kind)} · ${article.createdAt?.toLocaleDateString()}`}
+                key={idx}
+              />
+            ))}
+          </div>
+        </Container>
+      </section>
+      <Container className="mt-12 grid gap-12 grid-cols-1 md:grid-cols-2">
+        {/* 최신 Issue Paper 배너 */}
+        <section>
+          <FormalHeader2>{t("latest-issue-paper")}</FormalHeader2>
+          <div className="grid grid-cols-2 gap-8 mt-4">
+            {(
+              await repo.generalArticle.getList(1, 2, {
+                kindRegex: /issue-paper/.source,
+              })
+            ).map((article, idx) => (
+              <CardLink
+                href={`https://global.urbanscience.uos.ac.kr/publish/issue-paper/${article.id}`}
+                imgSrc={`https://global.urbanscience.uos.ac.kr/v1/files/pdf-preview/${article.files[0]}`}
+                title={article.title}
+                key={idx}
+              />
+            ))}
+          </div>
+        </section>
+        {/* 최신 신남방 & 스마트도시 기술 리포트 배너 */}
+        <section>
+          <FormalHeader2>{t("latest-archive")}</FormalHeader2>
+          <div className="grid grid-cols-2 gap-8 mt-4">
+            {(
+              await repo.generalArticle.getList(1, 2, {
+                kindRegex: /archive/.source,
+              })
+            ).map((article, idx) => (
+              <CardLink
+                href={`https://global.urbanscience.uos.ac.kr/publish/archive/${article.id}`}
+                imgSrc={`https://global.urbanscience.uos.ac.kr/v1/files/pdf-preview/${article.files[0]}`}
+                title={article.title}
+                key={idx}
+              />
+            ))}
+          </div>
+        </section>
+      </Container>
+      <Container className="mt-12">
+        <FormalHeader2>관련 웹페이지</FormalHeader2>
       </Container>
     </>
+  );
+}
+
+function CardLink(props: {
+  href: string;
+  imgSrc: string;
+  imgHeight?: string | number;
+  title: string;
+  meta?: string;
+}) {
+  return (
+    <Link className="group" href={props.href}>
+      <div className="overflow-hidden border rounded-md" style={{ height: props.imgHeight }}>
+        <img
+          className="w-full h-full object-cover group-hover:scale-105 transition"
+          src={props.imgSrc}
+          alt={props.title}
+          loading="lazy"
+        />
+      </div>
+      <div className="mt-2 font-medium break-keep group-hover:underline">{props.title}</div>
+      {props.meta && <div className="mt-1 text-sm text-gray-500">{props.meta}</div>}
+    </Link>
   );
 }
