@@ -38,7 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <NavAccordionItem item={item} key={item.href} />
           ))}
         </nav>
-        <main className="flex-1">
+        <section className="flex-1">
           <FormalHeader2 className="mb-4 flex items-center">
             {t(title)}
             <span className="w-6 mx-1">
@@ -49,7 +49,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {t(subTitle)}
           </FormalHeader2>
           {children}
-        </main>
+        </section>
       </Container>
     </>
   );
@@ -92,7 +92,7 @@ function NavAccordionItem(props: { item: NavigationItem }) {
         </button>
       </li>
       <li
-        className="h-0 overflow-hidden bg-uos-gray-mist/40"
+        className="h-0 overflow-hidden bg-uos-gray-mist/30"
         ref={(ref) => slideAnimation.setTarget(ref)}
       >
         <ul className="px-6 py-2">

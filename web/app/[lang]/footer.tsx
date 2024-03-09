@@ -9,9 +9,9 @@ export default function Footer(props: { t: Translate; className?: string }) {
   const { t } = props;
 
   return (
-    <div className={`bg-global-gray-light border-t ${props.className ?? ""}`}>
+    <footer className={`bg-global-gray-light border-t ${props.className ?? ""}`}>
       <Container className="pt-6 pb-10">
-        <footer className="flex flex-col lg:flex-row justify-between text-sm text-uos-gray">
+        <div className="flex flex-col lg:flex-row justify-between text-sm text-uos-gray">
           <div>
             <p className="mb-1 font-medium">{t("labAddress")}</p>
             <p>
@@ -27,8 +27,7 @@ export default function Footer(props: { t: Translate; className?: string }) {
               Email : <a href="mailto:chunhoy7@uos.ac.kr">chunhoy7@uos.ac.kr</a>
             </p>
             <p className="mt-1">
-              Copyright 2024 Global Urban &#38; Infrastructure Research Center.
-              All Rights Reserved.
+              Copyright 2024 Global Urban &#38; Infrastructure Research Center. All Rights Reserved.
             </p>
           </div>
           <div>
@@ -41,9 +40,9 @@ export default function Footer(props: { t: Translate; className?: string }) {
               />
             </a>
           </div>
-        </footer>
+        </div>
       </Container>
-    </div>
+    </footer>
   );
 }
 

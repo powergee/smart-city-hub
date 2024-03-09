@@ -40,12 +40,14 @@ export default async function RootLayout(
   const { t } = await initTranslation(lang);
 
   return (
-    <html lang={lang}>
-      <body className={font.className} style={{ paddingTop: 96 }}>
+    <html lang={lang} className="h-full">
+      <body className={`flex flex-col h-full ${font.className}`}>
         <TranslationProvider lang={lang}>
           <Header />
-          {props.children}
-          <Footer className="mt-8" t={t} />
+          <main className="flex-auto" style={{ marginTop: 96 }}>
+            {props.children}
+          </main>
+          <Footer className="flex-none mt-8" t={t} />
         </TranslationProvider>
       </body>
     </html>
