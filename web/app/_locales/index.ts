@@ -1,5 +1,6 @@
 import { createInstance, i18n } from "i18next";
 import { initReactI18next } from "react-i18next/initReactI18next";
+import { locales } from "core/model";
 
 // dictionaries
 import ko from "./default.ko.json";
@@ -9,18 +10,14 @@ import en from "./default.en.json";
 import LanguageChanger from "./language-changer";
 import TranslationProvider from "./translation-provider";
 
-const resources = {
+const resources: { [K in (typeof locales)[number]]: any } = {
   ko: { translation: ko },
   en: { translation: en },
 };
 
 export type Translate = (key: string, options?: any) => string;
 
-export async function initTranslation(
-  lang: string,
-  namespaces?: string[],
-  i18nInstance?: i18n
-) {
+export async function initTranslation(lang: string, namespaces?: string[], i18nInstance?: i18n) {
   if (!i18nInstance) {
     i18nInstance = createInstance();
   }

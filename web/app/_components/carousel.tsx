@@ -45,7 +45,6 @@ export default function Carousel(props: {
   };
 
   const handleNext = () => {
-    console.log("handleNext" + currentSlide + ", " + slides.length);
     if (currentSlide === slides.length - 1) {
       if (recursive) {
         setCurrentSlide(0); // go to the first slide

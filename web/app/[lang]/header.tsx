@@ -41,12 +41,13 @@ export default function Header(props: { className?: string }) {
       </Container>
       <Container className="md:flex md:justify-between py-4">
         <div className="flex justify-between shrink-0 md:mr-8">
-          <Link href="/">
+          <Link href="/" onClick={() => slideAnimation.backward()}>
             <Image
               src={logoImage}
               alt="Global Urban & Infrastructure Research Center"
               height={72}
               className="h-[72px] object-contain object-center pointer-events-none"
+              priority={true}
             />
           </Link>
           <button
@@ -68,6 +69,7 @@ export default function Header(props: { className?: string }) {
                 <Link
                   href={item.href}
                   className="before:content-['❏'] before:mr-1 text-uos-signiture-blue md:before:content-none md:text-black font-medium text-lg leading-tight"
+                  onClick={() => slideAnimation.backward()}
                 >
                   {t(item.text)}
                 </Link>
@@ -76,7 +78,11 @@ export default function Header(props: { className?: string }) {
                 <ul className="grid grid-cols-3 gap-2 md:grid-cols-1 md:py-6 md:border-t-2 md:border-uos-gray-mist/50 md:group-hover:border-uos-blue">
                   {item.subNav?.map((item, idx) => (
                     <li key={idx}>
-                      <Link className="block hover:text-uos-blue hover:underline" href={item.href}>
+                      <Link
+                        className="block hover:text-uos-blue hover:underline"
+                        href={item.href}
+                        onClick={() => slideAnimation.backward()}
+                      >
                         {t(item.text)}
                       </Link>
                     </li>

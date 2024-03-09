@@ -75,6 +75,7 @@ export default function AseanBanner(props: {
         width={1080}
         height={-1}
         className="hidden md:block top-0 left-0 pointer-events-none select-none max-w-none"
+        priority={true}
       />
       <div className="grid grid-cols-2 gap-2 mt-3 md:block">
         {linkProps?.map((props, idx) => (
