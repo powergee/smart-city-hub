@@ -1,3 +1,5 @@
+import { locales } from "core/model";
+
 export type NavigationItem = {
   text: string;
   href: string;
@@ -54,18 +56,44 @@ const navigationList: NavigationItem[] = [
 ];
 
 export function getNavigationList(options?: {
+  langPrefix?: string;
   rootUrl?: string;
 }): NavigationItem[] {
-  const { rootUrl = "" } = options || {};
+  let { rootUrl = "", langPrefix: lang } = options || {};
+  if (lang === "ko") lang = undefined;
+
+  const prefix = rootUrl + (lang ? `/${lang}` : "");
 
   return navigationList.map((item) => ({
     text: item.text,
-    href: `${rootUrl}${item.href}`,
+    href: `${prefix}${item.href}`,
     subNav: item.subNav
       ? item.subNav.map((subItem) => ({
           text: subItem.text,
-          href: `${rootUrl}${subItem.href}`,
+          href: `${prefix}${subItem.href}`,
         }))
       : undefined,
   }));
+}
+
+// href to text map
+const navigationHrefMap = navigationList.reduce((acc, item) => {
+  acc[item.href] = [item.text];
+
+  if (item.subNav) {
+    item.subNav.forEach((subItem) => {
+      acc[subItem.href] = [item.text, subItem.text];
+    });
+  }
+  return acc;
+}, {} as Record<string, string[]>);
+
+export function getTitleFromPathname(pathname: string): string[] {
+  for (const lang of locales) {
+    if (pathname.startsWith(`/${lang}`)) {
+      pathname = pathname.slice(1 + lang.length);
+      break;
+    }
+  }
+  return navigationHrefMap[pathname] || "";
 }
