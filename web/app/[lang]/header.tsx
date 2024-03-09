@@ -1,26 +1,22 @@
 "use client";
 
-import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import anime from "animejs";
 
 import { getNavigationList } from "@/navigation";
 import { Translate, LanguageChanger } from "@locales";
 import Container from "@components/container";
+import { useSlideAnimation } from "@components/slide-animation";
 
 import logoImage from "@resources/images/logo.png";
 
 export default function Header(props: { className?: string }) {
   const headerHeight = 96;
+  const slideAnimation = useSlideAnimation(headerHeight, { delay: 100 });
 
-  const { t } = useTranslation();
-  const slideAnimation = useSlideAnimation(headerHeight);
-
-  const navigationList = getNavigationList({
-    rootUrl: "https://global.urbanscience.uos.ac.kr",
-  });
+  const { t, i18n } = useTranslation();
+  const navigationList = getNavigationList({ langPrefix: i18n.language });
 
   return (
     <header
@@ -124,70 +120,6 @@ function ThinHeader(props: { t: Translate; className?: string }) {
       </a>
     </div>
   );
-}
-
-function useSlideAnimation(initialHeight: number) {
-  const targetRef = useRef<HTMLElement | null>(null);
-  let reversedState: boolean | undefined;
-  let reverseTarget: boolean | undefined;
-  let animeInstance: anime.AnimeInstance | null = null; // null일 경우, 애니메이션이 끝난 상태를 의미
-  let hoverTimer: ReturnType<typeof setTimeout>;
-
-  const createSlideAnimeInstance = (handleComplete?: (anim: anime.AnimeInstance) => void) => {
-    if (!targetRef.current) {
-      throw new Error("targetRef.current is null");
-    }
-
-    const targetHeight = targetRef.current.scrollHeight;
-
-    return anime({
-      targets: targetRef.current,
-      height: [initialHeight, targetHeight],
-      easing: "easeOutCubic",
-      duration: 250,
-      complete: handleComplete,
-      autoplay: false,
-    });
-  };
-
-  const toggle = (backward?: boolean) => {
-    reverseTarget = backward ?? !reversedState;
-    if (reverseTarget === reversedState) {
-      return; // 애니메이션이 이미 목표 상태에 도달한 경우, 애니메이션 실행하지 않음
-    }
-
-    if (animeInstance === null) {
-      // 애니메이션이 끝난 상태일 경우, 새로운 애니메이션 인스턴스를 생성
-      animeInstance = createSlideAnimeInstance((anim) => {
-        reversedState = anim.reversed; // 애니메이션 종료 후의 상태 저장
-
-        if (reversedState === reverseTarget) {
-          animeInstance = null; // 애니메이션이 끝난 상태로 변경
-        } else {
-          anim.reverse();
-          anim.restart();
-        }
-      });
-
-      if (reverseTarget) {
-        animeInstance.reverse();
-      }
-      animeInstance.restart();
-    }
-  };
-
-  const forward = () => {
-    clearTimeout(hoverTimer);
-    hoverTimer = setTimeout(() => {
-      toggle(false);
-    }, 100);
-  };
-  const backward = () => {
-    clearTimeout(hoverTimer);
-    toggle(true);
-  };
-
-  return { targetRef, forward, backward, toggle };
 }
 
 const HambergerIcon = (props: { className?: string }) => {
