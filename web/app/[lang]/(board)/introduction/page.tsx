@@ -1,9 +1,5 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { useTranslation } from "react-i18next";
-
-export default function Introduction() {
-  const { t } = useTranslation();
-
-  return <div>{t("소개")}</div>;
+export default function IntroductionPage() {
+  redirect("/introduction/greeting");
 }
