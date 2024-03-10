@@ -33,11 +33,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       <Container className="flex mt-8">
-        <nav className="hidden md:block w-[244px] flex-none mr-8 border rounded-md divide-y">
-          {navigationList.map((item) => (
-            <NavAccordionItem item={item} key={item.href} />
-          ))}
-        </nav>
+        <section>
+          <nav className="hidden md:block w-[244px] flex-none mr-8 border rounded-md divide-y">
+            {navigationList.map((item) => (
+              <NavAccordionItem item={item} key={item.href} />
+            ))}
+          </nav>
+        </section>
         <section className="flex-1">
           <FormalHeader2 className="mb-4 flex items-center">
             {t(title)}
@@ -92,7 +94,7 @@ function NavAccordionItem(props: { item: NavigationItem }) {
         </button>
       </li>
       <li
-        className="h-0 overflow-hidden bg-uos-gray-mist/30"
+        className="h-0 overflow-hidden bg-global-gray-soft"
         ref={(ref) => slideAnimation.setTarget(ref)}
       >
         <ul className="px-6 py-2">

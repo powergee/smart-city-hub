@@ -3,8 +3,6 @@ import "@/globals.css";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import { locales } from "core/model";
-
 import { initTranslation, TranslationProvider } from "@locales";
 import Header from "./header";
 import Footer from "./footer";
@@ -20,11 +18,6 @@ const font = localFont({
   src: "../_resources/fonts/NotoSansKR-VariableFont_wght.ttf",
   display: "swap",
 });
-
-export async function generateStaticParams() {
-  // 언어별로 정적 페이지 생성
-  return locales.map((lang) => ({ lang }));
-}
 
 /**
  * 전체 웹 페이지의 뼈대가 되는 레이아웃입니다.
