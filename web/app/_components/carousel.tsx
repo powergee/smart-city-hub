@@ -27,54 +27,48 @@ export default function Carousel(props: {
   className?: string;
   style?: React.CSSProperties;
   duration?: number;
-  recursive?: boolean;
+  loop?: boolean;
   interval?: number;
 }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const { className, style, duration = 500, recursive, interval } = props;
+  const [slideOffset, setSlideOffset] = useState(0);
+  const { className, style, duration = 500, interval, loop } = props;
   const slides = React.Children.toArray(props.children);
+  const n = slides.length;
 
   const handlePrevious = () => {
-    if (currentSlide === 0) {
-      if (recursive) {
-        setCurrentSlide(slides.length - 1); // go to the last slide
-      }
-    } else {
-      setCurrentSlide(currentSlide - 1);
+    if (!loop && slideOffset === 0) {
+      return;
     }
+    setSlideOffset(slideOffset - 1);
   };
 
   const handleNext = () => {
-    if (currentSlide === slides.length - 1) {
-      if (recursive) {
-        setCurrentSlide(0); // go to the first slide
-      }
-    } else {
-      setCurrentSlide(currentSlide + 1);
+    if (!loop && slideOffset === n - 1) {
+      return;
     }
+    setSlideOffset(slideOffset + 1);
   };
 
   useInterval(() => {
-    if (interval) {
+    if (interval && loop) {
       handleNext();
     }
   }, interval);
 
   return (
     <div className={`relative overflow-hidden ${className}`} style={style}>
-      <div
-        className="flex flex-row w-full h-full transition-transform"
-        style={{
-          transform: `translate(${-100 * currentSlide}%)`,
-          transitionDuration: `${duration}ms`,
-        }}
-      >
-        {slides.map((slide, idx) => (
-          <div className="flex-none w-full h-full" key={idx}>
-            {slide}
-          </div>
-        ))}
-      </div>
+      {[-1, 0, 1].map((k) => (
+        <div
+          className="absolute w-full h-full"
+          key={slideOffset + k}
+          style={{
+            transform: `translate(${100 * k}%)`,
+            transitionDuration: `${duration}ms`,
+          }}
+        >
+          {slides[(((slideOffset + k) % n) + n) % n]}
+        </div>
+      ))}
       <button
         className="rounded-full bg-uos-gray-light/50 hover:bg-uos-gray-light/90 transition w-10 h-10 absolute top-1/2 left-4 -translate-y-1/2 flex justify-center items-center"
         onClick={handlePrevious}

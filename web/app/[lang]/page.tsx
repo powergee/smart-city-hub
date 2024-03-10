@@ -63,7 +63,7 @@ export default async function Home(props: { params: { lang: string } }) {
               <FormalHeader2 style={{ borderColor: "#fff" }}>
                 {t("research-project-header")}
               </FormalHeader2>
-              <Carousel className="flex-auto my-4" recursive interval={5000}>
+              <Carousel className="flex-auto my-4" loop interval={5000}>
                 {(await repo.projectRecord.pickLocale(lang).getItemList(true)).map((item, idx) => (
                   <div
                     className="px-12 flex flex-col justify-center text-center w-full h-full break-keep"
