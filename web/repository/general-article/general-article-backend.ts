@@ -42,6 +42,7 @@ export default class GeneralArticleBackendRepo implements GeneralArticleReposito
       title: article.title,
       kind: article.kind,
       files: article.files,
+      views: article.views,
       isPublic: article.isPublic,
       createdAt: new Date(article.meta.createdAt),
       createdBy: article.createdBy,
@@ -58,7 +59,7 @@ export default class GeneralArticleBackendRepo implements GeneralArticleReposito
 
   async getById(id: number): Promise<GeneralArticle> {
     // use fetch function
-    const res = await fetch(`${this.BASE_URL}/v1/articles/${id}`);
+    const res = await fetch(`${this.BASE_URL}/v1/articles/${id}`, { cache: "no-store" });
     const article = (await res.json()) as GeneralArticleDTO;
 
     return {
@@ -67,6 +68,7 @@ export default class GeneralArticleBackendRepo implements GeneralArticleReposito
       kind: article.kind,
       contents: article.contents,
       files: article.files,
+      views: article.views,
       isPublic: article.isPublic,
       createdAt: new Date(article.meta.createdAt),
       createdBy: article.createdBy,
