@@ -1,4 +1,5 @@
 import "@/globals.css";
+import "ckeditor5-custom-build/build/styles.css";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
