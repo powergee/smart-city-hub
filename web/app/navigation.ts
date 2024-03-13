@@ -1,9 +1,9 @@
 import { locales } from "core/model";
 
 export type NavigationItem = {
-  text: string;
-  href: string;
-  subNav?: NavigationItem[];
+  readonly text: string;
+  readonly href: string;
+  readonly subNav?: NavigationItem[];
 };
 
 const navigationList: NavigationItem[] = [
@@ -76,24 +76,27 @@ export function getNavigationList(options?: {
   }));
 }
 
-// href to text map
-const navigationHrefMap = navigationList.reduce((acc, item) => {
-  acc[item.href] = [item.text];
-
-  if (item.subNav) {
-    item.subNav.forEach((subItem) => {
-      acc[subItem.href] = [item.text, subItem.text];
-    });
-  }
-  return acc;
-}, {} as Record<string, string[]>);
-
 export function getTitleFromPathname(pathname: string): string[] {
+  // 1. 언어 코드 제거
   for (const lang of locales) {
-    if (pathname.startsWith(`/${lang}`)) {
-      pathname = pathname.slice(1 + lang.length);
+    const localePrefix = `/${lang}`;
+    if (pathname.startsWith(localePrefix)) {
+      pathname = pathname.slice(localePrefix.length);
       break;
     }
   }
-  return navigationHrefMap[pathname] || "";
+
+  // 2. 얕은 경로를 따라 탐색하면서 매칭되는 타이틀을 찾아 배열에 추가
+  const title: string[] = [];
+  const pathEntries = pathname.split("/");
+
+  for (let i = 1, subItem = navigationList; i < pathEntries.length; i++) {
+    const path = pathEntries.slice(0, i + 1).join("/");
+    const item = subItem.find((k) => k.href == path);
+
+    if (!item) break;
+    title.push(item.text);
+    subItem = item.subNav || [];
+  }
+  return title;
 }
