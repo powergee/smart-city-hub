@@ -1,5 +1,6 @@
 import "@/globals.css";
 import "ckeditor5-custom-build/build/styles.css";
+import "ckeditor-tailwind-reset/ckeditor-tailwind-reset.css";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";

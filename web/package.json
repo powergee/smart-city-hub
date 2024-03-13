@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^6.2.0",
+    "ckeditor-tailwind-reset": "^1.0.5",
     "ckeditor5-custom-build": "file:./ckeditor5",
     "i18next": "^23.9.0",
     "negotiator": "^0.6.3",

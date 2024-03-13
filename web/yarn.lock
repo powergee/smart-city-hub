@@ -589,6 +589,11 @@ chokidar@^3.5.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
+ckeditor-tailwind-reset@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ckeditor-tailwind-reset/-/ckeditor-tailwind-reset-1.0.5.tgz#d36e78578289c078f1f7ce9a30f1661cc8feac76"
+  integrity sha512-fh6okX7iMi0Rw5vZ3rcYKPRKvfU/mCh1Qe9yXpR7cQin10cgMMJ/D5VKp66PqoCRRmPHyjg3SjEXyxRmTIOKYQ==
+
 "ckeditor5-custom-build@file:./ckeditor5":
   version "0.0.1"
   dependencies:
