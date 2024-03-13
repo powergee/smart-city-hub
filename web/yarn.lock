@@ -589,7 +589,7 @@ chokidar@^3.5.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-"ckeditor5-custom-build@file:../ckeditor5":
+"ckeditor5-custom-build@file:./ckeditor5":
   version "0.0.1"
   dependencies:
     "@ckeditor/ckeditor5-alignment" "41.2.0"

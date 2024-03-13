@@ -8,6 +8,7 @@ WORKDIR /app
 
 # Install dependencies based on yarn package manager
 COPY package.json yarn.lock ./
+COPY ckeditor5 ./ckeditor5
 RUN yarn --frozen-lockfile
 
 # Rebuild the source code only when needed
