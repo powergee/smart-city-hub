@@ -16,7 +16,12 @@ export const metadata: Metadata = {
 };
 
 const font = localFont({
-  src: "../_resources/fonts/NotoSansKR-VariableFont_wght.ttf",
+  src: [
+    { path: "../_resources/fonts/NotoSans-Light.woff2", weight: "300" },
+    { path: "../_resources/fonts/NotoSans-Regular.woff2", weight: "400" },
+    { path: "../_resources/fonts/NotoSans-Medium.woff2", weight: "500" },
+    { path: "../_resources/fonts/NotoSans-Bold.woff2", weight: "700" },
+  ],
   display: "swap",
 });
 
