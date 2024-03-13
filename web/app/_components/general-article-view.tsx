@@ -111,3 +111,61 @@ export function Pagination(props: {
     </nav>
   );
 }
+
+export function GeneralArticleViewSkeleton() {
+  return (
+    <div role="status" className="border-y w-full">
+      <div className="w-full border-y bg-global-gray-soft px-3 py-2 animate-pulse">
+        <div className="h-5 w-64 bg-gray-300 rounded-full m-1"></div>
+      </div>
+      <div className="w-full border-b bg-global-gray-soft px-3 py-2 animate-pulse">
+        <div className="h-5 w-32 bg-gray-300 rounded-full m-1"></div>
+      </div>
+      {[360, 330, 300, 380, 420].map((width, idx) => (
+        <div
+          className="h-4 bg-gray-200 rounded-full m-4"
+          key={idx}
+          style={{ maxWidth: width }}
+        ></div>
+      ))}
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
+}
+
+export function GeneralArticleView(props: {
+  id: number;
+  title: string;
+  contents: string;
+  createdAt: string;
+  viewCount: number;
+}) {
+  return (
+    <article>
+      <div className="border-y">
+        <h1 className="text-lg font-medium border-y bg-global-gray-soft px-3 py-2">
+          {props.title}
+        </h1>
+        <div role="contentinfo" className="flex items-center border-b px-3 py-2">
+          <span className="w-4 mr-1">
+            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 22H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2v6h-2v-2H5v10h7zm10.13-5.01.71-.71c.39-.39.39-1.02 0-1.41l-.71-.71a.9959.9959 0 0 0-1.41 0l-.71.71zm-.71.71-5.3 5.3H14v-2.12l5.3-5.3z"></path>
+            </svg>
+          </span>
+          <span className="mr-6">작성 날짜 {props.createdAt}</span>
+          <span className="w-4 mr-1">
+            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path>
+            </svg>
+          </span>
+          <span>조회수 {props.viewCount}</span>
+        </div>
+      </div>
+      <div
+        className="ck-content mt-2 p-2"
+        role="article"
+        dangerouslySetInnerHTML={{ __html: props.contents }}
+      ></div>
+    </article>
+  );
+}
