@@ -4,12 +4,14 @@ import Link from "next/link";
 import { Locale } from "core/model";
 import { repo } from "repository";
 import { initTranslation } from "@locales";
+import { getArticleThumbnailHref } from "@/utils";
 
 import Container from "@components/container";
 import { FormalHeader2 } from "@components/typography";
 import AseanBanner from "@components/home/asean-banner";
 import SolutionBanner from "@components/home/solution-banner";
 import Carousel from "@components/carousel";
+import CardLink from "@components/card-link";
 
 import { getSolutionCoverById } from "@resources/images/solution-covers";
 import { quickMenuIcons } from "@resources/images/quick-menu-icons";
@@ -85,10 +87,10 @@ export default async function Home(props: { params: { lang: string } }) {
               <div className="flex items-center w-full h-full">
                 <div className="grid grid-cols-4 gap-2 px-4 w-full">
                   {[
-                    [quickMenuIcons.greetingIcon.src, t("인사말"), "/introduction"],
-                    [quickMenuIcons.goalIcon.src, t("설립배경 및 목적"), "/introduction"],
-                    [quickMenuIcons.groupIcon.src, t("연구진"), "/introduction"],
-                    [quickMenuIcons.noticeIcon.src, t("공지사항"), "/introduction"],
+                    [quickMenuIcons.greetingIcon.src, t("인사말"), "/introduction/greeting"],
+                    [quickMenuIcons.goalIcon.src, t("설립배경 및 목적"), "/introduction/goal"],
+                    [quickMenuIcons.groupIcon.src, t("연구진"), "/introduction/researchers"],
+                    [quickMenuIcons.noticeIcon.src, t("공지사항"), "/news/notices"],
                   ].map(([icon, text, href], idx) => (
                     <Link className="flex flex-col items-center" key={idx} href={href}>
                       <div
@@ -118,8 +120,8 @@ export default async function Home(props: { params: { lang: string } }) {
               })
             ).map((article, idx) => (
               <CardLink
-                href={`https://global.urbanscience.uos.ac.kr/news/${article.kind}/${article.id}`}
-                imgSrc={`https://global.urbanscience.uos.ac.kr/v1/articles/thumbnail/${article.id}`}
+                href={`/news/${article.kind}/${article.id}`}
+                imgSrc={getArticleThumbnailHref(article, "img")}
                 imgHeight={192}
                 title={article.title}
                 meta={`${t(article.kind)} · ${article.createdAt?.toLocaleDateString()}`}
@@ -140,8 +142,8 @@ export default async function Home(props: { params: { lang: string } }) {
               })
             ).map((article, idx) => (
               <CardLink
-                href={`https://global.urbanscience.uos.ac.kr/publish/issue-paper/${article.id}`}
-                imgSrc={`https://global.urbanscience.uos.ac.kr/v1/files/pdf-preview/${article.files[0]}`}
+                href={`/publish/issue-paper/${article.id}`}
+                imgSrc={getArticleThumbnailHref(article, "pdf")}
                 title={article.title}
                 key={idx}
               />
@@ -158,8 +160,8 @@ export default async function Home(props: { params: { lang: string } }) {
               })
             ).map((article, idx) => (
               <CardLink
-                href={`https://global.urbanscience.uos.ac.kr/publish/archive/${article.id}`}
-                imgSrc={`https://global.urbanscience.uos.ac.kr/v1/files/pdf-preview/${article.files[0]}`}
+                href={`/publish/archive/${article.id}`}
+                imgSrc={getArticleThumbnailHref(article, "pdf")}
                 title={article.title}
                 key={idx}
               />
@@ -171,28 +173,5 @@ export default async function Home(props: { params: { lang: string } }) {
         <FormalHeader2>관련 웹페이지</FormalHeader2>
       </Container>
     </>
-  );
-}
-
-function CardLink(props: {
-  href: string;
-  imgSrc: string;
-  imgHeight?: string | number;
-  title: string;
-  meta?: string;
-}) {
-  return (
-    <Link className="group" href={props.href}>
-      <div className="overflow-hidden border rounded-md" style={{ height: props.imgHeight }}>
-        <img
-          className="w-full h-full object-cover group-hover:scale-105 transition"
-          src={props.imgSrc}
-          alt={props.title}
-          loading="lazy"
-        />
-      </div>
-      <div className="mt-2 font-medium break-keep group-hover:underline">{props.title}</div>
-      {props.meta && <div className="mt-1 text-sm text-gray-500">{props.meta}</div>}
-    </Link>
   );
 }
