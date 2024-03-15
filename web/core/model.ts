@@ -29,3 +29,9 @@ export type GeneralArticle = {
 };
 
 export type GeneralArticleMeta = Omit<GeneralArticle, "contents">;
+
+export type AttachmentFileMeta = {
+  readonly id: number | undefined;
+  readonly href: string | undefined;
+  name: string;
+};

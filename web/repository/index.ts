@@ -5,6 +5,7 @@ import {
   SolutionRepository,
   ProjectRecordRepository,
   GeneralArticleRepository,
+  AttachmentFileRepository,
 } from "core/repository";
 
 /* repositories */
@@ -13,6 +14,7 @@ import SolutionTextRepo from "repository/solution/solution-text";
 import ProjectRecordTextRepo from "repository/project-record/project-record-text";
 import ProjectRecordImportedJson from "./project-record/project-record-imported-json";
 import GeneralArticleBackendRepo from "repository/general-article/general-article-backend";
+import AttachmentFileBackendRepo from "./attachment-file/attachment-file-backend";
 
 /* dependency injection */
 const aseanBanner: AseanBannerRepository = new AseanBannerTextRepo();
@@ -25,6 +27,7 @@ const projectRecord: LocaleFacade<ProjectRecordRepository> = new LocaleFacade({
   en: new ProjectRecordImportedJson("en"),
 });
 const generalArticle: GeneralArticleRepository = new GeneralArticleBackendRepo();
+const attachmentFile: AttachmentFileRepository = new AttachmentFileBackendRepo();
 
 /* export */
 export const repo = {
@@ -32,4 +35,5 @@ export const repo = {
   solution,
   projectRecord,
   generalArticle,
+  attachmentFile,
 };

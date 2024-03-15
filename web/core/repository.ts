@@ -4,6 +4,7 @@ import {
   Locale,
   GeneralArticle,
   GeneralArticleMeta,
+  AttachmentFileMeta,
 } from "core/model";
 
 type LocaleRepositoryMapper<R> = { [key in Locale]: R };
@@ -47,4 +48,10 @@ export interface GeneralArticleRepository {
   getById: (id: number) => Promise<GeneralArticle>;
   post: (article: GeneralArticle) => Promise<GeneralArticle>;
   delete: (id: number) => Promise<GeneralArticleMeta>;
+}
+
+export interface AttachmentFileRepository {
+  upload(file: File): Promise<AttachmentFileMeta>;
+  delete(id: number): Promise<AttachmentFileMeta>;
+  getInfo(id: number): Promise<AttachmentFileMeta>;
 }
