@@ -3,6 +3,9 @@ import { repo } from "repository";
 
 export default async function PublishArticleView(props: { params: { id: string } }) {
   const article = await repo.generalArticle.getById(parseInt(props.params.id));
+  const attachments = await Promise.all(
+    article.files.map((file) => repo.attachmentFile.getInfo(file))
+  );
 
   return (
     <GeneralArticleView
@@ -11,6 +14,7 @@ export default async function PublishArticleView(props: { params: { id: string }
       contents={article.contents}
       createdAt={article.createdAt?.toLocaleDateString() || ""}
       viewCount={article.views || -1}
+      attachments={attachments.map((att) => ({ name: att.name, href: att.href! }))}
     />
   );
 }

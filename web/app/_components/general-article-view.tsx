@@ -139,6 +139,7 @@ export function GeneralArticleView(props: {
   contents: string;
   createdAt: string;
   viewCount: number;
+  attachments?: { name: string; href: string }[];
 }) {
   return (
     <article>
@@ -147,19 +148,42 @@ export function GeneralArticleView(props: {
           {props.title}
         </h1>
         <div role="contentinfo" className="flex items-center border-b px-3 py-2">
-          <span className="w-4 mr-1">
-            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M12 22H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2v6h-2v-2H5v10h7zm10.13-5.01.71-.71c.39-.39.39-1.02 0-1.41l-.71-.71a.9959.9959 0 0 0-1.41 0l-.71.71zm-.71.71-5.3 5.3H14v-2.12l5.3-5.3z"></path>
-            </svg>
-          </span>
+          <svg className="w-4 mr-1" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 22H5c-1.11 0-2-.9-2-2l.01-14c0-1.1.88-2 1.99-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2v6h-2v-2H5v10h7zm10.13-5.01.71-.71c.39-.39.39-1.02 0-1.41l-.71-.71a.9959.9959 0 0 0-1.41 0l-.71.71zm-.71.71-5.3 5.3H14v-2.12l5.3-5.3z"></path>
+          </svg>
           <span className="mr-6">작성 날짜 {props.createdAt}</span>
-          <span className="w-4 mr-1">
-            <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path>
-            </svg>
-          </span>
+          <svg className="w-4 mr-1" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path>
+          </svg>
           <span>조회수 {props.viewCount}</span>
         </div>
+        {props.attachments && props.attachments.length > 0 && (
+          <div className="flex items-start border-b px-3 py-2">
+            <div className="flex items-center mr-6">
+              <svg className="w-4 mr-1" focusable="false" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6z"></path>
+              </svg>
+              <span>첨부파일</span>
+            </div>
+            <ol className="flex-1 list-decimal">
+              {props.attachments.map((att, idx) => (
+                <li key={idx}>
+                  <Link className="hover:underline" href={att.href}>
+                    {att.name}
+                    <svg
+                      className="w-4 ml-1 inline-block"
+                      focusable="false"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-3zm-1-4-1.41-1.41L13 12.17V4h-2v8.17L8.41 9.59 7 11l5 5z"></path>
+                    </svg>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </div>
       <div
         className="ck-content mt-2 p-2"
