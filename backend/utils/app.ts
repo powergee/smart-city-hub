@@ -39,17 +39,4 @@ router.use("/v1/solutions", solutions.routes());
 
 app.use(router.routes());
 
-/* Static server for react */
-app.use(mount("/", serve(path.join(__dirname, "../client"))));
-
-/* The other paths are routed to index.html built by react */
-app.use(
-  mount("/", (ctx: Koa.Context) => {
-    ctx.type = "html";
-    ctx.body = fs.createReadStream(
-      path.join(__dirname, "../client/index.html")
-    );
-  })
-);
-
 export default app;

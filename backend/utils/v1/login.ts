@@ -13,7 +13,7 @@ router.use(BodyParser());
 router.use(Cookie());
 
 router.post("/", async (ctx: Koa.Context) => {
-    const body:ILoginRequest = ctx.request.body;
+    const body: ILoginRequest = ctx.request.body as ILoginRequest;
 
     if (body.userId === undefined || body.userPwHash === undefined) {
         ctx.throw(400, "userId or userPwHash is undefined.");

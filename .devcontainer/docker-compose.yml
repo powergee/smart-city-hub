@@ -17,7 +17,6 @@ services:
     volumes:
       - ..:/workspace:cached
     environment:
-      - PORT=4000
       - MONGO_URI=mongodb://db:27017/smarthub
       - FILES_DIRECTORY=/workspace/.devcontainer/saved-files
     command: sleep infinity

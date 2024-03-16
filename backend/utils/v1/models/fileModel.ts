@@ -1,11 +1,11 @@
 import Mongoose from "mongoose";
-import { Model, Document, Schema, model } from "mongoose"
+import { Schema, model } from "mongoose"
 import { IMeta, MetaSchemaDefinition } from "./meta"
 /*eslint-disable */
 const AutoIncrement = require("mongoose-sequence")(Mongoose);
 /*eslint-enable */
 
-export interface IFile extends Document {
+export interface IFile {
     fileId: number,
     originalName: string,
     localPath: string,
@@ -25,4 +25,4 @@ const fileSchema = new Schema({
 });
 
 fileSchema.plugin(AutoIncrement, {inc_field: 'fileId'});
-export const FileModel:Model<IFile> = model("File", fileSchema);
+export const FileModel = model<IFile>("File", fileSchema);
