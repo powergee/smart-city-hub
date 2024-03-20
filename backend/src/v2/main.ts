@@ -35,11 +35,10 @@ const mainRouter = new Router({
 });
 mainRouter.use(bodyParser());
 mainRouter.use(cookie());
-mainRouter.use(authParser({ userAuthServ, cookieName: "accessToken" }));
+mainRouter.use(authParser({ userAuthServ }));
 mainRouter.use(zodErrorResolver());
 
 new UserRouter({ di: { userServ } }).injectTo(mainRouter);
-new AuthRouter({ di: { userAuthServ }, options: { cookieName: "accessToken" } }) //
-  .injectTo(mainRouter);
+new AuthRouter({ di: { userAuthServ } }).injectTo(mainRouter);
 
 export default mainRouter;

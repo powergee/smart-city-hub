@@ -10,18 +10,14 @@ import { UserAuthService } from "../service/auth.service";
  * 유효하지 않다면 ctx.state.auth.user에 undefined을 저장하고, ctx.state.auth.error에 에러를 저장합니다.
  * @returns Koa.Middleware
  */
-export default function authParser(params: {
-  userAuthServ: UserAuthService;
-  cookieName: string;
-}): Koa.Middleware {
+export default function authParser(params: { userAuthServ: UserAuthService }): Koa.Middleware {
   return async (ctx, next) => {
     ctx.state.auth = {} as any;
 
-    const token = ctx.cookies.get(params.cookieName);
+    const token = ctx.header.authorization?.split(" ")[1];
     if (!token) {
       ctx.state.auth.error = new Error("There is no token.");
-      await next();
-      return;
+      return await next();
     }
 
     try {
