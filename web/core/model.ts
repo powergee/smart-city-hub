@@ -35,3 +35,6 @@ export type AttachmentFileMeta = {
   readonly href: string | undefined;
   name: string;
 };
+
+export type AuthTokenGetter = () => string | null;
+export type AuthTokenSetter = (token: string) => void;

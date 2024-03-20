@@ -1,4 +1,5 @@
-import { GeneralArticle, GeneralArticleMeta } from "core/model";
+import { GeneralArticle, GeneralArticleMeta, AuthTokenGetter, AuthTokenSetter } from "core/model";
+import { cookies } from "next/headers";
 
 export function getArticleThumbnailHref(
   article: GeneralArticle | GeneralArticleMeta,
@@ -13,3 +14,14 @@ export function getArticleThumbnailHref(
       return `${BASE_URL}/v1/files/pdf-preview/${article.files[0]}`;
   }
 }
+
+const ACCESS_TOKEN_COOKIE_NAME = "ACCESS_TOKEN";
+
+export const getAccessToken: AuthTokenGetter = () => {
+  const token = cookies().get(ACCESS_TOKEN_COOKIE_NAME)?.value;
+  return token || null;
+};
+
+export const setAccessToken: AuthTokenSetter = (token: string) => {
+  cookies().set(ACCESS_TOKEN_COOKIE_NAME, token, { httpOnly: true });
+};
