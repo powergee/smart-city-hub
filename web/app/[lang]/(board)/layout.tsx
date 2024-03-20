@@ -34,7 +34,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </header>
       <Container className="flex mt-8">
         <section>
-          <nav className="hidden md:block w-[244px] flex-none mr-8 border rounded-md divide-y">
+          <nav className="hidden md:block sticky top-32 left-0 w-[244px] flex-none mr-8 border rounded-md divide-y">
             {navigationList.map((item) => (
               <NavAccordionItem item={item} key={item.href} />
             ))}
