@@ -1,4 +1,4 @@
-import { repo } from "repository";
+import { repo } from "@/di";
 import { redirect } from "next/navigation";
 import { GeneralArticleTable, Pagination } from "@components/general-article-view";
 

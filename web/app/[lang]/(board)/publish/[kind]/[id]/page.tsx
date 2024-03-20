@@ -1,5 +1,5 @@
 import { GeneralArticleView } from "@components/general-article-view";
-import { repo } from "repository";
+import { repo } from "@/di";
 
 export default async function PublishArticleView(props: { params: { id: string } }) {
   const article = await repo.generalArticle.getById(parseInt(props.params.id));

@@ -1,4 +1,4 @@
-import { repo } from "repository";
+import { repo } from "@/di";
 import CardLink from "@components/card-link";
 import { Pagination } from "@components/general-article-view";
 import { getArticleThumbnailHref } from "@/utils";

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Locale } from "core/model";
-import { repo } from "repository";
+import { repo } from "@/di";
 import { initTranslation } from "@locales";
 import { getArticleThumbnailHref } from "@/utils";
 
