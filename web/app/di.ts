@@ -6,15 +6,16 @@ import {
   ProjectRecordRepository,
   GeneralArticleRepository,
   AttachmentFileRepository,
+  AuthTokenIDPWRepository,
 } from "core/repository";
 
 /* repositories */
 import AseanBannerTextRepo from "repository/asean/asean-banner-text";
 import SolutionTextRepo from "repository/solution/solution-text";
-import ProjectRecordTextRepo from "repository/project-record/project-record-text";
 import ProjectRecordImportedJson from "repository/project-record/project-record-imported-json";
 import GeneralArticleBackendRepo from "repository/general-article/general-article-backend";
 import AttachmentFileBackendRepo from "repository/attachment-file/attachment-file-backend";
+import AuthTokenIDPWBackendRepo from "repository/auth-token/auth-token-idpw-backend";
 
 /* dependency injection */
 const aseanBanner: AseanBannerRepository = new AseanBannerTextRepo();
@@ -28,6 +29,9 @@ const projectRecord: LocaleFacade<ProjectRecordRepository> = new LocaleFacade({
 });
 const generalArticle: GeneralArticleRepository = new GeneralArticleBackendRepo();
 const attachmentFile: AttachmentFileRepository = new AttachmentFileBackendRepo();
+const authTokenIDPW: AuthTokenIDPWRepository = new AuthTokenIDPWBackendRepo({
+  baseUrl: "http://localhost:4000",
+});
 
 /* export */
 export const repo = {
@@ -36,4 +40,5 @@ export const repo = {
   projectRecord,
   generalArticle,
   attachmentFile,
+  authTokenIDPW,
 };

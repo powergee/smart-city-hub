@@ -55,3 +55,7 @@ export interface AttachmentFileRepository {
   delete(id: number): Promise<AttachmentFileMeta>;
   getInfo(id: number): Promise<AttachmentFileMeta>;
 }
+
+export interface AuthTokenIDPWRepository {
+  issue: (auth: { id: string; pw: string }) => Promise<string>;
+}
