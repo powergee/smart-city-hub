@@ -5,6 +5,7 @@ import {
   GeneralArticle,
   GeneralArticleMeta,
   AttachmentFileMeta,
+  UserItem,
 } from "core/model";
 
 type LocaleRepositoryMapper<R> = { [key in Locale]: R };
@@ -58,4 +59,5 @@ export interface AttachmentFileRepository {
 
 export interface AuthTokenIDPWRepository {
   issue: (auth: { id: string; pw: string }) => Promise<string>;
+  whoami: (token: string) => Promise<UserItem | null>;
 }

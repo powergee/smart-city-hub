@@ -1,3 +1,4 @@
+import { UserItem } from "core/model";
 import { AuthTokenIDPWRepository } from "core/repository";
 
 export default class AuthTokenIDPWBackendRepo implements AuthTokenIDPWRepository {
@@ -24,6 +25,26 @@ export default class AuthTokenIDPWBackendRepo implements AuthTokenIDPWRepository
       return await res.text();
     } else {
       throw new Error(await res.text());
+    }
+  }
+
+  async whoami(token: string): Promise<UserItem | null> {
+    const res = await fetch(`${this.baseUrl}/v2/auth/whoami`, {
+      method: "GET",
+      cache: "no-store",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      return {
+        id: data.userId,
+        name: data.name,
+        privilege: data.privilege,
+      };
+    } else {
+      return null;
     }
   }
 }

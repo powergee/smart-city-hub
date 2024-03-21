@@ -37,4 +37,10 @@ export type AttachmentFileMeta = {
 };
 
 export type AuthTokenGetter = () => string | null;
-export type AuthTokenSetter = (token: string) => void;
+export type AuthTokenSetter = (token: string | null) => void;
+
+export type UserItem = {
+  id: string;
+  name: string;
+  privilege: "manager" | "user";
+};
