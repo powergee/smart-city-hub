@@ -22,6 +22,10 @@ export const getAccessToken: AuthTokenGetter = () => {
   return token || null;
 };
 
-export const setAccessToken: AuthTokenSetter = (token: string) => {
-  cookies().set(ACCESS_TOKEN_COOKIE_NAME, token, { httpOnly: true });
+export const setAccessToken: AuthTokenSetter = (token: string | null) => {
+  if (token) {
+    cookies().set(ACCESS_TOKEN_COOKIE_NAME, token, { httpOnly: true });
+  } else {
+    cookies().delete(ACCESS_TOKEN_COOKIE_NAME);
+  }
 };

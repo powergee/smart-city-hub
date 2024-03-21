@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import { initTranslation, TranslationProvider } from "@locales";
+import { LoginStateProvider } from "@components/login-context";
 import Header from "./header";
 import Footer from "./footer";
 
@@ -43,11 +44,13 @@ export default async function RootLayout(
     <html lang={lang} className="h-full">
       <body className={`flex flex-col h-full ${font.className}`}>
         <TranslationProvider lang={lang}>
-          <Header />
-          <main className="flex-auto" style={{ marginTop: 96 }}>
-            {props.children}
-          </main>
-          <Footer className="flex-none mt-8" t={t} />
+          <LoginStateProvider>
+            <Header />
+            <main className="flex-auto" style={{ marginTop: 96 }}>
+              {props.children}
+            </main>
+            <Footer className="flex-none mt-8" t={t} />
+          </LoginStateProvider>
         </TranslationProvider>
       </body>
     </html>

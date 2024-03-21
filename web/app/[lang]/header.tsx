@@ -1,12 +1,15 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
+import { checkWhoami, doLogout } from "@/actions";
 import { getNavigationList } from "@/navigation";
-import { Translate, LanguageChanger } from "@locales";
+import { LanguageChanger } from "@locales";
 import Container from "@components/container";
+import { useLoginState } from "@components/login-context";
 import { useSlideAnimation } from "@components/slide-animation";
 
 import logoImage from "@resources/images/logo.png";
@@ -17,6 +20,19 @@ export default function Header(props: { className?: string }) {
 
   const { t, i18n } = useTranslation();
   const navigationList = getNavigationList({ langPrefix: i18n.language });
+
+  // 로그인 상태 확인
+  const [resolvedWhoiam, setResolvedWhoiam] = useState(false); // 로그인 상태 확인 완료 여부
+  const { loginUser, setLoginUser } = useLoginState();
+  useEffect(() => {
+    if (loginUser) return;
+
+    (async () => {
+      const user = await checkWhoami();
+      setLoginUser(user);
+      setResolvedWhoiam(true);
+    })();
+  });
 
   return (
     <header
@@ -33,7 +49,55 @@ export default function Header(props: { className?: string }) {
       onFocus={() => slideAnimation.forward()}
     >
       <Container className="relative">
-        <ThinHeader className="absolute top-0 w-full" t={t} />
+        <div className="flex justify-end text-slate-800 absolute top-0 w-full">
+          {[
+            ["ko", "KOR"],
+            ["en", "ENG"],
+          ].map(([lang, text]) => (
+            <LanguageChanger
+              key={lang}
+              lang={lang}
+              component={
+                <button className="text-sm ml-2 py-1 hover:underline" type="button">
+                  {text}
+                </button>
+              }
+            />
+          ))}
+          <div className="text-sm px-2 py-1">·</div>
+          {!resolvedWhoiam ||
+            (!loginUser ? (
+              <Link
+                className="text-sm mr-2 py-1 font-bold hover:underline"
+                href="/login"
+                onClick={() => slideAnimation.backward()}
+              >
+                {t("로그인")}
+              </Link>
+            ) : (
+              <>
+                <div className="text-sm mr-2 py-1 hidden md:block">
+                  {t("welcome-message", { name: loginUser.name })}
+                </div>
+                <button
+                  className="text-sm mr-2 py-1 font-bold hover:underline"
+                  type="button"
+                  onClick={async () => {
+                    await doLogout();
+                    setLoginUser(null);
+                  }}
+                >
+                  {t("로그아웃")}
+                </button>
+              </>
+            ))}
+          <a
+            className="bg-uos-blue hover:bg-uos-signiture-blue transition text-white text-sm rounded-b-md ml-1 px-3 py-1"
+            href="https://uos.ac.kr/main.do"
+          >
+            {t("서울시립대학교")}
+          </a>
+        </div>
       </Container>
       <Container className="md:flex md:justify-between py-4">
         <div className="flex justify-between shrink-0 md:mr-8">
@@ -90,35 +154,6 @@ export default function Header(props: { className?: string }) {
         </nav>
       </Container>
     </header>
-  );
-}
-
-function ThinHeader(props: { t: Translate; className?: string }) {
-  const { t, className } = props;
-
-  return (
-    <div className={`flex justify-end ${className ?? ""}`}>
-      {[
-        ["ko", "KOR"],
-        ["en", "ENG"],
-      ].map(([lang, text]) => (
-        <LanguageChanger
-          key={lang}
-          lang={lang}
-          component={
-            <button className="text-sm mr-2 py-1 hover:underline" type="button">
-              {text}
-            </button>
-          }
-        />
-      ))}
-      <a
-        className="bg-uos-signiture-blue hover:bg-uos-signiture-blue/90 transition text-white text-sm rounded-b-lg ml-1 px-3 py-1"
-        href="https://uos.ac.kr/main.do"
-      >
-        {t("서울시립대학교")}
-      </a>
-    </div>
   );
 }
 
