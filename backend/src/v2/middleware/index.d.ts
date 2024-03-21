@@ -1,4 +1,4 @@
-import { UserAuthTokenPayload } from "../core/model";
+import { User } from "../core/model";
 
 declare module "koa" {
   interface DefaultState extends CustomState {}
@@ -13,7 +13,7 @@ type CustomState = AuthState;
 // auth-parser.ts
 type AuthState = {
   auth: {
-    user?: UserAuthTokenPayload | null;
+    user?: User | null;
     error?: Error;
   };
 };

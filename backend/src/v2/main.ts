@@ -40,7 +40,7 @@ const mainRouter = new Router({
 });
 mainRouter.use(bodyParser());
 mainRouter.use(cookie());
-mainRouter.use(authParser({ userAuthServ }));
+mainRouter.use(authParser({ userAuthServ, userRepo }));
 mainRouter.use(zodErrorResolver());
 
 new UserRouter({ di: { userServ } }).injectTo(mainRouter);
