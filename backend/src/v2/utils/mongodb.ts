@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
 /* config */
-const MONGODB_URI = "mongodb://db/smarthub-v2";
-
-export const db = mongoose.createConnection(MONGODB_URI);
+export const mongodb_v1 = mongoose.createConnection("mongodb://db/smarthub");
+export const mongodb_v2 = mongoose.createConnection("mongodb://db/smarthub-v2");

@@ -35,14 +35,13 @@ export class UserService {
     const user: User = {
       userId,
       name: name || userId,
-      password: { hash, salt, method },
       privilege: "user", // 기본 권한
-      isAllowed: true, // 기본 사용 가능
-      signUpDate: new Date(),
+      enabled: true, // 기본 사용 가능
+      createdAt: new Date(),
     };
 
     // 4. DB 저장
-    const res = await this.userRepo.create(user);
+    const res = await this.userRepo.create(user, { hash, salt, method });
     return res;
   }
 }

@@ -48,8 +48,12 @@ export class UserAuthService {
     const user = await this.userRepo.findByUserId(userId);
     if (!user) return false;
 
-    // 2. 비밀번호 확인
-    const { method, salt, hash } = user.password as Password;
+    // 2. 비밀번호 유무 확인
+    const password = await this.userRepo.findPasswordByUserId(userId);
+    if (!password) return false;
+
+    // 3. 비밀번호 해싱 및 비교
+    const { method, salt, hash } = password;
     const hashedPassword = crypto
       .createHash(method)
       .update(plainPassword + salt)

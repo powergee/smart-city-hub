@@ -10,10 +10,9 @@ export type Password = {
 export type User = {
   userId: string;
   name: string;
-  password: Password;
   privilege: UserPrivilege;
-  isAllowed: boolean;
-  signUpDate: Date;
+  enabled: boolean;
+  createdAt: Date;
 };
 
 export type UserAuthTokenPayload = {

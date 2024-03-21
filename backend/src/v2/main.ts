@@ -13,11 +13,16 @@ import { UserAuthService } from "./service/auth.service";
 import { UserRouter } from "./router/user.route";
 import { AuthRouter } from "./router/auth.route";
 
+import { mongodb_v1 } from "./utils/mongodb";
+
 import dotenv from "dotenv";
 dotenv.config();
 
 // Repository Dependency Inversion & Injection
-const userRepo: UserRepository = new UserMongoRepo();
+const userRepo: UserRepository = new UserMongoRepo({
+  db: mongodb_v1,
+  collectionName: "user",
+});
 
 // Service Dependency Injection
 const userServ = new UserService(userRepo);
