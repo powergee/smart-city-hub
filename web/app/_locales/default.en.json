@@ -1,6 +1,12 @@
 {
   "서울시립대학교": "University of Seoul",
   "로그인": "Login",
+  "로그아웃": "Logout",
+  "welcome-message": "Welcome, {{name}}!",
+  "아이디": "ID",
+  "비밀번호": "Password",
+  "회원가입": "Sign Up",
+  "로그인 중": "Logging in",
   "메뉴": "Menu",
   "소개": "Introduction",
   "인사말": "Greeting",
