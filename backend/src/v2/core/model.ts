@@ -20,3 +20,24 @@ export type UserAuthTokenPayload = {
   name: string;
   type: "access";
 };
+
+export type GeneralArticle = {
+  articleId: number;
+  title: string;
+  contents: string;
+  kind: string;
+  views: number;
+  published: boolean;
+  createdBy: string;
+  createdAt: Date;
+  modifiedBy: string;
+  modifiedAt: Date;
+};
+
+export type FileItem = {
+  fileId: number;
+  originalName: string;
+  localPath: string;
+  createdBy: string;
+  createdAt: Date;
+};
