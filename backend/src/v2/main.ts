@@ -4,14 +4,17 @@ import cookie from "koa-cookie";
 import authParser from "./middleware/auth-parser";
 import zodErrorResolver from "./middleware/zod-error-resolver";
 
-import { UserRepository } from "./core/repository";
+import { GeneralArticleRepository, UserRepository } from "./core/repository";
 
 import { UserMongoRepo } from "./repository/user-mongo";
+import { GeneralArticleMongoRepo } from "./repository/general-article-mongo";
 import { UserService } from "./service/user.service";
 import { UserAuthService } from "./service/auth.service";
+import { ArticleService } from "./service/article.service";
 
 import { UserRouter } from "./router/user.route";
 import { AuthRouter } from "./router/auth.route";
+import { ArticleRouter } from "./router/article.route";
 
 import { mongodb_v1 } from "./utils/mongodb";
 
@@ -23,6 +26,10 @@ const userRepo: UserRepository = new UserMongoRepo({
   db: mongodb_v1,
   collectionName: "user",
 });
+const articleRepo: GeneralArticleRepository = new GeneralArticleMongoRepo({
+  db: mongodb_v1,
+  collectionName: "generalarticles",
+});
 
 // Service Dependency Injection
 const userServ = new UserService(userRepo);
@@ -33,6 +40,7 @@ const userAuthServ = new UserAuthService(
   },
   { userRepo }
 );
+const articleServ = new ArticleService(articleRepo);
 
 // Main Router
 const mainRouter = new Router({
@@ -45,5 +53,6 @@ mainRouter.use(zodErrorResolver());
 
 new UserRouter({ di: { userServ } }).injectTo(mainRouter);
 new AuthRouter({ di: { userAuthServ } }).injectTo(mainRouter);
+new ArticleRouter({ di: { articleServ } }).injectTo(mainRouter);
 
 export default mainRouter;
