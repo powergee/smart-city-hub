@@ -36,8 +36,6 @@ export type GeneralArticle = {
 
 export type FileItem = {
   fileId: number;
-  originalName: string;
+  name: string;
   localPath: string;
-  createdBy: string;
-  createdAt: Date;
 };

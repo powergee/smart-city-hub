@@ -28,3 +28,9 @@ export interface GeneralArticleRepository {
   delete(articleId: number): Promise<GeneralArticle | null>;
   count(kindRegex: string, publishedOnly?: boolean): Promise<number>;
 }
+
+export interface FileItemRepository {
+  put(title: string, filePath: string): Promise<FileItem>;
+  get(fileId: number): Promise<FileItem | null>;
+  rm(fileId: number): Promise<boolean>;
+}
