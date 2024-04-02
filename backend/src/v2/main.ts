@@ -4,10 +4,11 @@ import cookie from "koa-cookie";
 import authParser from "./middleware/auth-parser";
 import zodErrorResolver from "./middleware/zod-error-resolver";
 
-import { GeneralArticleRepository, UserRepository } from "./core/repository";
+import { GeneralArticleRepository, UserRepository, FileItemRepository } from "./core/repository";
 
 import { UserMongoRepo } from "./repository/user-mongo";
 import { GeneralArticleMongoRepo } from "./repository/general-article-mongo";
+import { FileItemMongoRepo } from "./repository/file-item-mongo";
 import { UserService } from "./service/user.service";
 import { UserAuthService } from "./service/auth.service";
 import { ArticleService } from "./service/article.service";
@@ -15,6 +16,7 @@ import { ArticleService } from "./service/article.service";
 import { UserRouter } from "./router/user.route";
 import { AuthRouter } from "./router/auth.route";
 import { ArticleRouter } from "./router/article.route";
+import { FileRouter } from "./router/file.route";
 
 import { mongodb_v1 } from "./utils/mongodb";
 
@@ -28,7 +30,12 @@ const userRepo: UserRepository = new UserMongoRepo({
 });
 const articleRepo: GeneralArticleRepository = new GeneralArticleMongoRepo({
   db: mongodb_v1,
-  collectionName: "generalarticles",
+  collectionName: "generalarticle",
+});
+const fileItemRepo: FileItemRepository = new FileItemMongoRepo({
+  db: mongodb_v1,
+  collectionName: "file",
+  baseDir: process.env.FILE_BASE_DIR!,
 });
 
 // Service Dependency Injection
@@ -54,5 +61,13 @@ mainRouter.use(zodErrorResolver());
 new UserRouter({ di: { userServ } }).injectTo(mainRouter);
 new AuthRouter({ di: { userAuthServ } }).injectTo(mainRouter);
 new ArticleRouter({ di: { articleServ } }).injectTo(mainRouter);
+new FileRouter({
+  di: { fileItemRepo },
+  options: {
+    maxFileSize: process.env.FILE_UPLOAD_LIMIT
+      ? parseInt(process.env.FILE_UPLOAD_LIMIT)
+      : 16 * 1024 * 1024, // default: 16MB
+  },
+}).injectTo(mainRouter);
 
 export default mainRouter;
