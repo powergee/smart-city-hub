@@ -33,6 +33,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/formidable": "^3.4.5",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/koa": "^2.11.6",
     "@types/koa-bodyparser": "^4.3.0",
