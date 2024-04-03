@@ -35,6 +35,9 @@ export type GeneralArticle = {
   modifiedAt: Date;
 };
 
+export type ImageResizer = (buffer: Buffer) => Promise<Buffer>;
+export type ThumbnailGenerator = (fileItem: FileItem) => Promise<Buffer | null>;
+
 export type FileItem = {
   fileId: number;
   name: string;
