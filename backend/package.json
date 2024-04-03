@@ -30,6 +30,7 @@
     "mongoose-sequence": "^6.0.1",
     "pdf2json": "^3.0.5",
     "pdf2pic": "^3.1.1",
+    "sharp": "^0.33.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {
