@@ -19,6 +19,7 @@ import { ArticleRouter } from "./router/article.route";
 import { FileRouter } from "./router/file.route";
 
 import { mongodb_v1 } from "./utils/mongodb";
+import { createImageResizer, createThumbnailGenerator } from "./utils/thumbnail";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -47,7 +48,13 @@ const userAuthServ = new UserAuthService(
   },
   { userRepo }
 );
-const articleServ = new ArticleService(articleRepo);
+const articleServ = new ArticleService({
+  di: { generalArticleRepo: articleRepo, fileItemRepo },
+  options: {
+    imageResizer: createImageResizer({ width: 480 }),
+    thumbnailGenerator: createThumbnailGenerator(),
+  },
+});
 
 // Main Router
 const mainRouter = new Router({

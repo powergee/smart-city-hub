@@ -165,24 +165,35 @@ export class ArticleRouter extends KoaRouterWrapper {
     const paramsSchema = z.object({
       articleId: z.string().transform(Number).pipe(z.number()),
     });
+    const querySchema = z.object({
+      from: z.enum(["img", "attachment"]).optional(),
+    });
 
     return async (ctx) => {
       const params = paramsSchema.parse(ctx.params);
+      const query = querySchema.parse(ctx.query);
       const { articleId } = params;
 
-      const res = await this.articleServ.getThumbnail(articleId, "img", {
-        user: ctx.state.auth.user ?? undefined,
-      });
-      if (!res) {
-        return ctx.throw(404, "Thumbnail not found");
+      let thumbnail = null;
+      if (query.from === "img") {
+        thumbnail = await this.articleServ.getContentsThumbnail(articleId);
+      } else if (query.from === "attachment") {
+        thumbnail = await this.articleServ.getAttachmentThumbnail(articleId);
       }
 
-      if (typeof res === "string") {
-        ctx.redirect(res);
-      } else if (typeof res === "object") {
-        ctx.type = "image/webp";
-        ctx.body = res;
+      if (!thumbnail) {
+        return ctx.throw(404, "Thumbnail not found");
       }
+      if (ctx.state.auth.user?.privilege !== "manager" && thumbnail.article.published === false) {
+        // manager 권한을 가진 사용자가 아니면, unpublished 문서의 미리보기 이미지는 열람할 수 없다.
+        return ctx.throw(401, "Unauthorized");
+      }
+
+      if (typeof thumbnail.data === "string") {
+        return ctx.redirect(thumbnail.data);
+      }
+      ctx.type = "image/webp";
+      ctx.body = thumbnail.data;
     };
   };
 }

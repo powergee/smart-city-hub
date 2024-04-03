@@ -1,11 +1,39 @@
-import { GeneralArticle, User } from "../core/model";
-import { GeneralArticleRepository } from "../core/repository";
+import { GeneralArticle, User, ImageResizer, ThumbnailGenerator } from "../core/model";
+import { FileItemRepository, GeneralArticleRepository } from "../core/repository";
+
+type Thumbnail = {
+  data: Buffer | string;
+  article: GeneralArticle;
+};
+type ThumbnailCache = {
+  data: Buffer | string;
+  cachedAt: Date;
+};
 
 export class ArticleService {
   readonly generalArticleRepo: GeneralArticleRepository;
+  readonly fileItemRepo: FileItemRepository;
+  readonly imageResizer: ImageResizer;
+  readonly thumbnailGenerator: ThumbnailGenerator;
 
-  constructor(generalArticleRepo: GeneralArticleRepository) {
-    this.generalArticleRepo = generalArticleRepo;
+  readonly contentThumbnailCache: Map<number, ThumbnailCache>;
+  readonly attachmentThumbnailCache: Map<number, ThumbnailCache>;
+
+  constructor(params: {
+    di: { generalArticleRepo: GeneralArticleRepository; fileItemRepo: FileItemRepository };
+    options?: {
+      imageResizer?: ImageResizer;
+      thumbnailGenerator?: ThumbnailGenerator;
+    };
+  }) {
+    this.generalArticleRepo = params.di.generalArticleRepo;
+    this.fileItemRepo = params.di.fileItemRepo;
+
+    this.imageResizer = params.options?.imageResizer || ((buffer) => Promise.resolve(buffer));
+    this.thumbnailGenerator = params.options?.thumbnailGenerator || (() => Promise.resolve(null));
+
+    this.contentThumbnailCache = new Map();
+    this.attachmentThumbnailCache = new Map();
   }
 
   async getArticleList(
@@ -106,66 +134,87 @@ export class ArticleService {
   }
 
   /**
-   * 게시글의 미리보기 이미지를 가져온다. 미리보기 이미지는 resize하여 webp 형식으로 반환한다.
-   *
+   * 게시글의 미리보기 이미지를 가져온다.
    * img 태그에 대해서는, 첫 번째로 나타나는 이미지에 대해 미리보기를 생성한다.
    * 1. src 속성이 URL이라면, 해당 URL을 그대로 반환한다.
    * 2. src 속성이 base64로 인코딩된 이미지라면, 해당 이미지 버퍼를 반환한다.
-   *
-   * 첨부파일에 대해서는, 첫 번째로 나타나는 파일에 대해 미리보기를 생성한다.
-   * 1. pdf 파일이라면, 첫 페이지를 이미지로 변환하여 버퍼로 반환한다.
    * @param articleId
    */
-  async getThumbnail(
-    articleId: number,
-    type: "img" | "attachment",
-    options?: {
-      user?: User;
-      resizer?: (buffer: Buffer) => Promise<Buffer>;
-    }
-  ): Promise<string | Buffer | null> {
+  async getContentsThumbnail(articleId: number): Promise<Thumbnail | null> {
     const article = await this.generalArticleRepo.find(articleId);
-    const resize = options?.resizer || ((buffer) => Promise.resolve(buffer));
-
     if (!article) {
       return null;
     }
-    if (article.published === false) {
-      if (!options?.user || options.user.privilege !== "manager") {
-        throw new Error("Unauthorized access to unpublished article.");
+
+    // 미리보기 이미지 캐시 불러오기
+    if (this.contentThumbnailCache.has(articleId)) {
+      const cache = this.contentThumbnailCache.get(articleId)!;
+      if (cache.cachedAt.getTime() > article.modifiedAt.getTime()) {
+        return { article, data: cache.data };
       }
     }
 
-    if (type === "img") {
-      /**
-       * 게시글의 본문에서 이미지를 찾아 미리보기 이미지를 생성한다.
-       */
-      const imgRegex = /<img[^>]+src="([^">]+)"/g;
-      const imgSrc = imgRegex.exec(article.contents);
-      if (!imgSrc) {
-        return null;
-      }
-      const imgSrcUrl = imgSrc[1];
-
-      if (imgSrcUrl.startsWith("data:image")) {
-        /**
-         * base64로 인코딩된 이미지인 경우 (data:image/png;base64,~~~)
-         */
-        const base64 = imgSrcUrl.split(",")[1];
-        const buffer = Buffer.from(base64, "base64");
-        return await resize(buffer);
-      } else if (imgSrcUrl.startsWith("http")) {
-        /**
-         * URL 이미지인 경우
-         */
-        return imgSrcUrl;
-      } else {
-        return null;
-      }
-    } else if (type === "attachment") {
-      return null; // TODO: implement
-    } else {
+    let thumbnail: Buffer | string | null = null;
+    /**
+     * 게시글의 본문에서 이미지를 찾아 미리보기 이미지를 생성한다.
+     */
+    const imgRegex = /<img[^>]+src="([^">]+)"/g;
+    const imgSrc = imgRegex.exec(article.contents);
+    if (!imgSrc) {
       return null;
     }
+    const imgSrcUrl = imgSrc[1];
+
+    if (imgSrcUrl.startsWith("data:image")) {
+      /**
+       * base64로 인코딩된 이미지인 경우 (data:image/png;base64,~~~)
+       */
+      const base64 = imgSrcUrl.split(",")[1];
+      const buffer = Buffer.from(base64, "base64");
+      thumbnail = await this.imageResizer(buffer);
+    } else if (imgSrcUrl.startsWith("http")) {
+      /**
+       * URL 이미지인 경우
+       */
+      thumbnail = imgSrcUrl;
+    }
+
+    if (!thumbnail) {
+      return null;
+    }
+
+    this.contentThumbnailCache.set(articleId, { data: thumbnail, cachedAt: new Date() }); // 캐시 저장
+    return { article, data: thumbnail };
+  }
+
+  async getAttachmentThumbnail(articleId: number): Promise<Thumbnail | null> {
+    const article = await this.generalArticleRepo.find(articleId);
+    if (!article) {
+      return null;
+    }
+
+    // 미리보기 이미지 캐시 불러오기
+    if (this.attachmentThumbnailCache.has(articleId)) {
+      const cache = this.attachmentThumbnailCache.get(articleId)!;
+      if (cache.cachedAt.getTime() > article.modifiedAt.getTime()) {
+        return { article, data: cache.data };
+      }
+    }
+
+    if (article.attachments.length < 1) {
+      return null;
+    }
+    const fileItem = await this.fileItemRepo.get(article.attachments[0]);
+    if (!fileItem) {
+      return null;
+    }
+    let thumbnail = await this.thumbnailGenerator(fileItem);
+    if (!thumbnail) {
+      return null;
+    }
+    thumbnail = await this.imageResizer(thumbnail);
+
+    this.attachmentThumbnailCache.set(articleId, { data: thumbnail, cachedAt: new Date() }); // 캐시 저장
+    return { article, data: thumbnail };
   }
 }
