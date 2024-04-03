@@ -67,9 +67,8 @@ export class ArticleService {
         return null;
       }
 
-      const updatedArticle: GeneralArticle = {
-        ...prevArticle,
-        articleId: article.articleId,
+      const updatedArticle: Partial<GeneralArticle> = {
+        ...article,
         /**
          * 인자로 받은 article 객체의 필드 중 값이 있는 것들만 업데이트한다.
          * 그리고 이 또한 문서의 수정 메타데이터는 서버에서 설정하도록 하고, 그 외의 메타데이터는 외부에서 설정할 수 있도록 한다.
