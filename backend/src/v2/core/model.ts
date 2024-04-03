@@ -27,6 +27,7 @@ export type GeneralArticle = {
   contents: string;
   kind: string;
   views: number;
+  attachments: number[];
   published: boolean;
   createdBy: string;
   createdAt: Date;

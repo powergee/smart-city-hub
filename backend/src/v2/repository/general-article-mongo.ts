@@ -1,4 +1,4 @@
-import { GeneralArticle, FileItem } from "../core/model";
+import { GeneralArticle } from "../core/model";
 import { GeneralArticleRepository } from "../core/repository";
 import mongoose from "mongoose";
 
@@ -35,6 +35,7 @@ export class GeneralArticleMongoRepo implements GeneralArticleRepository {
       contents: article.contents,
       kind: article.kind,
       views: article.views,
+      attachments: article.files,
       published: article.isPublic,
       createdBy: article.createdBy,
       createdAt: article.meta.createdAt,
@@ -55,6 +56,7 @@ export class GeneralArticleMongoRepo implements GeneralArticleRepository {
       contents: article.contents,
       kind: article.kind,
       views: article.views,
+      files: article.attachments,
       isPublic: article.published,
       createdBy: article.createdBy,
       lastModifiedBy: article.modifiedBy,
@@ -108,10 +110,6 @@ export class GeneralArticleMongoRepo implements GeneralArticleRepository {
     return res ? this.convertToGeneralArticle(res) : null;
   }
 
-  async findAttachments(articleId: number): Promise<FileItem[]> {
-    throw new Error("Method not implemented.");
-  }
-
   async update(article: Partial<GeneralArticle>): Promise<GeneralArticle | null> {
     const prevArticle = await this.GeneralArticleModel.findOne({
       articleId: article.articleId,
@@ -128,6 +126,7 @@ export class GeneralArticleMongoRepo implements GeneralArticleRepository {
     prevArticle.contents = article.contents ?? prevArticle.contents;
     prevArticle.kind = article.kind ?? prevArticle.kind;
     prevArticle.views = article.views ?? prevArticle.views;
+    prevArticle.files = article.attachments ?? prevArticle.files;
     prevArticle.isPublic = article.published ?? prevArticle.isPublic;
     prevArticle.createdBy = article.createdBy ?? prevArticle.createdBy;
     prevArticle.lastModifiedBy = article.modifiedBy ?? prevArticle.lastModifiedBy;

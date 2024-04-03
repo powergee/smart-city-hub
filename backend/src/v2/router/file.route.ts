@@ -26,6 +26,7 @@ export class FileRouter extends KoaRouterWrapper {
       this.upload()
     );
     this.router.get("/download/:fileId", this.download());
+    this.router.get("/name/:fileId", this.download({ nameOnly: true }));
   }
 
   private uploadErrorHandler = async (ctx: Koa.Context, next: Koa.Next) => {
@@ -55,7 +56,7 @@ export class FileRouter extends KoaRouterWrapper {
     };
   };
 
-  private download = (): Koa.Middleware => {
+  private download = (options?: { nameOnly?: boolean }): Koa.Middleware => {
     return async (ctx) => {
       const fileId = parseInt(ctx.params.fileId);
 
@@ -68,8 +69,12 @@ export class FileRouter extends KoaRouterWrapper {
         return ctx.throw(404, "file not found.");
       }
 
-      ctx.attachment(fileItem.name);
-      ctx.body = fs.createReadStream(fileItem.localPath);
+      if (options?.nameOnly) {
+        ctx.body = fileItem.name;
+      } else {
+        ctx.attachment(fileItem.name);
+        ctx.body = fs.createReadStream(fileItem.localPath);
+      }
     };
   };
 }

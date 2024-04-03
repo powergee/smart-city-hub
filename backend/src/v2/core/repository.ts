@@ -23,7 +23,6 @@ export interface GeneralArticleRepository {
     options?: { summary?: boolean }
   ): Promise<GeneralArticle[]>;
   find(articleId: number): Promise<GeneralArticle | null>;
-  findAttachments(articleId: number): Promise<FileItem[]>;
   update(article: Partial<GeneralArticle>): Promise<GeneralArticle | null>;
   delete(articleId: number): Promise<GeneralArticle | null>;
   count(kindRegex: string, publishedOnly?: boolean): Promise<number>;

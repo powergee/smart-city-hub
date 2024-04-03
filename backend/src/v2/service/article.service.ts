@@ -48,6 +48,7 @@ export class ArticleService {
          * 가령, 글을 게시한 사용자 및 일자를 임의로 설정할 수 있는 것이다.
          */
         views: article.views ?? 0,
+        attachments: article.attachments ?? [],
         published: article.published ?? false,
         createdBy: article.createdBy ?? user.userId,
         createdAt: article.createdAt ?? new Date(),
@@ -67,18 +68,12 @@ export class ArticleService {
       }
 
       const updatedArticle: GeneralArticle = {
+        ...prevArticle,
         articleId: article.articleId,
         /**
          * 인자로 받은 article 객체의 필드 중 값이 있는 것들만 업데이트한다.
          * 그리고 이 또한 문서의 수정 메타데이터는 서버에서 설정하도록 하고, 그 외의 메타데이터는 외부에서 설정할 수 있도록 한다.
          */
-        title: article.title ?? prevArticle.title,
-        contents: article.contents ?? prevArticle.contents,
-        kind: article.kind ?? prevArticle.kind,
-        views: article.views ?? prevArticle.views,
-        published: article.published ?? prevArticle.published,
-        createdBy: article.createdBy ?? prevArticle.createdBy,
-        createdAt: article.createdAt ?? prevArticle.createdAt,
         modifiedBy: user.userId, // forced
         modifiedAt: new Date(), // forced
       };
