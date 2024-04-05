@@ -2,6 +2,7 @@ import {
   AseanBannerItem,
   ProjectRecordItem,
   Locale,
+  Article,
   GeneralArticle,
   GeneralArticleMeta,
   AttachmentFileMeta,
@@ -49,6 +50,19 @@ export interface GeneralArticleRepository {
   getById: (id: number) => Promise<GeneralArticle>;
   post: (article: GeneralArticle) => Promise<GeneralArticle>;
   delete: (id: number) => Promise<GeneralArticleMeta>;
+}
+
+export interface ArticleRepository {
+  getList: (
+    page: number,
+    perPage: number,
+    kind: string | string[]
+  ) => Promise<Omit<Article, "contents">[]>;
+  getCountByKind: (kind: string | string[]) => Promise<number>;
+
+  post: (article: Partial<Article>) => Promise<Article>;
+  get: (articleId: number) => Promise<Article>;
+  delete: (articleId: number) => Promise<Article>;
 }
 
 export interface AttachmentFileRepository {

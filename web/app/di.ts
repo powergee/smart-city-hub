@@ -5,6 +5,7 @@ import {
   SolutionRepository,
   ProjectRecordRepository,
   GeneralArticleRepository,
+  ArticleRepository,
   AttachmentFileRepository,
   AuthTokenIDPWRepository,
 } from "core/repository";
@@ -16,6 +17,10 @@ import ProjectRecordImportedJson from "repository/project-record/project-record-
 import GeneralArticleBackendRepo from "repository/general-article/general-article-backend";
 import AttachmentFileBackendRepo from "repository/attachment-file/attachment-file-backend";
 import AuthTokenIDPWBackendRepo from "repository/auth-token/auth-token-idpw-backend";
+import { ArticleBackendRepo } from "repository/article/article-backend";
+
+/* utils */
+import { getAccessToken } from "./utils";
 
 /* dependency injection */
 const aseanBanner: AseanBannerRepository = new AseanBannerTextRepo();
@@ -32,6 +37,10 @@ const attachmentFile: AttachmentFileRepository = new AttachmentFileBackendRepo()
 const authTokenIDPW: AuthTokenIDPWRepository = new AuthTokenIDPWBackendRepo({
   baseUrl: "http://localhost:4000",
 });
+const article: ArticleRepository = new ArticleBackendRepo({
+  baseUrl: "http://localhost:4000",
+  authTokenGetter: getAccessToken,
+});
 
 /* export */
 export const repo = {
@@ -41,4 +50,5 @@ export const repo = {
   generalArticle,
   attachmentFile,
   authTokenIDPW,
+  article,
 };

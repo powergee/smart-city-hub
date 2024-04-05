@@ -36,6 +36,22 @@ export type AttachmentFileMeta = {
   name: string;
 };
 
+export type Article = {
+  readonly id: number;
+  title: string;
+  kind: string;
+  contents: string;
+  attachmentIds: number[];
+  published: boolean;
+  views: number;
+  createdBy: string;
+  createdAt: Date;
+  readonly modifiedBy: string;
+  readonly modifiedAt: Date;
+};
+
+export type PrimaryArticleKind = "ko_greeting" | "en_greeting";
+
 export type AuthTokenGetter = () => string | null;
 export type AuthTokenSetter = (token: string | null) => void;
 
