@@ -51,6 +51,7 @@ export class FileRouter extends KoaRouterWrapper {
         return ctx.throw(400, "There is no file data.");
       }
 
+      file.originalFilename = Buffer.from(file.originalFilename, "ascii").toString("utf8");
       const fileItem = await this.fileItemRepo.put(file.originalFilename, file.filepath);
       ctx.body = fileItem;
     };

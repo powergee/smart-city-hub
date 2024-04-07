@@ -78,6 +78,7 @@ export class ArticleRouter extends KoaRouterWrapper {
       contents: z.string().optional(),
       kind: z.string().optional(),
       views: z.number().optional(),
+      attachments: z.array(z.number()).optional(),
       published: z.boolean().optional(),
       createdBy: z.string().optional(),
       createdAt: z
