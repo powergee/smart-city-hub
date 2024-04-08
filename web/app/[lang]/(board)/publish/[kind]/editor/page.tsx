@@ -9,15 +9,14 @@ const GeneralArticleEditorPage = dynamic(() => import("@pages/general-article-ed
 
 export default function BoardArticleEditor(props: { params: { kind: string } }) {
   const router = useRouter();
-
   return (
     <GeneralArticleEditorPage
       kind={props.params.kind}
       afterSubmit={(article) => {
-        router.push(`/news/${article.kind}/${article.id}`);
+        router.push(`/publish/${article.kind}/${article.id}`);
       }}
       afterDelete={(article) => {
-        router.push(`/news/${article.kind}`);
+        router.push(`/publish/${article.kind}`);
       }}
     />
   );

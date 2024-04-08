@@ -7,17 +7,17 @@ const GeneralArticleEditorPage = dynamic(() => import("@pages/general-article-ed
   ssr: false,
 });
 
-export default function BoardArticleEditor(props: { params: { kind: string } }) {
+export default function BoardArticleEditor(props: { params: { kind: string; id: string } }) {
   const router = useRouter();
-
   return (
     <GeneralArticleEditorPage
       kind={props.params.kind}
+      articleId={parseInt(props.params.id)}
       afterSubmit={(article) => {
-        router.push(`/news/${article.kind}/${article.id}`);
+        router.push(`/publish/${article.kind}/${article.id}`);
       }}
       afterDelete={(article) => {
-        router.push(`/news/${article.kind}`);
+        router.push(`/publish/${article.kind}`);
       }}
     />
   );
