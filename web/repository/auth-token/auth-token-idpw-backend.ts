@@ -35,9 +35,8 @@ export default class AuthTokenIDPWBackendRepo implements AuthTokenIDPWRepository
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    const data = await res.json();
-
     if (res.ok) {
+      const data = await res.json();
       return {
         id: data.userId,
         name: data.name,
