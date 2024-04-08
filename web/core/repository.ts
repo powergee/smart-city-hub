@@ -2,10 +2,8 @@ import {
   AseanBannerItem,
   ProjectRecordItem,
   Locale,
-  Article,
   GeneralArticle,
-  GeneralArticleMeta,
-  AttachmentFileMeta,
+  AttachmentFile,
   UserItem,
 } from "core/model";
 
@@ -45,30 +43,18 @@ export interface GeneralArticleRepository {
       contentsRegex?: string;
       titleRegex?: string;
     }
-  ) => Promise<GeneralArticleMeta[]>;
-  getCountByKind: (kind: string) => Promise<number>;
-  getById: (id: number) => Promise<GeneralArticle>;
-  post: (article: GeneralArticle) => Promise<GeneralArticle>;
-  delete: (id: number) => Promise<GeneralArticleMeta>;
-}
-
-export interface ArticleRepository {
-  getList: (
-    page: number,
-    perPage: number,
-    kind: string | string[]
-  ) => Promise<Omit<Article, "contents">[]>;
+  ) => Promise<Omit<GeneralArticle, "contents">[]>;
   getCountByKind: (kind: string | string[]) => Promise<number>;
 
-  post: (article: Partial<Article>) => Promise<Article>;
-  get: (articleId: number) => Promise<Article>;
-  delete: (articleId: number) => Promise<Article>;
+  post: (article: Partial<GeneralArticle>) => Promise<GeneralArticle>;
+  getById: (articleId: number) => Promise<GeneralArticle>;
+  delete: (articleId: number) => Promise<GeneralArticle>;
 }
 
 export interface AttachmentFileRepository {
-  upload(file: File): Promise<AttachmentFileMeta>;
-  delete(id: number): Promise<AttachmentFileMeta>;
-  getInfo(id: number): Promise<AttachmentFileMeta>;
+  upload(file: File): Promise<AttachmentFile>;
+  delete(id: number): Promise<AttachmentFile>;
+  getInfo(id: number): Promise<AttachmentFile>;
 }
 
 export interface AuthTokenIDPWRepository {

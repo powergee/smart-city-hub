@@ -1,87 +1,126 @@
-import { GeneralArticle, GeneralArticleMeta } from "core/model";
+import { GeneralArticle, AuthTokenGetter } from "core/model";
 import { GeneralArticleRepository } from "core/repository";
 
-type GeneralArticleDTO = {
-  articleId: number;
-  title: string;
-  contents: string;
-  images: number[];
-  files: number[];
-  kind: string;
-  views: number;
-  isPublic: boolean;
-  createdBy: string;
-  lastModifiedBy: string;
-  meta: {
-    createdAt: string;
-    modifiedAt: string;
-  };
-};
-
 export default class GeneralArticleBackendRepo implements GeneralArticleRepository {
-  private readonly BASE_URL = "https://global.urbanscience.uos.ac.kr";
+  private readonly baseUrl: string;
+  private readonly getAccessToken: AuthTokenGetter;
+
+  constructor(params: { baseUrl: string; authTokenGetter: AuthTokenGetter }) {
+    this.baseUrl = params.baseUrl;
+    this.getAccessToken = params.authTokenGetter;
+  }
+
+  private convertToArticle(article: any): GeneralArticle {
+    return {
+      id: article.articleId as number,
+      title: article.title as string,
+      kind: article.kind as string,
+      contents: article.contents as string,
+      attachmentIds: article.attachments as number[],
+      published: article.published as boolean,
+      views: article.views as number,
+      createdBy: article.createdBy as string,
+      createdAt: new Date(article.createdAt),
+      modifiedBy: article.modifiedBy as string,
+      modifiedAt: new Date(article.modifiedAt),
+    };
+  }
+
+  private fetchArticle(
+    method: "GET" | "POST" | "DELETE",
+    endpoint?: string,
+    req?: {
+      headers?: HeadersInit;
+      body?: BodyInit;
+    }
+  ) {
+    const accessToken = this.getAccessToken();
+
+    return fetch(`${this.baseUrl}/v2/article${endpoint}`, {
+      method,
+      headers: {
+        ...req?.headers,
+        Authorization: accessToken ? `Bearer ${accessToken}` : "",
+      },
+      body: req?.body,
+    });
+  }
 
   async getList(
     page: number,
     perPage: number,
-    query?: { kindRegex?: string; contentsRegex?: string; titleRegex?: string }
-  ): Promise<GeneralArticleMeta[]> {
-    const searchParams = new URLSearchParams();
-    searchParams.append("page", page.toString());
-    searchParams.append("perPage", perPage.toString());
-    searchParams.append("summary", "true");
-    if (query?.kindRegex) searchParams.append("kindRegex", query.kindRegex);
-    if (query?.contentsRegex) searchParams.append("contentsRegex", query.contentsRegex);
-    if (query?.titleRegex) searchParams.append("titleRegex", query.titleRegex);
+    query?: {
+      kindRegex?: string;
+      contentsRegex?: string;
+      titleRegex?: string;
+    }
+  ) {
+    const urlSearchParams = new URLSearchParams();
+    urlSearchParams.append("page", page.toString());
+    urlSearchParams.append("perPage", perPage.toString());
+    query?.kindRegex && urlSearchParams.append("kindRegex", query.kindRegex);
+    query?.contentsRegex && urlSearchParams.append("contentsRegex", query.contentsRegex);
+    query?.titleRegex && urlSearchParams.append("titleRegex", query.titleRegex);
 
-    const res = await fetch(`${this.BASE_URL}/v1/articles?${searchParams.toString()}`);
-    const articles = (await res.json()) as GeneralArticleDTO[];
+    const res = await this.fetchArticle("GET", `?${urlSearchParams.toString()}`);
+    const body = await res.json();
 
-    return articles.map((article) => ({
-      id: article.articleId,
-      title: article.title,
-      kind: article.kind,
-      files: article.files,
-      views: article.views,
-      isPublic: article.isPublic,
-      createdAt: new Date(article.meta.createdAt),
-      createdBy: article.createdBy,
-      modifiedAt: new Date(article.meta.modifiedAt),
-      modifiedBy: article.lastModifiedBy,
-    }));
+    return body.map(this.convertToArticle);
   }
 
-  async getCountByKind(kind: string): Promise<number> {
-    const res = await fetch(`${this.BASE_URL}/v1/articles/count?kind=${kind}`);
+  async getCountByKind(kind: string | string[]) {
+    if (Array.isArray(kind)) {
+      kind = kind.join(",");
+    }
 
-    return (await res.json()).articleCount;
+    const res = await this.fetchArticle("GET", `/count?kind=${kind}`);
+    const body = await res.text();
+
+    return parseInt(body);
   }
 
-  async getById(id: number): Promise<GeneralArticle> {
-    // use fetch function
-    const res = await fetch(`${this.BASE_URL}/v1/articles/${id}`, { cache: "no-store" });
-    const article = (await res.json()) as GeneralArticleDTO;
+  async post(article: Partial<GeneralArticle>) {
+    const res = await this.fetchArticle("POST", "", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        articleId: article.id,
+        title: article.title,
+        contents: article.contents,
+        kind: article.kind,
+        views: article.views,
+        attachments: article.attachmentIds,
+        published: article.published,
+        createdBy: article.createdBy,
+        createdAt: article.createdAt?.toISOString(),
+      }),
+    });
+    if (!res.ok) {
+      throw new Error(`Failed to post article: ${await res.text()}`);
+    }
+    const body = await res.json();
 
-    return {
-      id: article.articleId,
-      title: article.title,
-      kind: article.kind,
-      contents: article.contents,
-      files: article.files,
-      views: article.views,
-      isPublic: article.isPublic,
-      createdAt: new Date(article.meta.createdAt),
-      createdBy: article.createdBy,
-      modifiedAt: new Date(article.meta.modifiedAt),
-      modifiedBy: article.lastModifiedBy,
-    };
+    return this.convertToArticle(body);
   }
 
-  async post(article: GeneralArticle): Promise<GeneralArticle> {
-    throw new Error("Not implemented");
+  async getById(articleId: number) {
+    const res = await this.fetchArticle("GET", `/${articleId}`);
+    if (!res.ok) {
+      throw new Error(`Failed to get article: ${await res.text()}`);
+    }
+    const body = await res.json();
+
+    return this.convertToArticle(body);
   }
 
-  async delete(id: number): Promise<GeneralArticleMeta> {
-    throw new Error("Not implemented");
+  async delete(articleId: number) {
+    const res = await this.fetchArticle("DELETE", `/${articleId}`);
+    if (!res.ok) {
+      throw new Error(`Failed to delete article: ${await res.text()}`);
+    }
+    const body = await res.json();
+
+    return this.convertToArticle(body);
   }
 }

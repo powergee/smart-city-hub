@@ -1,36 +1,51 @@
-import { AttachmentFileMeta } from "core/model";
+import { AttachmentFile, AuthTokenGetter } from "core/model";
 import { AttachmentFileRepository } from "core/repository";
 
-type AttachmentFileDTO = {
+type FileItemDTO = {
   fileId: number;
-  originalName: string;
+  name: string;
   localPath: string;
-  parentArticleId: number;
-  meta: {
-    createdAt: Date;
-    modifiedAt: Date;
-  };
 };
 
 export default class AttachmentFileBackendRepo implements AttachmentFileRepository {
-  private readonly BASE_URL = "https://global.urbanscience.uos.ac.kr";
+  private readonly baseUrl: string;
+  private readonly getAccessToken: AuthTokenGetter;
 
-  async upload(file: File): Promise<AttachmentFileMeta> {
-    throw new Error("Method not implemented.");
+  constructor(params: { baseUrl: string; authTokenGetter: AuthTokenGetter }) {
+    this.baseUrl = params.baseUrl;
+    this.getAccessToken = params.authTokenGetter;
   }
 
-  async delete(id: number): Promise<AttachmentFileMeta> {
-    throw new Error("Method not implemented.");
-  }
+  async upload(file: File): Promise<AttachmentFile> {
+    const accessToken = this.getAccessToken();
+    const formData = new FormData();
+    formData.append("file", file);
 
-  async getInfo(id: number): Promise<AttachmentFileMeta> {
-    const res = await fetch(`${this.BASE_URL}/v1/files/info/${id}`);
-    const data = (await res.json()) as AttachmentFileDTO;
-
+    const res = await fetch(`${this.baseUrl}/v2/file/upload`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: accessToken ? `Bearer ${accessToken}` : "",
+      },
+    });
+    const fileItem: FileItemDTO = await res.json();
     return {
-      id: data.fileId,
-      name: data.originalName,
-      href: `${this.BASE_URL}/v1/files/download/${data.fileId}`,
+      id: fileItem.fileId,
+      name: fileItem.name,
+      href: `${this.baseUrl}/v2/file/download/${fileItem.fileId}`,
+    };
+  }
+
+  async delete(id: number): Promise<AttachmentFile> {
+    throw new Error("Method not implemented.");
+  }
+
+  async getInfo(id: number): Promise<AttachmentFile> {
+    const nameRes = await fetch(`${this.baseUrl}/v2/file/name/${id}`);
+    return {
+      id: id,
+      name: await nameRes.text(),
+      href: `${this.baseUrl}/v2/file/download/${id}`,
     };
   }
 }
