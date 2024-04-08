@@ -2,9 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Locale } from "core/model";
-import { repo } from "@/di";
+import { repo, util } from "@/di";
 import { initTranslation } from "@locales";
-import { getArticleThumbnailHref } from "@/utils";
 
 import Container from "@components/container";
 import { FormalHeader2 } from "@components/typography";
@@ -121,7 +120,7 @@ export default async function Home(props: { params: { lang: string } }) {
             ).map((article, idx) => (
               <CardLink
                 href={`/news/${article.kind}/${article.id}`}
-                imgSrc={getArticleThumbnailHref(article, "img")}
+                imgSrc={util.getArticleThumbnailHref(article.id, "img")}
                 imgHeight={192}
                 title={article.title}
                 meta={`${t(article.kind)} · ${article.createdAt?.toLocaleDateString()}`}
@@ -143,7 +142,7 @@ export default async function Home(props: { params: { lang: string } }) {
             ).map((article, idx) => (
               <CardLink
                 href={`/publish/issue-paper/${article.id}`}
-                imgSrc={getArticleThumbnailHref(article, "pdf")}
+                imgSrc={util.getArticleThumbnailHref(article.id, "pdf")}
                 title={article.title}
                 key={idx}
               />
@@ -161,7 +160,7 @@ export default async function Home(props: { params: { lang: string } }) {
             ).map((article, idx) => (
               <CardLink
                 href={`/publish/archive/${article.id}`}
-                imgSrc={getArticleThumbnailHref(article, "pdf")}
+                imgSrc={util.getArticleThumbnailHref(article.id, "pdf")}
                 title={article.title}
                 key={idx}
               />

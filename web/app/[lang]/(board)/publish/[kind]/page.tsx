@@ -1,4 +1,4 @@
-import { repo } from "@/di";
+import { repo, util } from "@/di";
 import CardLink from "@components/card-link";
 import { redirect } from "next/navigation";
 import { Pagination } from "@components/general-article-view";
@@ -30,7 +30,7 @@ export default async function PublishPage(props: {
         {articles.map((article) => (
           <CardLink
             href={`/publish/${kind}/${article.id}`}
-            imgSrc={getArticleThumbnailHref(article, "pdf")}
+            imgSrc={util.getArticleThumbnailHref(article.id, "pdf")}
             title={article.title}
             key={article.id}
           />

@@ -1,7 +1,6 @@
-import { repo } from "@/di";
+import { repo, util } from "@/di";
 import CardLink from "@components/card-link";
 import { Pagination } from "@components/general-article-view";
-import { getArticleThumbnailHref } from "@/utils";
 
 export default async function SeminarListPage(props: { searchParams?: { page?: string } }) {
   const totalCount = await repo.generalArticle.getCountByKind("seminar");
@@ -19,7 +18,7 @@ export default async function SeminarListPage(props: { searchParams?: { page?: s
         {articles.map((article) => (
           <CardLink
             href={`/news/seminar/${article.id}`}
-            imgSrc={getArticleThumbnailHref(article, "img")}
+            imgSrc={util.getArticleThumbnailHref(article.id, "img")}
             title={article.title}
             key={article.id}
             imgHeight={192}

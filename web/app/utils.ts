@@ -1,19 +1,5 @@
-import { GeneralArticle, GeneralArticleMeta, AuthTokenGetter, AuthTokenSetter } from "core/model";
+import { AuthTokenGetter, AuthTokenSetter } from "core/model";
 import { cookies } from "next/headers";
-
-export function getArticleThumbnailHref(
-  article: GeneralArticle | GeneralArticleMeta,
-  type: "img" | "pdf"
-): string {
-  const BASE_URL = "https://global.urbanscience.uos.ac.kr";
-
-  switch (type) {
-    case "img":
-      return `${BASE_URL}/v1/articles/thumbnail/${article.id}`;
-    case "pdf":
-      return `${BASE_URL}/v1/files/pdf-preview/${article.files[0]}`;
-  }
-}
 
 const ACCESS_TOKEN_COOKIE_NAME = "ACCESS_TOKEN";
 

@@ -1,4 +1,5 @@
 /* interfaces */
+import { GeneralArticleThumbnailHrefGetter } from "core/model";
 import {
   AseanBannerRepository,
   LocaleFacade,
@@ -41,6 +42,14 @@ const attachmentFile: AttachmentFileRepository = new AttachmentFileBackendRepo({
 const authTokenIDPW: AuthTokenIDPWRepository = new AuthTokenIDPWBackendRepo({
   baseUrl: "http://localhost:4000",
 });
+const getArticleThumbnailHref: GeneralArticleThumbnailHrefGetter = (
+  articleId: number,
+  type: "img" | "pdf"
+) => {
+  return `http://localhost:4000/v2/article/${articleId}/thumbnail?from=${
+    type === "img" ? "img" : "attachment"
+  }`;
+};
 
 /* export */
 export const repo = {
@@ -50,4 +59,8 @@ export const repo = {
   generalArticle,
   attachmentFile,
   authTokenIDPW,
+};
+
+export const util = {
+  getArticleThumbnailHref,
 };

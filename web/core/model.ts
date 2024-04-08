@@ -28,6 +28,8 @@ export type GeneralArticle = {
   readonly modifiedAt: Date;
 };
 
+export type GeneralArticleThumbnailHrefGetter = (articleId: number, type: "img" | "pdf") => string;
+
 export type AttachmentFile = {
   readonly id: number;
   readonly href: string;
