@@ -23,15 +23,14 @@ export class ArticleRouter extends KoaRouterWrapper {
     const querySchema = z.object({
       page: z.string().transform(Number).pipe(z.number()),
       perPage: z.string().transform(Number).pipe(z.number()),
-      kind: z
-        .string()
-        .transform((value) => value.split(","))
-        .pipe(z.string().array()),
+      kindRegex: z.string().optional(),
+      contentsRegex: z.string().optional(),
+      titleRegex: z.string().optional(),
     });
 
     return async (ctx) => {
       const query = querySchema.parse(ctx.query);
-      const { page, perPage, kind } = query;
+      const { page, perPage, kindRegex, contentsRegex, titleRegex } = query;
 
       let publishedOnly = true;
       if (ctx.state.auth.user?.privilege === "manager") {
@@ -41,7 +40,12 @@ export class ArticleRouter extends KoaRouterWrapper {
         publishedOnly = false;
       }
 
-      const res = await this.articleServ.getArticleList(page, perPage, kind, publishedOnly);
+      const res = await this.articleServ.getArticleList(page, perPage, {
+        kindRegex,
+        contentsRegex,
+        titleRegex,
+        publishedOnly,
+      });
       ctx.body = res;
     };
   };

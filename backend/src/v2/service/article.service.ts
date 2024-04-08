@@ -39,11 +39,22 @@ export class ArticleService {
   async getArticleList(
     page: number,
     perPage: number,
-    kind: string[],
-    publishedOnly: boolean = true
+    query?: {
+      kindRegex?: string;
+      contentsRegex?: string;
+      titleRegex?: string;
+      publishedOnly?: boolean;
+    }
   ): Promise<Omit<GeneralArticle, "contents">[]> {
     const articles = await this.generalArticleRepo.query(
-      { page, perPage, kindRegex: kind.map((k) => `^${k}$`).join("|"), publishedOnly },
+      {
+        page,
+        perPage,
+        kindRegex: query?.kindRegex,
+        contentRegex: query?.contentsRegex,
+        titleRegex: query?.titleRegex,
+        publishedOnly: query?.publishedOnly ?? true,
+      },
       { summary: true }
     );
 
