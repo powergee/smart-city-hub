@@ -1,20 +1,25 @@
 import { GeneralArticleView } from "@components/general-article-view";
-import { repo } from "@/di";
+import { getGeneralArticle, getAttachmentFileList } from "@/actions";
+import { SecretLink } from "@components/secret-components";
 
-export default async function PublishArticleView(props: { params: { id: string } }) {
-  const article = await repo.generalArticle.getById(parseInt(props.params.id));
-  const attachments = await Promise.all(
-    article.files.map((file) => repo.attachmentFile.getInfo(file))
-  );
+export default async function PublishArticleView(props: { params: { kind: string; id: string } }) {
+  const { kind, id } = props.params;
+  const article = await getGeneralArticle(parseInt(props.params.id));
+  const attachments = await getAttachmentFileList(article);
 
   return (
-    <GeneralArticleView
-      id={article.id || -1}
-      title={article.title}
-      contents={article.contents}
-      createdAt={article.createdAt?.toLocaleDateString() || ""}
-      viewCount={article.views || -1}
-      attachments={attachments.map((att) => ({ name: att.name, href: att.href! }))}
-    />
+    <>
+      <GeneralArticleView
+        id={article.id}
+        title={article.title}
+        contents={article.contents}
+        createdAt={article.createdAt.toLocaleDateString()}
+        viewCount={article.views}
+        attachments={attachments.map(({ name, href }) => ({ name, href }))}
+      />
+      <SecretLink className="mt-2 btn btn-primary" href={`/publish/${kind}/${id}/editor`}>
+        이 게시글 수정
+      </SecretLink>
+    </>
   );
 }

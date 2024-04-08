@@ -1,6 +1,7 @@
 import { repo } from "@/di";
 import { redirect } from "next/navigation";
 import { GeneralArticleTable, Pagination } from "@components/general-article-view";
+import { SecretLink } from "@components/secret-components";
 
 const availableKinds = ["notices", "smart-news", "research", "seminar"];
 
@@ -42,6 +43,9 @@ export default async function NewsPage(props: {
           hrefBuilder={(num) => `?page=${num}`}
         />
       </div>
+      <SecretLink className="mt-2 btn btn-primary" href={`/news/${kind}/editor`}>
+        새 게시글 작성
+      </SecretLink>
     </div>
   );
 }

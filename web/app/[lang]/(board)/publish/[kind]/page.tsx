@@ -2,7 +2,7 @@ import { repo, util } from "@/di";
 import CardLink from "@components/card-link";
 import { redirect } from "next/navigation";
 import { Pagination } from "@components/general-article-view";
-import { getArticleThumbnailHref } from "@/utils";
+import { SecretLink } from "@components/secret-components";
 
 const availableKinds = ["archive", "issue-paper"];
 
@@ -44,6 +44,9 @@ export default async function PublishPage(props: {
           hrefBuilder={(num) => `?page=${num}`}
         />
       </div>
+      <SecretLink className="mt-2 btn btn-primary" href={`/publish/${kind}/editor`}>
+        새 게시글 작성
+      </SecretLink>
     </div>
   );
 }
