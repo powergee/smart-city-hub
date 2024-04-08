@@ -1,8 +1,9 @@
 "use server";
 
-import { UserItem } from "core/model";
+import { UserItem, GeneralArticle, AttachmentFile } from "core/model";
 import { repo } from "@/di";
 import { getAccessToken, setAccessToken } from "@/utils";
+import { revalidatePath } from "next/cache";
 
 export type AuthState = {
   token?: string;
@@ -43,4 +44,30 @@ export async function checkWhoami(): Promise<UserItem | null> {
   if (!token) return null;
 
   return await repo.authTokenIDPW.whoami(token);
+}
+
+export async function getGeneralArticle(id: number): Promise<GeneralArticle> {
+  return await repo.generalArticle.getById(id);
+}
+
+export async function postGeneralArticle(
+  article: Partial<GeneralArticle>
+): Promise<GeneralArticle> {
+  revalidatePath("/");
+  return await repo.generalArticle.post(article);
+}
+
+export async function deleteGeneralArticle(id: number): Promise<GeneralArticle> {
+  revalidatePath("/");
+  return await repo.generalArticle.delete(id);
+}
+
+export async function getAttachmentFileList(article: GeneralArticle): Promise<AttachmentFile[]> {
+  const { attachmentIds } = article;
+  return Promise.all(attachmentIds.map((id) => repo.attachmentFile.getInfo(id)));
+}
+
+export async function uploadAttachmentFile(formData: FormData): Promise<AttachmentFile> {
+  revalidatePath("/");
+  return await repo.attachmentFile.upload(formData.get("file") as File);
 }
