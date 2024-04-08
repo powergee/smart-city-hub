@@ -55,8 +55,9 @@ export type PrimaryArticleKind = "ko_greeting" | "en_greeting";
 export type AuthTokenGetter = () => string | null;
 export type AuthTokenSetter = (token: string | null) => void;
 
+export type UserPrivilege = "manager" | "user";
 export type UserItem = {
   id: string;
   name: string;
-  privilege: "manager" | "user";
+  privilege: UserPrivilege;
 };
