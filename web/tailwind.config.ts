@@ -6,6 +6,12 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      // classname for primary articles
+      pattern: /pa-/,
+    },
+  ],
   theme: {
     extend: {
       colors: {
