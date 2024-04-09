@@ -13,6 +13,7 @@ import type { EditorConfig } from "@ckeditor/ckeditor5-core";
 import { Essentials } from "@ckeditor/ckeditor5-essentials";
 import { FontColor, FontFamily, FontSize } from "@ckeditor/ckeditor5-font";
 import { Heading } from "@ckeditor/ckeditor5-heading";
+import { GeneralHtmlSupport, FullPage } from "@ckeditor/ckeditor5-html-support";
 import { HorizontalLine } from "@ckeditor/ckeditor5-horizontal-line";
 import {
   Image,
@@ -32,10 +33,19 @@ import {
   SpecialCharacters,
   SpecialCharactersEssentials,
 } from "@ckeditor/ckeditor5-special-characters";
-import { Table, TableToolbar } from "@ckeditor/ckeditor5-table";
+import { SourceEditing } from "@ckeditor/ckeditor5-source-editing";
+import { Style } from "@ckeditor/ckeditor5-style";
+import {
+  Table,
+  TableToolbar,
+  TableCellProperties,
+  TableProperties,
+} from "@ckeditor/ckeditor5-table";
 import { TextTransformation } from "@ckeditor/ckeditor5-typing";
 import { Undo } from "@ckeditor/ckeditor5-undo";
 import { Base64UploadAdapter } from "@ckeditor/ckeditor5-upload";
+
+import { ResearcherBox } from "./researcher-box";
 
 // You can read more about extending the build with additional plugins in the "Installing plugins" guide.
 // See https://ckeditor.com/docs/ckeditor5/latest/installation/plugins/installing-plugins.html for details.
@@ -48,6 +58,8 @@ class Editor extends ClassicEditor {
     BlockQuote,
     Bold,
     Essentials,
+    FullPage,
+    GeneralHtmlSupport,
     FontColor,
     FontFamily,
     FontSize,
@@ -70,18 +82,21 @@ class Editor extends ClassicEditor {
     SpecialCharacters,
     SpecialCharactersEssentials,
     Strikethrough,
+    SourceEditing,
+    Style,
     Table,
+    TableCellProperties,
+    TableProperties,
     TableToolbar,
     TextTransformation,
     Underline,
     Undo,
+    ResearcherBox,
   ];
 
   public static override defaultConfig: EditorConfig = {
     toolbar: {
       items: [
-        "heading",
-        "|",
         "fontFamily",
         "fontSize",
         "fontColor",
@@ -105,9 +120,25 @@ class Editor extends ClassicEditor {
         "imageUpload",
         "mediaEmbed",
         "insertTable",
+        "-",
+        "heading",
         "|",
+        "style",
+        "|",
+        "sourceEditing",
+        "researcherBox",
         "undo",
         "redo",
+      ],
+      shouldNotGroupWhenFull: true,
+    },
+    table: {
+      contentToolbar: [
+        "tableColumn",
+        "tableRow",
+        "mergeTableCells",
+        "tableProperties",
+        "tableCellProperties",
       ],
     },
     language: "en",
@@ -120,8 +151,103 @@ class Editor extends ClassicEditor {
         "imageStyle:side",
       ],
     },
-    table: {
-      contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
+    fontSize: {
+      options: [9, 11, 13, "default", 17, 19, 21],
+    },
+    fontColor: {
+      /**
+        "uos-signiture-blue": "#004094",
+        "uos-blue": "#005EB8",
+        "uos-blue-light": "#0077C8",
+        "uos-blue-soft": "#9BCBEB",
+        "uos-emerald": "#00B398",
+        "uos-emerald-light": "#2CD5C4",
+        "uos-emerald-soft": "#9CDBD9",
+        "uos-emerald-mist": "#DCEBEC",
+        "uos-gray": "#63666A",
+        "uos-gray-light": "#BBBCBC",
+        "uos-gray-soft": "#D9D9D6",
+        "uos-gray-mist": "#E7E7E0",
+        "global-gray-light": "#F5F6FA",
+        "global-gray-soft": "#F9F9FB",
+       */
+      colors: [
+        {
+          color: "#004094",
+          label: "UOS Signature Blue",
+        },
+        {
+          color: "#005EB8",
+          label: "UOS Blue",
+        },
+        {
+          color: "#0077C8",
+          label: "UOS Blue Light",
+        },
+        {
+          color: "#9BCBEB",
+          label: "UOS Blue Soft",
+        },
+        {
+          color: "#00B398",
+          label: "UOS Emerald",
+        },
+        {
+          color: "#2CD5C4",
+          label: "UOS Emerald Light",
+        },
+        {
+          color: "#9CDBD9",
+          label: "UOS Emerald Soft",
+        },
+        {
+          color: "#DCEBEC",
+          label: "UOS Emerald Mist",
+        },
+        {
+          color: "#63666A",
+          label: "UOS Gray",
+        },
+        {
+          color: "#BBBCBC",
+          label: "UOS Gray Light",
+        },
+        {
+          color: "#D9D9D6",
+          label: "UOS Gray Soft",
+        },
+        {
+          color: "#E7E7E0",
+          label: "UOS Gray Mist",
+        },
+        {
+          color: "#F5F6FA",
+          label: "Global Gray Light",
+        },
+        {
+          color: "#F9F9FB",
+          label: "Global Gray Soft",
+        },
+      ],
+    },
+    style: {
+      definitions: [
+        {
+          name: "Introduction Item Box",
+          element: "p",
+          classes: ["pa-intro-item-box"],
+        },
+        {
+          name: "Global Main Header",
+          element: "h2",
+          classes: ["pa-main-header"],
+        },
+        {
+          name: "Global Sub Header",
+          element: "h3",
+          classes: ["pa-sub-header"],
+        },
+      ],
     },
   };
 }
