@@ -8,7 +8,9 @@ import v2Router from "./src/v2/main";
 const port = env.port;
 
 const app = new Koa();
-app.use(KoaLogger());
+if (!process.env.BACKEND_PRODUCTION) {
+  app.use(KoaLogger());
+}
 app.use(v1Router.routes());
 app.use(v2Router.routes());
 

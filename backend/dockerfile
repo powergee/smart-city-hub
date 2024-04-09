@@ -1,0 +1,24 @@
+FROM node:20-alpine as base
+
+# install packages and reuse
+FROM base as deps
+RUN apk add --no-cache ghostscript graphicsmagick
+WORKDIR /backend
+COPY package.json package-lock.json ./
+RUN npm install --save-dev
+
+# build backend server
+FROM deps as builder
+WORKDIR /backend
+COPY . .
+RUN npm run build
+
+# production image
+FROM deps as runner
+WORKDIR /backend
+COPY --from=builder /backend/build ./
+
+ENV BACKEND_PRODUCTION 1
+ENV PORT 4000
+EXPOSE 4000
+CMD ["node", "index.js"]

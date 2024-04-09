@@ -18,25 +18,27 @@ import { AuthRouter } from "./router/auth.route";
 import { ArticleRouter } from "./router/article.route";
 import { FileRouter } from "./router/file.route";
 
-import { mongodb_v1 } from "./utils/mongodb";
 import { createImageResizer, createThumbnailGenerator } from "./utils/thumbnail";
 
+import mongoose from "mongoose";
 import dotenv from "dotenv";
+
 dotenv.config();
+const mongoConn = mongoose.createConnection(process.env.MONGO_URI!);
 
 // Repository Dependency Inversion & Injection
 const userRepo: UserRepository = new UserMongoRepo({
-  db: mongodb_v1,
+  db: mongoConn,
   collectionName: "user",
 });
 const articleRepo: GeneralArticleRepository = new GeneralArticleMongoRepo({
-  db: mongodb_v1,
+  db: mongoConn,
   collectionName: "generalarticle",
 });
 const fileItemRepo: FileItemRepository = new FileItemMongoRepo({
-  db: mongodb_v1,
+  db: mongoConn,
   collectionName: "file",
-  baseDir: process.env.FILE_BASE_DIR!,
+  baseDir: process.env.FILES_DIRECTORY!,
 });
 
 // Service Dependency Injection
@@ -60,7 +62,11 @@ const articleServ = new ArticleService({
 const mainRouter = new Router({
   prefix: "/v2",
 });
-mainRouter.use(bodyParser());
+mainRouter.use(
+  bodyParser({
+    jsonLimit: process.env.JSON_LIMIT || "64mb",
+  })
+);
 mainRouter.use(cookie());
 mainRouter.use(authParser({ userAuthServ, userRepo }));
 mainRouter.use(zodErrorResolver());
