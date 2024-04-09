@@ -1,6 +1,13 @@
 "use server";
 
-import { UserItem, GeneralArticle, AttachmentFile } from "core/model";
+import {
+  UserItem,
+  GeneralArticle,
+  AttachmentFile,
+  PrimaryArticle,
+  PrimaryArticleKind,
+  Locale,
+} from "core/model";
 import { repo } from "@/di";
 import { getAccessToken, setAccessToken } from "@/utils";
 import { revalidatePath } from "next/cache";
@@ -70,4 +77,25 @@ export async function getAttachmentFileList(article: GeneralArticle): Promise<At
 export async function uploadAttachmentFile(formData: FormData): Promise<AttachmentFile> {
   revalidatePath("/");
   return await repo.attachmentFile.upload(formData.get("file") as File);
+}
+
+export async function getPrimaryArticle(
+  locale: Locale,
+  kind: PrimaryArticleKind
+): Promise<PrimaryArticle> {
+  return await repo.primaryArticle.pickLocale(locale).get(kind);
+}
+
+export async function setPrimaryArticle(
+  locale: Locale,
+  kind: PrimaryArticleKind,
+  contents: string
+): Promise<PrimaryArticle> {
+  revalidatePath("/");
+  const user = await checkWhoami();
+  if (!user || user.privilege !== "manager") {
+    throw new Error("Unauthorized");
+  }
+
+  return await repo.primaryArticle.pickLocale(locale).set(kind, contents);
 }

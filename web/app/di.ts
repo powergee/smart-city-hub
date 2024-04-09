@@ -8,6 +8,7 @@ import {
   GeneralArticleRepository,
   AttachmentFileRepository,
   AuthTokenIDPWRepository,
+  PrimaryArticleRepository,
 } from "core/repository";
 
 /* repositories */
@@ -17,6 +18,7 @@ import ProjectRecordImportedJson from "repository/project-record/project-record-
 import GeneralArticleBackendRepo from "repository/general-article/general-article-backend";
 import AttachmentFileBackendRepo from "repository/attachment-file/attachment-file-backend";
 import AuthTokenIDPWBackendRepo from "repository/auth-token/auth-token-idpw-backend";
+import PrimaryArticleFsRepo from "repository/primary-article/primary-article-fs";
 
 /* utils */
 import { getAccessToken } from "./utils";
@@ -42,6 +44,16 @@ const attachmentFile: AttachmentFileRepository = new AttachmentFileBackendRepo({
 const authTokenIDPW: AuthTokenIDPWRepository = new AuthTokenIDPWBackendRepo({
   baseUrl: "http://localhost:4000",
 });
+const primaryArticle: LocaleFacade<PrimaryArticleRepository> = new LocaleFacade({
+  ko: new PrimaryArticleFsRepo({
+    storagePath: "/workspace/.devcontainer/data/primary-articles/ko",
+  }),
+  en: new PrimaryArticleFsRepo({
+    storagePath: "/workspace/.devcontainer/data/primary-articles/en",
+  }),
+});
+
+/* utils */
 const getArticleThumbnailHref: GeneralArticleThumbnailHrefGetter = (
   articleId: number,
   type: "img" | "pdf"
@@ -59,6 +71,7 @@ export const repo = {
   generalArticle,
   attachmentFile,
   authTokenIDPW,
+  primaryArticle,
 };
 
 export const util = {

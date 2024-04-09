@@ -45,3 +45,12 @@ export type UserItem = {
   name: string;
   privilege: UserPrivilege;
 };
+
+export type PrimaryArticleKind = "greeting" | "goal";
+
+export type PrimaryArticle = {
+  kind: PrimaryArticleKind;
+  contents: string;
+  modifiedBy: string;
+  modifiedAt: Date;
+};
