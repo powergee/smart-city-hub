@@ -1,17 +1,17 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "The backend of smart-city-hub",
+  "name": "smart-city-hub-backend",
+  "version": "2.0.0",
+  "description": "Backend API Server for Smart City Hub",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon --watch . ./index.ts",
-    "interact": "ts-node ./index.ts -i"
+    "dev": "nodemon --watch . ./index.ts",
+    "build": "npx tsc --outDir ./build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/powergee/smart-city-hub.git"
   },
-  "author": "Jeonghyeon Kim",
+  "author": "Jeonghyeon Kim & Seongho Lee",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/powergee/smart-city-hub/issues"
