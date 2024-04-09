@@ -186,7 +186,7 @@ export function GeneralArticleView(props: {
         )}
       </div>
       <div
-        className="ck-content mt-2 p-2"
+        className="ck ck-content mt-2 p-2"
         role="article"
         dangerouslySetInnerHTML={{ __html: props.contents }}
       ></div>

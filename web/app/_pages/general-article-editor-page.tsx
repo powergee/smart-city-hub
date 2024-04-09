@@ -1,6 +1,5 @@
 "use client";
 
-import "./general-article-editor-page.css";
 import { GeneralArticle, AttachmentFile } from "core/model";
 import {
   getGeneralArticle,
@@ -135,9 +134,11 @@ export default function GeneralArticleEditorPage(props: {
           ? `게시글 수정 (kind: ${kind}, articleId: ${articleId})`
           : `게시글 생성 (kind: ${kind})`}
       </h2>
+
       {/* 제목 필드 */}
       <Label>제목</Label>
       <Input id="text" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+
       {/* 본문 필드 */}
       <Label>본문</Label>
       <CKEditor
@@ -148,6 +149,7 @@ export default function GeneralArticleEditorPage(props: {
           setBody(data);
         }}
       />
+
       {/* 첨부 파일 필드 */}
       <Label>첨부 파일</Label>
       <div className="mb-2">
@@ -231,6 +233,7 @@ export default function GeneralArticleEditorPage(props: {
           }
         }}
       />
+
       {/* 작성자, 작성일자 필드 */}
       <div className="grid grid-cols-2 gap-4 mb-4">
         <div>
@@ -248,6 +251,7 @@ export default function GeneralArticleEditorPage(props: {
           />
         </div>
       </div>
+
       {/* 게시 여부 필드 */}
       <div className="flex items-center mb-4">
         <input
@@ -255,10 +259,11 @@ export default function GeneralArticleEditorPage(props: {
           type="checkbox"
           className="mr-1"
           checked={published}
-          onClick={() => setPublished(!published)}
+          onChange={() => setPublished(!published)}
         />
         <label htmlFor="published">게시글 공개</label>
       </div>
+
       {/* 게시글 작성 버튼 */}
       <button
         onClick={async (e) => {
@@ -275,6 +280,7 @@ export default function GeneralArticleEditorPage(props: {
       >
         작성
       </button>
+
       {/* 게시글 삭제 버튼 */}
       {articleId ? (
         <button
