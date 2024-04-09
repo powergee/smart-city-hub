@@ -116,6 +116,14 @@
   dependencies:
     ckeditor5 "41.2.0"
 
+"@ckeditor/ckeditor5-html-support@41.2.0":
+  version "41.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-html-support/-/ckeditor5-html-support-41.2.0.tgz#0515129498e1668eff0e4c17682bf8ef9cee13ff"
+  integrity sha512-f83tNiijYtCY/DdCYEhulTmIgZpM06yulHC1rrPOGc9QWztDEVW/gSmaNkcN7sCw2a4f4aeOlGQ8zEl4Uz2K8w==
+  dependencies:
+    ckeditor5 "41.2.0"
+    lodash-es "4.17.21"
+
 "@ckeditor/ckeditor5-image@41.2.0":
   version "41.2.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-image/-/ckeditor5-image-41.2.0.tgz#6960b7100bfc51c614a311eac998dec3ce9572df"
@@ -188,12 +196,28 @@
     "@ckeditor/ckeditor5-ui" "41.2.0"
     "@ckeditor/ckeditor5-utils" "41.2.0"
 
+"@ckeditor/ckeditor5-source-editing@41.2.0":
+  version "41.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-source-editing/-/ckeditor5-source-editing-41.2.0.tgz#dcdb1f5ad7e611532cd59ddc739fe4b7ec739e02"
+  integrity sha512-J643jnO18WiOU1Xy0FtJ6ltGpgxoWAL5baYz/1Be5+nlrfVdFb80Jy04nANCJV/u2KHPS/OedjxIO7Zfml2pLg==
+  dependencies:
+    "@ckeditor/ckeditor5-theme-lark" "41.2.0"
+    ckeditor5 "41.2.0"
+
 "@ckeditor/ckeditor5-special-characters@41.2.0":
   version "41.2.0"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-special-characters/-/ckeditor5-special-characters-41.2.0.tgz#b419cb2a63943853b5c54c626e5fd20fa2b3aa28"
   integrity sha512-0nrJ/8njWMkyH8LajelAivUMIptIEGgYtvWZSaEyjILX4N+gvxjopIgj5rWDTJ6VYFhxPB6k8wbbGALN4jexcA==
   dependencies:
     ckeditor5 "41.2.0"
+
+"@ckeditor/ckeditor5-style@41.2.0":
+  version "41.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-style/-/ckeditor5-style-41.2.0.tgz#41dfca776a6bd506aa35fd61a4b0d64c718d5943"
+  integrity sha512-Xu6aC556c+V4UykyH2P0tkWiiXCCQ3+vtacBZ0BhSOmFRS5NKTs67I1oK3nxxAaYwtqqnQi3gw9Sg3NH6DzuNA==
+  dependencies:
+    ckeditor5 "41.2.0"
+    lodash-es "4.17.21"
 
 "@ckeditor/ckeditor5-table@41.2.0":
   version "41.2.0"
@@ -202,6 +226,13 @@
   dependencies:
     ckeditor5 "41.2.0"
     lodash-es "4.17.21"
+
+"@ckeditor/ckeditor5-theme-lark@41.2.0":
+  version "41.2.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-theme-lark/-/ckeditor5-theme-lark-41.2.0.tgz#5a610b588e0d6269755206cdfd899e468a7fe14b"
+  integrity sha512-J03qN5LL+FqiE4axDehUJCVgbX3SEy73JNoOVl7aJzyaPnSF8jlr3OlkI9GzHuhlrXp821KPFXxr6SOEhHubzA==
+  dependencies:
+    "@ckeditor/ckeditor5-ui" "41.2.0"
 
 "@ckeditor/ckeditor5-typing@41.2.0":
   version "41.2.0"
@@ -595,7 +626,7 @@ ckeditor-tailwind-reset@^1.0.5:
   integrity sha512-fh6okX7iMi0Rw5vZ3rcYKPRKvfU/mCh1Qe9yXpR7cQin10cgMMJ/D5VKp66PqoCRRmPHyjg3SjEXyxRmTIOKYQ==
 
 "ckeditor5-custom-build@file:./ckeditor5":
-  version "0.0.1"
+  version "0.0.2"
   dependencies:
     "@ckeditor/ckeditor5-alignment" "41.2.0"
     "@ckeditor/ckeditor5-autoformat" "41.2.0"
@@ -606,6 +637,7 @@ ckeditor-tailwind-reset@^1.0.5:
     "@ckeditor/ckeditor5-font" "41.2.0"
     "@ckeditor/ckeditor5-heading" "41.2.0"
     "@ckeditor/ckeditor5-horizontal-line" "41.2.0"
+    "@ckeditor/ckeditor5-html-support" "41.2.0"
     "@ckeditor/ckeditor5-image" "41.2.0"
     "@ckeditor/ckeditor5-indent" "41.2.0"
     "@ckeditor/ckeditor5-link" "41.2.0"
@@ -613,7 +645,9 @@ ckeditor-tailwind-reset@^1.0.5:
     "@ckeditor/ckeditor5-media-embed" "41.2.0"
     "@ckeditor/ckeditor5-paragraph" "41.2.0"
     "@ckeditor/ckeditor5-paste-from-office" "41.2.0"
+    "@ckeditor/ckeditor5-source-editing" "41.2.0"
     "@ckeditor/ckeditor5-special-characters" "41.2.0"
+    "@ckeditor/ckeditor5-style" "41.2.0"
     "@ckeditor/ckeditor5-table" "41.2.0"
     "@ckeditor/ckeditor5-typing" "41.2.0"
     "@ckeditor/ckeditor5-undo" "41.2.0"
