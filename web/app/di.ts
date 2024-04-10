@@ -34,22 +34,23 @@ const projectRecord: LocaleFacade<ProjectRecordRepository> = new LocaleFacade({
   en: new ProjectRecordImportedJson("en"),
 });
 const generalArticle: GeneralArticleRepository = new GeneralArticleBackendRepo({
-  baseUrl: "http://localhost:4000",
+  baseUrl: process.env.BACKEND_API_URL!,
   authTokenGetter: getAccessToken,
 });
 const attachmentFile: AttachmentFileRepository = new AttachmentFileBackendRepo({
-  baseUrl: "http://localhost:4000",
+  apiUrl: process.env.BACKEND_API_URL!,
+  publicUrl: process.env.BACKEND_PUBLIC_URL!,
   authTokenGetter: getAccessToken,
 });
 const authTokenIDPW: AuthTokenIDPWRepository = new AuthTokenIDPWBackendRepo({
-  baseUrl: "http://localhost:4000",
+  baseUrl: process.env.BACKEND_API_URL!,
 });
 const primaryArticle: LocaleFacade<PrimaryArticleRepository> = new LocaleFacade({
   ko: new PrimaryArticleFsRepo({
-    storagePath: "/workspace/.devcontainer/data/primary-articles/ko",
+    storagePath: `${process.env.PA_DATA_PATH}/ko`,
   }),
   en: new PrimaryArticleFsRepo({
-    storagePath: "/workspace/.devcontainer/data/primary-articles/en",
+    storagePath: `${process.env.PA_DATA_PATH}/en`,
   }),
 });
 
@@ -58,7 +59,7 @@ const getArticleThumbnailHref: GeneralArticleThumbnailHrefGetter = (
   articleId: number,
   type: "img" | "pdf"
 ) => {
-  return `http://localhost:4000/v2/article/${articleId}/thumbnail?from=${
+  return `${process.env.BACKEND_PUBLIC_URL!}/v2/article/${articleId}/thumbnail?from=${
     type === "img" ? "img" : "attachment"
   }`;
 };

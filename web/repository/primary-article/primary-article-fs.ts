@@ -15,7 +15,10 @@ export default class PrimaryArticleFsRepo implements PrimaryArticleRepository {
     this.storagePath = params.storagePath;
 
     if (!fs.existsSync(this.storagePath)) {
-      throw new Error(`There is no storagePath(${this.storagePath}) for PrimaryArticleNextRepo`);
+      console.warn(
+        `There is no storagePath(${this.storagePath}) for PrimaryArticleNextRepo, use ./temp directory instead.`
+      );
+      this.storagePath = "./temp";
     }
   }
 

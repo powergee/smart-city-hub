@@ -9,10 +9,12 @@ type FileItemDTO = {
 
 export default class AttachmentFileBackendRepo implements AttachmentFileRepository {
   private readonly baseUrl: string;
+  private readonly publicUrl: string;
   private readonly getAccessToken: AuthTokenGetter;
 
-  constructor(params: { baseUrl: string; authTokenGetter: AuthTokenGetter }) {
-    this.baseUrl = params.baseUrl;
+  constructor(params: { apiUrl: string; publicUrl: string; authTokenGetter: AuthTokenGetter }) {
+    this.baseUrl = params.apiUrl;
+    this.publicUrl = params.publicUrl;
     this.getAccessToken = params.authTokenGetter;
   }
 
@@ -32,7 +34,7 @@ export default class AttachmentFileBackendRepo implements AttachmentFileReposito
     return {
       id: fileItem.fileId,
       name: fileItem.name,
-      href: `${this.baseUrl}/v2/file/download/${fileItem.fileId}`,
+      href: `${this.publicUrl}/v2/file/download/${fileItem.fileId}`,
     };
   }
 
@@ -45,7 +47,7 @@ export default class AttachmentFileBackendRepo implements AttachmentFileReposito
     return {
       id: id,
       name: await nameRes.text(),
-      href: `${this.baseUrl}/v2/file/download/${id}`,
+      href: `${this.publicUrl}/v2/file/download/${id}`,
     };
   }
 }
