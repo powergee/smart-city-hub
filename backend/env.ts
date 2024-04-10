@@ -1,3 +1,4 @@
+import fs from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -10,14 +11,21 @@ interface IEnv {
 
 if (process.env.PORT === undefined) process.env.PORT = "4000";
 
-if (process.env.MONGO_URI === undefined)
+if (process.env.MONGO_URI === undefined) {
   throw new Error("MONGO_URI is not set.");
+}
 
-if (process.env.ACCESS_SECRET_KEY === undefined)
+if (process.env.ACCESS_SECRET_KEY_FILE) {
+  process.env.ACCESS_SECRET_KEY = fs.readFileSync(process.env.ACCESS_SECRET_KEY_FILE).toString();
+}
+
+if (process.env.ACCESS_SECRET_KEY === undefined) {
   throw new Error("ACCESS_SECRET_KEY is not set.");
+}
 
-if (process.env.FILES_DIRECTORY === undefined)
+if (process.env.FILES_DIRECTORY === undefined) {
   throw new Error("FILES_DIRECTORY is not set.");
+}
 
 const env: IEnv = {
   port: process.env.PORT,

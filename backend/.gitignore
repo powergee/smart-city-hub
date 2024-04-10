@@ -27,3 +27,4 @@ yarn-error.log*
 /runtime
 
 .env
+private.key

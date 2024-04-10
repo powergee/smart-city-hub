@@ -10,7 +10,8 @@ node.js와 koa 프레임워크로 구현된 Smart City Hub 백엔드 서버이�
 
 1. `PORT`: Listen할 포트 번호
 2. `MONGO_URI`: MongoDB의 Database에 접근하기 위한 URI (ex. mongodb://localhost/smarthub)
-3. `ACCESS_SECRET_KEY`: 사전에 무작위로 생성한 Access Token
+3. `ACCESS_SECRET_KEY`: Access Token 생성에 필요한 개인키
+   - `ACCESS_SECRET_KEY_FILE`: 해당 문자열을 담고 있는 파일을 해당 환경변수로 지정하여 `ACCESS_SECRET_KEY`를 설정할 수 있다.
 4. `FILES_DIRECTORY`: 파일과 이미지를 저장하기 위한 디렉토리 경로
 
 아래는 환경 변수(또는 `.env` 파일)의 예시이다.
