@@ -12,12 +12,12 @@ import {
 } from "core/repository";
 
 /* repositories */
-import AseanBannerTextRepo from "repository/asean/asean-banner-text";
-import SolutionTextRepo from "repository/solution/solution-text";
-import GeneralArticleBackendRepo from "repository/general-article/general-article-backend";
-import AttachmentFileBackendRepo from "repository/attachment-file/attachment-file-backend";
-import AuthTokenIDPWBackendRepo from "repository/auth-token/auth-token-idpw-backend";
-import PrimaryArticleFsRepo from "repository/primary-article/primary-article-fs";
+import AseanBannerTextRepo from "repository/asean-banner-text";
+import SolutionTextRepo from "repository/solution-text";
+import GeneralArticleBackendRepo from "repository/general-article-backend";
+import AttachmentFileBackendRepo from "repository/attachment-file-backend";
+import AuthTokenIDPWBackendRepo from "repository/auth-token-idpw-backend";
+import PrimaryArticleFsRepo from "repository/primary-article-fs";
 import ProjectRecordFsRepo from "repository/project-record-fs";
 
 /* utils */
