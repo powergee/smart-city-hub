@@ -1,11 +1,11 @@
 import Mongoose from "mongoose";
-import { Model, Document, Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import { IMeta, MetaSchemaDefinition } from "./meta";
 /*eslint-disable */
 const AutoIncrement = require("mongoose-sequence")(Mongoose);
 /*eslint-enable */
 
-export interface IGeneralArticle extends Document {
+export interface IGeneralArticle {
     articleId: number,
     title: string,
     contents: string,
@@ -37,4 +37,4 @@ const generalArticleSchema = new Schema({
 });
 
 generalArticleSchema.plugin(AutoIncrement, {inc_field: 'articleId'});
-export const GeneralArticleModel:Model<IGeneralArticle> = model("GeneralArticle", generalArticleSchema);
+export const GeneralArticleModel = model<IGeneralArticle>("GeneralArticle", generalArticleSchema);

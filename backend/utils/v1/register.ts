@@ -11,7 +11,7 @@ router.use(BodyParser());
 // Hash와 Salt를 프론트엔드에서 생성해 전송한다는 점에서 보안상 위험함.
 // 연구실 서버에서 HTTPS를 사용할 수 있게 되면 즉시 구현을 수정할 것.
 router.post("/", async (ctx: Koa.Context) => {
-    const body:IRegisterPostRequest = ctx.request.body;
+    const body = ctx.request.body as IRegisterPostRequest;
 
     if (body.userId === undefined || body.userName === undefined || 
         body.userPwHash === undefined || body.userPwSalt === undefined) {

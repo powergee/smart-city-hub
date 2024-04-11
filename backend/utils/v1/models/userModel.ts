@@ -1,7 +1,7 @@
 import { Model, Document, Schema, model } from "mongoose"
 import { IMeta, MetaSchemaDefinition } from "./meta"
 
-export interface IUser extends Document {
+export interface IUser {
     userId: string,
     userName: string,
     userPwHash: string,
@@ -24,4 +24,4 @@ const userSchema = new Schema({
     meta: MetaSchemaDefinition
 });
 
-export const UserModel:Model<IUser> = model("User", userSchema);
+export const UserModel = model<IUser>("User", userSchema);

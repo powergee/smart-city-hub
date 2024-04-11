@@ -1,30 +1,19 @@
-import db from "./utils/database";
-import app from "./utils/app";
-import env from "./env"
-import readline from "readline";
-import { executeLine } from "./interact";
+import env from "./env";
 
-db.prepareDB();
+import Koa from "koa";
+import KoaLogger from "koa-logger";
+import v1Router from "./utils/app";
+import v2Router from "./src/v2/main";
 
-if (process.argv[process.argv.length-1] === "-i") {
-    process.stdout.write("You're in Interactive Mode.\n");
+const port = env.port;
 
-    const reader = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-
-    reader.on("line", (line) => {
-        executeLine(line);
-    });
-    reader.on("close", () => {
-        reader.close();
-        process.exit();
-    })
-} else {
-    const port = env.port || 4000;
-
-    app.listen(port, () => {
-        console.log("Listening to http://0.0.0.0:" + port);
-    });
+const app = new Koa();
+if (!process.env.BACKEND_PRODUCTION) {
+  app.use(KoaLogger());
 }
+app.use(v1Router.routes());
+app.use(v2Router.routes());
+
+app.listen(port, () => {
+  console.log("Listening to http://0.0.0.0:" + port);
+});

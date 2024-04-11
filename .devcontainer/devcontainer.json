@@ -4,7 +4,7 @@
   "name": "smart-city-hub",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspaces",
+  "workspaceFolder": "/workspace",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // "features": {},

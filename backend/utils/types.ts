@@ -2,21 +2,6 @@ import { Binary } from 'mongodb';
 import { IGeneralArticle } from './v1/models/generalArticleModel';
 import { IMeta } from "./v1/models/meta";
 
-export interface ICollectionInfo {
-    name: string,
-    type: string,
-    options: Record<string, unknown>,
-    info: {
-        readOnly: boolean,
-        uuid: Binary,
-    },
-    idIndex: {
-        v: number,
-        key: Record<string, unknown>,
-        name: string,
-    },
-}
-
 /* GET /v1/salt */
 // Request
 export interface ISaltRequest {

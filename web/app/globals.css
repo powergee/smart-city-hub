@@ -1,0 +1,74 @@
+/* @tailwind directives for each of Tailwind’s layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply inline-block py-2 px-4 rounded transition focus:outline-none focus:ring hover:cursor-pointer;
+  }
+  .btn-sm {
+    @apply text-sm py-1 px-2;
+  }
+  .btn-primary {
+    @apply bg-uos-blue hover:bg-uos-signiture-blue disabled:bg-uos-signiture-blue text-white;
+  }
+  .btn-secondary {
+    @apply bg-gray-500 hover:bg-gray-700 disabled:bg-gray-700 focus:ring-gray-400 text-white;
+  }
+  .btn-success {
+    @apply bg-emerald-700 hover:bg-emerald-900 disabled:bg-emerald-900 focus:ring-emerald-600 text-white;
+  }
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-700 disabled:bg-red-700 focus:ring-red-400 text-white;
+  }
+
+  .pa-intro-item-box {
+    @apply border rounded-md w-full md:w-2/3 p-4 mx-auto my-4 text-center font-medium;
+  }
+  .pa-main-header {
+    @apply border-t-4 border-uos-gray-soft px-2 pt-1 w-fit;
+  }
+}
+
+.pa-researcher-box .pa-researcher-image figure {
+  padding: 0; /* reset ckeditor style */
+  margin: 0; /* reset ckeditor style */
+  pointer-events: none;
+}
+
+.ck-editor__editable.pa-researcher-image figure.image {
+  pointer-events: auto; /* restore event for ckeditor */
+}
+
+.pa-researcher-box .pa-researcher-description {
+  display: block;
+  width: 100%;
+}
+
+.pa-researcher-box .pa-researcher-image {
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-right: 1.5rem;
+  width: 216px;
+  height: 288px;
+}
+
+.pa-researcher-box .pa-researcher-image img {
+  object-fit: cover;
+  width: 216px !important;
+  height: 288px !important;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+}
+
+@media (min-width: 640px) {
+  .pa-researcher-box {
+    display: flex;
+    align-items: center;
+  }
+
+  .pa-researcher-box .pa-researcher-image {
+    flex: none;
+  }
+}

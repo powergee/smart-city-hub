@@ -3,10 +3,7 @@ import Router from "koa-router";
 import BodyParser from "koa-bodyparser";
 import mime from "mime-types";
 
-import {
-  SolutionCompany,
-  SolutionCompanyModel,
-} from "./models/solutionCompanyModel";
+import { SolutionCompany, SolutionCompanyModel } from "./models/solutionCompanyModel";
 import { Solution, SolutionModel } from "./models/solutionModel";
 import { FilterQuery } from "mongoose";
 
@@ -40,9 +37,10 @@ router.get("/companies/:id", async (ctx: Koa.Context) => {
  * _id 필드가 제공되면 해당 Document를 수정합니다.
  */
 router.post("/companies", async (ctx: Koa.Context) => {
-  const data = { ...ctx.request.body };
+  // const data = { ...ctx.request.body };
+  const data = ctx.request.body as any;
 
-  let company: SolutionCompany;
+  let company: SolutionCompany | null;
 
   if (!data._id) {
     // create new document
@@ -56,9 +54,9 @@ router.post("/companies", async (ctx: Koa.Context) => {
     }
 
     // replace current fields with requested fields
-    Object.keys(data).forEach((key) => {
+    for (const key in data) {
       company.set(key, data[key]);
-    });
+    }
   }
 
   ctx.body = await company.save();
@@ -86,7 +84,7 @@ router.delete("/companies/:id", async (ctx: Koa.Context) => {
  * 예: ["스마트 건설", "스마트 빌딩"]
  */
 router.post("/cat2com", async (ctx: Koa.Context) => {
-  const categoryTag: string[] = ctx.request.body;
+  const categoryTag = ctx.request.body as string[];
 
   if (categoryTag) {
     // 예외 처리: categoryTag가 배열이 아닌 경우
@@ -121,13 +119,9 @@ router.post("/cat2com", async (ctx: Koa.Context) => {
     // Solution에 맞는 SolutionCompany가 없으면 쿼리하여 추가
     if (index === -1) {
       index = res.length;
-      res.push({
-        company: await SolutionCompanyModel.findById(
-          companyId,
-          "name nameEng summary"
-        ),
-        solutions: [],
-      });
+      const query = await SolutionCompanyModel.findById(companyId, "name nameEng summary");
+      if (!query) break;
+      res.push({ company: query, solutions: [] });
     }
 
     // Solution 추가
@@ -153,15 +147,12 @@ router.get("/", async (ctx: Koa.Context) => {
     filter.companyId = companyId;
   }
 
-  ctx.body = await SolutionModel.find(
-    filter,
-    "companyId title summary categoryTag"
-  );
+  ctx.body = await SolutionModel.find(filter, "companyId title summary categoryTag");
 });
 
 router.get("/poster/:id", async (ctx: Koa.Context) => {
   const id = ctx.params.id;
-  const solution: Solution = await SolutionModel.findById(id, "mainImage");
+  const solution = await SolutionModel.findById(id, "mainImage");
 
   if (!solution) {
     ctx.throw(404, "No document according to given id");
@@ -181,10 +172,7 @@ router.get("/poster/:id", async (ctx: Koa.Context) => {
   }
 
   // 파일 응답 설정
-  ctx.set(
-    "Content-Disposition",
-    `attachment; filename=${id}.${mime.extension(mimeType)}`
-  ); // 다운로드할 파일 이름 설정
+  ctx.set("Content-Disposition", `attachment; filename=${id}.${mime.extension(mimeType)}`); // 다운로드할 파일 이름 설정
   ctx.set("Content-Type", mimeType); // 파일의 MIME 타입 설정
   ctx.body = imageData; // base64 데이터를 response body에 할당
 });
@@ -211,9 +199,9 @@ router.get("/:id", async (ctx: Koa.Context) => {
  * 이때, 유효한 SolutionCompany Document ID가 필요합니다.
  */
 router.post("/", async (ctx: Koa.Context) => {
-  const data = { ...ctx.request.body };
+  const data: any = ctx.request.body;
 
-  let solution: Solution;
+  let solution: Solution | null;
 
   if (!data._id) {
     // create new document
@@ -227,14 +215,12 @@ router.post("/", async (ctx: Koa.Context) => {
     }
 
     // replace current fields with requested fields
-    Object.keys(data).forEach((key) => {
+    for (const key in data) {
       solution.set(key, data[key]);
-    });
+    }
   }
 
-  const company: SolutionCompany = await SolutionCompanyModel.findById(
-    solution.companyId
-  );
+  const company = await SolutionCompanyModel.findById(solution.companyId);
   if (!company) {
     ctx.throw(406, "No company document was found for companyId.");
   }

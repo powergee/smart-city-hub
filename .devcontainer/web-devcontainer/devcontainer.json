@@ -1,0 +1,22 @@
+{
+  "name": "smart-city-hub-web",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "web",
+  "workspaceFolder": "/workspace",
+
+  // Don't stop the container when the vscode window has been closed.
+  "shutdownAction": "none",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "mongodb.mongodb-vscode"
+      ]
+    }
+  }
+}

@@ -15,13 +15,13 @@ router.use(BodyParser({ jsonLimit: '64mb' })); // TODO: set jsonLimit by environ
 router.use(Cookie());
 
 router.get("/", async (ctx: Koa.Context) => {
-    const body:IArticlesGetRequest = {
+    const body: IArticlesGetRequest = {
         page: Number(ctx.query.page),
         perPage: Number(ctx.query.perPage),
-        kindRegex: ctx.query.kindRegex,
-        contentsRegex: ctx.query.contentsRegex,
-        titleRegex: ctx.query.titleRegex,
-        createdByRegex: ctx.query.createdByRegex,
+        kindRegex: ctx.query.kindRegex as string,
+        contentsRegex: ctx.query.contentsRegex as string,
+        titleRegex: ctx.query.titleRegex as string,
+        createdByRegex: ctx.query.createdByRegex as string,
         summary: ctx.query.summary === 'true'
     };
 
@@ -69,7 +69,9 @@ router.get("/", async (ctx: Koa.Context) => {
 });
 
 router.get("/count", async (ctx: Koa.Context) => {
-    const body:IArticlesCountGetRequest = ctx.query;
+    const body: IArticlesCountGetRequest = {
+        kind: ctx.query.kind as string
+    };
     
     if (body.kind === undefined) {
         ctx.throw(400, "kind is not valid. The body was: " + JSON.stringify(ctx.query));
@@ -97,7 +99,7 @@ router.get("/:articleId", async (ctx: Koa.Context) => {
         ctx.throw(400, "articleId is not valid. The parameter was " + JSON.stringify(ctx.params));
     }
 
-    const res:IGeneralArticle|null = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
+    const res = await GeneralArticleModel.findOne({ articleId: articleId }).exec();
 
     if (res === null) {
         ctx.throw(404, "There's no article with articleId = " + ctx.params.articleId);
@@ -167,7 +169,7 @@ router.post("/", async (ctx: Koa.Context) => {
         ctx.throw(401, "It is unauthorized.");
     }
 
-    const body:IArticlesPostRequest = ctx.request.body;
+    const body = ctx.request.body as IArticlesPostRequest;
 
     if (body.contents === undefined || body.files === undefined || body.title === undefined ||
         body.images === undefined || body.kind === undefined || body.isPublic === undefined) {
