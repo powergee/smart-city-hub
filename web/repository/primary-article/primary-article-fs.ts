@@ -10,20 +10,19 @@ import path from "path";
  */
 export default class PrimaryArticleFsRepo implements PrimaryArticleRepository {
   private readonly storagePath: string;
+  private readonly dataPath;
 
   constructor(params: { storagePath: string }) {
     this.storagePath = params.storagePath;
+    this.dataPath = path.join(this.storagePath, "primary-articles");
 
-    if (!fs.existsSync(this.storagePath)) {
-      console.warn(
-        `There is no storagePath(${this.storagePath}) for PrimaryArticleNextRepo, use ./temp directory instead.`
-      );
-      this.storagePath = "./temp";
+    if (this.dataPath && !fs.existsSync(this.dataPath)) {
+      fs.mkdirSync(this.dataPath, { recursive: true });
     }
   }
 
   async get(kind: PrimaryArticleKind): Promise<PrimaryArticle> {
-    const htmlPath = path.join(this.storagePath, `${kind}.html`);
+    const htmlPath = path.join(this.dataPath, `${kind}.html`);
 
     return new Promise((resolve) => {
       fs.readFile(htmlPath, { encoding: "utf-8" }, (err, data) => {
@@ -48,7 +47,7 @@ export default class PrimaryArticleFsRepo implements PrimaryArticleRepository {
   }
 
   async set(kind: PrimaryArticleKind, contents: string): Promise<PrimaryArticle> {
-    const htmlPath = path.join(this.storagePath, `${kind}.html`);
+    const htmlPath = path.join(this.dataPath, `${kind}.html`);
 
     return new Promise((resolve) => {
       fs.writeFile(htmlPath, contents, { encoding: "utf-8" }, async (err) => {
