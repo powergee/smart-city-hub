@@ -122,6 +122,22 @@ export default function Page(props: { params: { lang: Locale } }) {
     }
   }, [firstRender]);
 
+  useEffect(() => {
+    if (!firstRender && projects.length === 0) {
+      setProjects([
+        {
+          id: 0,
+          item: {
+            year: [new Date().getFullYear()],
+            client: "",
+            title: "",
+            isPrimary: false,
+          },
+        },
+      ]);
+    }
+  }, [projects]);
+
   return (
     <div>
       {projects.map((proj, idx) => (
@@ -217,23 +233,6 @@ export default function Page(props: { params: { lang: Locale } }) {
             }}
           >
             저장
-          </button>
-          <button
-            className="btn btn-secondary"
-            role="button"
-            onClick={async (e) => {
-              e.preventDefault();
-              if (window.confirm("변경사항을 되돌리겠습니까?") === false) return;
-              const newProjects = await getProjectRecordList(props.params.lang);
-              setProjects(
-                newProjects.map((item, id) => ({
-                  id,
-                  item,
-                }))
-              );
-            }}
-          >
-            되돌리기
           </button>
         </div>
       </div>
