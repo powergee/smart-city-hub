@@ -14,11 +14,11 @@ import {
 /* repositories */
 import AseanBannerTextRepo from "repository/asean/asean-banner-text";
 import SolutionTextRepo from "repository/solution/solution-text";
-import ProjectRecordImportedJson from "repository/project-record/project-record-imported-json";
 import GeneralArticleBackendRepo from "repository/general-article/general-article-backend";
 import AttachmentFileBackendRepo from "repository/attachment-file/attachment-file-backend";
 import AuthTokenIDPWBackendRepo from "repository/auth-token/auth-token-idpw-backend";
 import PrimaryArticleFsRepo from "repository/primary-article/primary-article-fs";
+import ProjectRecordFsRepo from "repository/project-record-fs";
 
 /* utils */
 import { getAccessToken } from "./utils";
@@ -30,8 +30,12 @@ const solution: LocaleFacade<SolutionRepository> = new LocaleFacade({
   en: new SolutionTextRepo("en"),
 });
 const projectRecord: LocaleFacade<ProjectRecordRepository> = new LocaleFacade({
-  ko: new ProjectRecordImportedJson("ko"),
-  en: new ProjectRecordImportedJson("en"),
+  ko: new ProjectRecordFsRepo({
+    storagePath: `${process.env.WEB_STORAGE_PATH}/ko`,
+  }),
+  en: new ProjectRecordFsRepo({
+    storagePath: `${process.env.WEB_STORAGE_PATH}/en`,
+  }),
 });
 const generalArticle: GeneralArticleRepository = new GeneralArticleBackendRepo({
   baseUrl: process.env.BACKEND_API_URL!,
@@ -47,10 +51,10 @@ const authTokenIDPW: AuthTokenIDPWRepository = new AuthTokenIDPWBackendRepo({
 });
 const primaryArticle: LocaleFacade<PrimaryArticleRepository> = new LocaleFacade({
   ko: new PrimaryArticleFsRepo({
-    storagePath: `${process.env.PA_DATA_PATH}/ko`,
+    storagePath: `${process.env.WEB_STORAGE_PATH}/ko`,
   }),
   en: new PrimaryArticleFsRepo({
-    storagePath: `${process.env.PA_DATA_PATH}/en`,
+    storagePath: `${process.env.WEB_STORAGE_PATH}/en`,
   }),
 });
 

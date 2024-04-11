@@ -8,7 +8,7 @@ export type AseanBannerItem = {
 };
 
 export type ProjectRecordItem = {
-  year: [start: number, end: number];
+  year: [start: number, end?: number];
   client: string;
   title: string;
   isPrimary: boolean;

@@ -6,6 +6,7 @@ import {
   AttachmentFile,
   PrimaryArticle,
   PrimaryArticleKind,
+  ProjectRecordItem,
   Locale,
 } from "core/model";
 import { repo } from "@/di";
@@ -98,4 +99,21 @@ export async function setPrimaryArticle(
   }
 
   return await repo.primaryArticle.pickLocale(locale).set(kind, contents);
+}
+
+export async function getProjectRecordList(lang: Locale): Promise<ProjectRecordItem[]> {
+  return await repo.projectRecord.pickLocale(lang).getItemList();
+}
+
+export async function setProjectRecordList(
+  lang: Locale,
+  items: ProjectRecordItem[]
+): Promise<ProjectRecordItem[]> {
+  revalidatePath("/");
+  const user = await checkWhoami();
+  if (!user || user.privilege !== "manager") {
+    throw new Error("Unauthorized");
+  }
+
+  return await repo.projectRecord.pickLocale(lang).setItemList(items);
 }

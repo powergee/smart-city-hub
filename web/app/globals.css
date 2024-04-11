@@ -16,6 +16,9 @@
   .btn-secondary {
     @apply bg-gray-500 hover:bg-gray-700 disabled:bg-gray-700 focus:ring-gray-400 text-white;
   }
+  .btn-success {
+    @apply bg-emerald-700 hover:bg-emerald-900 disabled:bg-emerald-900 focus:ring-emerald-600 text-white;
+  }
   .btn-danger {
     @apply bg-red-500 hover:bg-red-700 disabled:bg-red-700 focus:ring-red-400 text-white;
   }
