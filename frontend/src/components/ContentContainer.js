@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import "./ContentContainer.scss";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import defaultImage from "../images/page-pics/introduction.png";
@@ -32,9 +31,9 @@ function NavigatorRow(props) {
       </Collapse>
     </React.Fragment>
   ) : (
-    <Link to={link} className="nav-row-sub-button">
+    <a href={link} className="nav-row-sub-button">
       {title}
-    </Link>
+    </a>
   );
 }
 
@@ -59,15 +58,15 @@ export default function ContentContainer(props) {
         subPath: [
           {
             title: t("인사말"),
-            link: "/introduction/greeting",
+            link: "https://global.urbanscience.uos.ac.kr/introduction/greeting",
           },
           {
             title: t("설립배경 및 목적"),
-            link: "/introduction/goal",
+            link: "https://global.urbanscience.uos.ac.kr/introduction/goal",
           },
           {
             title: t("연구진"),
-            link: "/introduction/researchers",
+            link: "https://global.urbanscience.uos.ac.kr/introduction/researchers",
           },
         ],
       },
@@ -77,19 +76,19 @@ export default function ContentContainer(props) {
         subPath: [
           {
             title: t("총괄 연구 & 사업"),
-            link: "/projects/summary",
+            link: "https://global.urbanscience.uos.ac.kr/projects/summary",
           },
           {
             title: t("인문사회연구소"),
-            link: "/projects/withhs",
+            link: "https://global.urbanscience.uos.ac.kr/projects/withhs",
           },
           {
             title: t("스마트재난안전"),
-            link: "/projects/smtdstpre",
+            link: "https://global.urbanscience.uos.ac.kr/projects/smtdstpre",
           },
           {
             title: t("기타"),
-            link: "/projects/etc",
+            link: "https://global.urbanscience.uos.ac.kr/projects/etc",
           },
         ],
       },
@@ -99,11 +98,11 @@ export default function ContentContainer(props) {
         subPath: [
           {
             title: t("Issue Paper"),
-            link: "/publish/issue-paper",
+            link: "https://global.urbanscience.uos.ac.kr/publish/issue-paper",
           },
           {
             title: t("아카이브"),
-            link: "/publish/archive",
+            link: "https://global.urbanscience.uos.ac.kr/publish/archive",
           },
         ],
       },
@@ -113,15 +112,15 @@ export default function ContentContainer(props) {
         subPath: [
           {
             title: t("공지사항"),
-            link: "/news/notices",
+            link: "https://global.urbanscience.uos.ac.kr/news/notices",
           },
           {
             title: t("스마트 뉴스"),
-            link: "/news/smart-news",
+            link: "https://global.urbanscience.uos.ac.kr/news/smart-news",
           },
           {
             title: t("연구실적"),
-            link: "/news/research",
+            link: "https://global.urbanscience.uos.ac.kr/news/research",
           },
         ],
       },
@@ -131,7 +130,7 @@ export default function ContentContainer(props) {
         subPath: [
           {
             title: t("세미나"),
-            link: "/community/seminar",
+            link: "https://global.urbanscience.uos.ac.kr/news/seminar",
           },
           {
             title: t("기관 및 기업 소개"),

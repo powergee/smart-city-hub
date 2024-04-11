@@ -34,7 +34,7 @@ export default async function Home(props: { params: { lang: string } }) {
             left: item.buttonPosition[0],
             title: item.countryName.toUpperCase(),
             description: item.description.join("\n"),
-            href: `https://global.urbanscience.uos.ac.kr/asean/${idx}`, // TODO: 링크 수정
+            href: `https://legacy.global.urbanscience.uos.ac.kr/asean/${idx}`, // TODO: 링크 수정
           }))}
         />
         <Container className="mt-4">
@@ -44,7 +44,7 @@ export default async function Home(props: { params: { lang: string } }) {
               ({ id, name }, idx) => ({
                 title: name,
                 imgSrc: getSolutionCoverById(id),
-                href: `https://global.urbanscience.uos.ac.kr/hub/${idx}`, // TODO: 링크 수정
+                href: `https://legacy.global.urbanscience.uos.ac.kr/hub/${idx}`, // TODO: 링크 수정
               })
             )}
           />

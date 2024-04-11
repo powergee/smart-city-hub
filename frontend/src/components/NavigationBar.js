@@ -49,47 +49,31 @@ export default function NavigationBar(props) {
                 <b>{locale === "en" ? "한국어" : "English"}</b>
               </a>
             </li>
-            <li className="header-item">
-              {token ? (
-                <>
-                  <span>
-                    <strong>{token.userName}</strong>님, 환영합니다!
-                  </span>
-                  <a href onClick={logout} className="header-button">
-                    {t("로그아웃")}
-                  </a>
-                </>
-              ) : (
-                <Link to="/login" className="header-button">
-                  {t("로그인")}
-                </Link>
-              )}
-            </li>
           </ul>
         </div>
       </div>
 
       <div className="header-gnb">
-        <Link to="/">
+        <a href="https://global.urbanscience.uos.ac.kr">
           <img alt="Main Logo" src={logo} />
-        </Link>
+        </a>
 
         <div className="menu-primary">
           <ul>
             <li>
-              <Link to="/introduction">{t("센터소개")}</Link>
+              <a href="https://global.urbanscience.uos.ac.kr/introduction">{t("센터소개")}</a>
             </li>
             <li>
-              <Link to="/projects">{t("연구 & 사업")}</Link>
+              <a href="https://global.urbanscience.uos.ac.kr/projects">{t("연구 & 사업")}</a>
             </li>
             <li>
-              <Link to="/publish/issue-paper">{t("발간물")}</Link>
+              <a href="https://global.urbanscience.uos.ac.kr/publish/issue-paper">{t("발간물")}</a>
             </li>
             <li>
-              <Link to="/news/notices">{t("소식")}</Link>
+              <a href="https://global.urbanscience.uos.ac.kr/news/notices">{t("소식")}</a>
             </li>
             <li>
-              <Link to="/community/seminar">{t("커뮤니티")}</Link>
+              <a href="https://global.urbanscience.uos.ac.kr/news/seminar">{t("세미나")}</a>
             </li>
             <li>
               <Link to="/hub">{t("스마트도시수출 거점HUB")}</Link>
@@ -98,28 +82,28 @@ export default function NavigationBar(props) {
             <div class="menu-dropdown">
               <ul>
                 <li className="menu-small">
-                  <Link to="/introduction/greeting">{t("인사말")}</Link>
-                  <Link to="/introduction/goal">{t("설립배경 및 목적")}</Link>
-                  <Link to="/introduction/researchers">{t("연구진")}</Link>
+                  <a href="https://global.urbanscience.uos.ac.kr/introduction/greeting">{t("인사말")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/introduction/goal">{t("설립배경 및 목적")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/introduction/researchers">{t("연구진")}</a>
                 </li>
                 <li className="menu-large">
-                  <Link to="/projects/summary">{t("총괄 연구 & 사업")}</Link>
-                  <Link to="/projects/withhs">{t("인문사회연구소")}</Link>
-                  <Link to="/projects/smtdstpre">{t("스마트재난안전")}</Link>
-                  <Link to="/projects/etc">{t("기타")}</Link>
+                  <a href="https://global.urbanscience.uos.ac.kr/projects/summary">{t("총괄 연구 & 사업")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/projects/withhs">{t("인문사회연구소")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/projects/smtdstpre">{t("스마트재난안전")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/projects/etc">{t("기타")}</a>
                 </li>
                 <li className="menu-large">
-                  <Link to="/publish/issue-paper">{t("Issue Paper")}</Link>
-                  <Link to="/publish/archive">{t("아카이브")}</Link>
+                  <a href="https://global.urbanscience.uos.ac.kr/publish/issue-paper">{t("Issue Paper")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/publish/archive">{t("아카이브")}</a>
                 </li>
                 <li className="menu-small">
-                  <Link to="/news/notices">{t("공지사항")}</Link>
-                  <Link to="/news/smart-news">{t("스마트 뉴스")}</Link>
-                  <Link to="/news/research">{t("연구실적")}</Link>
+                  <a href="https://global.urbanscience.uos.ac.kr/news/notices">{t("공지사항")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/news/smart-news">{t("스마트 뉴스")}</a>
+                  <a href="https://global.urbanscience.uos.ac.kr/news/research">{t("연구실적")}</a>
                 </li>
                 <li className="menu-small">
-                  <Link to="/community/seminar">{t("세미나")}</Link>
-                  <Link to="/community/workshop">{t("기관 및 기업 소개")}</Link>
+                  <a href="https://global.urbanscience.uos.ac.kr/news/seminar">{t("세미나")}</a>
+                  <a href="/community/workshop">{t("기관 및 기업 소개")}</a>
                 </li>
                 <li className="menu-large">
                   <Link to="/hub">{t("거점HUB")}</Link>
