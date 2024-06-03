@@ -1,4 +1,4 @@
-import { Password, UserAuthTokenPayload } from "../core/model";
+import { UserAuthTokenPayload } from "../core/model";
 import { UserRepository } from "../core/repository";
 
 import crypto from "crypto";
@@ -38,7 +38,7 @@ export class UserAuthService {
   }
 
   /**
-   * 사용자 유무 및 비밀번호를 확인한다.
+   * 사용자 유무, 활성화 유무, 비밀번호를 확인한다.
    * @param userId 사용자 아이디
    * @param plainPassword 사용자 평문 비밀번호
    * @returns 유효한 사용자일 경우 true, 아닐 경우 false
@@ -48,11 +48,16 @@ export class UserAuthService {
     const user = await this.userRepo.findByUserId(userId);
     if (!user) return false;
 
-    // 2. 비밀번호 유무 확인
+    // 2. 활성화된 사용자인지 확인
+    if (user.enabled === false) {
+      return false;
+    }
+
+    // 3. 비밀번호 유무 확인
     const password = await this.userRepo.findPasswordByUserId(userId);
     if (!password) return false;
 
-    // 3. 비밀번호 해싱 및 비교
+    // 4. 비밀번호 해싱 및 비교
     const { method, salt, hash } = password;
     const hashedPassword = crypto
       .createHash(method)
