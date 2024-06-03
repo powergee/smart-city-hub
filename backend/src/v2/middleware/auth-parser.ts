@@ -24,23 +24,13 @@ export default function authParser(params: {
     // authorization 헤더를 이용한 JWT 토큰 파싱
     const token = ctx.header.authorization?.split(" ")[1];
     if (!token) {
-      ctx.state.auth.error = new Error("There is no token.");
+      ctx.state.auth.error = new Error("인증 토큰이 없습니다.");
       return await next();
     }
 
     try {
       // JWT 토큰 검증
-      const payload = await params.userAuthServ.verifyToken(token);
-
-      // User 모델 찾기
-      const user = await params.userRepo.findByUserId(payload.userId);
-      if (!user) {
-        throw new Error("User is not found.");
-      }
-      if (!user.enabled) {
-        throw new Error("User is not enabled.");
-      }
-
+      const user = await params.userAuthServ.verifyToken(token);
       ctx.state.auth.user = user;
     } catch (err) {
       ctx.state.auth.error = err as Error;

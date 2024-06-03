@@ -24,16 +24,19 @@ export class AuthRouter extends KoaRouterWrapper {
     return async (ctx) => {
       const body = bodySchema.parse(ctx.request.body);
 
-      const token = await this.userAuthServ.issueToken(body.userid, body.plainpw);
-      if (token === null) {
-        ctx.status = 401;
-        return;
+      try {
+        const token = await this.userAuthServ.issueToken(body.userid, body.plainpw);
+        ctx.response.body = token;
+      } catch (err) {
+        ctx.throw(400, (err as Error).message);
       }
-
-      ctx.response.body = token;
     };
   };
 
+  /**
+   * 미들웨어에서 처리한 인증 정보를 이용해 사용자 정보를 반환합니다.
+   * middleware/auth-parser.ts 참조
+   */
   private whoami = (): Koa.Middleware => {
     return async (ctx) => {
       const userPayload = ctx.state.auth.user;
