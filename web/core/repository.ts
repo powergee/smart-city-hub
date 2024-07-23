@@ -59,6 +59,12 @@ export interface AttachmentFileRepository {
   getInfo(id: number): Promise<AttachmentFile>;
 }
 
+export interface UserRepository {
+  register(user: Partial<UserItem>, plainpw: string): Promise<UserItem>;
+  update(user: UserItem, plainpw?: string): Promise<UserItem>;
+  delete(id: string): Promise<UserItem>;
+}
+
 export interface AuthTokenIDPWRepository {
   issue: (auth: { id: string; pw: string }) => Promise<string>;
   whoami: (token: string) => Promise<UserItem | null>;

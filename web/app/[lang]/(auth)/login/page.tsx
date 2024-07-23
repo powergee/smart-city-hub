@@ -41,7 +41,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="mb-4">
-            <label className="block mb-2" htmlFor="userid">
+            <label className="block mb-2" htmlFor="plainpw">
               {t("비밀번호")}
             </label>
             <input
