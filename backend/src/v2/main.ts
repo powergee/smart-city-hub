@@ -4,11 +4,18 @@ import cookie from "koa-cookie";
 import authParser from "./middleware/auth-parser";
 import zodErrorResolver from "./middleware/zod-error-resolver";
 
-import { GeneralArticleRepository, UserRepository, FileItemRepository } from "./core/repository";
+import {
+  GeneralArticleRepository,
+  UserRepository,
+  FileItemRepository,
+  SolutionRepository,
+} from "./core/repository";
 
 import { UserMongoRepo } from "./repository/user-mongo";
 import { GeneralArticleMongoRepo } from "./repository/general-article-mongo";
 import { FileItemMongoRepo } from "./repository/file-item-mongo";
+import { SolutionMongoRepo } from "./repository/solution-mongo";
+
 import { UserService } from "./service/user.service";
 import { UserAuthService } from "./service/auth.service";
 import { ArticleService } from "./service/article.service";
@@ -17,6 +24,7 @@ import { UserRouter } from "./router/user.route";
 import { AuthRouter } from "./router/auth.route";
 import { ArticleRouter } from "./router/article.route";
 import { FileRouter } from "./router/file.route";
+import { SolutionRouter } from "./router/solution.route";
 
 import { createImageResizer, createThumbnailGenerator } from "./utils/thumbnail";
 
@@ -39,6 +47,9 @@ const fileItemRepo: FileItemRepository = new FileItemMongoRepo({
   db: mongoConn,
   collectionName: "file",
   baseDir: process.env.FILES_DIRECTORY!,
+});
+const solutionRepo: SolutionRepository = new SolutionMongoRepo({
+  db: mongoConn,
 });
 
 // Service Dependency Injection
@@ -82,5 +93,6 @@ new FileRouter({
       : 16 * 1024 * 1024, // default: 16MB
   },
 }).injectTo(mainRouter);
+new SolutionRouter({ di: { solutionRepo } }).injectTo(mainRouter);
 
 export default mainRouter;

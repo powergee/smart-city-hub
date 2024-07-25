@@ -43,3 +43,27 @@ export type FileItem = {
   name: string;
   localPath: string;
 };
+
+export type SolutionItem = {
+  solutionId: string;
+  companyId: string;
+  title: string;
+  mainImage: string;
+  mainCategory: string;
+  subCategory: string;
+  summary: string;
+  contents: string;
+  createdAt: Date;
+  createdByAi: boolean;
+};
+
+export type SolutionCompany = {
+  companyId: string;
+  name: string;
+  logoImage: string;
+  address: string;
+  contact: string;
+  website: string;
+  category: string;
+  year: number;
+};
