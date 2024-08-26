@@ -22,6 +22,28 @@ import traffic from "./traffic.jpg";
 import water from "./water.jpg";
 import welfare from "./welfare.jpg";
 
+import agricultureInner from "./inner/agriculture.png";
+import businessInner from "./inner/business.png";
+import citizenInner from "./inner/citizenparticipation.png";
+import communicationInner from "./inner/communicationtechnology.png";
+import constructionInner from "./inner/construction.png";
+import crimeInner from "./inner/crimeprevention.png";
+import cultureInner from "./inner/cultureandart.png";
+import disasterInner from "./inner/disasterprevention.png";
+import educationInner from "./inner/education.png";
+import egovermentInner from "./inner/egoverment.png";
+import factoryInner from "./inner/factory.png";
+import financeInner from "./inner/finance.png";
+import greenInner from "./inner/greenenergy.png";
+import laborInner from "./inner/laberemployment.png";
+import logisticInner from "./inner/logistic.png";
+import medicalInner from "./inner/medicalhealth.png";
+import refuseInner from "./inner/refusedisposal.png";
+import tourismInner from "./inner/tourism.png";
+import trafficInner from "./inner/traffic.png";
+import waterInner from "./inner/watermanagement.png";
+import welfareInner from "./inner/welfare.png";
+
 const solutionCovers: { [key: string]: StaticImageData } = {
   건설: construction,
   고용노동: labor,
@@ -46,6 +68,38 @@ const solutionCovers: { [key: string]: StaticImageData } = {
   통신기술: communication,
 };
 
+const solutionInnerCovers: { [key: string]: StaticImageData } = {
+  건설: constructionInner,
+  고용노동: laborInner,
+  공장: factoryInner,
+  관광: tourismInner,
+  교육: educationInner,
+  교통: trafficInner,
+  그린에너지: greenInner,
+  금융: financeInner,
+  농업: agricultureInner,
+  문화예술: cultureInner,
+  물관리: waterInner,
+  물류: logisticInner,
+  방범: crimeInner,
+  방재: disasterInner,
+  복지: welfareInner,
+  비즈니스: businessInner,
+  시민참여: citizenInner,
+  쓰레기처리: refuseInner,
+  의료보건: medicalInner,
+  전자정부: egovermentInner,
+  통신기술: communicationInner,
+};
+
 export function getSolutionCoverById(id: string): StaticImageData {
   return solutionCovers[id];
+}
+
+export function getSolutionCoverByIndex(index: number): StaticImageData {
+  return Object.values(solutionCovers)[index];
+}
+
+export function getSolutionInnerCoverByIndex(index: number): StaticImageData {
+  return Object.values(solutionInnerCovers)[index];
 }
