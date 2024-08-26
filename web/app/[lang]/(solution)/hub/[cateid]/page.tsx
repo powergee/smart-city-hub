@@ -52,7 +52,9 @@ export default async function Page(props: { params: { lang: Locale; cateid: stri
             ))}
           </div>
           <p className="text-center font-bold mb-8">
-            아래의 소분류를 선택해서 {category.name} 분야의 국내 기업들을 확인해보세요.
+            {lang === "ko"
+              ? `아래의 소분류를 선택해서 ${category.name} 분야의 국내 기업들을 확인해보세요.`
+              : `Select a subcategory below to see domestic companies in the ${category.name} field.`}
           </p>
           <div className="relative">
             <Image
@@ -97,7 +99,6 @@ export default async function Page(props: { params: { lang: Locale; cateid: stri
               company={company}
               mainCategoryId={cateMain}
               subCategoryId={cateSub}
-              lang={lang}
               key={company.companyId}
             />
           ))}

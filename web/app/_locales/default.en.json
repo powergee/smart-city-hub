@@ -34,6 +34,12 @@
   "거점HUB": "Hub",
   "스마트도시 솔루션": "Solutions",
   "아세안 국가 정보": "Asean Informations",
+  "대표": "CEO",
+  "주소": "Address",
+  "전화": "Phone",
+  "팩스": "Fax",
+  "보유 솔루션 보기": "View Solutions",
+  "접기": "Close",
   "labAddress": "International of Urban, Global Urban & Infrastructure Research Center, Seoulsiripdae-ro 163, Dongdaemun-gu, Seoul 02504, Korea",
   "greeting": {
     "h3": "The International Urban and Infrastructure Research Center is advancing research for people in the areas of cities, transportation, environment, and disasters in the era of the 4th industrial revolution.",
