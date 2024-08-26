@@ -16,7 +16,7 @@ import { getSolutionCoverByIndex } from "@resources/images/solution-covers";
 import { quickMenuIcons } from "@resources/images/quick-menu-icons";
 import urbanCityLandscapeImg from "@resources/images/urban-city-landscape.jpg";
 
-import { getSolutionCategoryAll } from "./(solution)/hub/[cateid]/categories";
+import { getSolutionCategoryAll } from "./hub/[cateid]/categories";
 
 export default async function Home(props: { params: { lang: string } }) {
   const lang = props.params.lang as Locale;
