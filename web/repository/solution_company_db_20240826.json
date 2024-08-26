@@ -1,0 +1,3252 @@
+[
+  {
+    "companyId": 577,
+    "name": "주식회사 에스시그널 새싹기업",
+    "nameEng": "SSignal",
+    "ceo": "김정대",
+    "address": "서울특별시 금천구 가산기지털2로 53, 4층 402호(가산동, 한라시그마밸리)",
+    "tel": "070-7675-8181",
+    "fax": "0504-177-8181",
+    "website": "http://www.ssgc.co.kr"
+  },
+  {
+    "companyId": 371,
+    "name": "(주)지케스",
+    "nameEng": "Gkes co,. Ltd.",
+    "ceo": "박영찬",
+    "address": "(03925)서울특별시 마포구 월드컵북로 396(상암동) 누리꿈스퀘어 연구개발타워 9층",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.gkes.co.kr"
+  },
+  {
+    "companyId": 621,
+    "name": "(주)나온웍스",
+    "nameEng": "NAONWORKS",
+    "ceo": "이준경",
+    "address": "서울특별시 구로구 디지털로 271, 711호(구로동, 벽상디지털 밸리3)",
+    "tel": "0226551400",
+    "fax": "",
+    "website": "https://www.naonworks.com/"
+  },
+  {
+    "companyId": 590,
+    "name": "주식회사 우경정보기술",
+    "nameEng": "Wookyoung Information Technology Co.,Ltd.",
+    "ceo": "박윤하",
+    "address": "대구광역시 수성구 알파시티1로31길 24-5 우경정보기술빌딩",
+    "tel": "070-4210-5722",
+    "fax": "053-742-3042",
+    "website": "http://www.wkit.co.kr"
+  },
+  {
+    "companyId": 591,
+    "name": "주식회사 누리온",
+    "nameEng": "NURION Co., Ltd.",
+    "ceo": "오진탁",
+    "address": "경기도 안산시 상록구 팔곡두레길 111",
+    "tel": "070-7209-2650",
+    "fax": "0505-312-1800",
+    "website": "http://www.nuri-on.com"
+  },
+  {
+    "companyId": 310,
+    "name": "(주)에이테크",
+    "nameEng": "A-Tech Co., Ltd.",
+    "ceo": "김정완",
+    "address": "울산광역시 중구 종가로 655 (서동, 혁신센트럴시티 307호)",
+    "tel": "052-281-4780",
+    "fax": "052-281-4786",
+    "website": "https://www.atech1221.com/"
+  },
+  {
+    "companyId": 50,
+    "name": "(주)새눈",
+    "nameEng": "SAENOON Inc.",
+    "ceo": "백청열",
+    "address": "(본사) 전북 완주군 삼례읍 테크노밸리로 96-70",
+    "tel": "063-715-6531",
+    "fax": "063-715-6532",
+    "website": "http://www.saenoon.co.kr"
+  },
+  {
+    "companyId": 605,
+    "name": "(주)아하",
+    "nameEng": "AHA CO. LTD.",
+    "ceo": "구기도",
+    "address": "경기도 김포시 양촌읍 황금로 109번길 67",
+    "tel": "031-8048 - 7164",
+    "fax": "031-997-0911",
+    "website": "http://www.i-aha.com"
+  },
+  {
+    "companyId": 592,
+    "name": "주식회사 씨티콘 새싹기업",
+    "nameEng": "CITYCONE",
+    "ceo": "이재식",
+    "address": "인천광역시 서구 정서진로 410, 환경산업연구단지 본부동 2F D201호 (창업벤처녹색융합클러스터)",
+    "tel": "032-565-6369",
+    "fax": "0504-020-1321",
+    "website": "http://www.citycone.com"
+  },
+  {
+    "companyId": 602,
+    "name": "주식회사 네오텍",
+    "nameEng": "NEOTEK Co.,Ltd.",
+    "ceo": "최현덕",
+    "address": "부산광역시 동구 중앙대로 263, 2002(초량동)",
+    "tel": "051-468-7722",
+    "fax": "051-468-7676",
+    "website": "http://www.neotek.kr/"
+  },
+  {
+    "companyId": 601,
+    "name": "한전케이디엔(주)",
+    "nameEng": "KEPCO Knowledge, Data & Network Co., Ltd.",
+    "ceo": "김장현",
+    "address": "(58322)전라남도 나주시 빛가람로 661",
+    "tel": "061-931-6351",
+    "fax": "",
+    "website": "https://www.kdn.com/"
+  },
+  {
+    "companyId": 586,
+    "name": "성창주식회사",
+    "nameEng": "Sung Chang Co., LTD",
+    "ceo": "이재진",
+    "address": "충청북도 청주시 흥덕구 오송읍 정중3길 11",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.sctele.co.kr"
+  },
+  {
+    "companyId": 600,
+    "name": "주식회사 알에스솔루션즈",
+    "nameEng": "RS SO",
+    "ceo": "박승현",
+    "address": "경기도 성남시 분당구 판교역로 152 13층(백현동, 알파돔타워)",
+    "tel": "02-6205-3500",
+    "fax": "02-6205-3501",
+    "website": "http://www.rsss.co.kr"
+  },
+  {
+    "companyId": 599,
+    "name": "주식회사 네오스펙트라",
+    "nameEng": "NeoSpectra, Inc.",
+    "ceo": "안태희",
+    "address": "서울특별시 금천구 가산디지털1로 145 에이스하이엔드타워3차 409호",
+    "tel": "070-7167-1779",
+    "fax": "02-857-5746",
+    "website": "http://www.neospectra.co.kr"
+  },
+  {
+    "companyId": 566,
+    "name": "주식회사 팹스넷 새싹기업",
+    "nameEng": "PapsNet",
+    "ceo": "김현석",
+    "address": "서울특별시 금천구 범안로 1142, 7층 714, 715호(가산동, 하우스더 스카이밸리 가산2차)",
+    "tel": "070-5001-1144",
+    "fax": "",
+    "website": "http://www.papsnet.net"
+  },
+  {
+    "companyId": 408,
+    "name": "이쎌(주)",
+    "nameEng": "양영모",
+    "ceo": "",
+    "address": "",
+    "tel": "",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 595,
+    "name": "하트미디어(주)",
+    "nameEng": "HEART-MEDIA",
+    "ceo": "김학부",
+    "address": "서울시 마포구 동교로 154 성화빌딩 3층",
+    "tel": "02-338-1170",
+    "fax": "070-7614-3403",
+    "website": "http://www.heartmedia.co.kr"
+  },
+  {
+    "companyId": 431,
+    "name": "쉬모스랩 새싹기업",
+    "nameEng": "SchmossLab",
+    "ceo": "황성우",
+    "address": "서울시 강남구 논현로26길 21, 3층",
+    "tel": "010-7519-3519",
+    "fax": "",
+    "website": "http://www.schmosslab.com"
+  },
+  {
+    "companyId": 593,
+    "name": "(주)포앤비",
+    "nameEng": "4NB Corp",
+    "ceo": "김제성",
+    "address": "서울시 성동구 아차산로 17, 서울숲 L-Tower 403호",
+    "tel": "02-499-5989",
+    "fax": "02-498-3051",
+    "website": "https://www.4nb.co.kr/"
+  },
+  {
+    "companyId": 588,
+    "name": "주식회사 비엠씨",
+    "nameEng": "BMC",
+    "ceo": "황선일",
+    "address": "인천광역시 연수구 송도미래로 30, 스마트밸리 E-1906",
+    "tel": "032-837-5388",
+    "fax": "032-837-5387",
+    "website": "http://alink3d.com"
+  },
+  {
+    "companyId": 139,
+    "name": "(주)포스트미디어",
+    "nameEng": "PosTMEDIA",
+    "ceo": "홍승모",
+    "address": "서울시 강남구 자곡로 174-10, 220, 221호",
+    "tel": "02-538-7200",
+    "fax": "02-538-7202",
+    "website": "http://www.postmedia.co.kr"
+  },
+  {
+    "companyId": 584,
+    "name": "주식회사 와일드싱",
+    "nameEng": "",
+    "ceo": "김재홍",
+    "address": "서울시 성동구 아차산로 17길 49 1202호",
+    "tel": "02-2088-8730",
+    "fax": "070-8224-4265",
+    "website": "http://www.wildthing.co.kr"
+  },
+  {
+    "companyId": 585,
+    "name": "주식회사 메디프레소헬스케어",
+    "nameEng": "Medipresso Health Care",
+    "ceo": "김하섭",
+    "address": "부산광역시 부산진구 동천로 116, 5층 508,509호(전포동, 한신밴)",
+    "tel": "010-5554-1287",
+    "fax": "0508-909-1206",
+    "website": "http://www.medihealth.co.kr"
+  },
+  {
+    "companyId": 504,
+    "name": "(주)브이앤지",
+    "nameEng": "V&G",
+    "ceo": "오철우",
+    "address": "경기도 성남시 수정구 창업로 54 기업성장센터 414호",
+    "tel": "010-6261-3668",
+    "fax": "031-696-4902",
+    "website": "http://vng.co.kr"
+  },
+  {
+    "companyId": 578,
+    "name": "주식회사 인텔리빅스",
+    "nameEng": "IntelliVIX Co., Ltd.",
+    "ceo": "장정훈",
+    "address": "서울특별시 서초구 효령로34길 4, 6층 601호(방배동, 프린스효령빌딩)",
+    "tel": "02-581-3883",
+    "fax": "02-581-3886",
+    "website": "http://www.intellivix.com"
+  },
+  {
+    "companyId": 583,
+    "name": "동성아이텍",
+    "nameEng": "DONGSUNG ITEC",
+    "ceo": "이정원, 이용석",
+    "address": "경기도 성남시 분당구 판교역로 225-18, 102호 (이룸빌딩 삼평동)",
+    "tel": "031-732-1981",
+    "fax": "0505-488-9750",
+    "website": "https://flexparking.co.kr"
+  },
+  {
+    "companyId": 68,
+    "name": "(주)케이티",
+    "nameEng": "KT",
+    "ceo": "황창규",
+    "address": "경기도 성남시 분당구 불정로 90",
+    "tel": "010-6733-8265",
+    "fax": "-",
+    "website": "http://www.kt.com"
+  },
+  {
+    "companyId": 555,
+    "name": "케이에스아이(주)",
+    "nameEng": "",
+    "ceo": "김경숙",
+    "address": "경기도 안양시 동안구 전파로 88, 701호",
+    "tel": "",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 581,
+    "name": "주식회사 생",
+    "nameEng": "SSENG",
+    "ceo": "김규태",
+    "address": "46754",
+    "tel": "01093406620",
+    "fax": "051-304-3539",
+    "website": "http://www.sseng.co"
+  },
+  {
+    "companyId": 580,
+    "name": "에스케이 플래닛(주)",
+    "nameEng": "SK planet",
+    "ceo": "이한상",
+    "address": "경기도 성남시 분당구 판교로 264(삼평동)",
+    "tel": "",
+    "fax": "",
+    "website": "https://www.skplanet.com/main"
+  },
+  {
+    "companyId": 579,
+    "name": "(주) 네트로",
+    "nameEng": "NETRO",
+    "ceo": "류경",
+    "address": "대구시 수성구 알파시티1로 42길11, 태왕알파시티수성 809~812호",
+    "tel": "053-270-9888",
+    "fax": "053-252-9885",
+    "website": "http://netro.kr"
+  },
+  {
+    "companyId": 35,
+    "name": "한국건설기술연구원",
+    "nameEng": "KICT",
+    "ceo": "한승원",
+    "address": "경기도 고양시",
+    "tel": "031-910-0203",
+    "fax": "031-910-0465",
+    "website": "http://www.kict.re.kr"
+  },
+  {
+    "companyId": 575,
+    "name": "주식회사 매크론",
+    "nameEng": "Macron Co., Ltd.",
+    "ceo": "김대곤",
+    "address": "울산광역시 울주군 청량읍 처용산업3길 129 (주식회사 매크론)",
+    "tel": "052-716-0063",
+    "fax": "052-716-0064",
+    "website": "http://www.macron.kr"
+  },
+  {
+    "companyId": 84,
+    "name": "(주)정도유아이티",
+    "nameEng": "JUNGDO UIT Co. Ltd.,",
+    "ceo": "노 성기",
+    "address": "서울시 강남구 테헤란로38길 29, 이원빌딩 5층",
+    "tel": "070-7113-9833",
+    "fax": "02-561-9792",
+    "website": "http://www.uitgis.com"
+  },
+  {
+    "companyId": 568,
+    "name": "(주)쓰리세컨즈 새싹기업",
+    "nameEng": "3SECONDZ Inc.",
+    "ceo": "김재우",
+    "address": "대전광역시 유성구 테크노2로 13-17, 가동(관평동)",
+    "tel": "042)861-3753",
+    "fax": "042)367-2753",
+    "website": "https://3secondz.com/"
+  },
+  {
+    "companyId": 573,
+    "name": "아란타(주)",
+    "nameEng": "Ahranta",
+    "ceo": "윤상권",
+    "address": "서울특별시 서대문구 북아현로 22가길 7(북아현동)",
+    "tel": "02-352-0303",
+    "fax": "02-326-2940",
+    "website": "http://www.ahranta.co.kr"
+  },
+  {
+    "companyId": 572,
+    "name": "주식회사 에프에스",
+    "nameEng": "FS, Inc.",
+    "ceo": "김미화",
+    "address": "대전광역시 유성구 대덕대로 512번길 20, 307호(도룡동, 대전 문화산업진흥원)",
+    "tel": "042-471-5215",
+    "fax": "042-471-5213",
+    "website": "http://www.fscom.kr"
+  },
+  {
+    "companyId": 569,
+    "name": "주식회사 알에이에이피 새싹기업",
+    "nameEng": "RAAP Inc.",
+    "ceo": "김회대",
+    "address": "경기도 하남시 미사강변서로 16, 제3층 제에프331호(풍산동, 하우스디스마트밸리)",
+    "tel": "070-4196-9696",
+    "fax": "070-4224-7655",
+    "website": "http://www.doraap.co.kr"
+  },
+  {
+    "companyId": 570,
+    "name": "주식회사 디지털커브",
+    "nameEng": "Digital Curve Inc.",
+    "ceo": "이홍준",
+    "address": "서울특별시 은평구 은평로 9길 3, 2층(응암동)",
+    "tel": "02-711-9323",
+    "fax": "02-6357-9324",
+    "website": "http://www.digitalcurve.co.kr"
+  },
+  {
+    "companyId": 571,
+    "name": "(주)라닉스",
+    "nameEng": "Ranix",
+    "ceo": "최승욱",
+    "address": "서울특별시 강남구 언주로 135길 25(논현동)",
+    "tel": "02-584-5516",
+    "fax": "02-584-5528",
+    "website": "http://www.ranix.co.kr"
+  },
+  {
+    "companyId": 563,
+    "name": "마스코리아 주식회사 새싹기업",
+    "nameEng": "Maas Korea",
+    "ceo": "박정훈",
+    "address": "세종특별자치시 집현중앙7로 3, 602호(집현동, 산학연클러스터 지원 센터)",
+    "tel": "044-868-5577",
+    "fax": "044-865-5578",
+    "website": ""
+  },
+  {
+    "companyId": 567,
+    "name": "(주)시큐인포",
+    "nameEng": "Secuinfo Co., Ltd.",
+    "ceo": "김기화",
+    "address": "경기도 성남시 중원구 둔촌대로 388, 301호(상대원동, 크란츠 테크노)",
+    "tel": "070-4352-3881",
+    "fax": "031-777-8471",
+    "website": "http://www.secuinfo.co.kr"
+  },
+  {
+    "companyId": 565,
+    "name": "주식회사 아이엠박스코리아",
+    "nameEng": "IAMBOXKOREA Co., Ltd",
+    "ceo": "남성훈",
+    "address": "서울특별시 강남구 논현로134길, 2층 201호(논현동)",
+    "tel": "1877-7912",
+    "fax": "",
+    "website": "http://www.iambox.co.kr"
+  },
+  {
+    "companyId": 564,
+    "name": "바른인포테크(주)",
+    "nameEng": "BARUN Infotech",
+    "ceo": "윤범선",
+    "address": "서울특별시 구로구 디지털로 34길 55, 1211호(구로동, 코오롱 싸이언스밸리2차)",
+    "tel": "02-6737-0111",
+    "fax": "02-6737-0444",
+    "website": ""
+  },
+  {
+    "companyId": 551,
+    "name": "영인글로벌(주)",
+    "nameEng": "",
+    "ceo": "신용환",
+    "address": "인천광역시 서구 보도진로 78",
+    "tel": "032-575-0660",
+    "fax": "032-575-0665",
+    "website": ""
+  },
+  {
+    "companyId": 558,
+    "name": "주식회사 아브로소프트코리아",
+    "nameEng": "AVROSOFT KOREA",
+    "ceo": "신종화",
+    "address": "서울 마포구 월드컵북로 396 누리꿈스퀘어 연구개발타워 1105-6호",
+    "tel": "02-2132-5115",
+    "fax": "02-2132-5114",
+    "website": "http://www.avrosoft.co.kr/"
+  },
+  {
+    "companyId": 559,
+    "name": "세오",
+    "nameEng": "SEO",
+    "ceo": "이형각, 김호군",
+    "address": "경기 안양시 동안구 흥안대로 427번길 16, 801~804호, 819~820호",
+    "tel": "031-424-2345",
+    "fax": "",
+    "website": "http://seoitv.com/"
+  },
+  {
+    "companyId": 556,
+    "name": "주식회사 한국아이오티기술원",
+    "nameEng": "Korea IoT",
+    "ceo": "최창규",
+    "address": "경기도 의왕시 안골다리길 5, 1층",
+    "tel": "010-3208-0301",
+    "fax": "",
+    "website": "http://www.kiot21.com"
+  },
+  {
+    "companyId": 243,
+    "name": "(주)스파이어테크놀로지",
+    "nameEng": "Spire Technology",
+    "ceo": "강군화",
+    "address": "경기도 성남시 분당구 판교로 228번길 15 (삼평동 625) 판교세븐벤처밸리 1단지 3동 7층",
+    "tel": "031-622-3500",
+    "fax": "031-622-3501",
+    "website": "http://www.spiretech.co.kr/"
+  },
+  {
+    "companyId": 552,
+    "name": "아이티에스",
+    "nameEng": "ITS",
+    "ceo": "김태은",
+    "address": "경상북도 구미시 산호대로 354-34",
+    "tel": "054-458-6566",
+    "fax": "054-458-6567",
+    "website": "http://www.smartaiits.com"
+  },
+  {
+    "companyId": 4,
+    "name": "(주)가보테크",
+    "nameEng": "Gabotech co.,Ltd",
+    "ceo": "김종만",
+    "address": "경기도 성남시 수정구 복정로33",
+    "tel": "031-752-0272",
+    "fax": "031-752-0273",
+    "website": "http://www.gabotech.com"
+  },
+  {
+    "companyId": 546,
+    "name": "주식회사 맥데이타 새싹기업",
+    "nameEng": "MagData Inc.",
+    "ceo": "김종민",
+    "address": "경기도 성남시 수정구 창업로 42(시흥동), 판교 제2테크노밸리 경기기업성장센터 504호",
+    "tel": "02-6121-8470",
+    "fax": "031-753-6767",
+    "website": "http://www.magdata.net/"
+  },
+  {
+    "companyId": 548,
+    "name": "주식회사 비지트",
+    "nameEng": "VISIT Inc.",
+    "ceo": "조용원",
+    "address": "강원도 원주시 지정면 신평석화로 236-1",
+    "tel": "02-541-7803",
+    "fax": "0504-136-0095",
+    "website": "https://www.visitandregular.com"
+  },
+  {
+    "companyId": 545,
+    "name": "(주)사람들과사람들",
+    "nameEng": "P&PEOPLE CO., LTD",
+    "ceo": "고병갑",
+    "address": "서울특별시 성동구 아차산로 17길 57 305호 (성수동2가, 일신건영휴먼테코)",
+    "tel": "02-6466-5700",
+    "fax": "02-6466-5708",
+    "website": "http://www.pnpeople.com"
+  },
+  {
+    "companyId": 537,
+    "name": "(주)씨닉스",
+    "nameEng": "",
+    "ceo": "강창덕",
+    "address": "37681 경상북도 포항시 남구 대이로 60번길 4-2 그린빌딩 2층",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.fanswer.com"
+  },
+  {
+    "companyId": 539,
+    "name": "SK쉴더스(주)",
+    "nameEng": "SK Shieldus Co.",
+    "ceo": "박진효",
+    "address": "경기도 성남시 분당구 판교로 227번길 23, 4&5층",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.skshieldus.com"
+  },
+  {
+    "companyId": 538,
+    "name": "셰빌리티",
+    "nameEng": "shability",
+    "ceo": "우용하",
+    "address": "대구광역시 동구 동대구로 465, 601호",
+    "tel": "010-3305-2758",
+    "fax": "0504-397-2758",
+    "website": "https://wingstation.co.kr/"
+  },
+  {
+    "companyId": 536,
+    "name": "(주)넥타르소프트",
+    "nameEng": "Nectarsoft.Co.,Ltd.",
+    "ceo": "박성호",
+    "address": "서울 마포구 월드컵북로 396 누리꿈스퀘어 연구개발타워 1113호",
+    "tel": "02-782-7728",
+    "fax": "02-784-7666",
+    "website": "http://www.nectarsoft.co.kr"
+  },
+  {
+    "companyId": 535,
+    "name": "제이엔디",
+    "nameEng": "JND Co.,Ltd",
+    "ceo": "정철호",
+    "address": "대전광역시 유성구 테크노11로 7(탑립동, 401호)",
+    "tel": "042-934-7856",
+    "fax": "042-934-7857",
+    "website": "http://www.jndsystem.com"
+  },
+  {
+    "companyId": 385,
+    "name": "(주)시스원",
+    "nameEng": "SysOne Co., Ltd.",
+    "ceo": "이갑수, 이상훈",
+    "address": "서울특별시 강서구 마곡동 763-8 (주)시스원",
+    "tel": "010-8704-6448",
+    "fax": "02-6090-6999",
+    "website": "http://www.sysone.co.kr"
+  },
+  {
+    "companyId": 434,
+    "name": "한테크",
+    "nameEng": "HanTech",
+    "ceo": "김병준",
+    "address": "서울특별시 강남구 테헤란로 87길 22, 7164호 (삼성동, 한국도심공항)",
+    "tel": "02 6951 1665",
+    "fax": "",
+    "website": "https://blog.naver.com/hantech1014"
+  },
+  {
+    "companyId": 533,
+    "name": "지노시스템",
+    "nameEng": "ginnosystems",
+    "ceo": "전정철, 이을구",
+    "address": "서울시 영등포구 선유로 70, 우리벤처타운2 1207호",
+    "tel": "02-2636-0601",
+    "fax": "02-2068-5276",
+    "website": ""
+  },
+  {
+    "companyId": 531,
+    "name": "알티캐스트",
+    "nameEng": "Alticast",
+    "ceo": "김태훈",
+    "address": "서울특별시 서초구 반포대로27길 16 파크빌딩 6층",
+    "tel": "02-2007-8615",
+    "fax": "02-2007-8658",
+    "website": "http://www.alticast.com"
+  },
+  {
+    "companyId": 519,
+    "name": "포휴먼테크",
+    "nameEng": "forhumantech",
+    "ceo": "임영근",
+    "address": "대전광역시 유성구 테크노2로 199, 519호 미건테크노월드",
+    "tel": "042-933-1561",
+    "fax": "042-933-1562",
+    "website": "http://www.forhumantech.com"
+  },
+  {
+    "companyId": 516,
+    "name": "이에이트(주)",
+    "nameEng": "E8IGHT Co.,ltd",
+    "ceo": "김진현",
+    "address": "서울시 송파구 올림픽로 300 롯데월드타워 28F",
+    "tel": "02-6410-2800",
+    "fax": "02-6410-2810",
+    "website": "https://e8ight.co.kr/"
+  },
+  {
+    "companyId": 226,
+    "name": "(주)알엠에쓰컨설팅 새싹기업",
+    "nameEng": "RMS Consulting",
+    "ceo": "이윤호",
+    "address": "서울",
+    "tel": "070-8116-0327",
+    "fax": "02-747-0265",
+    "website": "http://www.rmsconsulting.co.kr"
+  },
+  {
+    "companyId": 460,
+    "name": "주식회사 마엇",
+    "nameEng": "MAOT CO., LTD",
+    "ceo": "오동식",
+    "address": "울산광역시 동구 방어진순환도로 1138, 819호(서부동, 에이치알씨빌딩)",
+    "tel": "070-7007-7979",
+    "fax": "",
+    "website": "http://www.maot.co.kr"
+  },
+  {
+    "companyId": 529,
+    "name": "주식회사 세이브트리 새싹기업",
+    "nameEng": "SAVETREE.Inc",
+    "ceo": "하용훈",
+    "address": "서울특별시 도봉구 마들로13길 84, 202호",
+    "tel": "1661-0660",
+    "fax": "0315224517",
+    "website": "http://www.savetreexp.co.kr"
+  },
+  {
+    "companyId": 8,
+    "name": "(주)네오넥스소프트",
+    "nameEng": "NEONEXSoft Inc.",
+    "ceo": "최병수",
+    "address": "서울시 구로구 디지털로 33길 28, 8층 808호 (구로동, 우림이비지센타 1차)",
+    "tel": "02-851-5001",
+    "fax": "02-851-5004",
+    "website": "http://neonexsoft.com"
+  },
+  {
+    "companyId": 522,
+    "name": "주식회사 우디",
+    "nameEng": "OODDY CO.,LTD.",
+    "ceo": "권봉균",
+    "address": "서울특별시 영등포구 의사당대로 83, 서울핀테크랩 4,5,6,8층",
+    "tel": "02-3462-2213",
+    "fax": "02-3462-2214",
+    "website": "http://buddycoin.co.kr/"
+  },
+  {
+    "companyId": 520,
+    "name": "아이티고 (주) 새싹기업",
+    "nameEng": "ITGO Co.,Ltd",
+    "ceo": "이준구",
+    "address": "경기도 부천시 석천로 397(삼정동), 부천테크노파크 쌍용3차 302동 404호",
+    "tel": "01020519942",
+    "fax": "032-624-2084",
+    "website": "http://www.itgocorp.com"
+  },
+  {
+    "companyId": 401,
+    "name": "(주)쏘우웨이브",
+    "nameEng": "sawwave",
+    "ceo": "신천우",
+    "address": "경기도 성남시 중원구 사기막골로 124 SKn테크노파크 메가동 1207호",
+    "tel": "070-4267-0104",
+    "fax": "031-776-0088",
+    "website": "http://sawwave.kr"
+  },
+  {
+    "companyId": 204,
+    "name": "데이터얼라이언스 주식회사 새싹기업",
+    "nameEng": "Data Alliance Co., Ltd.",
+    "ceo": "이광범",
+    "address": "서울시 강남구 강남대로 484, 4층",
+    "tel": "010-4952-1219",
+    "fax": "02-6455-3282",
+    "website": "http://www.data-alliance.com"
+  },
+  {
+    "companyId": 514,
+    "name": "동고비소프트",
+    "nameEng": "DongobiSoft",
+    "ceo": "안대수",
+    "address": "서울시 용산구 한강로3가 63-70번지 용산센트럴파크해링턴스퀘어 업무시설동 11층 1104호",
+    "tel": "",
+    "fax": "",
+    "website": "https://www.dongobi.com/ko/main/"
+  },
+  {
+    "companyId": 506,
+    "name": "(주)대경이앤씨",
+    "nameEng": "DAEKYUNG",
+    "ceo": "박성원",
+    "address": "세종특별자치시 집현동로 13",
+    "tel": "",
+    "fax": "044-715-7180",
+    "website": "http://www.dkenc.com/"
+  },
+  {
+    "companyId": 493,
+    "name": "주식회사 오메카",
+    "nameEng": "Omecca Co. Ltd.,",
+    "ceo": "오정은",
+    "address": "서울특별시 영등포구 여의대방로 61길 2 천록빌딩 806 ~ 808호",
+    "tel": "02-842-8904",
+    "fax": "02-844-3689",
+    "website": "http://www.omecca.co.kr"
+  },
+  {
+    "companyId": 487,
+    "name": "주식회사 노타",
+    "nameEng": "Nota inc.",
+    "ceo": "채명수, 김태호",
+    "address": "강남구 선릉로92길 36 대동빌딩 3,4,7,8층 Nota",
+    "tel": "02-555-8659",
+    "fax": "02-555-8657",
+    "website": "https://nota.ai/"
+  },
+  {
+    "companyId": 63,
+    "name": "성풍솔레드(주)",
+    "nameEng": "Sungpoong Solled Co.,Ltd.",
+    "ceo": "박진관",
+    "address": "창원",
+    "tel": "0552993062",
+    "fax": "0552993061",
+    "website": "http://www.spsolled.com"
+  },
+  {
+    "companyId": 224,
+    "name": "(주)서경산업 새싹기업",
+    "nameEng": "SeoKyung Industry Inc.",
+    "ceo": "이대규",
+    "address": "서울특별시 용산구 한강대로 88길 11-4, 503호(남영동, 금강빌딩)",
+    "tel": "02-794-4574",
+    "fax": "02-6918-4574",
+    "website": "http://www.ictsk.com"
+  },
+  {
+    "companyId": 500,
+    "name": "창조라이팅",
+    "nameEng": "CHANG JO LIGHTING",
+    "ceo": "황의순외 1명",
+    "address": "대전광역시 대덕구 한남로 107",
+    "tel": "042-626-0442",
+    "fax": "042-627-0442",
+    "website": "http://www.cjled.kr"
+  },
+  {
+    "companyId": 503,
+    "name": "주식회사 코봇",
+    "nameEng": "Cobot., Ltd",
+    "ceo": "민중후",
+    "address": "(49315) 부산광역시 사하구 낙동대로 550번길 37, 동아대학교 산학관 121호",
+    "tel": "051-961-0505",
+    "fax": "051-961-0506",
+    "website": "https://cobotlab.co.kr/"
+  },
+  {
+    "companyId": 501,
+    "name": "(주) 미창",
+    "nameEng": "mi-chang",
+    "ceo": "황금",
+    "address": "경기 부천시 수도로 140번길 18",
+    "tel": "032-679-5942",
+    "fax": "032-679-5945",
+    "website": "http://www.mi-chang.com/default/index.php"
+  },
+  {
+    "companyId": 447,
+    "name": "로드위드",
+    "nameEng": "LordWith",
+    "ceo": "김재원",
+    "address": "부산 남구 수영로 309 경성대학교 사회관 창업보육센터 B113-2",
+    "tel": "0507-1371-7525",
+    "fax": "0504-421-7525",
+    "website": "https://lordwith.co.kr"
+  },
+  {
+    "companyId": 366,
+    "name": "(주)트루엔",
+    "nameEng": "TRUEN",
+    "ceo": "안재천",
+    "address": "서울시 구로구 디지털로33길 28 (구로동, 우림이비지센터1차 1309호)",
+    "tel": "070-8677-6000",
+    "fax": "02-2108-1595",
+    "website": "http://www.truen.co.kr"
+  },
+  {
+    "companyId": 494,
+    "name": "쉬프트정보통신 (주)",
+    "nameEng": "SHIFT Information & Communication Co., Ltd.",
+    "ceo": "최영식",
+    "address": "경기도 성남시 분당구 판교로 242 (삼평동 624) 판교테크노밸리 PDC타워 C동 6층",
+    "tel": "031-8060-1730",
+    "fax": "02-464-7234",
+    "website": "http://www.shift.co.kr/"
+  },
+  {
+    "companyId": 490,
+    "name": "아이앤티컴퍼니",
+    "nameEng": "",
+    "ceo": "조준식",
+    "address": "경기도 안양시 동안구 시민대로 297 1111호",
+    "tel": "",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 378,
+    "name": "(주)엔쓰컴퍼니",
+    "nameEng": "Corp. nTh company",
+    "ceo": "허수경",
+    "address": "서울특별시 영등포구 버드나루로 73, 우성빌딩 4층",
+    "tel": "02-6279-3020",
+    "fax": "02-523-3039",
+    "website": "http://www.nthcompany.co.kr/"
+  },
+  {
+    "companyId": 212,
+    "name": "(주)넥스트케이 새싹기업",
+    "nameEng": "NEXTK",
+    "ceo": "고현준",
+    "address": "경기도 용인시 기흥구 서천로 201번길 11, 7층 T-725호",
+    "tel": "031-718-1618",
+    "fax": "031-206-1618",
+    "website": "http://www.nextk.co.kr"
+  },
+  {
+    "companyId": 492,
+    "name": "(주)에이원트래픽알앤디",
+    "nameEng": "aonetrafficR&D",
+    "ceo": "임형렬, 강진복",
+    "address": "서울특별시 중랑구 신내역로111, B동 924호(신내SK V1센터)",
+    "tel": "02-971-5178",
+    "fax": "02-971-5176",
+    "website": "http://aontraffic.com"
+  },
+  {
+    "companyId": 466,
+    "name": "주식회사 엠에이치엔씨티",
+    "nameEng": "mhncity",
+    "ceo": "조판희",
+    "address": "서울시 성동구 고산자로 253, 1102호 (본사), 경기도 하남시 미사대로 510, 한강미사 아이에스비즈타워 722호 (연구소)",
+    "tel": "070-7553-2372",
+    "fax": "02-2051-2370",
+    "website": "http://www.mhncity.com"
+  },
+  {
+    "companyId": 483,
+    "name": "플레이스(PLACES')",
+    "nameEng": "PLACES'",
+    "ceo": "정태규",
+    "address": "부산시 해운대구 마린시티 3로 46번지",
+    "tel": "01043231669",
+    "fax": "",
+    "website": "http://placestory.shop"
+  },
+  {
+    "companyId": 465,
+    "name": "주식회사 모바휠",
+    "nameEng": "MoveAWheeL, Inc.",
+    "ceo": "김민현",
+    "address": "대전광역시 유성구 대학로 143-1, 2층",
+    "tel": "070-5015-5978",
+    "fax": "050-4199-5443",
+    "website": "http://www.mv-w.com"
+  },
+  {
+    "companyId": 380,
+    "name": "(주)아이콘",
+    "nameEng": "AICON",
+    "ceo": "김종민",
+    "address": "서울시 서초구 논현로 175 신한빌딩 3층",
+    "tel": "1666-1967",
+    "fax": "",
+    "website": "https://www.hausplanner.com"
+  },
+  {
+    "companyId": 477,
+    "name": "주식회사 인포쉐어",
+    "nameEng": "",
+    "ceo": "전승준",
+    "address": "",
+    "tel": "",
+    "fax": "",
+    "website": "https://inforshare.co.kr"
+  },
+  {
+    "companyId": 316,
+    "name": "주식회사 그린랩스",
+    "nameEng": "Green Labs",
+    "ceo": "안동현, 최성우, 신상훈",
+    "address": "서울특별시 송파구 정의로 8길 9, 3-6층",
+    "tel": "02-6956-4022",
+    "fax": "02-6952-0457",
+    "website": "https://www.farmmorning.com/"
+  },
+  {
+    "companyId": 464,
+    "name": "디어마이데이",
+    "nameEng": "Dear My Day",
+    "ceo": "오송진",
+    "address": "서울",
+    "tel": "",
+    "fax": "",
+    "website": "http://instagram.com/dearmyday_official"
+  },
+  {
+    "companyId": 459,
+    "name": "주식회사 모빌테크",
+    "nameEng": "MOBILTECH.,co Ltd.",
+    "ceo": "김재승",
+    "address": "서울시 마포구 성암로 330, DMC 첨단산업센터 A동 701호",
+    "tel": "031-698-2023",
+    "fax": "02-6380-0411",
+    "website": "http://homountact.com/mobiltech/"
+  },
+  {
+    "companyId": 458,
+    "name": "주식회사 한줌",
+    "nameEng": "HANZOOM",
+    "ceo": "최경식",
+    "address": "경기도 하남시 미사대로 520, 현대지식산업센터 2차 C동 A-602호",
+    "tel": "031-8018-4640",
+    "fax": "031-8018-4642",
+    "website": "http://www.hanzoom.co.kr"
+  },
+  {
+    "companyId": 461,
+    "name": "주식회사 원모어시큐리티 새싹기업",
+    "nameEng": "OneMoreSecurity",
+    "ceo": "김민식",
+    "address": "세종특별자치시 한누리대로 2150 601호",
+    "tel": "070-4298-3070",
+    "fax": "0504-052-3076",
+    "website": "https://www.omsecurity.kr"
+  },
+  {
+    "companyId": 451,
+    "name": "어포스트 코리아",
+    "nameEng": "apost Korea",
+    "ceo": "김선일",
+    "address": "서울특별시 마포구 동교로25길 37 (동교동, 금양빌딩), 지하층 103호",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.apostkor.com"
+  },
+  {
+    "companyId": 446,
+    "name": "주식회사 큐엘씨",
+    "nameEng": "QLC inc.",
+    "ceo": "이준서",
+    "address": "서울시 노원구 초안산로12 인덕대학교 연지스퀘어 로비층 31호",
+    "tel": "02-6338-1515",
+    "fax": "0504-449-5007",
+    "website": "https://www.qlcinc.co.kr/"
+  },
+  {
+    "companyId": 448,
+    "name": "(주)대유정보기술",
+    "nameEng": "Daeyu Information Technology",
+    "ceo": "하용환",
+    "address": "서울특별시 강남구 개포로28길 8, 2층",
+    "tel": "02-572-1120",
+    "fax": "02-572-1121",
+    "website": ""
+  },
+  {
+    "companyId": 440,
+    "name": "(주)우대칼스",
+    "nameEng": "WOODAI CALS",
+    "ceo": "김경민",
+    "address": "서울시 서초구 논현로 87(양재동 275-6) 삼호물산빌딩 B동 701호",
+    "tel": "02-589-0123",
+    "fax": "02-589-1890",
+    "website": "http://www.wdcals.co.kr"
+  },
+  {
+    "companyId": 445,
+    "name": "주식회사 시그널웍스",
+    "nameEng": "SignalWorks Co., Ltd.",
+    "ceo": "김영섭",
+    "address": "부산광역시 남구 용호로124번길 7",
+    "tel": "0519115002",
+    "fax": "0519553009",
+    "website": "http://www.signalworks.co.kr"
+  },
+  {
+    "companyId": 444,
+    "name": "(주)제로웹",
+    "nameEng": "ZEROWEB",
+    "ceo": "이재현",
+    "address": "부산광역시 해운대구 수영강변대로 140, 부산문화콘텐츠콤플렉스 8F",
+    "tel": "1544-6044",
+    "fax": "051-746-6140",
+    "website": "http://odmp.zeroweb.kr"
+  },
+  {
+    "companyId": 435,
+    "name": "(주)호그린에어",
+    "nameEng": "HOGREEN AIR CO.,LTD",
+    "ceo": "홍성호",
+    "address": "광주광역시 북구 첨단벤처로 108번길 4 호그린에어",
+    "tel": "070-4248-0446",
+    "fax": "",
+    "website": "http://www.hogreen.com"
+  },
+  {
+    "companyId": 442,
+    "name": "주식회사 아프로시스템즈",
+    "nameEng": "APROSYSTEMS",
+    "ceo": "최우민",
+    "address": "경기도 하남시 조정대로 150, 오렌지존 750호",
+    "tel": "031-790-0685",
+    "fax": "031-790-0676",
+    "website": "http://www.aprosystems.kr"
+  },
+  {
+    "companyId": 438,
+    "name": "주식회사 제이디솔루션",
+    "nameEng": "JDSOLUTION Co., Ltd.",
+    "ceo": "제영호",
+    "address": "(08512) 서울특별시 금천구 디지털로9길 32 (가산동) 갑을그레이트빌딩 A동 13층",
+    "tel": "02-6953-1777",
+    "fax": "02-3397-7088",
+    "website": "http://www.jdsol.co.kr"
+  },
+  {
+    "companyId": 441,
+    "name": "주식회사 텔다",
+    "nameEng": "Telda Corporation",
+    "ceo": "김수정",
+    "address": "서울시 강북구 덕릉로 138 창강빌딩 403호",
+    "tel": "02-987-8642",
+    "fax": "02-984-7857",
+    "website": "http://www.enercubix.net"
+  },
+  {
+    "companyId": 439,
+    "name": "(주)경동이엔에스",
+    "nameEng": "",
+    "ceo": "곽수경",
+    "address": "대구시 달서구 달구벌대로 1053, 1층 107호",
+    "tel": "054-931-8893",
+    "fax": "054-931-8894",
+    "website": "http://www.kdens.kr"
+  },
+  {
+    "companyId": 264,
+    "name": "가로등이야기",
+    "nameEng": "Lighting Story",
+    "ceo": "이성형",
+    "address": "세종특별자치시 연동면 원합강1길 30 (명학일반산업단지 내)",
+    "tel": "0448666377",
+    "fax": "0448666379",
+    "website": "http://www.jaejin.co.kr"
+  },
+  {
+    "companyId": 388,
+    "name": "(주)랩피스",
+    "nameEng": "LABFIS Co., Ltd.",
+    "ceo": "한신동",
+    "address": "경기도 성남시 분당구 판교로 289번 20, 스타트업캠퍼스 1동 5층 IoT혁신센터 인큐베이터2, 에이치실",
+    "tel": "070-4062-6890",
+    "fax": "0504-040-6890",
+    "website": "http://www.labfis.co.kr"
+  },
+  {
+    "companyId": 437,
+    "name": "현대오토에버 주식회사",
+    "nameEng": "Hyundai Autoever Corporation",
+    "ceo": "서정식",
+    "address": "서울특별시 강남구 테헤란로 510 (대치동)",
+    "tel": "010-6305-2894",
+    "fax": "",
+    "website": "http://www.hyundai-autoever.com"
+  },
+  {
+    "companyId": 432,
+    "name": "(주)더 시그널",
+    "nameEng": "The Signal Co., Ltd.",
+    "ceo": "지걸호",
+    "address": "세종특별자치시 조치원읍 군청로 87-16, 701호 (세종 SB프라자)",
+    "tel": "010-6646-6196",
+    "fax": "0507 993 6196",
+    "website": ""
+  },
+  {
+    "companyId": 429,
+    "name": "동양엔아이엔씨",
+    "nameEng": "Tongyangninc",
+    "ceo": "문회권",
+    "address": "서울시 마포구 만리재로 15, 1306호(공덕동, 제일빌딩)",
+    "tel": "02-704-7377",
+    "fax": "02-701-4434",
+    "website": "http://www.logiscube.com"
+  },
+  {
+    "companyId": 403,
+    "name": "(주)참좋은넷",
+    "nameEng": "GOODNET",
+    "ceo": "김동필",
+    "address": "광주광역시 남구 봉선로 1, 303호 (봉선1동, 남구청)",
+    "tel": "01091468659",
+    "fax": "07075477916",
+    "website": "http://www.goodnet.co.kr"
+  },
+  {
+    "companyId": 430,
+    "name": "주식회사 누리아이티 새싹기업",
+    "nameEng": "",
+    "ceo": "이종일",
+    "address": "서울시 강서구 마곡중앙2로 15, 913호(마곡동, 마곡테크노타워2)",
+    "tel": "010-2771-4076",
+    "fax": "",
+    "website": "http://www.nurit.co.kr"
+  },
+  {
+    "companyId": 409,
+    "name": "(주)에프이에스코리아",
+    "nameEng": "FESKOREA.CO.,LTD",
+    "ceo": "이진학",
+    "address": "서울 금천구 가산디지털1로 119. A동 408호 (SK트윈테크타워)",
+    "tel": "02-864-5605",
+    "fax": "02-864-5606",
+    "website": "http://www.feskorea.com"
+  },
+  {
+    "companyId": 423,
+    "name": "(주)드웰링",
+    "nameEng": "Dwelling",
+    "ceo": "전정환",
+    "address": "서울특별시 마포구 매봉산로 37, DMC 산학협력연구센터 1404, 1406호",
+    "tel": "1522-0411",
+    "fax": "02-554-1211",
+    "website": "http://dwelling.co.kr/"
+  },
+  {
+    "companyId": 426,
+    "name": "바로이앤지 새싹기업",
+    "nameEng": "",
+    "ceo": "박중기",
+    "address": "대구광역시 북구 유통단지로38. 다동 318호 (산격동 전기재료관)",
+    "tel": "053-382-1238",
+    "fax": "053-382-1237",
+    "website": ""
+  },
+  {
+    "companyId": 424,
+    "name": "(주)이수시스템",
+    "nameEng": "ISU SYSTEM",
+    "ceo": "김상범, 김용하",
+    "address": "서울특별시 서초구 사평대로 84 (반포동)",
+    "tel": "02-590-6625",
+    "fax": "02-590-6668",
+    "website": "http://www.isusystem.com"
+  },
+  {
+    "companyId": 422,
+    "name": "(주)하이브시스템",
+    "nameEng": "Hive System Co., Ltd.",
+    "ceo": "박정실",
+    "address": "경기도 성남시 중원구 둔촌대로 388 크란츠테크노빌딩 816호",
+    "tel": "031-777-8460",
+    "fax": "031-777-8466",
+    "website": "http://hivesystem.co.kr"
+  },
+  {
+    "companyId": 417,
+    "name": "(주)연무기술",
+    "nameEng": "YeonmuTech Inc",
+    "ceo": "박재용",
+    "address": "대전광역시 유성구 대덕대로 590번길 11-14 (도룡동)",
+    "tel": "042-863-9187",
+    "fax": "042-863-9185",
+    "website": "http://yeonmu.com/"
+  },
+  {
+    "companyId": 418,
+    "name": "렉스젠(주)",
+    "nameEng": "RexGen Co., Ltd.",
+    "ceo": "안순현",
+    "address": "경기도 안양시 동안구 시민대로 401(대륭테크노타운 15차 1007,1008호)",
+    "tel": "070-7784-6885",
+    "fax": "031-389-6085",
+    "website": "http://www.rexgen.co.kr"
+  },
+  {
+    "companyId": 414,
+    "name": "(주)혜윰아이씨티",
+    "nameEng": "HYICT Co., Ltd.",
+    "ceo": "우석규",
+    "address": "부산광역시 해운대구 센텀동로 35, 507호",
+    "tel": "051-921-2321",
+    "fax": "051-921-2322",
+    "website": "http://www.livedu.online, www.hyict.kr"
+  },
+  {
+    "companyId": 419,
+    "name": "아이엘커누스",
+    "nameEng": "ILCONUS",
+    "ceo": "최경천",
+    "address": "경기도 성남시 중원구 마지로 123-1 (하대원동 148-8) 아이엘밸리 3F 아이엘커누스",
+    "tel": "031-759-9368",
+    "fax": "031-731-0222",
+    "website": "http://www.conus.kr/"
+  },
+  {
+    "companyId": 51,
+    "name": "한화테크윈(주)",
+    "nameEng": "HANWHA TECHWIN Co., LTD.",
+    "ceo": "안순홍",
+    "address": "경기도 성남시 분당구 판교로319번길 6(삼평동)",
+    "tel": "1588-5772",
+    "fax": "031-8018-3703",
+    "website": "https://www.hanwha-security.com/ko/"
+  },
+  {
+    "companyId": 415,
+    "name": "토이코스",
+    "nameEng": "ToICoS",
+    "ceo": "엄준석",
+    "address": "세종특별자치시 한누리대로 234, 306호 (나성동, 르네상스)",
+    "tel": "044-866-2868",
+    "fax": "044-866-2867",
+    "website": ""
+  },
+  {
+    "companyId": 404,
+    "name": "(주)커넥티드파킹",
+    "nameEng": "Connected Parking",
+    "ceo": "박꽃",
+    "address": "광주광역시 북구 첨단과기로 333, 시험생산동 311-1호",
+    "tel": "070-7708-9435",
+    "fax": "070-7547-7916",
+    "website": "http://www.connectedparking.net"
+  },
+  {
+    "companyId": 412,
+    "name": "(주)진성이엔지",
+    "nameEng": "JINSUNG ENG Co., Ltd.",
+    "ceo": "위재복",
+    "address": "경기도 성남시 둔촌대로 545 한라시그마밸리 210호(상대원동)",
+    "tel": "031)743-7771",
+    "fax": "031)743-7776",
+    "website": "http://www.jinsung-eng.com"
+  },
+  {
+    "companyId": 392,
+    "name": "(주)신영이에스디",
+    "nameEng": "SHINYOUNG ESD",
+    "ceo": "함영한",
+    "address": "강원도 춘천시 남산면 종자리로 9 (광판리 116-1)",
+    "tel": "070-7732-5577",
+    "fax": "031-383-7177",
+    "website": "http://www.syesd.co.kr"
+  },
+  {
+    "companyId": 407,
+    "name": "(주)로제타텍",
+    "nameEng": "Rozetatech Co., Ltd.",
+    "ceo": "조영진",
+    "address": "경기도 성남시 중원구 사기막골로 45번길 14 우림라이온스밸리2차 B동 1710호",
+    "tel": "031-736-5308",
+    "fax": "031-736-5309",
+    "website": "http://www.rozetatech.co.kr"
+  },
+  {
+    "companyId": 405,
+    "name": "아틀라슨 새싹기업",
+    "nameEng": "atlasen",
+    "ceo": "박지현",
+    "address": "서울특별시 강남구 역삼로 221, 6층 605호",
+    "tel": "02-3452-0201",
+    "fax": "",
+    "website": "http://www.atlasen.com"
+  },
+  {
+    "companyId": 402,
+    "name": "옵저버 주식회사",
+    "nameEng": "OBSERVER Inc.",
+    "ceo": "조태일",
+    "address": "",
+    "tel": "",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 398,
+    "name": "이성 주식회사 [ 시그네온 ]",
+    "nameEng": "ISUNG",
+    "ceo": "성현모",
+    "address": "▶ IT사업부[연구소]_ 서울시 금천구 가산디지털1로 19, 대륭테크노타운 18차 1810호 ▶ 본사_경기도 시흥시 희망공원로 92(정왕동,시화공단 2마301-3호)",
+    "tel": "1600-9540",
+    "fax": "02-864-3701",
+    "website": "http://www.isung-it.com"
+  },
+  {
+    "companyId": 399,
+    "name": "(주)우산씨앤씨",
+    "nameEng": "WOOSANCNC",
+    "ceo": "국중교",
+    "address": "경기도 수원시 권선구 수인로296번길 20 대흥빌딩 305~306호",
+    "tel": "02-2038-3539",
+    "fax": "070-4800-2180",
+    "website": "http://www.woosancnc.com"
+  },
+  {
+    "companyId": 83,
+    "name": "주식회사 지오멕스소프트",
+    "nameEng": "GEOMEXSOFT Ltd",
+    "ceo": "심재민",
+    "address": "강원도 춘천시 서면 박사로 882",
+    "tel": "033-261-3217~8(내선 : 2204)",
+    "fax": "033-261-3219",
+    "website": "http://www.geomex.co.kr"
+  },
+  {
+    "companyId": 397,
+    "name": "(주)바른신호",
+    "nameEng": "BR SIGNAL",
+    "ceo": "권나홍, 남봉식",
+    "address": "대구광역시 수성구 알파시티1로 170 SW융합기술지원센터 209호",
+    "tel": "053-792-0004",
+    "fax": "053-289-0376",
+    "website": "http://www.brsignal.kr"
+  },
+  {
+    "companyId": 396,
+    "name": "휴네시온",
+    "nameEng": "HUNESION",
+    "ceo": "정동섭",
+    "address": "서울시 강남구 학동로97길 20, 2/3층(청담동, 성호빌딩)",
+    "tel": "02-539-3961",
+    "fax": "02-539-3962",
+    "website": "http://www.hunesion.com"
+  },
+  {
+    "companyId": 394,
+    "name": "(주)이노버전스",
+    "nameEng": "INNOVERGENCE Inc.",
+    "ceo": "전진환",
+    "address": "세종특별자치시 한누리대로 2009, 401호(소담동,펠리체타워2차)",
+    "tel": "044-863-8930",
+    "fax": "044-863-8931",
+    "website": ""
+  },
+  {
+    "companyId": 390,
+    "name": "(주)유니콤넷",
+    "nameEng": "Unicomnet Co., Ltd",
+    "ceo": "최경식",
+    "address": "서울시 구로구 디지털로 34길 55, 코오롱싸이언스밸리2차 1207호",
+    "tel": "02-2025-4870",
+    "fax": "02-2025-4877",
+    "website": "http://www.unicomnet.co.kr"
+  },
+  {
+    "companyId": 387,
+    "name": "(주)한싹시스템",
+    "nameEng": "Hanssak System Co., Ltd",
+    "ceo": "이주도",
+    "address": "서울특별시 구로구 디지털로34길 27 401 ~ 403호",
+    "tel": "02-2082-0640",
+    "fax": "02-2082-1207",
+    "website": "http://www.hanssak.co.kr"
+  },
+  {
+    "companyId": 389,
+    "name": "(주)세정아이앤씨",
+    "nameEng": "Sejung I&C",
+    "ceo": "손우민",
+    "address": "부산광역시 금정구 무학송로 158",
+    "tel": "010-6585-1292",
+    "fax": "051-510-6747",
+    "website": "http://www.sjinc.co.kr"
+  },
+  {
+    "companyId": 37,
+    "name": "제이씨현시스템(주)",
+    "nameEng": "JCH SYSTEMS. INC",
+    "ceo": "차현배",
+    "address": "서울시 용산구 새창로 45길 74 제이씨현빌딩",
+    "tel": "02-2105-9197",
+    "fax": "02-707-5086",
+    "website": "http://www.jchyun.com"
+  },
+  {
+    "companyId": 383,
+    "name": "(주)로지시스",
+    "nameEng": "",
+    "ceo": "이규현",
+    "address": "서울특별시 마포구 독막로 281(대흥동)",
+    "tel": "02-2125-6351",
+    "fax": "02-2125-6400",
+    "website": "http://logisys.co.kr/"
+  },
+  {
+    "companyId": 377,
+    "name": "(주)베스텔라랩",
+    "nameEng": "VEStellaLab Inc.",
+    "ceo": "정상수",
+    "address": "경기도 성남시 분당구 판교로289번길 20, 2동 5층",
+    "tel": "02-6949-6898",
+    "fax": "050-4084-1307",
+    "website": "http://www.vestellalab.com"
+  },
+  {
+    "companyId": 375,
+    "name": "(주)시정",
+    "nameEng": "Sijung",
+    "ceo": "채신태",
+    "address": "대전광역시 유성구 테크노4로 17 D617",
+    "tel": "042)933-5520",
+    "fax": "-",
+    "website": "http://sijung.com"
+  },
+  {
+    "companyId": 379,
+    "name": "(주)케이에스티플레이스 새싹기업",
+    "nameEng": "KST Place Co.,Ltd",
+    "ceo": "이정표",
+    "address": "04637 서울시 중구 후암로 110 서울시티타워 13층",
+    "tel": "+82 2 6933 0332",
+    "fax": "+82 2 447 8400",
+    "website": "http://www.kstplace.com"
+  },
+  {
+    "companyId": 353,
+    "name": "(주)그린파워",
+    "nameEng": "Green Power Co., Ltd",
+    "ceo": "조정구",
+    "address": "경기도 화성시 동부대로 792",
+    "tel": "070-7176-7873",
+    "fax": "031-375-0101",
+    "website": "http://www.egreenpower.com"
+  },
+  {
+    "companyId": 362,
+    "name": "주식회사 쿠노소프트",
+    "nameEng": "Kounosoft",
+    "ceo": "조장관",
+    "address": "서울특별시 성북구 안암로 145 고려대학교 산학관",
+    "tel": "070-7503-4855",
+    "fax": "",
+    "website": "http://www.kounosoft.com, www.s2klogin.com"
+  },
+  {
+    "companyId": 370,
+    "name": "문엔지니어링(주)",
+    "nameEng": "MOON ENGINEERING CO., LTD.",
+    "ceo": "문헌일",
+    "address": "서울특별시 구로구 디지털로 242, 17층(구로동, 한화비즈메트로1차)",
+    "tel": "02-2122-0700",
+    "fax": "02-2122-0777",
+    "website": "http://www.mooneng.co.kr"
+  },
+  {
+    "companyId": 344,
+    "name": "대영유비텍(주)",
+    "nameEng": "DAEYEONG UBITEC Co.,LTD.",
+    "ceo": "조근환, 김경탁",
+    "address": "본가 : 서울특별시 구로구 디지털로 306, 11층 1103호(구로동, 대륭포스트타워2차), 지사 : 경기도 성남시 수정구 성남대로 1522 4층, 청림빌딩",
+    "tel": "070-7432-4202",
+    "fax": "02-2633-5839",
+    "website": "http://www.dyeng.net/"
+  },
+  {
+    "companyId": 359,
+    "name": "(주)이즈피엠피",
+    "nameEng": "Ez pmp co., Ltd.",
+    "ceo": "한신자, 최학찬",
+    "address": "",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.ezpmp.co.kr"
+  },
+  {
+    "companyId": 367,
+    "name": "(주)아이노리랩",
+    "nameEng": "I-nori LAB",
+    "ceo": "황광만",
+    "address": "서울특별시 서초구 방배로 205, 7층",
+    "tel": "02-3475-2675",
+    "fax": "02-3475-2666",
+    "website": "http://inorilab.com"
+  },
+  {
+    "companyId": 368,
+    "name": "주식회사 메디코넥스",
+    "nameEng": "mediconex",
+    "ceo": "김태평",
+    "address": "서울시 금천구 가산디지털1로 137, IT캐슬2차 602호",
+    "tel": "02-2627-8500",
+    "fax": "02-2627-8501",
+    "website": "http://www.mediconex.co.kr"
+  },
+  {
+    "companyId": 363,
+    "name": "창바라기",
+    "nameEng": "changbaragi",
+    "ceo": "강대진",
+    "address": "인천광역시 서구 가정로152번길 26-5, 나동 401호",
+    "tel": "010-6778-1422",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 365,
+    "name": "크리에이션에프 주식회사",
+    "nameEng": "Creation F(주)",
+    "ceo": "김영주",
+    "address": "서울 강남구 역삼로 165 해성빌딩 615",
+    "tel": "070-7005-5588",
+    "fax": "02-3440-7475",
+    "website": "http://www.truegreen.co.kr"
+  },
+  {
+    "companyId": 360,
+    "name": "인스비전",
+    "nameEng": "INSVISION",
+    "ceo": "정봉근",
+    "address": "경기도 고양시 덕양구 삼원로 83 광양프런티어 6차 1215호",
+    "tel": "0507-1472-5800",
+    "fax": "050-4191-5800",
+    "website": "http://www.insvision.kr"
+  },
+  {
+    "companyId": 348,
+    "name": "(주)LID워터",
+    "nameEng": "LID WATER CO.,LTD",
+    "ceo": "허우영",
+    "address": "인천광역시 서구 정서진로 410 환경산업연구단지 B-107호",
+    "tel": "032-567-1668",
+    "fax": "032-562-1668",
+    "website": "http://www.lidwater.com"
+  },
+  {
+    "companyId": 357,
+    "name": "대진기술정보(주)",
+    "nameEng": "DAEJIN TECHNICAL INFORMATION Co.,Ltd",
+    "ceo": "권재국",
+    "address": "대구광역시 동구 국채보상로159길41",
+    "tel": "053-424-9547",
+    "fax": "053-424-9549",
+    "website": "https://www.youtube.com/watch?v=6Ttio_ff3n8"
+  },
+  {
+    "companyId": 358,
+    "name": "(주)엑스비젼씨큐리티시스템",
+    "nameEng": "Xvision securety system",
+    "ceo": "김순옥",
+    "address": "서울특별시 서초구 방배로13길 10 의성빌딩 3층",
+    "tel": "02)3471-8829",
+    "fax": "02)3471-9829",
+    "website": "http://www.x-vision.co.kr"
+  },
+  {
+    "companyId": 343,
+    "name": "제뉴버(주)",
+    "nameEng": "JANUBER",
+    "ceo": "",
+    "address": "서울특별시 성동구 성수이로7길 27- 1104호",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.januber.co.kr/page/"
+  },
+  {
+    "companyId": 350,
+    "name": "유메이 주식회사",
+    "nameEng": "UMAY Inc",
+    "ceo": "오상용",
+    "address": "경기도 성남시 수정구 대왕판교로815 기업지원허브 718호",
+    "tel": "02-6394-1004",
+    "fax": "050-8054-1981",
+    "website": "http://umayz.com"
+  },
+  {
+    "companyId": 219,
+    "name": "에스지에이강원(주)",
+    "nameEng": "SGAGangwon",
+    "ceo": "김정호",
+    "address": "강원도 춘천시 칠전동길 43-2, 1층",
+    "tel": "033-241-8200",
+    "fax": "033-244-3401",
+    "website": "http://www.sgakw.kr"
+  },
+  {
+    "companyId": 347,
+    "name": "주식회사 바요",
+    "nameEng": "BAYO.Co.,Ltd.",
+    "ceo": "김홍기",
+    "address": "경남 진주시 문산읍 정자천로311번길 16",
+    "tel": "055-756-5020",
+    "fax": "055-756-5021",
+    "website": "http://www.jubayo.com"
+  },
+  {
+    "companyId": 79,
+    "name": "디지베이스",
+    "nameEng": "DIGIBASE",
+    "ceo": "강대영, 이상국",
+    "address": "서울시 영등포구 양평로 22길 21, 코오롱디지털타워 3층 303호",
+    "tel": "010-2865-0060",
+    "fax": "02-2062-5201",
+    "website": "http://www.digibase.co.kr"
+  },
+  {
+    "companyId": 245,
+    "name": "(주)엠에이티",
+    "nameEng": "MAT",
+    "ceo": "김영준",
+    "address": "경기도 안양시 동안구 관양동 864-3",
+    "tel": "031-422-6223",
+    "fax": "031-422-6226",
+    "website": "http://www.iplug.com / www.luxmatic.co.kr"
+  },
+  {
+    "companyId": 290,
+    "name": "케이웨더(주)",
+    "nameEng": "kweather",
+    "ceo": "김동식",
+    "address": "서울특별시 구로구 디지털로26길 5 에이스하이엔드타워 1차 401호",
+    "tel": "02-360-2230",
+    "fax": "",
+    "website": "http://www.kweahter.co.kr"
+  },
+  {
+    "companyId": 273,
+    "name": "주식회사 와이디엔에스",
+    "nameEng": "YD&S",
+    "ceo": "",
+    "address": "경기 성남시 수정구 창업로 42 경기기업성장센터 608호",
+    "tel": "031-754-2500",
+    "fax": "",
+    "website": "http://www.ydns.co.kr/"
+  },
+  {
+    "companyId": 270,
+    "name": "파킹클라우드 주식회사",
+    "nameEng": "PARKING CLOUD",
+    "ceo": "신상용",
+    "address": "서울특별시 영등포구 영등포로3길 19, 1층,2층",
+    "tel": "1588-5783",
+    "fax": "",
+    "website": "http://smartparking.iparking.co.kr/"
+  },
+  {
+    "companyId": 269,
+    "name": "주식회사 오픈메이트",
+    "nameEng": "OPENmate",
+    "ceo": "",
+    "address": "",
+    "tel": "02-395-7540",
+    "fax": "",
+    "website": "http://www.openmate.co.kr/"
+  },
+  {
+    "companyId": 268,
+    "name": "위치스",
+    "nameEng": "Witches",
+    "ceo": "",
+    "address": "광주광역시 남구 송암로 60 광주 CGI센터 7F",
+    "tel": "062-365-0224",
+    "fax": "",
+    "website": "http://www.witches.kr/"
+  },
+  {
+    "companyId": 266,
+    "name": "한국정보기술 주식회사",
+    "nameEng": "",
+    "ceo": "",
+    "address": "경기도 성남시 분당구 판교로 255, 판교이노밸리E 10층",
+    "tel": "031-696-0945",
+    "fax": "",
+    "website": "http://www.koreaint.com/"
+  },
+  {
+    "companyId": 265,
+    "name": "(주)테마루",
+    "nameEng": "THEMARU",
+    "ceo": "",
+    "address": "서울특별시 송파구 송파대로 167 테라타워 A동 A1208호",
+    "tel": "02-571-3569",
+    "fax": "",
+    "website": "http://www.themaru.co.kr/"
+  },
+  {
+    "companyId": 263,
+    "name": "(주)아마다스",
+    "nameEng": "AMADAS Co.,LTD",
+    "ceo": "박은민",
+    "address": "서울시 관악구 낙성대로38, 낙성대R&D센터 2층 205호",
+    "tel": "",
+    "fax": "02-876-8541",
+    "website": "http://www.amadas.kr"
+  },
+  {
+    "companyId": 148,
+    "name": "원더풀플랫폼",
+    "nameEng": "Wonderful Platform",
+    "ceo": "구승엽",
+    "address": "서울시 서초구 논현로 175 5층,6층 (양재동, 신한빌딩)",
+    "tel": "02-2297-9383",
+    "fax": "02-2297-9384",
+    "website": "http://www.1thefull.com"
+  },
+  {
+    "companyId": 262,
+    "name": "주식회사 케이앤엘정보시스템",
+    "nameEng": "",
+    "ceo": "",
+    "address": "서울시 광진구 아차산로 345, 101동 316호",
+    "tel": "02-454-1984",
+    "fax": "",
+    "website": "http://www.knlsystem.co.kr/New_Site/new/main/main.asp"
+  },
+  {
+    "companyId": 261,
+    "name": "가산",
+    "nameEng": "GASAN",
+    "ceo": "",
+    "address": "경기 부천시 조마루로 385번길 122 삼보테크노타워 1711호",
+    "tel": "",
+    "fax": "",
+    "website": "http://www.gasanit.co.kr/"
+  },
+  {
+    "companyId": 260,
+    "name": "서원정보",
+    "nameEng": "",
+    "ceo": "",
+    "address": "서울특별시 중구 서소문로 89, 순화빌딩 1608호",
+    "tel": "02-3789-8490",
+    "fax": "",
+    "website": "http://seowoninfo.com/"
+  },
+  {
+    "companyId": 259,
+    "name": "(주)이노워터앤솔루션",
+    "nameEng": "",
+    "ceo": "",
+    "address": "경기도 성남시 중원구 둔촌대로 457번길 27, 302호",
+    "tel": "031-737-2131",
+    "fax": "",
+    "website": "http://www.innowater.net/"
+  },
+  {
+    "companyId": 258,
+    "name": "(주)영신디엔씨",
+    "nameEng": "YOUNGSHINEDN",
+    "ceo": "강일형",
+    "address": "경기도 성남시 분당구 판교로 242, 판교디지털센터 A동 701호(삼평동 624)",
+    "tel": "031-624-4694",
+    "fax": "",
+    "website": "http://www.smartyoungshine.com"
+  },
+  {
+    "companyId": 257,
+    "name": "이유랩",
+    "nameEng": "iyulab",
+    "ceo": "",
+    "address": "서울시 강서구 마곡동 799-1 로뎀타워 908호",
+    "tel": "02-858-0229",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 256,
+    "name": "다비오맵스",
+    "nameEng": "Dabeeo",
+    "ceo": "",
+    "address": "서울시 마포구 백범로 35, 서강대학교 아루페관, 11층",
+    "tel": "",
+    "fax": "",
+    "website": "https://www.dabeeo.com/ko/"
+  },
+  {
+    "companyId": 246,
+    "name": "(주)지니가치",
+    "nameEng": "geniegachi Inc.",
+    "ceo": "이우익",
+    "address": "경기도 부천시 길주로 252 2층 201호 장애인기업 종합지원센터",
+    "tel": "070-4064-0433",
+    "fax": "070-7614-1018",
+    "website": "http://withgenie.kr"
+  },
+  {
+    "companyId": 255,
+    "name": "CJ올리브네트웍스",
+    "nameEng": "CJ OLIVENETWORKS",
+    "ceo": "이경배",
+    "address": "서울특별시 용산구 한강대로 366 트윈시티 10층",
+    "tel": "",
+    "fax": "",
+    "website": "https://www.cjolivenetworks.co.kr:449/"
+  },
+  {
+    "companyId": 253,
+    "name": "현대통신 주식회사",
+    "nameEng": "HYUNDAI TELECOM",
+    "ceo": "",
+    "address": "서울특별시 영등포구 여의대방로 107, 현대통신빌딩",
+    "tel": "",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 247,
+    "name": "주식회사 스타코프",
+    "nameEng": "Starkoff Co. Ltd",
+    "ceo": "안태효",
+    "address": "서울특별시 성동구 아차산로 17, 1405호(성동구1가 서울숲 L Tower)",
+    "tel": "",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 248,
+    "name": "주식회사 필라넷",
+    "nameEng": "FEELANET.CO.,LTD",
+    "ceo": "김상규",
+    "address": "서울특별시 성동구 연무장5길 9-16, 8층 802~8호",
+    "tel": "02-2008-3607",
+    "fax": "",
+    "website": "http://www.feelanet.co.kr/"
+  },
+  {
+    "companyId": 60,
+    "name": "(주)코어소프트",
+    "nameEng": "CORESOFT",
+    "ceo": "소순주",
+    "address": "서울시 금천구 두산로 70, A동 2601호",
+    "tel": "02-2169-2361",
+    "fax": "02-2169-2361",
+    "website": "http://www.coresoft.co.kr"
+  },
+  {
+    "companyId": 241,
+    "name": "(주)티큐에스코리아",
+    "nameEng": "TQSkorea Co., Ltd.",
+    "ceo": "목연권",
+    "address": "경기도 안양시 동안구 흥안대로427번길 16, 205호(평촌디지털 엠파이어)",
+    "tel": "010-5376-3634",
+    "fax": "",
+    "website": "http://www.tqskorea.com"
+  },
+  {
+    "companyId": 244,
+    "name": "(주)윅스콘",
+    "nameEng": "WIXCON Co., Ltd",
+    "ceo": "박 태 준",
+    "address": "(07217) 서울 영등포구 당산로41길 11, W동 322호 (당산에스케이브이1센터)",
+    "tel": "02-6450-0350",
+    "fax": "02-6450-0351",
+    "website": "http://www.wixcon.co.kr"
+  },
+  {
+    "companyId": 240,
+    "name": "(주)에스비",
+    "nameEng": "",
+    "ceo": "제오수",
+    "address": "부산광역시 강서구 녹산산단 382로 14번길 55",
+    "tel": "044-860-1713",
+    "fax": "",
+    "website": "http://www.sbong.net"
+  },
+  {
+    "companyId": 91,
+    "name": "(주)에스티이지",
+    "nameEng": "STEG",
+    "ceo": "임현길",
+    "address": "서울시 서초구",
+    "tel": "010-9178-2795",
+    "fax": "",
+    "website": "http://www.steg.co.kr"
+  },
+  {
+    "companyId": 242,
+    "name": "(주)한컴엔플럭스",
+    "nameEng": "HANCOM NFLUX Co., Ltd.",
+    "ceo": "이민",
+    "address": "경기도 성남시 분당구 대왕판교로644번길 49 한컴타워 9층",
+    "tel": "031-622-6388",
+    "fax": "031-622-6390",
+    "website": "http://www.hancomnflux.com"
+  },
+  {
+    "companyId": 214,
+    "name": "(주)해피앤굿",
+    "nameEng": "HAPPY&GOOD Inc.",
+    "ceo": "변종섭",
+    "address": "경기도 안양시 동안구 시민대로327번길 11-41 안양창업지원센터 3층 3113호",
+    "tel": "070-7017-1577",
+    "fax": "",
+    "website": "http://www.parkncharging.com"
+  },
+  {
+    "companyId": 238,
+    "name": "타이니파워(주)",
+    "nameEng": "TinyPowers Co., Ltd.",
+    "ceo": "최창준",
+    "address": "경기도 안양시 동안구 시민대로 361 (관양동 에이스평촌타워) 710호",
+    "tel": "031-384-5521",
+    "fax": "050-8094-5521",
+    "website": "http://www.tinypower.co.kr"
+  },
+  {
+    "companyId": 237,
+    "name": "(주)한스크리에이티브",
+    "nameEng": "Hans Creative Co., Ltd.",
+    "ceo": "장한식",
+    "address": "경기 안양시 동안구 시민대로 327번길 11-41 502호",
+    "tel": "070-7405-2502",
+    "fax": "",
+    "website": "http://www.HansCreative.com"
+  },
+  {
+    "companyId": 498,
+    "name": "주식회사 랜드로드",
+    "nameEng": "LANDROAD Inc.",
+    "ceo": "이주환",
+    "address": "전라북도 전주시 덕진구 반룡로 109 B동 107호(팔복동 2가, 테크노빌)",
+    "tel": "063)261-2314",
+    "fax": "0504-342-4565",
+    "website": "http://www.landroad.co.kr"
+  },
+  {
+    "companyId": 234,
+    "name": "(주)제브라앤시퀀스 새싹기업",
+    "nameEng": "zebra & sequence co., Ltd",
+    "ceo": "오동근",
+    "address": "인천연구수 송도과학로56, 송도테크노파크 BT센터 522호",
+    "tel": "1599 9801",
+    "fax": "032-816-0827",
+    "website": "http://www.zebrasq.com/"
+  },
+  {
+    "companyId": 233,
+    "name": "리타임 새싹기업",
+    "nameEng": "RETIME",
+    "ceo": "이대광",
+    "address": "서대문구 창천동 503-11",
+    "tel": "027972821",
+    "fax": "",
+    "website": "http://retime.co"
+  },
+  {
+    "companyId": 232,
+    "name": "(주)아이쿱 새싹기업",
+    "nameEng": "iKooB Inc.",
+    "ceo": "조재형",
+    "address": "서울시 강남구 선릉로 107길 13 정진빌딩 3층 아이쿱",
+    "tel": "070-8620-2177",
+    "fax": "02-532-0401",
+    "website": "http://company.ikoob.com/"
+  },
+  {
+    "companyId": 231,
+    "name": "엘지씨엔에스",
+    "nameEng": "LG CNS",
+    "ceo": "김영섭",
+    "address": "서울시 강서구 마곡중앙8로 71 LG사이언스파크 E13",
+    "tel": "02-3773-1114",
+    "fax": "02-2099-0099",
+    "website": "http://lgcns.co.kr/"
+  },
+  {
+    "companyId": 229,
+    "name": "달리웍스 주식회사 새싹기업",
+    "nameEng": "Daliworks., Inc.",
+    "ceo": "이순호",
+    "address": "서울시",
+    "tel": "02-2274-3254",
+    "fax": "02-2274-3253",
+    "website": "http://www.daliworks.net"
+  },
+  {
+    "companyId": 228,
+    "name": "(주)주차팅 새싹기업",
+    "nameEng": "JUCHATING",
+    "ceo": "김홍헌",
+    "address": "서울 마포구 백범로 31길21 서울창업허브 본관 8층",
+    "tel": "1800-7644",
+    "fax": "",
+    "website": "http://www.juchating.com"
+  },
+  {
+    "companyId": 227,
+    "name": "테크나인 주식회사 새싹기업",
+    "nameEng": "TECH9",
+    "ceo": "이호동",
+    "address": "서울시 서초구 주흥5길 11 그린타운6차 304호",
+    "tel": "010-4789-2396",
+    "fax": "050-4371-2396",
+    "website": "http://www.tech9.co.kr"
+  },
+  {
+    "companyId": 225,
+    "name": "제이소프트웨어 주식회사 새싹기업",
+    "nameEng": "JSOFTWARE Inc.",
+    "ceo": "이재희",
+    "address": "서울특별시 강남구 테헤란로6길 30, 4층 432호(역삼동, 태암빌딩)",
+    "tel": "01098761551",
+    "fax": "",
+    "website": "http://www.jsoftware.co.kr"
+  },
+  {
+    "companyId": 223,
+    "name": "(주)스페이스에이디 새싹기업",
+    "nameEng": "SPACE AD.,Ltd",
+    "ceo": "최돈출",
+    "address": "경기도 부천시 양지로 205. 705호(옥길동)",
+    "tel": "010-6511-6827",
+    "fax": "050-4312-6827",
+    "website": "http://www.spacead.com"
+  },
+  {
+    "companyId": 222,
+    "name": "인포씨드 새싹기업",
+    "nameEng": "Infoseed",
+    "ceo": "권요한",
+    "address": "경기도 의왕시 이미로 40, B동 405-2호",
+    "tel": "031-8084-3280",
+    "fax": "",
+    "website": ""
+  },
+  {
+    "companyId": 221,
+    "name": "레인써클 새싹기업",
+    "nameEng": "RAINCIRCLE",
+    "ceo": "정재웅",
+    "address": "서울시 영등포구 문래동6가",
+    "tel": "02-6972-1743",
+    "fax": "02-6455-5467",
+    "website": "http://raincircle.co.kr"
+  },
+  {
+    "companyId": 220,
+    "name": "파파야(주) 새싹기업",
+    "nameEng": "PAPAYA CORP.",
+    "ceo": "전영준",
+    "address": "인천 미추홀구 경인로 229 (도화동, 인천IT타워 1610호)",
+    "tel": "070-478806920",
+    "fax": "",
+    "website": "http://papayamap.com"
+  },
+  {
+    "companyId": 218,
+    "name": "세이프웨어(주) 새싹기업",
+    "nameEng": "SAFEWARE INC",
+    "ceo": "배경란",
+    "address": "경기도 성남시",
+    "tel": "070-4410-1711",
+    "fax": "05044686900",
+    "website": "http://www.safeware.co.kr"
+  },
+  {
+    "companyId": 217,
+    "name": "(주)아이피엘 새싹기업",
+    "nameEng": "INNOVATIVE PLAY LAB CO.,LTD.",
+    "ceo": "김경욱",
+    "address": "경기도 일산동구 중앙로 1068, 301호",
+    "tel": "070-8893-5312",
+    "fax": "031-624-0630",
+    "website": "http://www.ipl.global"
+  },
+  {
+    "companyId": 216,
+    "name": "마지막삼십분 새싹기업",
+    "nameEng": "LAST30MIN",
+    "ceo": "이정선",
+    "address": "서울시 강남구 논현로30길 51(도곡동 419-5) 석진빌딩 2층",
+    "tel": "02-575-7430",
+    "fax": "02-575-7431",
+    "website": "https://itcha.co.kr"
+  },
+  {
+    "companyId": 215,
+    "name": "(주)에스아이디허브 새싹기업",
+    "nameEng": "Sid Hub",
+    "ceo": "권오종",
+    "address": "경기도 고양시 일산동구",
+    "tel": "031-8073-8001",
+    "fax": "031-8038-4503",
+    "website": "http://www.wavenshop.com"
+  },
+  {
+    "companyId": 210,
+    "name": "플라이보 새싹기업",
+    "nameEng": "FLYVO",
+    "ceo": "조윤호",
+    "address": "서울특별시 강남구 테헤란로 20길 9, 14층",
+    "tel": "02-556-0978",
+    "fax": "02-558-7876",
+    "website": "http://flyvo.co.kr"
+  },
+  {
+    "companyId": 213,
+    "name": "선진이알에스 새싹기업",
+    "nameEng": "SUNJIN ERS",
+    "ceo": "강해일",
+    "address": "부산",
+    "tel": "051-629-7425",
+    "fax": "0303-3130-1425",
+    "website": "http://sjers.com"
+  },
+  {
+    "companyId": 211,
+    "name": "더해본 새싹기업",
+    "nameEng": "The sea-born eXperts",
+    "ceo": "서승원",
+    "address": "전라북도 군산시 대학로 558, 군산대학교 창업보육센터 1115호",
+    "tel": "063-469-1713",
+    "fax": "",
+    "website": "https://theseaborn.modoo.at/"
+  },
+  {
+    "companyId": 209,
+    "name": "주식회사 퀀텀게이트 새싹기업",
+    "nameEng": "Quantum Gate Inc.",
+    "ceo": "백주용",
+    "address": "서울지사 및 기업부설연구소 / 서울특별시 성동구 성수동 성수일로10길 26. 하우스디 세종타워 804호",
+    "tel": "010-6209-2762",
+    "fax": "02-3499-4684",
+    "website": "http://www.quantumgate.co.kr"
+  },
+  {
+    "companyId": 208,
+    "name": "유한회사 나노웨더 새싹기업",
+    "nameEng": "Nano C&W",
+    "ceo": "오재호",
+    "address": "경기도 성남시 수정구 대왕판교로 815, 7층 782호",
+    "tel": "070-4667-0312",
+    "fax": "070-4850-8854",
+    "website": "http://www.nano-weather.com"
+  },
+  {
+    "companyId": 207,
+    "name": "주식회사 아이나래컴퍼니 새싹기업",
+    "nameEng": "I NA RAE Company",
+    "ceo": "박 창 범",
+    "address": "서울 강남구 학동로 88길 12 청진빌딩 206호",
+    "tel": "070-8153-1001",
+    "fax": "070-8153-1001",
+    "website": "http://www.secunara.com"
+  },
+  {
+    "companyId": 206,
+    "name": "(주)두레윈 새싹기업",
+    "nameEng": "DURE WIN Co., Ltd.",
+    "ceo": "최재덕",
+    "address": "세종시",
+    "tel": "070-8776-8803",
+    "fax": "044-902-6077",
+    "website": "http://www.durewin.com"
+  },
+  {
+    "companyId": 205,
+    "name": "주식회사 무브먼츠 새싹기업",
+    "nameEng": "MOVEMENTS",
+    "ceo": "윤대훈",
+    "address": "고양시 일산서구",
+    "tel": "07077690529",
+    "fax": "",
+    "website": "http://www.movements.kr"
+  },
+  {
+    "companyId": 203,
+    "name": "리셋컴퍼니(주) 새싹기업",
+    "nameEng": "RESET COMPANY CO.,LTD.",
+    "ceo": "정성대",
+    "address": "경기도 성남시 중원구 광명로 377, 창업관 303호",
+    "tel": "010-8819-9905",
+    "fax": "031-696-5040",
+    "website": "https://www.resetsnow.com/"
+  },
+  {
+    "companyId": 202,
+    "name": "(주)코너스 새싹기업",
+    "nameEng": "CORNERS Co.,Ltd.",
+    "ceo": "김동오",
+    "address": "서울 성동구 상원1길 26, 806호 (성수동1가, 서울숲A타워)",
+    "tel": "02-563-1109",
+    "fax": "02-518-1037",
+    "website": "http://www.corners.co.kr"
+  },
+  {
+    "companyId": 201,
+    "name": "주식회사 닷 새싹기업",
+    "nameEng": "Dot incorporation",
+    "ceo": "김주윤, 성기광",
+    "address": "서울특별시 금천구 가산동",
+    "tel": "028641113",
+    "fax": "028641989",
+    "website": "http://www.dotrincorp.com"
+  },
+  {
+    "companyId": 230,
+    "name": "(주)시큐어가드테크놀러지",
+    "nameEng": "Secure Guard Technology inc.",
+    "ceo": "방학재",
+    "address": "서울시 금천구 가산디지털1로 5, 411호",
+    "tel": "070-7425-9000",
+    "fax": "02-6442-7425",
+    "website": "http://www.sgtechi.co.kr"
+  },
+  {
+    "companyId": 7,
+    "name": "(주)다누시스",
+    "nameEng": "Danusys Co. Ltd.",
+    "ceo": "강원호",
+    "address": "경기도 광명시 하안로60 광명테크노파크A동 712호",
+    "tel": "070-7167-0701",
+    "fax": "070-7167-0707",
+    "website": "http://www.danusys.com"
+  },
+  {
+    "companyId": 9,
+    "name": "(주)밀",
+    "nameEng": "MILL",
+    "ceo": "이광호",
+    "address": "서울시 금천구 벚꽃로244 벽산디지털밸리5차 309.310호",
+    "tel": "02-2082-4313",
+    "fax": "02-2082-4315",
+    "website": "http://www.ripple.co.kr"
+  },
+  {
+    "companyId": 10,
+    "name": "건아정보기술(주)",
+    "nameEng": "KEON-A",
+    "ceo": "심광호",
+    "address": "서울시 송파구 올림픽로 507 건아빌딩",
+    "tel": "02-2041-5533",
+    "fax": "02-472-0914",
+    "website": "http://www.keona.co.kr"
+  },
+  {
+    "companyId": 31,
+    "name": "이트론",
+    "nameEng": "ETRON",
+    "ceo": "황철운",
+    "address": "서울",
+    "tel": "02-548-9410",
+    "fax": "02-851-2533",
+    "website": "http://www.e-trons.co.kr/"
+  },
+  {
+    "companyId": 36,
+    "name": "(주)담비기술",
+    "nameEng": "DAMBEE Technology Co.,Ltd.",
+    "ceo": "장재순",
+    "address": "고양시 일산동구 호수로 358-25 동문타워2차 621호",
+    "tel": "031-905-5454",
+    "fax": "031-905-5453",
+    "website": "http://dambeetech.com"
+  },
+  {
+    "companyId": 38,
+    "name": "엔텔스",
+    "nameEng": "ntels",
+    "ceo": "최영래",
+    "address": "서울시 강남구 학동로 401 금하빌딩 8층",
+    "tel": "02-3218-1200",
+    "fax": "02-3218-1299",
+    "website": "http://www.ntels.com"
+  },
+  {
+    "companyId": 39,
+    "name": "공간정보기술(주)",
+    "nameEng": "GEOSPATIAL INFORMATION TECHNOLOGY Co., Ltd.",
+    "ceo": "박경열",
+    "address": "경기도 성남시 판교",
+    "tel": "031-622-3823",
+    "fax": "031 622 3811",
+    "website": "http://www.git.co.kr"
+  },
+  {
+    "companyId": 40,
+    "name": "(주)한국융합아이티",
+    "nameEng": "Korea Convergence IT",
+    "ceo": "박성우",
+    "address": "용인시 기흥구 동백중앙로16번길 16-25",
+    "tel": "031-8023-5112",
+    "fax": "031-8023-5113",
+    "website": "http://koreacit.co.kr"
+  },
+  {
+    "companyId": 41,
+    "name": "청담정보기술",
+    "nameEng": "Chungdam IT Co., Ltd",
+    "ceo": "윤천규",
+    "address": "서울특별시 강남구 도산대로30길7, ABS빌딩5층",
+    "tel": "02-3442-5588",
+    "fax": "없음",
+    "website": "http://www.cdit.co.kr"
+  },
+  {
+    "companyId": 42,
+    "name": "(주)소프트텐",
+    "nameEng": "SOFTTEN Inc.",
+    "ceo": "박경서",
+    "address": "경기도 하남시 조정대로 150, 967호(덕풍동, 아이테코)",
+    "tel": "031-8027-4651",
+    "fax": "031-8027-4653",
+    "website": "http://www.softten.kr"
+  },
+  {
+    "companyId": 43,
+    "name": "에스케이텔레콤",
+    "nameEng": "SK Telecom",
+    "ceo": "박정호",
+    "address": "서울특별시 중구 을지로 65",
+    "tel": "",
+    "fax": "",
+    "website": "http://sktelecom.com"
+  },
+  {
+    "companyId": 44,
+    "name": "에스이랩",
+    "nameEng": "SELAB, lnc.",
+    "ceo": "오승준",
+    "address": "강남구",
+    "tel": "02-888-0850",
+    "fax": "",
+    "website": "http://www.selab.co.kr"
+  },
+  {
+    "companyId": 45,
+    "name": "(주)지앤티솔루션",
+    "nameEng": "GnT Solution Inc.",
+    "ceo": "강상철",
+    "address": "서울특별시 중구",
+    "tel": "070-7123-8829",
+    "fax": "",
+    "website": "http://www.gntsolution.com"
+  },
+  {
+    "companyId": 46,
+    "name": "(주)넥스모어시스템즈",
+    "nameEng": "Nexmore Systems Inc.",
+    "ceo": "김용걸",
+    "address": "서울시 성동구 아차산로 103, 영동테크노타워 708~709호",
+    "tel": "02-556-3379",
+    "fax": "02-556-3359",
+    "website": "http://www.nexmore.co.kr"
+  },
+  {
+    "companyId": 47,
+    "name": "(주)그린아이티코리아",
+    "nameEng": "Green it korea",
+    "ceo": "강원식",
+    "address": "경기도 남양주시 와부읍 덕소로 234",
+    "tel": "031-721-5661",
+    "fax": "",
+    "website": "http://www.greenitkr.com/"
+  },
+  {
+    "companyId": 48,
+    "name": "인천스마트시티 주식회사",
+    "nameEng": "Incheon Smart City Corporation",
+    "ceo": "성기욱",
+    "address": "인천광역시 연수구 아트센터대로 175 G타워 문화동 4층",
+    "tel": "032-458-5721",
+    "fax": "032-458-5759",
+    "website": "http://www.ismartcity.co.kr"
+  },
+  {
+    "companyId": 49,
+    "name": "가온벼리",
+    "nameEng": "GAONBYORI",
+    "ceo": "송소희",
+    "address": "부천시 소사로 639",
+    "tel": "010-4768-9089",
+    "fax": "032-204-6068",
+    "website": "http://미보유"
+  },
+  {
+    "companyId": 53,
+    "name": "(주)스마트시티코리아",
+    "nameEng": "SmartCityKorea Inc.",
+    "ceo": "주남진",
+    "address": "서울시",
+    "tel": "02-6959-4800",
+    "fax": "02-6959-4801",
+    "website": "http://www.smartcitykorea.com"
+  },
+  {
+    "companyId": 54,
+    "name": "마크애니",
+    "nameEng": "MarkAny",
+    "ceo": "최종욱",
+    "address": "서울",
+    "tel": "02-2262-5240",
+    "fax": "02-2262-5334",
+    "website": "http://www.markany.com"
+  },
+  {
+    "companyId": 55,
+    "name": "(주)이큐브랩",
+    "nameEng": "Ecubelabs",
+    "ceo": "권순범",
+    "address": "서울특별시 구로구 디지털로 288 대륭포스트 1차 701호",
+    "tel": "010-8758-4523",
+    "fax": "",
+    "website": "https://www.ecubelabs.com/"
+  },
+  {
+    "companyId": 56,
+    "name": "(주)아이티에스뱅크",
+    "nameEng": "ITSBANK",
+    "ceo": "이종선",
+    "address": "경기도 고양시 일산동구 장항동 731-2 남정7차 801호",
+    "tel": "031-919-7967",
+    "fax": "031-919-7968",
+    "website": "http://Http://www/itsbank.net"
+  },
+  {
+    "companyId": 57,
+    "name": "주식회사 스마트인사이드",
+    "nameEng": "Smart Inside Co.,Ltd",
+    "ceo": "박승희",
+    "address": "경기도 수원시 장안구 서부로 2066(천천동, 성균관대학교 실습동 24109호)",
+    "tel": "031-290-7643",
+    "fax": "",
+    "website": "https://sites.google.com/view/skkuscit"
+  },
+  {
+    "companyId": 58,
+    "name": "계영정보통신(주)",
+    "nameEng": "GYEYOUNG Information & Communicatioin CO., LTD",
+    "ceo": "유상선",
+    "address": "경기도 안양시",
+    "tel": "031-337-5333",
+    "fax": "031-337-5330",
+    "website": "http://www.gyeyoung.co.kr"
+  },
+  {
+    "companyId": 59,
+    "name": "(주)리얼타임테크",
+    "nameEng": "REALTIMETEH.Co.,Ltd",
+    "ceo": "진 성 일",
+    "address": "대전시 유성구 배울1로 283, 2층",
+    "tel": "042-939-9900",
+    "fax": "041-939-9988",
+    "website": "http://www.realtimetech.co.kr"
+  },
+  {
+    "companyId": 61,
+    "name": "한국에스리",
+    "nameEng": "Esri Korea",
+    "ceo": "윤리차드케이",
+    "address": "서울특별시 강남구 테헤란로 87길 36 2005호 (삼성동, 도심공항타워)",
+    "tel": "02-2086-1927",
+    "fax": "02-2086-1901",
+    "website": "https://www.esrikr.com/"
+  },
+  {
+    "companyId": 62,
+    "name": "코오롱베니트(주)",
+    "nameEng": "KOLONBENIT",
+    "ceo": "이진용",
+    "address": "경기도 과천시",
+    "tel": "02-2120-7336",
+    "fax": "02-2120-7879",
+    "website": "http://www.kolonbenit.com"
+  },
+  {
+    "companyId": 65,
+    "name": "(주)디케이아이테크놀로지",
+    "nameEng": "DKI Technology",
+    "ceo": "허경수",
+    "address": "서울특별시 영등포구 여의나루로 71, 10층",
+    "tel": "02-780-1340",
+    "fax": "02-780-1351",
+    "website": "http://www.dkitec.com/"
+  },
+  {
+    "companyId": 66,
+    "name": "아바드(주)",
+    "nameEng": "AVAD Co.,Ltd.",
+    "ceo": "류병철",
+    "address": "경기도 용인시 기흥구 흥덕중앙로 120 U타워 1404호",
+    "tel": "031-211-7061",
+    "fax": "031-215-8136",
+    "website": "http://www.avad.co.kr"
+  },
+  {
+    "companyId": 67,
+    "name": "(주)하이텍이피씨",
+    "nameEng": "HITEC EPC CO., LTD.",
+    "ceo": "김홍석",
+    "address": "서울특별시 송파구 오금로 36길 65",
+    "tel": "070-5178-9054",
+    "fax": "070-5178-9059",
+    "website": "http://www.hitecepc.com"
+  },
+  {
+    "companyId": 69,
+    "name": "(주)넷비젼텔레콤",
+    "nameEng": "Netvision Telecom Inc.",
+    "ceo": "전병천",
+    "address": "대전광역시 유성구 테크노2로 199, 412(용산동, 미건테크노월드)",
+    "tel": "042-931-4130",
+    "fax": "042-931-4133",
+    "website": "http://www.netvisiontel.com"
+  },
+  {
+    "companyId": 70,
+    "name": "(주)모코엠시스",
+    "nameEng": "MOCOMSYS",
+    "ceo": "고재현, 조천희",
+    "address": "서울시 마포구 상암산로 76 14층 (상암동, YTN뉴스퀘어)",
+    "tel": "02-2141-4110",
+    "fax": "02-2141-4119",
+    "website": "http://www.mocomsys.com"
+  },
+  {
+    "companyId": 71,
+    "name": "(주)플럭시티",
+    "nameEng": "Pluxity co,. Ltd.",
+    "ceo": "윤재민",
+    "address": "서울특별시 서초구 양재대로2길 18, 호반파크 2관 4층 테크랩 T01",
+    "tel": "02-332-9002",
+    "fax": "02-332-9005",
+    "website": "http://www.pluxity.com"
+  },
+  {
+    "companyId": 72,
+    "name": "주식회사 에스앤비",
+    "nameEng": "SnB Co., Ltd.",
+    "ceo": "이상병",
+    "address": "대전광역시 유성구 테크노3로 65, 533호(관평동, 한신에스메카)",
+    "tel": "042-472-0161",
+    "fax": "042-472-0163",
+    "website": "http://www.snbsoft.kr"
+  },
+  {
+    "companyId": 73,
+    "name": "유라이크",
+    "nameEng": "ULIKE",
+    "ceo": "윤정상",
+    "address": "경기도 수원시 영통구 대학1로 58번길 23, 4층",
+    "tel": "01088289585",
+    "fax": "0313458023",
+    "website": "http://www.ulike.co.kr"
+  },
+  {
+    "companyId": 74,
+    "name": "(주)하이디어솔루션즈",
+    "nameEng": "Hidea Solutions Co., Ltd.",
+    "ceo": "이승엽",
+    "address": "서울시 성동구 아차산로 3 4층",
+    "tel": "02-6203-6500",
+    "fax": "02-6203-6502",
+    "website": "http://www.hidea.kr"
+  },
+  {
+    "companyId": 75,
+    "name": "(주)엠유",
+    "nameEng": "Multi Ubiquitous, ltd.",
+    "ceo": "오민경",
+    "address": "부산시 수영구 연수로263번길 21, 2층",
+    "tel": "051-759-5902",
+    "fax": "",
+    "website": "http://www.uhandy.co.kr"
+  },
+  {
+    "companyId": 76,
+    "name": "아큐시스코리아(주)",
+    "nameEng": "Accusys Korea Inc",
+    "ceo": "정준형",
+    "address": "서울시 강남구 선릉로 801, 배강빌딩 801호",
+    "tel": "010-5352-8672",
+    "fax": "02-3443-9050",
+    "website": "http://www.accusys.co.kr"
+  },
+  {
+    "companyId": 77,
+    "name": "한국쓰리엠",
+    "nameEng": "3M Korea",
+    "ceo": "Amit Laroya",
+    "address": "서울특별시 영등포구 의사당대로 82",
+    "tel": "010-9336-1339",
+    "fax": "해당없음",
+    "website": "https://www.3m.com/3M/ko_KR/company-kr/?utm_term=corp-bdms-na-ko_kr-ba-companyad-ps-naverpaid-na-na-na-ne18"
+  },
+  {
+    "companyId": 78,
+    "name": "주식회사 가디언이엔지",
+    "nameEng": "Guardian E&G Co., Ltd.",
+    "ceo": "윤병식",
+    "address": "경기도 안양시 동안구 엘에스로91번길 16-39 603호",
+    "tel": "031-451-3310",
+    "fax": "02-6280-2808",
+    "website": "http://www.gdnet.co.kr"
+  },
+  {
+    "companyId": 80,
+    "name": "에이치디씨 랩스(주)",
+    "nameEng": "HDC LABS",
+    "ceo": "김성은",
+    "address": "서울특별시 서초구 효령로 346 HDC랩스타워",
+    "tel": "1899-1909",
+    "fax": "02-2055-3762",
+    "website": "http://www.hdc-labs.com"
+  },
+  {
+    "companyId": 82,
+    "name": "대구도시공사",
+    "nameEng": "Daegu Urban Corporation",
+    "ceo": "이 종 덕",
+    "address": "대구광역시",
+    "tel": "053-350-0814",
+    "fax": "053-795-6581",
+    "website": "http://www.duco.or.kr"
+  },
+  {
+    "companyId": 85,
+    "name": "(주)오에이전자",
+    "nameEng": "OA Electronics",
+    "ceo": "박정애",
+    "address": "광주광역시 북구 첨단과기로 313 광주하이테크센터 A동 401호",
+    "tel": "070-4270-3393",
+    "fax": "",
+    "website": "http://oae.co.kr"
+  },
+  {
+    "companyId": 86,
+    "name": "(주)브이앤지",
+    "nameEng": "V&G",
+    "ceo": "주제호",
+    "address": "판교",
+    "tel": "031-696-4901",
+    "fax": "031-696-4902",
+    "website": "http://www.vng.co.kr"
+  },
+  {
+    "companyId": 87,
+    "name": "이노뎁(주)",
+    "nameEng": "Innodep. Inc",
+    "ceo": "이성진 대표",
+    "address": "서울특별시 구로구 디지털로31길 61, 5층(구로동, 드림마크원데이터센타)",
+    "tel": "070-4006-0128",
+    "fax": "02-6336-3368",
+    "website": "http://www.innodep.com"
+  },
+  {
+    "companyId": 88,
+    "name": "(주)그린텍아이엔씨",
+    "nameEng": "GREENTECH INC.",
+    "ceo": "이창우",
+    "address": "경기도 안양시 동안구 흥안대로 427번길 38, 1415호 (관양동, 성지스타위드)",
+    "tel": "031.345.0190",
+    "fax": "031.345.0198",
+    "website": "http://www.greentechinc.co.kr"
+  },
+  {
+    "companyId": 90,
+    "name": "공간정보산업진흥원",
+    "nameEng": "SPACEN",
+    "ceo": "김수곤",
+    "address": "경기도 성남시 판교로 242",
+    "tel": "070-4492-0918",
+    "fax": "",
+    "website": "http://www.spacen.or.kr/"
+  },
+  {
+    "companyId": 92,
+    "name": "주식회사 유니룩스",
+    "nameEng": "UNILUX Inc.",
+    "ceo": "김 정 호",
+    "address": "경기도 성남시",
+    "tel": "031-776-2610",
+    "fax": "031-776-2612",
+    "website": "http://www.uniluxinc.com"
+  },
+  {
+    "companyId": 93,
+    "name": "유한회사 씨에스에스",
+    "nameEng": "CSS Co, LTD.",
+    "ceo": "구선근",
+    "address": "전북 전주시 완산구 아중로 33 IT벤처센터 303호",
+    "tel": "070-8290-2223",
+    "fax": "070-8290-2224",
+    "website": "http://없음"
+  },
+  {
+    "companyId": 94,
+    "name": "(주)엔투엠",
+    "nameEng": "N2M",
+    "ceo": "김형진",
+    "address": "서울특별시 영등포구 경인로 775, 1동 218호(문래동3가 에이스하이테크시티)",
+    "tel": "02-514-6123",
+    "fax": "02-514-6124",
+    "website": "http://www.n2m.co.kr"
+  },
+  {
+    "companyId": 95,
+    "name": "(주)고백기술",
+    "nameEng": "Goback Technology",
+    "ceo": "고경철",
+    "address": "전라북도 전주시 완산구 아중로 33 전주정보문화산업진흥원 문화산업진흥센터 303호, 304호",
+    "tel": "063-283-9101",
+    "fax": "063-283-9102",
+    "website": "http://www.goback.world"
+  },
+  {
+    "companyId": 97,
+    "name": "쿠도커뮤니케이션(주)",
+    "nameEng": "CUDO COMMUNICATION CO.LTD",
+    "ceo": "김용식,박기훈",
+    "address": "서울특별시 서초구 효령로34길4 , 6층",
+    "tel": "02-587-3887",
+    "fax": "02-587-3886",
+    "website": "http://www.cudo.co.kr"
+  },
+  {
+    "companyId": 98,
+    "name": "럭키스(주)",
+    "nameEng": "Luckiss",
+    "ceo": "조택근",
+    "address": "경기도 안양시 동안구 흥안대로 415 두산벤처다임 615호",
+    "tel": "031-478-5333",
+    "fax": "",
+    "website": "http://www.luckiss.kr"
+  },
+  {
+    "companyId": 101,
+    "name": "(주)에코란트",
+    "nameEng": "ECOLANT Co.,Ltd",
+    "ceo": "이혜근",
+    "address": "인천 연수구 송도문화로 119 B1층 B1022호(인천글로벌캠퍼스)",
+    "tel": "032-813-6693",
+    "fax": "032-232-6256",
+    "website": "http://www.ecolant.com"
+  },
+  {
+    "companyId": 102,
+    "name": "모비젠",
+    "nameEng": "MOBIGEN",
+    "ceo": "김태수, 고필주",
+    "address": "서울서울특별시 송파구 법원로 128, C동 16층(문정동, SKV1 GL메트로시티)",
+    "tel": "010-9948-3034",
+    "fax": "02-538-9369",
+    "website": "http://www.mobigen.com"
+  },
+  {
+    "companyId": 103,
+    "name": "(주)대흥정보",
+    "nameEng": "Daehunginfor",
+    "ceo": "여범수, 박기범",
+    "address": "서울특별시 영등포구 문래북로 116",
+    "tel": "0266775595",
+    "fax": "0266775596",
+    "website": "http://www.dhicc.com"
+  },
+  {
+    "companyId": 104,
+    "name": "(주)에펠",
+    "nameEng": "EPEL Inc.",
+    "ceo": "박준열",
+    "address": "경기도 김포시 하성면 귀전로 172-24",
+    "tel": "031-989-8678",
+    "fax": "031-998-4673",
+    "website": "http://www.epelkorea.co.kr"
+  },
+  {
+    "companyId": 105,
+    "name": "아이씨티웨이(주)",
+    "nameEng": "ICTWAY",
+    "ceo": "조유복",
+    "address": "경기도 안양시",
+    "tel": "010-9045-9203",
+    "fax": "",
+    "website": "http://www.ictway.co.kr/"
+  },
+  {
+    "companyId": 106,
+    "name": "대우정보시스템 주식회사",
+    "nameEng": "Daewoo Information Systems Co., Ltd.",
+    "ceo": "김상직",
+    "address": "서울 종로구 종로33길 15(연지동,연강빌딩)",
+    "tel": "02-3704-5114",
+    "fax": "",
+    "website": "http://www.daewoobrenic.com"
+  },
+  {
+    "companyId": 107,
+    "name": "스마트도시협회",
+    "nameEng": "Smartcity Association",
+    "ceo": "신경철",
+    "address": "서울특별시 용산구 새창로 217(용산 토투밸리), 4층",
+    "tel": "02-6224-6114",
+    "fax": "02-3667-5511",
+    "website": "http://smartcity.or.kr/"
+  },
+  {
+    "companyId": 108,
+    "name": "이에스이(주)",
+    "nameEng": "ESE CO., LTD",
+    "ceo": "박경식",
+    "address": "경기도 성남시",
+    "tel": "07050791111",
+    "fax": "07050791101",
+    "website": "http://www.eseict.com"
+  },
+  {
+    "companyId": 110,
+    "name": "주식회사 네모",
+    "nameEng": "NEMO Co., Ltd.",
+    "ceo": "이성찬",
+    "address": "경기도 용인시 기흥구 흥덕중앙로 120, 1404호(영덕동, 유타워)",
+    "tel": "031-215-7065",
+    "fax": "0507-0302-5481",
+    "website": "http://www.imnemo.com"
+  },
+  {
+    "companyId": 111,
+    "name": "바른인포테크(주)",
+    "nameEng": "baruninfotech",
+    "ceo": "윤범선",
+    "address": "서울특별시 구로구 디지털로34길 55, 1211호",
+    "tel": "02-6737-0111",
+    "fax": "02-6737-0444",
+    "website": "http://www.barn.co.kr"
+  },
+  {
+    "companyId": 112,
+    "name": "메타빌드(주)",
+    "nameEng": "METABUILD CO., LTD",
+    "ceo": "조풍연",
+    "address": "서울 서초구 효령로 208 메타빌드 빌딩",
+    "tel": "02-598-3327",
+    "fax": "02-598-3329",
+    "website": "http://www.metabuild.co.kr"
+  },
+  {
+    "companyId": 114,
+    "name": "현진아이씨티(주)",
+    "nameEng": "HYUNJIN ICT Co., Ltd",
+    "ceo": "김황현",
+    "address": "서울시 금천구 두산로 70, 521호(독산동, 현대지식산업센터)",
+    "tel": "02 2097 7400",
+    "fax": "02 704 5555",
+    "website": "http://www.hjict.com"
+  },
+  {
+    "companyId": 115,
+    "name": "선유기술주식회사",
+    "nameEng": "SUNYOUTECH, Inc.",
+    "ceo": "정종대",
+    "address": "서울시 마포구 월드컵북로 402.11209호(상암동 KGIT센터 )",
+    "tel": "02 722 5113",
+    "fax": "02 733 5113",
+    "website": "http://WWW.SUNYOUTECH.COM"
+  },
+  {
+    "companyId": 116,
+    "name": "엔쓰리엔",
+    "nameEng": "N3N",
+    "ceo": "남영삼",
+    "address": "서울",
+    "tel": "070-5143-8234",
+    "fax": "",
+    "website": "http://www.n3n.co.kr"
+  },
+  {
+    "companyId": 117,
+    "name": "(주)성진정보통신",
+    "nameEng": "SungJin Information Communication Co., Ltd",
+    "ceo": "문계철",
+    "address": "서울시 금천구 가산디지털2로98, 2-1014",
+    "tel": "02-839-7987",
+    "fax": "02-837-7987",
+    "website": "https://www.sjic.co.kr"
+  },
+  {
+    "companyId": 118,
+    "name": "(주)에이블정보",
+    "nameEng": "AbleInfo Co., Ltd",
+    "ceo": "전경용",
+    "address": "서울 서초구 서초대로 28 4층(장현빌딩)",
+    "tel": "070-7012-4200",
+    "fax": "",
+    "website": "http://www.ableinfo.net"
+  },
+  {
+    "companyId": 119,
+    "name": "주식회사 차후",
+    "nameEng": "CHAHOO Limited",
+    "ceo": "신창훈",
+    "address": "성남시 분당구 판교 테크노밸리",
+    "tel": "0316960476",
+    "fax": "",
+    "website": "http://www.chahoo.co.kr"
+  },
+  {
+    "companyId": 120,
+    "name": "(주)첫눈",
+    "nameEng": "1stnoon Co.,Ltd",
+    "ceo": "박남주",
+    "address": "(54966) 전라북도 전주시 완산구 바우배기2길 23, 이지빌딩 3층",
+    "tel": "063-229-0179",
+    "fax": "063-237-0179",
+    "website": "http://www.1stnoon.co.kr/"
+  },
+  {
+    "companyId": 121,
+    "name": "삼원에프에이",
+    "nameEng": "SAMWON FA",
+    "ceo": "홍 원 표",
+    "address": "부산광역시 해운대구 반송로 513번길 66-25",
+    "tel": "051-630-3000",
+    "fax": "051-645-2258",
+    "website": "http://www.samwonfa.com/"
+  },
+  {
+    "companyId": 122,
+    "name": "스칼라웍스",
+    "nameEng": "SCALAWOX",
+    "ceo": "신용선",
+    "address": "서울시 금천구 가산동",
+    "tel": "02-2628-3944",
+    "fax": "02-2628-3945",
+    "website": "http://www.scalawox.com"
+  },
+  {
+    "companyId": 123,
+    "name": "에쓰오씨소프트주식회사",
+    "nameEng": "SocSoft",
+    "ceo": "김한기",
+    "address": "서울 구로구 구로동 디지털롤 272",
+    "tel": "02-2108-7211",
+    "fax": "02-2108-7215",
+    "website": "http://www.socsoft.co.kr"
+  },
+  {
+    "companyId": 124,
+    "name": "주식회사 다울지오인포",
+    "nameEng": "Dawul Geo Info",
+    "ceo": "김인규",
+    "address": "서울시 구로구 디지털로33길 28",
+    "tel": "02-2068-2903",
+    "fax": "",
+    "website": "http://www.dswul.co.kr"
+  },
+  {
+    "companyId": 125,
+    "name": "(주)이씨오",
+    "nameEng": "ECO, Inc.",
+    "ceo": "이사영",
+    "address": "서울시 성동구 광나루로6길 35 3층",
+    "tel": "02-2024-9733",
+    "fax": "02-2024-9800",
+    "website": "http://www.eco.co.kr"
+  },
+  {
+    "companyId": 126,
+    "name": "(주)에이나인",
+    "nameEng": "A9 CO., LTD.",
+    "ceo": "박용연",
+    "address": "경기도 부천시 조마루로 385번길 122 삼보테크노타워 2115호",
+    "tel": "070-4226-0715",
+    "fax": "050-4403-8736",
+    "website": "http://www.a-nine.co.kr"
+  },
+  {
+    "companyId": 127,
+    "name": "드림시큐리티",
+    "nameEng": "Dream Security Co., Ltd.",
+    "ceo": "범진규",
+    "address": "서울시 송파구 중대로 8길 8 서경빌딩 3~7층",
+    "tel": "02-2233-5533",
+    "fax": "02-402-3622",
+    "website": "http://www.dreamsecurity.com"
+  },
+  {
+    "companyId": 128,
+    "name": "(주)루키스",
+    "nameEng": "LUCIS CO.,Ltd",
+    "ceo": "김종성",
+    "address": "서울 성동구",
+    "tel": "02-368-3822",
+    "fax": "02-368-3828",
+    "website": "http://www.lucis.do.kr"
+  },
+  {
+    "companyId": 129,
+    "name": "(주)위니텍",
+    "nameEng": "WINITECH Co., LTD",
+    "ceo": "추교관",
+    "address": "대구 달서구 송현로 205",
+    "tel": "053-659-1763",
+    "fax": "053-659-1707",
+    "website": "http://www.winitech.com"
+  },
+  {
+    "companyId": 131,
+    "name": "수퍼빈 주식회사",
+    "nameEng": "SuperBin",
+    "ceo": "김정빈",
+    "address": "대전시 유성구 문지로 193, 진리관 T329",
+    "tel": "1600-6217",
+    "fax": "",
+    "website": "http://www.superbin.co.kr"
+  },
+  {
+    "companyId": 132,
+    "name": "주식회사 에이치앤아이",
+    "nameEng": "H&I Co., Ltd",
+    "ceo": "구자덕",
+    "address": "경기도 의왕시 양지편2로 11 지엘빌딩",
+    "tel": "031-425-0628",
+    "fax": "031-425-0629",
+    "website": "http://www.hni-gl.com"
+  },
+  {
+    "companyId": 133,
+    "name": "(주)코위드원",
+    "nameEng": "COWITHONE",
+    "ceo": "윤상조",
+    "address": "경기도 수원시 영통구 대학4로 17",
+    "tel": "031-212-5565",
+    "fax": "031-8014-5929",
+    "website": "http://www.cowithone.com"
+  },
+  {
+    "companyId": 135,
+    "name": "(주)유비텍",
+    "nameEng": "Corp.UBITEC",
+    "ceo": "김경오",
+    "address": "부산광역시",
+    "tel": "051-501-1495",
+    "fax": "051-501-1416",
+    "website": "http://www.ubitec.co.kr"
+  },
+  {
+    "companyId": 136,
+    "name": "인콘",
+    "nameEng": "incon",
+    "ceo": "김동원",
+    "address": "경기도 안양시 동안구 엘에스로 91번길 16-17",
+    "tel": "02-558-9130",
+    "fax": "02-558-7868",
+    "website": "http://incon.kr"
+  },
+  {
+    "companyId": 137,
+    "name": "빅텍",
+    "nameEng": "VICTEK",
+    "ceo": "임 만규",
+    "address": "경기도 이천시",
+    "tel": "070 7162 3816",
+    "fax": "031 631 7041",
+    "website": "http://www.victek.co.kr"
+  },
+  {
+    "companyId": 138,
+    "name": "이에프플러스",
+    "nameEng": "EFPLUS",
+    "ceo": "권오성",
+    "address": "경기도 부천시 송내대로 74번길 23 양지프라자 2층 202호",
+    "tel": "070-7760-0100",
+    "fax": "032-232-1808",
+    "website": "http://www.efplus.co.kr"
+  },
+  {
+    "companyId": 140,
+    "name": "아이크래프트 주식회사",
+    "nameEng": "Icraft Co., Ltd.",
+    "ceo": "박우진",
+    "address": "서울시 강남구 언주로 726, 12층",
+    "tel": "02-541-0474",
+    "fax": "02-543-1442",
+    "website": "http://www.icraft21.com"
+  },
+  {
+    "companyId": 141,
+    "name": "주식회사 새누",
+    "nameEng": "SAENU",
+    "ceo": "황선오",
+    "address": "서울시 금천구 가산디지털1로 171",
+    "tel": "02-865-8384",
+    "fax": "02-6499-1470",
+    "website": "http://www.saenu.com/"
+  },
+  {
+    "companyId": 142,
+    "name": "주식회사 노바코스",
+    "nameEng": "NOVACOS Co,. Ltd",
+    "ceo": "나승인",
+    "address": "경기도 안양시 동안구 학의로250 관양두산벤처다임 405호",
+    "tel": "02-6326-1398",
+    "fax": "02-3012-1398",
+    "website": "http://www.novacos.co.kr"
+  },
+  {
+    "companyId": 143,
+    "name": "(주)아이엠시티",
+    "nameEng": "IMCT",
+    "ceo": "신광식",
+    "address": "전라북도 전주시 덕진구 가리내로 52",
+    "tel": "1577-0650",
+    "fax": "02-6925-7196",
+    "website": "http://imct.net"
+  },
+  {
+    "companyId": 144,
+    "name": "(주)스마트메디칼디바이스",
+    "nameEng": "Smart Medical Device Co.,Ltd.",
+    "ceo": "문찬곤",
+    "address": "경기 고양시 일산동구",
+    "tel": "070-7525-2100",
+    "fax": "0504-983-1173",
+    "website": "http://www.smd21.com"
+  },
+  {
+    "companyId": 145,
+    "name": "(주)오픈잇",
+    "nameEng": "openit Inc.",
+    "ceo": "김민영",
+    "address": "서울특별시 성동구 아차산로17길 57, 607,608,609호(성수동2가, 휴먼테코)",
+    "tel": "1566-5811",
+    "fax": "02-465-5811",
+    "website": "https://www.openit.co.kr"
+  },
+  {
+    "companyId": 147,
+    "name": "주식회사 아보네",
+    "nameEng": "Avonne Co.,Ltd.",
+    "ceo": "이재용",
+    "address": "대전광역시",
+    "tel": "0422868602",
+    "fax": "0422868603",
+    "website": "http://www.avonne.co.kr"
+  },
+  {
+    "companyId": 149,
+    "name": "싸인텔레콤",
+    "nameEng": "SIGNTELECOM",
+    "ceo": "박영기",
+    "address": "서울특별시 영등포구 경인로775 에이스하이테크시티 1-119호",
+    "tel": "02-3439-0033",
+    "fax": "02-3439-0039",
+    "website": "http://www.signtelecom.com"
+  },
+  {
+    "companyId": 32,
+    "name": "한국해양기상기술",
+    "nameEng": "KOAST",
+    "ceo": "임효혁",
+    "address": "서울시 구로구 경인로53길 90 1504호",
+    "tel": "070-4032-6676",
+    "fax": "",
+    "website": "http://koast.net/"
+  },
+  {
+    "companyId": 6,
+    "name": "(주)위안소프트",
+    "nameEng": "WEANDSOFT",
+    "ceo": "안치성",
+    "address": "서울시 동작구 동작대로 43길 1-1, 2층",
+    "tel": "02)793-8797",
+    "fax": "02)824-8797",
+    "website": "http://www.weandsoft.com/"
+  },
+  {
+    "companyId": 3,
+    "name": "텍트원",
+    "nameEng": "Tectone",
+    "ceo": "이성수",
+    "address": "경기도 안양시 동안구 학의로 250, 608호",
+    "tel": "031-425-5531",
+    "fax": "031-425-5532",
+    "website": "http://www.tectone.co.kr"
+  },
+  {
+    "companyId": 2,
+    "name": "(주)선반도체",
+    "nameEng": "sun semiconductor",
+    "ceo": "최용규",
+    "address": "충청북도 청주시 청원구 오창읍 연구단지로 40 충북테크노파크 선도기업관 207호",
+    "tel": "043-272-1146",
+    "fax": "0303-0941-1146",
+    "website": "http://www.sunsemico.com"
+  },
+  {
+    "companyId": 1,
+    "name": "유비트론",
+    "nameEng": "ubitron",
+    "ceo": "김영선",
+    "address": "강원도 춘천시 신북로 61-14, 강원테크노파크 204호, 205호",
+    "tel": "031-386-3140",
+    "fax": "031-388-3140",
+    "website": "http://www.ubitron.co.kr"
+  }
+]

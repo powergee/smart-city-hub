@@ -117,3 +117,17 @@ export async function setProjectRecordList(
 
   return await repo.projectRecord.pickLocale(lang).setItemList(items);
 }
+
+export async function getSolutionsByCompany(
+  companyId: number,
+  mainCategoryId: number,
+  subCategoryId?: number
+) {
+  return Promise.resolve(
+    repo.solution.getSolutionsByCompany({
+      companyId,
+      mainCategoryId,
+      subCategoryId,
+    })
+  );
+}

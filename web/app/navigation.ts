@@ -46,10 +46,10 @@ const navigationList: NavigationItem[] = [
   },
   {
     text: "스마트도시수출 거점HUB",
-    href: "https://legacy.global.urbanscience.uos.ac.kr/hub",
+    href: "/hub",
     subNav: [
       { text: "아세안 국가 정보", href: "https://legacy.global.urbanscience.uos.ac.kr/asean" },
-      { text: "거점HUB", href: "https://legacy.global.urbanscience.uos.ac.kr/hub" },
+      { text: "거점HUB", href: "/hub" },
       { text: "스마트도시 솔루션", href: "https://legacy.global.urbanscience.uos.ac.kr/solution" },
     ],
   },

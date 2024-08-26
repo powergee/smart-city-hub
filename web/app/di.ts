@@ -13,7 +13,7 @@ import {
 
 /* repositories */
 import AseanBannerTextRepo from "repository/asean-banner-text";
-import SolutionTextRepo from "repository/solution-text";
+import SolutionJsonRepo from "repository/solution-json";
 import GeneralArticleBackendRepo from "repository/general-article-backend";
 import AttachmentFileBackendRepo from "repository/attachment-file-backend";
 import AuthTokenIDPWBackendRepo from "repository/auth-token-idpw-backend";
@@ -25,10 +25,7 @@ import { getAccessToken } from "./utils";
 
 /* dependency injection */
 const aseanBanner: AseanBannerRepository = new AseanBannerTextRepo();
-const solution: LocaleFacade<SolutionRepository> = new LocaleFacade({
-  ko: new SolutionTextRepo("ko"),
-  en: new SolutionTextRepo("en"),
-});
+const solution: SolutionRepository = new SolutionJsonRepo();
 const projectRecord: LocaleFacade<ProjectRecordRepository> = new LocaleFacade({
   ko: new ProjectRecordFsRepo({
     storagePath: `${process.env.WEB_STORAGE_PATH}/ko`,

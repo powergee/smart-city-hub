@@ -54,3 +54,26 @@ export type PrimaryArticle = {
   modifiedBy: string;
   modifiedAt: Date;
 };
+
+export type SolutionItem = {
+  solutionId: number;
+  companyId: number;
+  title: string;
+  mainCategoryId: number;
+  subCategoryId: number;
+  summary: string;
+  abstract: string;
+  feature: string;
+  composition: string;
+};
+
+export type SolutionCompany = {
+  companyId: number;
+  name: string;
+  nameEng: string;
+  ceo: string;
+  address: string;
+  tel: string;
+  fax: string;
+  website: string;
+};

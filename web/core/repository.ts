@@ -7,6 +7,8 @@ import {
   UserItem,
   PrimaryArticle,
   PrimaryArticleKind,
+  SolutionItem,
+  SolutionCompany,
 } from "core/model";
 
 type LocaleRepositoryMapper<R> = { [key in Locale]: R };
@@ -28,7 +30,16 @@ export interface AseanBannerRepository {
 }
 
 export interface SolutionRepository {
-  getSuperCategoryNameAll: () => Promise<{ id: string; name: string }[]>;
+  getCompaniesByCategory: (params: {
+    mainCategoryId: number;
+    subCategoryId?: number;
+  }) => Promise<SolutionCompany[]>;
+
+  getSolutionsByCompany: (params: {
+    companyId: number;
+    mainCategoryId: number;
+    subCategoryId?: number;
+  }) => Promise<SolutionItem[]>;
 }
 
 export interface ProjectRecordRepository {

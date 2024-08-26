@@ -12,9 +12,11 @@ import SolutionBanner from "@components/home/solution-banner";
 import Carousel from "@components/carousel";
 import CardLink from "@components/card-link";
 
-import { getSolutionCoverById } from "@resources/images/solution-covers";
+import { getSolutionCoverByIndex } from "@resources/images/solution-covers";
 import { quickMenuIcons } from "@resources/images/quick-menu-icons";
 import urbanCityLandscapeImg from "@resources/images/urban-city-landscape.jpg";
+
+import { getSolutionCategoryAll } from "./(solution)/hub/[cateid]/categories";
 
 export default async function Home(props: { params: { lang: string } }) {
   const lang = props.params.lang as Locale;
@@ -40,13 +42,11 @@ export default async function Home(props: { params: { lang: string } }) {
         <Container className="mt-4">
           {/* 솔루션 바로가기 배너 */}
           <SolutionBanner
-            linkProps={(await repo.solution.pickLocale(lang).getSuperCategoryNameAll()).map(
-              ({ id, name }, idx) => ({
-                title: name,
-                imgSrc: getSolutionCoverById(id),
-                href: `https://legacy.global.urbanscience.uos.ac.kr/hub/${idx}`, // TODO: 링크 수정
-              })
-            )}
+            linkProps={getSolutionCategoryAll(lang).map(({ name }, idx) => ({
+              title: name,
+              imgSrc: getSolutionCoverByIndex(idx),
+              href: `/hub/${idx}`,
+            }))}
           />
         </Container>
       </section>
