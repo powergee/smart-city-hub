@@ -62,6 +62,10 @@
   border-radius: 0.25rem;
 }
 
+.pa-main-header {
+  scroll-margin-top: 112px;
+}
+
 @media (min-width: 640px) {
   .pa-researcher-box {
     display: flex;

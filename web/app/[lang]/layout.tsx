@@ -41,7 +41,7 @@ export default async function RootLayout(
   const { t } = await initTranslation(lang);
 
   return (
-    <html lang={lang} className="h-full">
+    <html lang={lang} className="h-full scroll-smooth">
       <body className={`flex flex-col h-full ${font.className}`}>
         <TranslationProvider lang={lang}>
           <LoginStateProvider>
