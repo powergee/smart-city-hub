@@ -46,10 +46,8 @@ export type UserItem = {
   privilege: UserPrivilege;
 };
 
-export type PrimaryArticleKind = "greeting" | "goal";
-
 export type PrimaryArticle = {
-  kind: PrimaryArticleKind;
+  kind: string;
   contents: string;
   modifiedBy: string;
   modifiedAt: Date;

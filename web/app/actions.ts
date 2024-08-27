@@ -5,7 +5,6 @@ import {
   GeneralArticle,
   AttachmentFile,
   PrimaryArticle,
-  PrimaryArticleKind,
   ProjectRecordItem,
   Locale,
 } from "core/model";
@@ -80,16 +79,13 @@ export async function uploadAttachmentFile(formData: FormData): Promise<Attachme
   return await repo.attachmentFile.upload(formData.get("file") as File);
 }
 
-export async function getPrimaryArticle(
-  locale: Locale,
-  kind: PrimaryArticleKind
-): Promise<PrimaryArticle> {
+export async function getPrimaryArticle(locale: Locale, kind: string): Promise<PrimaryArticle> {
   return await repo.primaryArticle.pickLocale(locale).get(kind);
 }
 
 export async function setPrimaryArticle(
   locale: Locale,
-  kind: PrimaryArticleKind,
+  kind: string,
   contents: string
 ): Promise<PrimaryArticle> {
   revalidatePath("/");

@@ -6,7 +6,6 @@ import {
   AttachmentFile,
   UserItem,
   PrimaryArticle,
-  PrimaryArticleKind,
   SolutionItem,
   SolutionCompany,
 } from "core/model";
@@ -76,6 +75,6 @@ export interface AuthTokenIDPWRepository {
 }
 
 export interface PrimaryArticleRepository {
-  get: (kind: PrimaryArticleKind) => Promise<PrimaryArticle>;
-  set: (kind: PrimaryArticleKind, contents: string) => Promise<PrimaryArticle>;
+  get: (kind: string) => Promise<PrimaryArticle>;
+  set: (kind: string, contents: string) => Promise<PrimaryArticle>;
 }

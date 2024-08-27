@@ -1,10 +1,8 @@
-import { Locale, PrimaryArticleKind } from "core/model";
+import { Locale } from "core/model";
 import { repo } from "@/di";
 import { SecretLink } from "@components/secret-components";
 
-export default async function ProjectsPage(props: {
-  params: { lang: Locale; kind: PrimaryArticleKind };
-}) {
+export default async function ProjectsPage(props: { params: { lang: Locale; kind: string } }) {
   const { lang, kind } = props.params;
   const article = await repo.primaryArticle.pickLocale(lang).get(kind);
 

@@ -1,11 +1,11 @@
-import { PrimaryArticle, PrimaryArticleKind } from "core/model";
+import { PrimaryArticle } from "core/model";
 import { PrimaryArticleRepository } from "core/repository";
 import fs from "fs";
 import path from "path";
 
 /**
  * 파일 시스템을 사용하여 PrimaryArticle을 관리한다.
- * storagePath가 인자로 주어지고, 해당 경로에 PrimaryArticleKind의 이름으로 그 html이 저장된다.
+ * storagePath가 인자로 주어지고, 해당 경로에 kind의 이름으로 그 html이 저장된다.
  * 예를 들어, greeting 게시글이면, greeting.html으로 저장되는 형태이다.
  */
 export default class PrimaryArticleFsRepo implements PrimaryArticleRepository {
@@ -21,7 +21,7 @@ export default class PrimaryArticleFsRepo implements PrimaryArticleRepository {
     }
   }
 
-  async get(kind: PrimaryArticleKind): Promise<PrimaryArticle> {
+  async get(kind: string): Promise<PrimaryArticle> {
     const htmlPath = path.join(this.dataPath, `${kind}.html`);
 
     return new Promise((resolve) => {
@@ -46,7 +46,7 @@ export default class PrimaryArticleFsRepo implements PrimaryArticleRepository {
     });
   }
 
-  async set(kind: PrimaryArticleKind, contents: string): Promise<PrimaryArticle> {
+  async set(kind: string, contents: string): Promise<PrimaryArticle> {
     const htmlPath = path.join(this.dataPath, `${kind}.html`);
 
     return new Promise((resolve) => {

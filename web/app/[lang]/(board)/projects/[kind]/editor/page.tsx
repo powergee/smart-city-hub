@@ -1,6 +1,6 @@
 "use client";
 
-import { Locale, PrimaryArticleKind } from "core/model";
+import { Locale } from "core/model";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 
@@ -8,9 +8,7 @@ const PrimaryArticleEditorPage = dynamic(() => import("@pages/primary-article-ed
   ssr: false,
 });
 
-export default async function ProjectsEditor(props: {
-  params: { lang: Locale; kind: PrimaryArticleKind };
-}) {
+export default async function ProjectsEditor(props: { params: { lang: Locale; kind: string } }) {
   const { lang, kind } = props.params;
   const router = useRouter();
 

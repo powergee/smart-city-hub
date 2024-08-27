@@ -1,6 +1,6 @@
 "use client";
 
-import { Locale, PrimaryArticle, PrimaryArticleKind } from "core/model";
+import { Locale, PrimaryArticle } from "core/model";
 import { getPrimaryArticle, setPrimaryArticle } from "@/actions";
 import { useState, useEffect } from "react";
 import { useLoginState } from "@components/login-context";
@@ -8,7 +8,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build";
 
 export default function PrimaryArticleEditorPage(props: {
-  kind: PrimaryArticleKind;
+  kind: string;
   lang: Locale;
   afterSubmit?: (article: PrimaryArticle) => void;
 }) {
