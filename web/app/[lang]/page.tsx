@@ -31,12 +31,12 @@ export default async function Home(props: { params: { lang: string } }) {
         {/* 아세안 국가 바로가기 배너 */}
         <AseanBanner
           className="max-w-screen-2xl mx-4 md:mx-auto md:-mt-12"
-          linkProps={repo.aseanBanner.getItemAll(lang).map((item, idx) => ({
+          linkProps={repo.aseanBanner.getItemAll(lang).map((item) => ({
             top: item.buttonPosition[1],
             left: item.buttonPosition[0],
             title: item.countryName.toUpperCase(),
             description: item.description.join("\n"),
-            href: `https://legacy.global.urbanscience.uos.ac.kr/asean/${idx}`, // TODO: 링크 수정
+            href: `/asean/${item.id}`, // TODO: 링크 수정
           }))}
         />
         <Container className="mt-4">

@@ -2,6 +2,7 @@ import { AseanBannerItem, Locale } from "core/model";
 import { AseanBannerRepository } from "core/repository";
 
 const items: {
+  id: string;
   nameKo: string;
   nameEn: string;
   descriptionKo: string[];
@@ -9,6 +10,7 @@ const items: {
   buttonPosition: [number, number];
 }[] = [
   {
+    id: "indonesia",
     nameKo: "인도네시아",
     nameEn: "indonesia",
     descriptionKo: ["인구 2억 7,380만명", "GDP 1조 1,860억 달러"],
@@ -16,6 +18,7 @@ const items: {
     buttonPosition: [370, 537],
   },
   {
+    id: "philippines",
     nameKo: "필리핀",
     nameEn: "philippines",
     descriptionKo: ["인구 1억 1,390만명", "GDP 3,941억 달러"],
@@ -23,6 +26,7 @@ const items: {
     buttonPosition: [650, 140],
   },
   {
+    id: "vietnam",
     nameKo: "베트남",
     nameEn: "vietnam",
     descriptionKo: ["인구 9,747만명", "GDP 3,661억 달러"],
@@ -30,6 +34,7 @@ const items: {
     buttonPosition: [475, 115],
   },
   {
+    id: "singapore",
     nameKo: "싱가포르",
     nameEn: "singapore",
     descriptionKo: ["인구 545만명", "GDP 3,970억 달러"],
@@ -37,6 +42,7 @@ const items: {
     buttonPosition: [490, 460],
   },
   {
+    id: "thailand",
     nameKo: "태국",
     nameEn: "thailand",
     descriptionKo: ["인구 7,160만명", "GDP 5,059억 달러"],
@@ -44,6 +50,7 @@ const items: {
     buttonPosition: [170, 370],
   },
   {
+    id: "myanmar",
     nameKo: "미얀마",
     nameEn: "myanmar",
     descriptionKo: ["인구 5,380만명", "GDP 650억 달러"],
@@ -51,6 +58,7 @@ const items: {
     buttonPosition: [170, 150],
   },
   {
+    id: "cambodia",
     nameKo: "캄보디아",
     nameEn: "cambodia",
     descriptionKo: ["인구 1,659만명", "GDP 269억 달러"],
@@ -58,6 +66,7 @@ const items: {
     buttonPosition: [280, 450],
   },
   {
+    id: "malaysia",
     nameKo: "말레이시아",
     nameEn: "malaysia",
     descriptionKo: ["인구 3,357만명", "GDP 3,730억 달러"],
@@ -65,6 +74,7 @@ const items: {
     buttonPosition: [610, 380],
   },
   {
+    id: "laos",
     nameKo: "라오스",
     nameEn: "laos",
     descriptionKo: ["인구 742만명", "GDP 188억 달러"],
@@ -72,6 +82,7 @@ const items: {
     buttonPosition: [310, 64],
   },
   {
+    id: "brunei",
     nameKo: "브루나이",
     nameEn: "brunei",
     descriptionKo: ["인구 44만명", "GDP 140억 달러"],
@@ -88,6 +99,7 @@ export default class AseanBannerTextRepo implements AseanBannerRepository {
   getItemAll(lang: Locale): AseanBannerItem[] {
     if (lang === "ko") {
       return items.map((item) => ({
+        id: item.id,
         countryName: item.nameKo,
         description: item.descriptionKo,
         buttonPosition: item.buttonPosition,
@@ -95,6 +107,7 @@ export default class AseanBannerTextRepo implements AseanBannerRepository {
     }
 
     return items.map((item) => ({
+      id: item.id,
       countryName: item.nameEn,
       description: item.descriptionEn,
       buttonPosition: item.buttonPosition,
