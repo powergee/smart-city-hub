@@ -10,14 +10,15 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^6.2.0",
+    "cheerio": "^1.0.0",
     "ckeditor-tailwind-reset": "^1.0.5",
     "ckeditor5-custom-build": "file:./ckeditor5",
     "i18next": "^23.9.0",
     "negotiator": "^0.6.3",
-    "next": "14.1.0",
+    "next": "^14.2.6",
     "next-i18n-router": "^5.3.1",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-i18next": "^14.0.5"
   },
   "devDependencies": {
