@@ -57,13 +57,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-function NavAccordionItem(props: { item: NavigationItem }) {
+function NavAccordionItem({ item }: { item: NavigationItem }) {
   const [isOpen, setIsOpen] = useState(false);
   const slideAnimation = useSlideAnimation(0);
   const { t } = useTranslation();
   const pathname = usePathname();
 
-  const isMainNavActive = pathname.startsWith(props.item.href);
+  const isMainNavActive = pathname.startsWith(item.href);
   useEffect(() => {
     setIsOpen(isMainNavActive);
   }, [pathname]);
@@ -90,7 +90,7 @@ function NavAccordionItem(props: { item: NavigationItem }) {
               </svg>
             )}
           </div>
-          <span className="font-medium">{t(props.item.text)}</span>
+          <span className="font-medium">{t(item.text)}</span>
         </button>
       </li>
       <li
@@ -98,21 +98,31 @@ function NavAccordionItem(props: { item: NavigationItem }) {
         ref={(ref) => slideAnimation.setTarget(ref)}
       >
         <ul className="px-6 py-2">
-          {props.item.subNav &&
-            props.item.subNav.map((subItem) => (
-              <li
-                className={`py-1 ${
-                  isMainNavActive && pathname.startsWith(subItem.href)
-                    ? "text-uos-signiture-blue font-semibold"
-                    : ""
-                }`}
-                key={subItem.href}
-              >
-                <Link className="block w-full hover:underline" href={subItem.href}>
-                  {t(subItem.text)}
-                </Link>
-              </li>
-            ))}
+          {item.subNav &&
+            item.subNav.map((subItem) => {
+              const isExternalLink = subItem.href.startsWith("http");
+              console.log(subItem.href);
+              return (
+                <li
+                  className={`py-1 ${
+                    isMainNavActive && pathname.startsWith(subItem.href)
+                      ? "text-uos-signiture-blue font-semibold"
+                      : ""
+                  }`}
+                  key={subItem.href}
+                >
+                  {isExternalLink ? (
+                    <a className="block w-full hover:underline" href={subItem.href}>
+                      {t(subItem.text)}
+                    </a>
+                  ) : (
+                    <Link className="block w-full hover:underline" href={subItem.href}>
+                      {t(subItem.text)}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
         </ul>
       </li>
     </ul>
