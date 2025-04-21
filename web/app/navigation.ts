@@ -23,6 +23,8 @@ const navigationList: NavigationItem[] = [
       { text: "총괄 연구 & 사업", href: "/projects/summary" },
       { text: "인문사회연구소", href: "/projects/withhs" },
       { text: "스마트재난안전", href: "/projects/smtdstpre" },
+      { text: "UBC", href: "https://ubc.urbanscience.uos.ac.kr/" },
+      { text: "CRMT", href: "https://crmt.urbanscience.uos.ac.kr/" },
       { text: "기타", href: "/projects/etc" },
     ],
   },
@@ -55,24 +57,50 @@ const navigationList: NavigationItem[] = [
 ];
 
 export function getNavigationList(options?: {
-  langPrefix?: string;
-  rootUrl?: string;
+  langPrefix?: string; // 언어 접두사 (예: 'en', 'ko')
+  rootUrl?: string; // 루트 URL (예: 'https://example.com')
 }): NavigationItem[] {
-  let { rootUrl = "", langPrefix: lang } = options || {};
-  if (lang === "ko") lang = undefined;
+  // 옵션 기본값 설정
+  const rootUrl = options?.rootUrl || "";
+  let lang = options?.langPrefix;
 
-  const prefix = rootUrl + (lang ? `/${lang}` : "");
+  const getPrefixedUrl = (url: string) => {
+    // 외부 링크인 경우 접두사 없음
+    if (url.startsWith("http")) {
+      return url;
+    }
 
-  return navigationList.map((item) => ({
-    text: item.text,
-    href: `${prefix}${item.href}`,
-    subNav: item.subNav
-      ? item.subNav.map((subItem) => ({
+    // 한국어인 경우 접두사 없음
+    if (lang === "ko") {
+      return url;
+    }
+
+    // 외부 링크가 아니고 한국어가 아닌 경우 언어 접두사 추가
+    return `/${lang}${url}`;
+  };
+
+  // 네비게이션 목록의 각 항목에 접두사 추가
+  return navigationList.map((item) => {
+    // 메인 항목 URL에 접두사 추가
+    const mainItem = {
+      text: item.text,
+      href: getPrefixedUrl(item.href),
+    };
+
+    // 서브 네비게이션이 있는 경우 처리
+    if (item.subNav) {
+      return {
+        ...mainItem,
+        subNav: item.subNav.map((subItem) => ({
           text: subItem.text,
-          href: `${prefix}${subItem.href}`,
-        }))
-      : undefined,
-  }));
+          href: getPrefixedUrl(subItem.href),
+        })),
+      };
+    }
+
+    // 서브 네비게이션이 없는 경우
+    return mainItem;
+  });
 }
 
 export function getTitleFromPathname(pathname: string): string[] {
