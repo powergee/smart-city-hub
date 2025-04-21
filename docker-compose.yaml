@@ -1,3 +1,5 @@
+# 개발을 위한 docker-compose 서비스. 실행해도 소스코드 / 배포 환경 / 데이터베이스에 영향을 미치지 않는다.
+
 services:
   smart-city-hub-backend:
     build: ./backend
