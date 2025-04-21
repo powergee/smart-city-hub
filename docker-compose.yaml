@@ -1,0 +1,36 @@
+services:
+  smart-city-hub-backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      - MONGO_URI=mongodb://smart-city-hub-db:27017/smarthub
+      - FILES_DIRECTORY=/backend/saved-files
+      - ACCESS_SECRET_KEY_FILE=/run/secrets/backend_access_secret
+    secrets:
+      - backend_access_secret
+    links:
+      - smart-city-hub-db
+
+  smart-city-hub-web:
+    image: node:18
+    restart: unless-stopped
+    volumes:
+      - ./web:/web
+    environment:
+      - BACKEND_API_URL=http://smart-city-hub-backend:4000
+      - BACKEND_PUBLIC_URL=https://api.global.urbanscience.uos.ac.kr
+      - WEB_STORAGE_PATH=/web/storage
+    ports:
+      - 3000:3000
+    working_dir: /web
+    entrypoint: ["yarn", "dev"]
+
+  smart-city-hub-db:
+    image: mongo:4.4.3
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: smarthub
+
+secrets:
+  backend_access_secret:
+    file: ./dev-secret.key
