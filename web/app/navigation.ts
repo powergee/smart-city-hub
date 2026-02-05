@@ -17,7 +17,7 @@ const navigationList: NavigationItem[] = [
     ],
   },
   {
-    text: "연구 & 사업",
+    text: "프로젝트",
     href: "/projects",
     subNav: [
       { text: "총괄 연구 & 사업", href: "/projects/summary" },
@@ -26,6 +26,17 @@ const navigationList: NavigationItem[] = [
       { text: "UBC", href: "https://ubc.urbanscience.uos.ac.kr/" },
       { text: "CRMT", href: "https://crmt.urbanscience.uos.ac.kr/" },
       { text: "기타", href: "/projects/etc" },
+    ],
+  },
+  {
+    text: "국가·기술협력",
+    href: "/hub",
+    subNav: [
+      { text: "아세안 국가 정보", href: "/asean" },
+      { text: "스마트 인프라·환경", href: "/hub/categories/0/0/0" },
+      { text: "스마트 경제·산업", href: "/hub/categories/1/6/0" },
+      { text: "스마트 안전·행정", href: "/hub/categories/2/13/0" },
+      { text: "스마트 생활·복지", href: "/hub/categories/3/17/0" },
     ],
   },
   {
@@ -44,14 +55,6 @@ const navigationList: NavigationItem[] = [
       { text: "스마트 뉴스", href: "/news/smart-news" },
       { text: "연구실적", href: "/news/research" },
       { text: "세미나", href: "/news/seminar" },
-    ],
-  },
-  {
-    text: "스마트도시수출 거점HUB",
-    href: "/hub",
-    subNav: [
-      { text: "아세안 국가 정보", href: "/asean" },
-      { text: "스마트도시 솔루션", href: "/hub" },
     ],
   },
 ];

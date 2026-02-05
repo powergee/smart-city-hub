@@ -1,22 +1,21 @@
 import Image from "next/image";
-import Link from "next/link";
 
-import { Locale } from "core/model";
 import { repo, util } from "@/di";
 import { initTranslation } from "@locales";
+import { Locale } from "core/model";
 
-import Container from "@components/container";
-import { FormalHeader2 } from "@components/typography";
-import AseanBanner from "@components/home/asean-banner";
-import SolutionBanner from "@components/home/solution-banner";
-import Carousel from "@components/carousel";
 import CardLink from "@components/card-link";
+import Container from "@components/container";
+import AseanBanner from "@components/home/asean-banner";
+import CircleCategoryNav from "@components/home/circle-category-nav";
+import { FormalHeader2 } from "@components/typography";
 
-import { getSolutionCoverByIndex } from "@resources/images/solution-covers";
-import { quickMenuIcons } from "@resources/images/quick-menu-icons";
+import { getSolutionCoverById } from "@resources/images/solution-covers";
 import urbanCityLandscapeImg from "@resources/images/urban-city-landscape.jpg";
 
-import { getSolutionCategoryAll } from "./hub/[cateid]/categories";
+import SearchSection from "@components/home/search-section";
+
+import { getSolutionCategory, getSuperCategory, superCategories } from "./hub/categories";
 
 export default async function Home(props: { params: Promise<{ lang: string }> }) {
   const lang = (await props.params).lang as Locale;
@@ -24,32 +23,6 @@ export default async function Home(props: { params: Promise<{ lang: string }> })
 
   return (
     <>
-      <section className="bg-global-gray-light pt-4 pb-6 border-b">
-        <Container>
-          <FormalHeader2>{t("asean-banner-header")}</FormalHeader2>
-        </Container>
-        {/* 아세안 국가 바로가기 배너 */}
-        <AseanBanner
-          className="max-w-screen-2xl mx-4 md:mx-auto md:-mt-12"
-          linkProps={repo.aseanBanner.getItemAll(lang).map((item) => ({
-            top: item.buttonPosition[1],
-            left: item.buttonPosition[0],
-            title: item.countryName.toUpperCase(),
-            description: item.description.join("\n"),
-            href: `/asean/${item.id}`, // TODO: 링크 수정
-          }))}
-        />
-        <Container className="mt-4">
-          {/* 솔루션 바로가기 배너 */}
-          <SolutionBanner
-            linkProps={getSolutionCategoryAll(lang).map(({ name }, idx) => ({
-              title: name,
-              imgSrc: getSolutionCoverByIndex(idx),
-              href: `/hub/${idx}`,
-            }))}
-          />
-        </Container>
-      </section>
       <div className="relative border-b">
         <Image
           className="absolute -z-10 w-full h-full object-center object-cover"
@@ -58,55 +31,48 @@ export default async function Home(props: { params: Promise<{ lang: string }> })
           width={720}
         />
         <div className="backdrop-blur-sm bg-uos-gray/60 text-white py-6">
-          <Container className="grid gap-8 grid-cols-1 md:grid-cols-2">
-            {/* 총괄 연구 & 사업 배너 */}
-            <section className="flex flex-col min-h-64 drop-shadow-md">
-              <FormalHeader2 style={{ borderColor: "#fff" }}>
-                {t("research-project-header")}
-              </FormalHeader2>
-              <Carousel className="flex-auto my-4" loop interval={5000}>
-                {(await repo.projectRecord.pickLocale(lang).getItemList(true)).map((item, idx) => (
-                  <div
-                    className="px-12 flex flex-col justify-center text-center w-full h-full break-keep"
-                    key={idx}
-                  >
-                    <div className="font-medium text-3xl">{item.title}</div>
-                    <div className="font-light text-xl mt-4">
-                      {item.client} [{item.year[0]}~{item.year[1]}]
-                    </div>
-                  </div>
-                ))}
-              </Carousel>
-            </section>
-            {/* 연구센터 소개 배너 */}
-            <section className="min-h-48 drop-shadow-md">
-              <FormalHeader2 style={{ borderColor: "#fff" }}>
-                {t("research-center-introduction")}
-              </FormalHeader2>
-              <div className="flex items-center w-full h-full">
-                <div className="grid grid-cols-4 gap-2 px-4 w-full">
-                  {[
-                    [quickMenuIcons.greetingIcon.src, t("인사말"), "/introduction/greeting"],
-                    [quickMenuIcons.goalIcon.src, t("설립배경 및 목적"), "/introduction/goal"],
-                    [quickMenuIcons.groupIcon.src, t("연구진"), "/introduction/researchers"],
-                    [quickMenuIcons.noticeIcon.src, t("공지사항"), "/news/notices"],
-                  ].map(([icon, text, href], idx) => (
-                    <Link className="flex flex-col items-center" key={idx} href={href}>
-                      <div
-                        className="w-2/3 aspect-square bg-white/75 hover:bg-white"
-                        style={{
-                          mask: `url(${icon}) no-repeat center / contain`,
-                        }}
-                      />
-                      <div className="text-center break-keep mt-4">{text}</div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </section>
+          <Container>
+            {/* 검색 */}
+            <SearchSection />
           </Container>
         </div>
       </div>
+
+      <section className="bg-global-gray-light pt-4 pb-6 border-b">
+        <Container className="mt-4 mb-24">
+          <FormalHeader2>{t("solution-banner-header")}</FormalHeader2>
+          {/* 솔루션 바로가기 배너 */}
+          <CircleCategoryNav
+            className="mt-6 mb-8 px-4 md:px-0"
+            linkProps={superCategories.map((_, idx) => {
+              const superCatData = getSuperCategory(idx);
+              const firstMainCatId = superCatData.categoryIds[0];
+              const firstMainCategory = getSolutionCategory(firstMainCatId);
+              return {
+                title: t(superCatData.name),
+                imgSrc: getSolutionCoverById(firstMainCategory.name),
+                href: `/hub/categories/${idx}/${firstMainCatId}/0`,
+              };
+            })}
+          />
+        </Container>
+
+        {/* 아세안 국가 바로가기 배너 */}
+        <Container>
+          <FormalHeader2>{t("asean-banner-header")}</FormalHeader2>
+        </Container>
+        <AseanBanner
+          className="max-w-screen-2xl mx-4 md:mx-auto"
+          linkProps={repo.aseanBanner.getItemAll(lang).map((item) => ({
+            top: item.buttonPosition[1],
+            left: item.buttonPosition[0],
+            title: item.countryName.toUpperCase(),
+            description: item.description.join("\n"),
+            href: `/asean/${item.id}`, // TODO: 링크 수정
+          }))}
+        />
+      </section>
+
       {/* 최신 Update 배너 */}
       <section>
         <Container className="mt-6">
@@ -167,9 +133,6 @@ export default async function Home(props: { params: Promise<{ lang: string }> })
             ))}
           </div>
         </section>
-      </Container>
-      <Container className="mt-12">
-        <FormalHeader2>관련 웹페이지</FormalHeader2>
       </Container>
     </>
   );

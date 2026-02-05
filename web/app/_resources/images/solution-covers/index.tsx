@@ -51,7 +51,7 @@ const solutionCovers: { [key: string]: StaticImageData } = {
   관광: tourism,
   교육: education,
   교통: traffic,
-  그린에너지: green,
+  그린·에너지: green,
   금융: finance,
   농업: agriculture,
   문화예술: culture,
@@ -63,7 +63,7 @@ const solutionCovers: { [key: string]: StaticImageData } = {
   비즈니스: business,
   시민참여: citizen,
   쓰레기처리: refuse,
-  의료보건: medical,
+  의료·보건: medical,
   전자정부: egoverment,
   통신기술: communication,
 };
@@ -75,7 +75,7 @@ const solutionInnerCovers: { [key: string]: StaticImageData } = {
   관광: tourismInner,
   교육: educationInner,
   교통: trafficInner,
-  그린에너지: greenInner,
+  그린·에너지: greenInner,
   금융: financeInner,
   농업: agricultureInner,
   문화예술: cultureInner,
@@ -87,7 +87,7 @@ const solutionInnerCovers: { [key: string]: StaticImageData } = {
   비즈니스: businessInner,
   시민참여: citizenInner,
   쓰레기처리: refuseInner,
-  의료보건: medicalInner,
+  의료·보건: medicalInner,
   전자정부: egovermentInner,
   통신기술: communicationInner,
 };
@@ -102,4 +102,8 @@ export function getSolutionCoverByIndex(index: number): StaticImageData {
 
 export function getSolutionInnerCoverByIndex(index: number): StaticImageData {
   return Object.values(solutionInnerCovers)[index];
+}
+
+export function getSolutionInnerCoverById(id: string): StaticImageData {
+  return solutionInnerCovers[id];
 }

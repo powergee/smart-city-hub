@@ -1,15 +1,15 @@
 import { StaticImageData } from "next/image";
 
 import introductionCover from "./introduction.png";
-import publishCover from "./publish.jpeg";
-import projectsCover from "./projects.jpeg";
 import newsCover from "./news.jpeg";
+import projectsCover from "./projects.jpeg";
+import publishCover from "./publish.jpeg";
 
 export function getPageCoverImage(title: string): StaticImageData {
   switch (title) {
     case "소개":
       return introductionCover;
-    case "연구 & 사업":
+    case "프로젝트":
       return projectsCover;
     case "발간물":
       return publishCover;

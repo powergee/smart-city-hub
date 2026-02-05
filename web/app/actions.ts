@@ -3,12 +3,14 @@
 import { repo } from "@/di";
 import { getAccessToken, setAccessToken } from "@/utils";
 import {
-    AttachmentFile,
-    GeneralArticle,
-    Locale,
-    PrimaryArticle,
-    ProjectRecordItem,
-    UserItem,
+  AttachmentFile,
+  GeneralArticle,
+  Locale,
+  PrimaryArticle,
+  ProjectRecordItem,
+  SolutionItem,
+  SolutionItemLocalized,
+  UserItem
 } from "core/model";
 import { revalidatePath } from "next/cache";
 
@@ -116,15 +118,28 @@ export async function setProjectRecordList(
 }
 
 export async function getSolutionsByCompany(
-  companyId: number,
+  companyId: string,
   mainCategoryId: number,
   subCategoryId?: number
-) {
-  return Promise.resolve(
-    repo.solution.getSolutionsByCompany({
-      companyId,
-      mainCategoryId,
-      subCategoryId,
-    })
+): Promise<SolutionItem[]> {
+  const allSolutions = await repo.solution.getSolutionsByCompanyId(companyId);
+  return allSolutions.filter(
+    (s) =>
+      s.mainCategoryId === mainCategoryId &&
+      (subCategoryId === undefined || s.subCategoryId === subCategoryId)
   );
+}
+
+export async function getPublicSolutionsByCompany(
+  companyId: string,
+  mainCategoryId: number,
+  subCategoryId?: number,
+  lang?: string
+): Promise<SolutionItemLocalized[]> {
+  return await repo.solution.getSolutionsByCompany({
+    companyId,
+    mainCategoryId,
+    subCategoryId,
+    lang,
+  });
 }

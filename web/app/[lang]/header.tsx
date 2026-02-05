@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { checkWhoami, doLogout } from "@/actions";
 import { getNavigationList } from "@/navigation";
-import { LanguageChanger } from "@locales";
 import Container from "@components/container";
 import { useLoginState } from "@components/login-context";
 import { useSlideAnimation } from "@components/slide-animation";
+import { LanguageChanger } from "@locales";
 
 import logoImage from "@resources/images/logo.png";
 
@@ -79,6 +79,13 @@ export default function Header(props: { className?: string }) {
                 <div className="text-sm mr-2 py-1 hidden md:block">
                   {t("welcome-message", { name: loginUser.name })}
                 </div>
+                <Link
+                  className="text-sm mr-2 py-1 font-bold hover:underline"
+                  href="/hub/admin"
+                  onClick={() => slideAnimation.backward()}
+                >
+                  데이터관리
+                </Link>
                 <button
                   className="text-sm mr-2 py-1 font-bold hover:underline"
                   type="button"

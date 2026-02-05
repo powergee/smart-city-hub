@@ -1,14 +1,14 @@
 import "@/globals.css";
-import "ckeditor5-custom-build/build/styles.css";
 import "ckeditor-tailwind-reset/ckeditor-tailwind-reset.css";
+import "ckeditor5-custom-build/build/styles.css";
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
-import { initTranslation, TranslationProvider } from "@locales";
 import { LoginStateProvider } from "@components/login-context";
-import Header from "./header";
+import { initTranslation, TranslationProvider } from "@locales";
 import Footer from "./footer";
+import Header from "./header";
 
 // TODO: 아래의 메타데이터를 repository로부터 가져올 수 있어야 할 것(센터 소개 내용 동적 변경에 대비해야 함)
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default async function RootLayout(
   const { t } = await initTranslation(lang);
 
   return (
-    <html lang={lang} className="h-full scroll-smooth">
+    <html lang={lang} className="h-full">
       <body className={`flex flex-col h-full ${font.className}`}>
         <TranslationProvider lang={lang}>
           <LoginStateProvider>

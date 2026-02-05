@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { useRouter, usePathname } from "next/navigation";
 import { locales } from "core/model";
+import { usePathname, useRouter } from "next/navigation";
+import React from "react";
 
 function removePrefixes(str: string, prefixes: string[]) {
   for (const prefix of prefixes) {
@@ -28,8 +28,8 @@ export default function LanguageChanger(props: {
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires.toUTCString()};path=/`;
   };
 
-  const component = React.cloneElement(props.component, {
-    onClick: (e: Event) => {
+  const component = React.cloneElement(props.component as React.ReactElement<any>, {
+    onClick: (e: any) => {
       e.preventDefault();
       setLocaleCookie(props.lang);
 

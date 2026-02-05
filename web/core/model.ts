@@ -54,25 +54,63 @@ export type PrimaryArticle = {
   modifiedAt: Date;
 };
 
-export type SolutionItem = {
-  solutionId: number;
-  companyId: number;
+export type SolutionCompany = {
+  companyId: string;
+  ko: {
+    name: string;
+    ceo: string;
+    address: string;
+    tel: string;
+    fax: string;
+    website: string;
+  };
+  en: {
+    name: string;
+    ceo: string;
+    address: string;
+    tel: string;
+    fax: string;
+    website: string;
+  };
+};
+
+export type SolutionItemDetails = {
   title: string;
-  mainCategoryId: number;
-  subCategoryId: number;
   summary: string;
   abstract: string;
   feature: string;
   composition: string;
 };
 
-export type SolutionCompany = {
-  companyId: number;
+export type SolutionItem = {
+  solutionId: string;
+  companyId: string;
+  superCategoryId: number;
+  mainCategoryId: number;
+  subCategoryId: number;
+  ko: SolutionItemDetails;
+  en: SolutionItemDetails;
+};
+
+// Localized View
+export type SolutionCompanyLocalized = {
+  companyId: string;
   name: string;
-  nameEng: string;
   ceo: string;
   address: string;
   tel: string;
   fax: string;
   website: string;
+};
+
+export type SolutionItemLocalized = {
+  solutionId: string;
+  companyId: string;
+  mainCategoryId: number;
+  subCategoryId: number;
+  title: string;
+  summary: string;
+  abstract: string;
+  feature: string;
+  composition: string;
 };
